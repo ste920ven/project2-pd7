@@ -1,4 +1,4 @@
-->**Group Members**<-
+-> **Group Members** <-
 <br> Leopold Spohngellert<br>Ellie Abrams<br> Hayden Karp Hecker<br>Peter Jasko
 
 ->**Idea**<-
