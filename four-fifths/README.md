@@ -1,4 +1,3 @@
-<!doctype html>
 <h1>GROUP four-fifths</h1>
 <h2>Project: Stuy Student Dashboard (improve the Stuy website)</h2>
 We want to make a new version of the Stuy site that's actually useful,
