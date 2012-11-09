@@ -5,15 +5,10 @@ Better name to be determined.
 <h3>What we will probably do:</h3>
 Use the flickr, wikipedia, and wikiquotes API to:
 <br/>
-1. Take a random image from flickr
-2. Title of random article from wikipedia
-3. Last four words of a random quote from wikiquotes
-
-1. becomes an album cover.
-2. becomes the name of the band.
-3. becomes the name of the album.
-
-The program then throws everything together in a way that is aesthetically pleasing; ideally, we can come up with something that creates a unique design for each input. If we can't, all the albums will look kind of lame, but Daryl has a feeling he can figure something out or at least come up with a design generator based on some reasonably large database of templates.
+1. Take a random image from flickr. This is now the album cover.
+2. Take the title of a random article from wikipedia. This is now  the name of a band.
+3. Take the last four words of a random quote from wikiquotes. This is now the name of the album.
+4. Throws everything together in a way that is aesthetically pleasing; ideally, we can come up with something that creates a unique design for each input. If we can't, all the albums will look kind of lame, but Daryl has a feeling he can at least come up with a design generator based on some reasonably large database of templates.
 <br />
 
 <a href="http://chanarchive.org/content/50_b/48698140/1198178931476.png">Example 1</a>
