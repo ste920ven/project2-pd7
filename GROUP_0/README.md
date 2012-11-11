@@ -5,3 +5,5 @@
 <li>Mengdi Lin</li>
 <li>Brian Yan</li>
 </ul>
+<br></br>
+<p>We want to create a website that gives people the most popular songs and they can rate and comment on the songs</p>
