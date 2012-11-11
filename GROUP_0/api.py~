@@ -1,0 +1,8 @@
+from bs4 import BeautifulSoup
+import urllib2
+
+appid="8a13453c7187e4e61a2976b5cf8c5a5d"
+url="http://us.music.yahooapis.com/artist/v1/list/published/popular?appid="+appid
+
+result=BeautifulSoup(urllib2.urlopen(url).read())
+print result.prettify()
