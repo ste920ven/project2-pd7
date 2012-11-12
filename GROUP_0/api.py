@@ -19,7 +19,6 @@ def create_song_dict():
         song[song_title]={"album":album["name"],"artist":album["artist"]["name"],"genre":album["genre"]["name"],"label":album["label"]["name"],"image":album["image"],"id":album["id"], "song url":album["url"]}
     #print song
     return song
-<<<<<<< HEAD
 def print_song_title():
     x = create_song_dict()
     a=[]
@@ -49,5 +48,3 @@ create_rating_dict()
 
 if __name__ == "__main__":
     print print_song_title()
-=======
->>>>>>> a4dce0fedd5aefada73635623a3a0e4c9520b6dc
