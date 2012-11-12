@@ -16,7 +16,7 @@ def create_song_dict():
     for item in result["tracks"]:
         song_title=item["name"]
         album=item["album"]
-        song[song_title]={"album":album["name"],"artist":album["artist"]["name"],"genre":album["genre"]["name"],"label":album["label"]["name"],"image":album["image"],"id":album["id"]}
+        song[song_title]={"album":album["name"],"artist":album["artist"]["name"],"genre":album["genre"]["name"],"label":album["label"]["name"],"image":album["image"],"id":album["id"], "song url":album["url"]}
     return song
 '''
 def create_rating_dict():
