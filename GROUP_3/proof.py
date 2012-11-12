@@ -1,11 +1,11 @@
 import urllib2
 from bs4 import BeautifulSoup
+import json
 
 url='http://allrecipes.com/Recipe/Homemade-Mac-and-Cheese/Detail.aspx?src=rotd'
 
 result = urllib2.urlopen(url).read()
 soup = BeautifulSoup(result)
-#print (soup.prettify())
 
 
 def ingredients(recipe):
@@ -31,3 +31,23 @@ print ingredients("http://allrecipes.com/recipe/brownie-frosting/detail.aspx")
 #Tried functionality of shortened URL with other recipe, seems to work great
 print ingredients("http://allrecipes.com/recipe/vegan-cupcakes/detail.aspx")
 
+#--------
+#using the Google Shopping API to get prices
+
+tag = "Onion"
+key = 'AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA'
+
+
+def getPrice(k,name):
+    url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&q=%s'%(k,name)
+    request = urllib2.urlopen(url2)
+    result2 = json.loads(request.read())
+    price = result2['items'][0]['product']['inventories'][0]['price']
+    name = result2['items'][0]['product']['title']
+    print str(name) + " " + str(price)
+    pass
+
+getPrice(key,tag)
+
+#So this doesn't quite work to get the exact item yet, but it's a start
+#definitely works to get a price, though.
