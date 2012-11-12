@@ -18,21 +18,3 @@ def create_song_dict():
         album=item["album"]
         song[song_title]={"album":album["name"],"artist":album["artist"]["name"],"genre":album["genre"]["name"],"label":album["label"]["name"],"image":album["image"],"id":album["id"], "song url":album["url"]}
     return song
-'''
-def create_rating_dict():
-    rating_url="http://api.emusic.com/album/ratings?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json&albumId="
-    for key in song.keys():
-        new_url=rating_url+str(song[key]["id"])
-        print new_url
-        break
-        request=urllib2.urlopen(new_url)
-        result=json.loads(request.read())
-        song[key]["rating"]=result["album"]["ratings"]["communityRating"]["average"]
-    for key in song.keys():
-        print song[key]["ratings"]
-
-create_song_dict()
-create_rating_dict()
-
-'''
-
