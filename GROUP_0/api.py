@@ -2,7 +2,7 @@ import json
 import urllib2
 
 apikey="nxs4nu8b9u3ekhuv5gfynr7s"
-song={}
+
 #3 different charts: album, track, artist, but i just used the chart for track
 track_url="http://api.emusic.com/track/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json"
 album_url="http://api.emusic.com/album/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json"
@@ -12,11 +12,12 @@ artist_url="http://api.emusic.com/artist/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&
 def create_song_dict():
     request=urllib2.urlopen(track_url)
     result=json.loads(request.read())
+    song={}
     for item in result["tracks"]:
         song_title=item["name"]
         album=item["album"]
         song[song_title]={"album":album["name"],"artist":album["artist"]["name"],"genre":album["genre"]["name"],"label":album["label"]["name"],"image":album["image"],"id":album["id"]}
-
+    return song
 '''
 def create_rating_dict():
     rating_url="http://api.emusic.com/album/ratings?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json&albumId="
