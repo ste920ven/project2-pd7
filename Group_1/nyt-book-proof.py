@@ -23,7 +23,10 @@ class Rester:
 r = Rester("http://api.nytimes.com/svc/books/v2/lists/hardcover-fiction.json")
 qstring = "api-key=4ae78fbc6b2ea9683502ff8e27bafcd5:16:66926374"
 
-result = r.call(qstring) # remember rester converts from json
+r2 = Rester("http://api.nytimes.com/svc/books/v2/lists.json")
+qstring2 = "list-name=paperback-books&published-date=2012-10-01&api-key=4ae78fbc6b2ea9683502ff8e27bafcd5:16:66926374"
+
+result = r2.call(qstring2) # remember rester converts from json
 
 for r in result['results']:
     for book in r['book_details']:
