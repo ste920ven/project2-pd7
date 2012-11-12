@@ -24,9 +24,9 @@ def print_song_title():
     a=[]
     for p in x:
        if a == None:
-            a = [p]
+            a = [p.encode('ascii',errors = 'ignore')]
        else:
-            a.append(p)
+            a.append(p.encode('ascii',errors = 'ignore'))
     return a
 '''
 def create_rating_dict():
