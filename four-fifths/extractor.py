@@ -35,9 +35,17 @@ def getSchedule():
 def getNews():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
     news = home.table.find_all("td",id="r")
+    
+
     for entry in news:
+        #remove all the br tags
+        i = len(entry.find_all("br"))
+        for x in xrange(0,i):
+            entry.find("br").unwrap()
+        #make the links go to the stuy site
         for link in entry.find_all("a",href=True):
             link['href'] = "http://stuy.enschool.org" + link['href']
+            link.insert_after(home.new_tag("br"))
         entry = entry.prettify()
     return news
 
