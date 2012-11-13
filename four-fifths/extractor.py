@@ -35,8 +35,11 @@ def getSchedule():
 def getNews():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
     news = home.table.find_all("td",id="r")
-    newsarr = [ entry.prettify() for entry in news ] 
-    return newsarr
+    for entry in news:
+        for link in entry.find_all("a",href=True):
+            link['href'] = "http://stuy.enschool.org" + link['href']
+        entry = entry.prettify()
+    return news
 
 
 if __name__=="__main__":
