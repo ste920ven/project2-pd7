@@ -28,12 +28,16 @@ def getSchedule():
     del schedule.div['class']
     schedule.div['id'] = "schedule"
 
-    return schedule.prettify()
-
-
+    #put br tags after every line
+    schedulestr = schedule.prettify().strip().replace('\n','<br/>\n')
+    return schedulestr.replace('<br/>','',1)
 
 def getNews():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
     news = home.table.find_all("td",id="r")
     newsarr = [ entry.prettify() for entry in news ] 
     return newsarr
+
+
+if __name__=="__main__":
+    print getSchedule()
