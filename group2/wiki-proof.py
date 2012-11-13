@@ -2,7 +2,7 @@ import urllib2
 import json
 
 def getTitle():
-    request=urllib2.urlopen("http://en.wikipedia.org/w/api.php?format=json=&action=query&list=random&rnnamespace=0")
+    request=urllib2.urlopen("http://en.wikipedia.org/w/api.php?action=query&list=random&format=json&rnnamespace=0&rnlimit=1")
     result = json.loads(request.read())
     return result
 
@@ -11,4 +11,7 @@ def getQuote():
      result = json.loads(request.read())
      return result
 
-
+print "Random Article Title:"
+print getTitle()
+print "Random Quote:"
+print getQuote()
