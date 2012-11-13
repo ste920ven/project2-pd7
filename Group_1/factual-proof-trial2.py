@@ -20,7 +20,7 @@ class Rester:
         return result
 
 
-r = Rester("http://api.v3/factual.com/t/restaurants-us")
+r = Rester("http://api.v3/factual.com/t/restaurants-us/read")
 qstring = "q=Sushi,New York&KEY=drr6uQjOApDhEhzIbCVd63B70xUm71fIIr04CIxN"
 
 result = r.call(qstring) # remember rester converts from json
