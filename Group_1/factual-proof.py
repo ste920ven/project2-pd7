@@ -3,7 +3,7 @@
 #import urllib
 #import json
 #import sys
-from factual import *
+from factual import Factual
 
 FACTUAL_KEY = "h38jlPEHTOOI1CjxUD2OY6lXc181MrDfXZE6BMJI"
 FACTUAL_SECRET = "oOmtPt9dfknPS63W2TYrExQPX49HvsVQOKFhiFZN"
@@ -26,7 +26,7 @@ FACTUAL_SECRET = "oOmtPt9dfknPS63W2TYrExQPX49HvsVQOKFhiFZN"
 
 
 def main():
-    print "---------------TEST OF FACTUAL API-----------------"
+    #print "---------------TEST OF FACTUAL API-----------------"
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
     
     table = f.table('restaurants-us')
@@ -37,7 +37,7 @@ def main():
     
     q2 = table.filters({'region': "NY"}).limit(1)
     print q2.data()
-    print "---------------TEST OF UPCOMING API-----------------"
+    #print "---------------TEST OF UPCOMING API-----------------"
   
 
 if __name__ == '__main__':

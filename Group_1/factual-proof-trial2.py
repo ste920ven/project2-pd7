@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#based on Mr. Z's NYT rest code
+
 import urllib
 import json
 import sys
@@ -18,19 +20,11 @@ class Rester:
         return result
 
 
-r = Rester("https://www.googleapis.com/books/v1/volumes")
-qstring = "q=dragon+tattoo&key=AIzaSyC7RvStliSi1jKeNrOzUJcWTuLyWmrPFao"
+r = Rester("http://api.v3/factual.com/t/restaurants-us/read")
+qstring = "q=Sushi,New York&KEY=drr6uQjOApDhEhzIbCVd63B70xUm71fIIr04CIxN"
 
 result = r.call(qstring) # remember rester converts from json
 
-#print result
-#for r in result['items']:
-    #for vol in r['volumeInfo']:
-        #print vol['title'], vol['authors']
-        #print
-    #for vol in r['volumeInfo']:
-       #print r['volumeInfo']['title']
-        #print r['selfLink']
-        #print
-
-print result['items'][0]['volumeInfo']['title']
+for rest in result['response']['data']:
+    print rest['name']
+    print
