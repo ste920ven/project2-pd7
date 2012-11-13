@@ -16,18 +16,18 @@ a = "345 Chambers Street, New York"
 test(a)
 
 
-def test2(loc,radius,key,tag):
-    google_maps_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=%s&radius=%s&sensor=false&key=%s&types=%s"%(loc,radius,key,tag)
-    maps_request = urllib.urlopen(google_maps_url)
+def test2():
+    distance_url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=345+Chambers+Street+New+York+NY&destinations=Brooklyn+NY&sensor=false&mode=walking&units=imperial"
+    maps_request = urllib.urlopen(distance_url)
     result = json.loads(maps_request.read())
-    print("search nearby: ")
-    print result['results']
+    print("distance: ")
+    print result['rows'][0]
 
 key='AIzaSyCM_M56XMiApQyGP8gYGVafJmix15AcUng'
 loc="40.714353,-74.005973"
 radius="30000"
 tag="park"
 
-test2(loc,radius,key,tag)
+test2()
 
 
