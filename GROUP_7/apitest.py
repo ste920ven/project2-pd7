@@ -24,7 +24,7 @@ def test2(loc,radius,key,tag):
     print result['results']
 
 key='AIzaSyCM_M56XMiApQyGP8gYGVafJmix15AcUng'
-loc="-33.8670522,151.1957362"
+loc="40.714353,-74.005973"
 radius="30000"
 tag="park"
 
