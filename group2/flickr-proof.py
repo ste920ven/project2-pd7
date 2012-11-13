@@ -1,6 +1,7 @@
 from random import randint
 import flickrapi
-
+#NOTE: This app requires the flickr api to run.
+#Install with 'sudo apt-get install python-flickrapi'
 api_key = "c190109eeac99e777f3246f6da0f263a"
 api_secret = "f595faa22722ff96"
 
@@ -21,6 +22,9 @@ def main():
 	recentPics = flickr.photos_getRecent()
 	pickRandomPhoto(getRecentPhotos(recentPics))
 
-if __name__ == '__main__':
-	main()
-	
+#if __name__ == '__main__':
+#	main()
+
+flickr = flickrapi.FlickrAPI(api_key, format='json')
+print flickr.photos_getRecent()
+
