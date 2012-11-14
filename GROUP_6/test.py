@@ -1,11 +1,12 @@
 import json
-import urllib2
+import urllib
 
 url = 'http://www.reddit.com/search.json?q=sandy'
-request = urllib2.urlopen(url)
-result = json.loads(request.read())
+request = urllib.urlopen(url)
+results = json.loads(request.read())
 
-for i in result['data']:
-    print i['thumbnail']
+
+print results['data']['children'][0]['data']['url']
+
 
 
