@@ -27,7 +27,7 @@ so you can see stuff like
 
 People:
 <ul>
-  <li><strong>Zach (leader)<strong>: Stuy screen scraping, site design</li>
+  <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
   <li>Jason: Twilio API</li>
   <li>Cameron: Weather!</li>
   <li>Jack: Incoming SMS interpretation, login functionality</li>
