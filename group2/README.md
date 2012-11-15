@@ -20,5 +20,25 @@ Use the flickr, wikipedia, and wikiquotes API to:
 <br />
 <a href="http://chanarchive.org/content/50_b/48698140/1198177113787.jpg">Example 3</a>
 <br />
+Shan suggested the idea; it was inspired by a 4chan game.
+<br />
+<h3>Roles</h3>
+<br />
+<b>Daryl</b>
+<br />
+Team leader, app.py server stuff & Step 4
+<br />
+<b>John</b>
+<br />
+Writing thorough unit tests (we should lean towards test-driven development) & HTML/CSS Design (and JavaScript/JQuery/etc. if we end up using it)
+<br />
+<b>Shan</b>
+<br />
+HTML/CSS Design & Step 4 (and JavaScript/JQuery/etc. if we end up using it)
+<br />
+<b>Shreya</b>
+<br />
+Writing thorough unit tests (we should lean towards test-driven development) & Step 4
+<br />
 
-Hopefully we come up with a better idea (I don't think any of us were really happy with this idea). A lot of the things we discussed were rejected because they exist already. Shan suggested this idea; it essentially automates a 4chan game where the user follows the above steps, photoshops everything into album art, and then posts the results for lulz.
+Later on in this project the roles are subject to change.
