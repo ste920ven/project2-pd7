@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import urllib2
+import datetime
 
 def getSchedule():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
@@ -49,6 +50,24 @@ def getNews():
         entry = entry.prettify()
     return news
 
+def getDate():
+    return datetime.datetime.today().strftime("%A, %B %e")    
+
+#returns a string with one of the following: regular, homeroom, special, conference, closed or unknown.
+def getBellDay(schedule):
+    month = datetime.datetime.today().strftime("%b")
+    day   = datetime.date.today().day
+    found = False
+    for line in schedule.split('<br/>'):
+        if found==True:
+            if "REGULAR"    in line.upper(): return "Regular"
+            if "HOMEROOM"   in line.upper(): return "Homeroom"
+            if "SPECIAL"    in line.upper(): return "Special"
+            if "CONFERENCE" in line.upper(): return "Conference"
+            if "CLOSED"     in line.upper(): return "Closed"
+            else:                            return "Unknown"
+        if (month.upper() in line.upper()) and (str(day) in line): found = True
+    if found==False: return "unknown"
 
 if __name__=="__main__":
     print getNews()

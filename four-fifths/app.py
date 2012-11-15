@@ -7,9 +7,13 @@ app = Flask(__name__)
 def main():
     news     = extractor.getNews()
     schedule = extractor.getSchedule()
+    bellDay  = extractor.getBellDay(schedule)
+    date     = extractor.getDate()
     return render_template('home.html',
                            news=news,
-                           schedule=schedule)
+                           schedule=schedule,
+                           bellDay=bellDay,
+                           date=date)
 
 if __name__ == '__main__':
     app.debug = True
