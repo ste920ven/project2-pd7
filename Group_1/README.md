@@ -8,31 +8,29 @@ Group 1 will create an app that uses several APIs to return some reviews and pos
 
 Finally, we will extend this project to allow a simplified version where users can use twilio to get back the rating and sanitation grade of a restaraunt.
 
-*APIs that will be used for this project*
+**APIs that will be used for this project**
+
 * Factual API -- restaurant reviews and info
 * Google Books API -- information about books
 * NYT API -- for bestsellers list
 * Twilio API -- for texting interface.
 
-*Group assignments*
-*David Kurkovskiy - Group Leader & Book API developer
-*Bernie Birnbaum - Factual API developer
-*Steven Huang - Server Coordinator & Twilio API developer
-*Ben Huber - JS, Flask, & HTML coordinator
+**Group assignments**
 
-
-
-
-
-Our plan is to use the Factu and Twilio APIs to create an app that allows the user to text the name of a restaurant they are contemplating dining at to a number and recieve a 160 character summary of what they need to know. This would include Yelp's numerical rating, parts of reviews, and potentially more. The goal is to enable someone without a smartphone to get vital information on an eatery before they walk in.
-<br>
+* David Kurkovskiy - Group Leader & Book API developer
+* Bernie Birnbaum - Factual API developer
+* Steven Huang - Server Coordinator & Twilio API developer
+* Ben Huber - JS, Flask, & HTML coordinator
 
 **UPDATE--11/16**
+
 We initially had trouble with the Yelp API, but were able to use Factual API instead!
 
 Please make sure to
+
 * pip install factual-api
 * pip install twilio
+
 when running our code!
 
 
