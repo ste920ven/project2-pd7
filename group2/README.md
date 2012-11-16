@@ -2,7 +2,7 @@ GROUP 2
 =========
 Better name to be determined.
 
-<h3>What we will probably do:</h3>
+<h3>What we want to do:</h3>
 Use the flickr, wikipedia, and wikiquotes API to:
 <br/>
     1. Take a random image from flickr. This is now the album cover.
@@ -22,6 +22,13 @@ Use the flickr, wikipedia, and wikiquotes API to:
 <br />
 Shan suggested the idea; it was inspired by a 4chan game.
 <br />
+<h3>What we're currently doing:</h3>
+<li>
+    <ul>Figuring out what's up with Step 4</ul>
+    <ul>Deciding on what we're currently doing</ul>
+</li>
+
+<br />
 <h3>Roles</h3>
 <br />
 <b>Daryl</b>
@@ -30,15 +37,15 @@ Team leader, app.py server stuff & Step 4
 <br />
 <b>John</b>
 <br />
-Writing thorough unit tests (we should lean towards test-driven development) & HTML/CSS Design (and JavaScript/JQuery/etc. if we end up using it)
+Main writing thorough unit tests (we should lean towards test-driven development) person
 <br />
 <b>Shan</b>
 <br />
-HTML/CSS Design & Step 4 (and JavaScript/JQuery/etc. if we end up using it)
+Main Step 4 person; secondary HTML/CSS person
 <br />
 <b>Shreya</b>
 <br />
-Writing thorough unit tests (we should lean towards test-driven development) & Step 4
+Main HTML/CSS Design (and JavaScript/JQuery/etc. if we end up using it) person; secondary Step 4 person
 <br />
 
 Later on in this project the roles are subject to change.
