@@ -7,16 +7,21 @@ def getSchedule():
     scheduleurl = "http://stuy.enschool.org" + home.find("a",text="Weekly Schedule")['href']
     schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read()).find(class_="content")
 
-    #remove all the img, link, span, br, b tags
-    i = len(schedule.find_all(["img","link","span","br","b"]))
+    #remove the pageTitle
+    schedule.find("div",class_="pageTitle").extract()
+
+    #remove all the img, link, span, br, hr, b tags
+    i = len(schedule.find_all(["img","link","span","br","hr","b"]))
     for x in xrange(0,i):
-        schedule.find(["img","link","span","br","b"]).unwrap()
+        schedule.find(["img","link","span","br","hr","b"]).unwrap()
+
+    #remove the div tags with no id
+    i = len(schedule.find_all("div",id=False))
+    for x in xrange(0,i):
+        schedule.find("div",id=False).unwrap()
 
     #remove the fbList
     schedule.find("ul",class_="fbList").extract()
-
-    #remove the pageTitle
-    schedule.find("div",class_="pageTitle").extract()
 
     #remove the calendar links
     schedule.find("a",text="Calendar View").extract()
