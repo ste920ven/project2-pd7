@@ -7,7 +7,10 @@
       *            { margin: 0; padding: 0; }
       html, body   { width: 100%; height: 100%; }
       div#main     { display: block; width: 45%; height: 80%; padding: 4%; float: left; }
-      div#bell     { padding-bottom: 4% }
+      table#bell   { width: 100%; margin-bottom: 4%; }
+      
+      table#bell td#currtime { text-align: center; font-size: 35px; font-weight: bold; }
+      table#bell td          { padding-left: 10px; }
 
       div#main ul#news li   { padding-bottom: 15px; }
       div#schedule          { position: fixed; top: 0; right: 0;
@@ -24,100 +27,57 @@
 
     <div id="main">
 
-      <div id="bell">
-	Today is {{date}}. <br/>
-	Today's schedule is {{bellDay}}. <br/>
+      <!-- BELL SCHEDULE CODE FROM MR. BROOKS -->
+
+      <table id="bell" border="1">
+	<tr>
+	  <th colspan="2">{{date}} - {{bellDay}} Schedule</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime">Period <span id="period">0</span> - <span id="time">00:00:00</span></td>
+	</tr>
+
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:41am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:45am - 9:26am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:30am - 10:15am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:19am - 11:00am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>11:04am - 11:45am</td>
+	</tr>
+	<tr id="period6"><td>Period 6</td>
+	  <td>11:49am - 12:30pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:34pm - 1:15pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>1:19pm - 2:00pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>2:04pm - 2:45pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:49pm - 3:30pm</td>
+	</tr>
+      </table>
       
-
-	<!-- BELL SCHEDULE CODE FROM MR. BROOKS -->
-
-	<div id="BellApp" onLoad="Init()">
-
-		  <table border="1">
-		    <tr>
-		      <th colspan="2">Regular</th>
-		    </tr>
-
-		    <tr id="period0">
-		      <td>Before school</td>
-		      <td>&nbsp;12:00a - 8:00a</td>
-		    </tr>
-		    <tr id="period1">
-		      <td>Period 1</td>
-		      <td>&nbsp;8:00a - 8:41a</td>
-		    </tr>
-		    <tr id="period2">
-		      <td>Period 2</td>
-		      <td>&nbsp;8:45a - 9:26a</td>
-		    </tr>
-		    <tr id="period3">
-		      <td>Period 3</td>
-		      <td>&nbsp;9:30a - 10:15a</td>
-		    </tr>
-		    <tr id="period4">
-		      <td>Period 4</td>
-		      <td>&nbsp;10:19a - 11:00a</td>
-		    </tr>
-		    <tr id="period5">
-		      <td>Period 5</td>
-		      <td>&nbsp;11:04a - 11:45a</td>
-		    </tr>
-		    <tr id="period6"><td>Period 6</td>
-		      <td>&nbsp;11:49a - 12:30p</td>
-		    </tr>
-		    <tr id="period7">
-		      <td>Period 7</td>
-		      <td>&nbsp;12:34p - 1:15p</td>
-		    </tr>
-		    <tr id="period8">
-		      <td>Period 8</td>
-		      <td>&nbsp;1:19p - 2:00p</td>
-		    </tr>
-		    <tr id="period9">
-		      <td>Period 9</td>
-		      <td>&nbsp;2:04p - 2:45p</td>
-		    </tr>
-		    <tr id="period10">
-		      <td>Period 10</td>
-		      <td>&nbsp;2:49p - 3:30p</td>
-		    </tr>
-		    <tr id="period11">
-		      <td>After school</td>
-		      <td>&nbsp;3:30p - 11:59:59p</td>
-		    </tr>
-		  </table>
-		  
-		</td>
-		
-		<td>
-		  <table>
-		    <tr>
-		      <td colspan="2">
-			<b><label id="PeriodName"></label></b>
-		      </td>
-		    </tr>
-		    <tr>
-		      <td>&nbsp;<label id="minutes_into">31</label></td>
-		      <td>&nbsp;<label id="minutes_left">10</label></td>
-		    </tr>
-		    <tr>
-		      <td>minutes into</td>
-		      <td>minutes left</td>
-		    </tr>
-		    <tr>
-		      <td colspan="2">
-			<b><label id="hours_minutes">2:35</label></b>
-			<b><label id="seconds">:12</label></b>
-		      </td>
-		    </tr>
-		  </table>
-		</td>
-	      </tr>
-	    </table>
-	  </div>
-	  
-	</div>
-	
       <ul id="news">
 	{% for article in news %}
 	<li>{{article|safe}}</li>
