@@ -1,8 +1,8 @@
 groupmembers
 
-Ian Outhwaite -- head of api access,
-Sarah Duncan -- group leader, api access & front end,
-Tiffany Phan -- head of front end,
+Ian Outhwaite -- head of api access;  
+Sarah Duncan -- group leader, api access & front end;  
+Tiffany Phan -- head of front end;  
 Raymond Zeng -- head of UX
 
 APOCALYPTIC SURVIVAL GUIDE!
