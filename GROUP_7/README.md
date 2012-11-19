@@ -1,7 +1,7 @@
 groupmembers
 
 Ian Outhwaite -- head of api access
-Sarah Duncan -- Group Leader, api access & front end
+Sarah Duncan -- group leader, api access & front end
 Tiffany Phan -- head of front end
 Raymond Zeng -- head of UX
 
