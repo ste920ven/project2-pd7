@@ -4,7 +4,7 @@ import twilio
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def twilio():
     resp = twilio.twiml.Response()
     message = "test message"
