@@ -19,7 +19,8 @@ def main():
 @app.route('/twilio')
 def twilio():
     resp = twilio.twiml.Response()
-    resp.sms("test message!")
+    message = "test message"
+    resp.sms(message)
     return str(resp)
 
 if __name__ == '__main__':
