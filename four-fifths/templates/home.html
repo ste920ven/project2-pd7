@@ -6,8 +6,8 @@
     <style>
       *            { margin: 0; padding: 0; }
       html, body   { width: 100%; height: 100%; }
-      div#main     { display: block; width: 45%; height: 80%; padding: 4%; float: left; }
-      table#bell   { width: 100%; margin-bottom: 4%; }
+      div#main     { display: block; width: 59%; height: 80%; padding: 4%; float: left; }
+      table#bell   { margin: 0 auto; width: 70%; margin-bottom: 4%; }
       
       table#bell td#currtime { text-align: center; font-size: 35px; font-weight: bold; }
       table#bell td          { padding-left: 10px; }
@@ -31,12 +31,13 @@
 
       <table id="bell" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - {{bellDay}} Schedule</th>
+	  <th colspan="2">{{date}} - <span id="bellDay">{{bellDay}}</span> Schedule</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
 	</tr>
 
+	{% if bellDay == "Regular" %}
 	<tr id="period1">
 	  <td>Period 1</td>
 	  <td>8:00am - 8:41am</td>
@@ -76,6 +77,137 @@
 	  <td>Period 10</td>
 	  <td>2:49pm - 3:30pm</td>
 	</tr>
+	{% elif bellDay == "Homeroom" %}
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:40am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:44am - 9:24am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:28am - 10:08am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:26am - 11:06am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>11:10am - 11:50am</td>
+	</tr>
+	<tr id="period6"><td>Period 6</td>
+	  <td>11:54am - 12:34pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:38pm - 1:18pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>1:22pm - 2:02pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>2:06pm - 2:46pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:50pm - 3:30pm</td>
+	</tr>
+	{% elif bellDay == "Conference" %}
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:37am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:41am - 9:18am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:22am - 9:59am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:03am - 10:40am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>10:44am - 11:21am</td>
+	</tr>
+	<tr id="period6"><td>Period 6</td>
+	  <td>11:25am - 12:02pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:06pm - 12:43pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>12:47pm - 1:24pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>1:28pm - 2:05pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:09pm - 2:46pm</td>
+	</tr>
+	{% elif bellDay == "Special" %}
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:38am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:42am - 9:20am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:24am - 10:04am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:08am - 10:46am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>10:50am - 11:28am</td>
+	</tr>
+	<tr id="period6"><td>Period 6</td>
+	  <td>11:32am - 12:10pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>11:14pm - 12:52pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>12:56pm - 1:34pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>1:38pm - 2:16pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:20pm - 2:58pm</td>
+	</tr>
+	{% elif bellDay == "Closed" %}
+	{% else %}
+	<tr>
+	  <td colspan="2">
+	    <button>Regular</button>
+	    <button>Homeroom</button>
+	    <button>Special</button>
+	    <button>Conference</button>
+	  </td>
+	</tr>
+	{% endif %}
       </table>
       
       <ul id="news">
