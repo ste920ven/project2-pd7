@@ -1,12 +1,12 @@
 from flask import Flask
 import extractor
-import twilio
+from twilio import twiml
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def twilio():
-    resp = twilio.twiml.Response()
+    resp = twiml.Response()
     message = "test message"
     resp.sms(message)
     return str(resp)
