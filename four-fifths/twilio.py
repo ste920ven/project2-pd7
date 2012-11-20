@@ -1,10 +1,10 @@
 from flask import Flask
 import extractor
-import twilio.twiml
+from twilio import twiml
 
 app = Flask(__name__)
 
-@app.route('/twilio')
+@app.route('/')
 def twilio():
     resp = twilio.twiml.Response()
     message = "test message"
