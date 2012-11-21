@@ -12,7 +12,7 @@ def main():
     return render_template('home.html',
                            news=news,
                            schedule=schedule,
-                           bellDay=bellDay,
+                           bellDay="Unknown",
                            date=date)
 
 if __name__ == '__main__':

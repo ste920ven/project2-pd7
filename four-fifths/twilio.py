@@ -1,6 +1,6 @@
-from flask import Flask
+from flask  import Flask
+from twilio import twiml
 import extractor
-import twilio.twiml
 
 app = Flask(__name__)
 

@@ -6,18 +6,23 @@
     <style>
       *            { margin: 0; padding: 0; }
       html, body   { width: 100%; height: 100%; }
+      .hide        { display: none; }
       div#main     { display: block; width: 59%; height: 80%; padding: 4%; float: left; }
-      table#bell   { margin: 0 auto; width: 70%; margin-bottom: 4%; }
-      
-      table#bell td#currtime { text-align: center; font-size: 35px; font-weight: bold; }
-      table#bell td          { padding-left: 10px; }
 
-      div#main ul#news li   { padding-bottom: 15px; }
-      div#schedule          { position: fixed; top: 0; right: 0;
+      table.bell             { margin: 0 auto; width: 70%; margin-bottom: 4%; text-align: center; }      
+      table.bell td#currtime { font-size: 35px; font-weight: bold; }
+      table.bell td          { padding-left: 10px; }
+      table#unknown
+      td#scheduleSelect      { text-align: center; padding: 10px; }
+      table#unknown button   { margin: 0 15px; }
+
+      div#main ul#news li    { padding-bottom: 15px; }
+      div#schedule           { position: fixed; top: 0; right: 0;
                               display: block; width: 25%; height: 90%; padding: 4%;
                               font-size: 16px; background: #DDD; }
     </style>
 
+    <script>var bellDay='{{bellDay}}';</script>
     <script src="{{ url_for('static', filename='jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 
@@ -27,17 +32,13 @@
 
     <div id="main">
 
-      <!-- BELL SCHEDULE CODE FROM MR. BROOKS -->
-
-      <table id="bell" border="1">
+      <table id="regular" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - <span id="bellDay">{{bellDay}}</span> Schedule</th>
+	  <th colspan="2">{{date}} - Regular Schedule</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
 	</tr>
-
-	{% if bellDay == "Regular" %}
 	<tr id="period1">
 	  <td>Period 1</td>
 	  <td>8:00am - 8:41am</td>
@@ -58,7 +59,8 @@
 	  <td>Period 5</td>
 	  <td>11:04am - 11:45am</td>
 	</tr>
-	<tr id="period6"><td>Period 6</td>
+	<tr id="period6">
+	  <td>Period 6</td>
 	  <td>11:49am - 12:30pm</td>
 	</tr>
 	<tr id="period7">
@@ -77,7 +79,15 @@
 	  <td>Period 10</td>
 	  <td>2:49pm - 3:30pm</td>
 	</tr>
-	{% elif bellDay == "Homeroom" %}
+      </table>
+      
+      <table id="homeroom" class="bell hide" border="1">
+	<tr>
+	  <th colspan="2">{{date}} - Homeroom Schedule</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
+	</tr>
 	<tr id="period1">
 	  <td>Period 1</td>
 	  <td>8:00am - 8:40am</td>
@@ -98,7 +108,8 @@
 	  <td>Period 5</td>
 	  <td>11:10am - 11:50am</td>
 	</tr>
-	<tr id="period6"><td>Period 6</td>
+	<tr id="period6">
+	  <td>Period 6</td>
 	  <td>11:54am - 12:34pm</td>
 	</tr>
 	<tr id="period7">
@@ -117,7 +128,15 @@
 	  <td>Period 10</td>
 	  <td>2:50pm - 3:30pm</td>
 	</tr>
-	{% elif bellDay == "Conference" %}
+      </table>
+
+      <table id="conference" class="bell hide" border="1">
+	<tr>
+	  <th colspan="2">{{date}} - Conference Schedule</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
+	</tr>
 	<tr id="period1">
 	  <td>Period 1</td>
 	  <td>8:00am - 8:37am</td>
@@ -138,7 +157,8 @@
 	  <td>Period 5</td>
 	  <td>10:44am - 11:21am</td>
 	</tr>
-	<tr id="period6"><td>Period 6</td>
+	<tr id="period6">
+	  <td>Period 6</td>
 	  <td>11:25am - 12:02pm</td>
 	</tr>
 	<tr id="period7">
@@ -157,7 +177,15 @@
 	  <td>Period 10</td>
 	  <td>2:09pm - 2:46pm</td>
 	</tr>
-	{% elif bellDay == "Special" %}
+      </table>
+
+      <table id="special" class="bell hide" border="1">
+	<tr>
+	  <th colspan="2">{{date}} - Special Schedule</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
+	</tr>
 	<tr id="period1">
 	  <td>Period 1</td>
 	  <td>8:00am - 8:38am</td>
@@ -178,7 +206,8 @@
 	  <td>Period 5</td>
 	  <td>10:50am - 11:28am</td>
 	</tr>
-	<tr id="period6"><td>Period 6</td>
+	<tr id="period6">
+	  <td>Period 6</td>
 	  <td>11:32am - 12:10pm</td>
 	</tr>
 	<tr id="period7">
@@ -197,17 +226,23 @@
 	  <td>Period 10</td>
 	  <td>2:20pm - 2:58pm</td>
 	</tr>
-	{% elif bellDay == "Closed" %}
-	{% else %}
+      </table>
+
+      <table id="unknown" class="bell hide" border="1">
 	<tr>
-	  <td colspan="2">
-	    <button>Regular</button>
-	    <button>Homeroom</button>
-	    <button>Special</button>
-	    <button>Conference</button>
+	  <th colspan="2">{{date}} - Unknown Schedule</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime"><span id="time">00:00:00</span></td>
+	</tr>
+	<tr>
+	  <td id="scheduleSelect" colspan="2">
+	    <button id="regular">Regular</button>
+	    <button id="homeroom">Homeroom</button>
+	    <button id="special">Special</button>
+	    <button id="conference">Conference</button>
 	  </td>
 	</tr>
-	{% endif %}
       </table>
       
       <ul id="news">

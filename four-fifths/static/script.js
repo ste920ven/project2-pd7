@@ -61,6 +61,33 @@ var special = [
     { "start": new Date(today+50940000), "end": new Date(today+53160000) }
 ];
 
+function loadBellSchedule(bellDay)
+{
+    if (bellDay=="Regular")
+    {
+	bellSchedule = regular;
+	$('table#regular').removeClass('hide');
+    }
+
+    if (bellDay=="Homeroom")
+    {
+	bellSchedule = homeroom;
+	$('table#homeroom').removeClass('hide');
+    }
+
+    if (bellDay=="Conference")
+    {
+	bellSchedule = conference;
+	$('table#conference').removeClass('hide');
+    }
+
+    if (bellDay=="Special")
+    {
+	bellSchedule = special;
+	$('table#special').removeClass('hide');
+    }
+}
+
 function getTime()
 {
     now = new Date();
@@ -86,18 +113,23 @@ function tick()
 	{
 	    pdnum = i+1;
 	    $('span#period').text("Period "+pdnum);
-	    $('table#bell tr#period'+pdnum).css('color','red');
+	    $('table.bell tr#period'+pdnum).css('color','red');
 	}
     }
 
 }
 
 $(document).ready(function(){
-    var bellDay = $('span#bellDay').text();
-    if (bellDay=="Regular")    bellSchedule = regular;
-    if (bellDay=="Homeroom")   bellSchedule = homeroom;
-    if (bellDay=="Conference") bellSchedule = conference;
-    if (bellDay=="Special")    bellSchedule = special;
+    if (bellDay=="Unknown" || bellDay=="Closed") 
+	$('table#unknown').removeClass('hide');
+    else
+	loadBellSchedule(bellDay);
 
     setInterval(tick,1000);
+
+    $('table#unknown button').click(function(){
+	loadBellSchedule($(this).text());
+	$(this).parent().parent().parent().parent().addClass('hide');
+    });
+
 });

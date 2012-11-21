@@ -34,8 +34,12 @@ def getSchedule():
     del schedule.div['class']
     schedule.div['id'] = "schedule"
 
+    #make the words "Weekly Schedule" a link to the stuy site
+    schedulestr = schedule.prettify().strip().split('\n')
+    schedulestr[1] = '<a href="'+scheduleurl+'">'+schedulestr[1]+'</a>'
+    schedulestr = '<br/>\n'.join(schedulestr)
+
     #put br tags after every line
-    schedulestr = schedule.prettify().strip().replace('\n','<br/>\n')
     return schedulestr.replace('<br/>','',1)
 
 def getNews():
