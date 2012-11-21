@@ -8,11 +8,13 @@ def main():
     news     = extractor.getNews()
     schedule = extractor.getSchedule()
     bellDay  = extractor.getBellDay(schedule)
+    gymDay   = extractor.getGymDay(schedule)
     date     = extractor.getDate()
     return render_template('home.html',
                            news=news,
                            schedule=schedule,
                            bellDay=bellDay,
+                           gymDay=gymDay,
                            date=date)
 
 if __name__ == '__main__':
