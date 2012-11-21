@@ -6,7 +6,8 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def twilio():
-    schedule = extractor.getSchedule()
+    data = extractor.loadStuySite()
+    schedule = extractor.getSchedule(data[1], data[2])
     resp = twiml.Response()
     ab = extractor.getGymDay(schedule)
     bell = extractor.getBellDay(schedule)
