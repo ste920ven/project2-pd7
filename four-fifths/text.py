@@ -7,7 +7,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def twilio():
     resp = twiml.Response()
-    message = "test message"
+    ab = extractor.getGymDay()
+    if 
     resp.sms(message)
     return str(resp)
 

@@ -82,14 +82,22 @@ def getGymDay(schedule):
     month = datetime.datetime.today().strftime("%b")
     day   = datetime.date.today().day
     found = False
-    for line in schedule.split('<br/>'):
+    lines = schedule.split('<br>')
+    for i in range(len(lines)):
         if found==True:
-            if 'A1' in line : return 'A1'
-            if 'A2' in line : return 'A2'
-            if 'B1' in line : return 'B1'
-            if 'B2' in line : return 'B2'
-            else : return "unknown"
-        if (month.upper() in line.upper()) and (str(day) in line): found = True
+            try:
+                if 'A' in lines[i+1]:
+                    if 'A1' in lines[i+1] : return 'A1'
+                    if 'A2' in lines[i+1] : return 'A2'
+                    else : return 'A'
+                if 'B' in lines[i+1]:
+                    if 'B1' in lines[i+1] : return 'B1'
+                    if 'B2' in lines[i+1] : return 'B2'
+                    else : return 'B'
+                else : return "unknown"
+            except IndexError:
+                return "unknown"
+        if (month.upper() in lines[i].upper()) and (str(day) in lines[i]): found = True
     if found==False: return "unknown"
-            
+
 if __name__=="__main__" : print getNews()
