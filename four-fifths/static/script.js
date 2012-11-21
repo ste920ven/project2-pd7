@@ -87,7 +87,7 @@ function loadBellSchedule(bellDay)
 	$('table#special').removeClass('hide');
     }
 
-    if (bellDay=="Closed")
+    if (bellDay=="Closed" || bellDay=="Weekend")
     {
 	$('table#closed').removeClass('hide');
     }
@@ -104,6 +104,9 @@ function getTime()
 function tick()
 {
     $('span#time').text(getTime());
+
+    //reset period
+    $('table.bell tr#period*').css('color','black');
 
     if (now<bellSchedule[0].start)
 	$('span#period').text("Before School");

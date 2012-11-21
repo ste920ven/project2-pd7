@@ -50,6 +50,9 @@ def getNews(home):
     news = home.table.find_all("td",id="r")
 
     for entry in news:
+        #make each td tag into an li tag with no id
+        entry.name = "li"
+        del entry['id']
         #remove all the br tags
         i = len(entry.find_all("br"))
         for x in xrange(0,i):
@@ -58,7 +61,8 @@ def getNews(home):
         for link in entry.find_all("a",href=True):
             if not("http" in link['href']):
                 link['href'] = "http://stuy.enschool.org" + link['href']
-            link.insert_after(home.new_tag("br"))
+        #put br tags after each news item's title link
+        entry.find("a",href=True).insert_after(home.new_tag("br"))
         entry = entry.prettify()
     return news
 
@@ -77,6 +81,7 @@ def getBellDay(schedule):
             if "SPECIAL"    in line.upper(): return "Special"
             if "CONFERENCE" in line.upper(): return "Conference"
             if "CLOSED"     in line.upper(): return "Closed"
+            if datetime.datetime.today().weekday()>4: return "Weekend"
             else:                            return "Unknown"
         if (month.upper() in line.upper()) and (str(day) in line): found = True
     if found==False: return "unknown"
