@@ -8,7 +8,8 @@ app = Flask(__name__)
 def twilio():
     resp = twiml.Response()
     ab = extractor.getGymDay()
-    if 
+    bell = extractor.getBellDay()
+    message = "Today's Phys. Ed. cycle is %s. Today's schedule is %s."%(ab, bell)
     resp.sms(message)
     return str(resp)
 
