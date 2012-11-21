@@ -78,5 +78,18 @@ def getBellDay(schedule):
         if (month.upper() in line.upper()) and (str(day) in line): found = True
     if found==False: return "unknown"
 
-if __name__=="__main__":
-    print getNews()
+def getGymDay(schedule):
+    month = datetime.datetime.today().strftime("%b")
+    day   = datetime.date.today().day
+    found = False
+    for line in schedule.split('<br/>'):
+        if found==True:
+            if 'A1' in line : return 'A1'
+            if 'A2' in line : return 'A2'
+            if 'B1' in line : return 'B1'
+            if 'B2' in line : return 'B2'
+            else : return "unknown"
+        if (month.upper() in line.upper()) and (str(day) in line): found = True
+    if found==False: return "unknown"
+            
+if __name__=="__main__" : print getNews()
