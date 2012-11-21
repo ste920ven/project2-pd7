@@ -6,9 +6,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def twilio():
+    schedule = extractor.getSchedule()
     resp = twiml.Response()
-    ab = extractor.getGymDay()
-    bell = extractor.getBellDay()
+    ab = extractor.getGymDay(schedule)
+    bell = extractor.getBellDay(schedule)
     message = "Today's Phys. Ed. cycle is %s. Today's schedule is %s."%(ab, bell)
     resp.sms(message)
     return str(resp)
