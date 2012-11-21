@@ -2,10 +2,13 @@ from bs4 import BeautifulSoup
 import urllib2
 import datetime
 
-def getSchedule():
+def loadStuySite():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
     scheduleurl = "http://stuy.enschool.org" + home.find("a",text="Weekly Schedule")['href']
     schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read()).find(class_="content")
+    return [home,schedule,scheduleurl]
+
+def getSchedule(schedule,scheduleurl):
 
     #remove the pageTitle
     schedule.find("div",class_="pageTitle").extract()
@@ -42,10 +45,9 @@ def getSchedule():
     #put br tags after every line
     return schedulestr.replace('<br/>','',1)
 
-def getNews():
-    home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
+def getNews(home):
+
     news = home.table.find_all("td",id="r")
-    
 
     for entry in news:
         #remove all the br tags
@@ -54,7 +56,8 @@ def getNews():
             entry.find("br").unwrap()
         #make the links go to the stuy site
         for link in entry.find_all("a",href=True):
-            link['href'] = "http://stuy.enschool.org" + link['href']
+            if not("http" in link['href']):
+                link['href'] = "http://stuy.enschool.org" + link['href']
             link.insert_after(home.new_tag("br"))
         entry = entry.prettify()
     return news
