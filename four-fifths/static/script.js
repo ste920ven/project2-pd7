@@ -86,6 +86,11 @@ function loadBellSchedule(bellDay)
 	bellSchedule = special;
 	$('table#special').removeClass('hide');
     }
+
+    if (bellDay=="Closed")
+    {
+	$('table#closed').removeClass('hide');
+    }
 }
 
 function getTime()
@@ -120,7 +125,7 @@ function tick()
 }
 
 $(document).ready(function(){
-    if (bellDay=="Unknown" || bellDay=="Closed") 
+    if (bellDay=="Unknown") 
 	$('table#unknown').removeClass('hide');
     else
 	loadBellSchedule(bellDay);

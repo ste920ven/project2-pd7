@@ -245,6 +245,15 @@
 	</tr>
       </table>
       
+      <table id="closed" class="bell hide" border="1">
+	<tr>
+	  <th colspan="2">{{date}} - School Closed!</th>
+	</tr>
+	<tr>
+	  <td colspan="2" id="currtime"><span id="time">00:00:00</span></td>
+	</tr>
+      </table>
+
       <ul id="news">
 	{% for article in news %}
 	<li>{{article|safe}}</li>
