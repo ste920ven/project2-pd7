@@ -13,7 +13,6 @@ so you can see stuff like
       <li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
       <li><a href="http://www.schools.nyc.gov">NYC schools site</a></li>
       <li><a href="http://www.mta.info">MTA</a></li>
-      <li>Something</li>
       <li>NYC school calendar</li>
     </ul>
   </li>
@@ -22,7 +21,14 @@ so you can see stuff like
 <ul>
   <li>You can also interface with the site through texting commands</li>
   <li>You can also change the skin of the site</li>
-  <li>With an account, you can customize the widgets</li>
-  <li>YAY!</li>
-  <li>On snow days, there will be snow falling in the background</li>
+  <li>With an account, you can customize the widgets. <em>note: not sure if this is going to happen</em></li>
+  <li>On snow days, there will be snow falling in the background, and similar animations for rain, sun, etc</li>
+</ul>
+
+People:
+<ul>
+  <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
+  <li>Jason: Twilio API</li>
+  <li>Cameron: Weather!</li>
+  <li>Jack: Incoming SMS interpretation, login functionality</li>
 </ul>
