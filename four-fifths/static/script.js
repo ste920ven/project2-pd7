@@ -140,4 +140,15 @@ $(document).ready(function(){
 	$(this).parent().parent().parent().parent().addClass('hide');
     });
 
+    $('div#sidebar div#toggle').toggle(function(){
+	$('div#sidebar').animate({right:"-33%"},2000,function(){
+	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},1000);
+	});
+    },function(){
+	$('div#sidebar div#toggle').animate({left:"0px"},1000,function(){
+	    $(this).html("&raquo;");
+ 	    $('div#sidebar').animate({right:"0%"},2000);
+	});
+    });
+
 });

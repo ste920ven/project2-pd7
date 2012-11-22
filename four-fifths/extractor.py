@@ -40,9 +40,9 @@ def getSchedule(schedule,scheduleurl):
     #make the words "Weekly Schedule" a link to the stuy site
     schedulestr = schedule.prettify().strip().split('\n')
     schedulestr[1] = '<a href="'+scheduleurl+'">'+schedulestr[1]+'</a>'
-    schedulestr = '<br/>\n'.join(schedulestr)
 
     #put br tags after every line
+    schedulestr = '<br/>\n'.join(schedulestr)
     return schedulestr.replace('<br/>','',1)
 
 def getNews(home):

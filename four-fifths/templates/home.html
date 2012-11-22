@@ -24,9 +24,18 @@
       td#scheduleSelect      { text-align: center; padding: 10px; }
       table#unknown button   { margin: 0 15px; }
       div#main ul#news li    { padding-bottom: 15px; }
-      div#schedule           { position: fixed; top: 50px; right: 0;
+      div#sidebar            { position: fixed; top: 50px; right: 0;
                                display: block; width: 25%; height: 90%; padding: 4%;
                                font-size: 16px; text-align: center; background: #AAA; }
+      div#sidebar div#toggle { display: block; width: 70px; height: 70px;
+                               position: absolute; top: 0; left: 0; background: #AAA;
+                               font-size: 60px; line-height: 70px; text-align: center; color: #777; }
+      div#sidebar
+      div#toggle:hover,
+      div#sidebar
+      div#toggle:focus,
+      div#sidebar
+      div#toggle:active      { color: black; }
     </style>
 
     <script>var bellDay='{{bellDay}}';</script>
@@ -275,7 +284,10 @@
       </ul>
     </div>
 
-    {{schedule|safe}}
+    <div id="sidebar">
+      <div id="toggle">&raquo;</div>
+      {{schedule|safe}}
+    </div>
 
   </body>
 </html>
