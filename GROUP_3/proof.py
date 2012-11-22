@@ -63,11 +63,12 @@ def getPrice(k,name):
 
 
 def prices(l,name,k):
-    recipe = {name:{}}
+    recipe = {'name':name,'gredients':[]}
     for item in l:
+        
         founditem,price=getPrice(k,item)
-        print item,founditem,price
-    pass
+        recipe['gredients'].append( (item,founditem,price))
+    return recipe
 
 
 #print ingredients(search("lemon merengue pie stuff"))
@@ -76,5 +77,3 @@ rr = search("lemon merengue pie")
 
 prices(ingredients(rr),recipeName(rr),key)
 
-
-#getPrice(key,"turkey");
