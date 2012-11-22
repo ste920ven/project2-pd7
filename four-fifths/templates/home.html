@@ -17,11 +17,12 @@
       header a:active        { background: #DDD; color: black; }
       div#main               { display: block; width: 59%; height: 80%; padding: 4%;
                                margin-top: 50px; float: left; }
-      table.bell             { margin: 0 auto; width: 70%; margin-bottom: 40px; text-align: center; }      
+      table.bell             { margin: 0 auto; width: 65%; margin-bottom: 40px; text-align: center; } 
+      table.bell th#currday  { font-size: 18px; font-weight: bold; }
       table.bell td#currtime { font-size: 35px; font-weight: bold; }
       table.bell td          { padding-left: 10px; }
       table#unknown
-      td#scheduleSelect      { text-align: center; padding: 10px; }
+      td#scheduleSelect      { text-align: center; padding: 4px; }
       table#unknown button   { margin: 0 15px; }
       div#main ul#news li    { padding-bottom: 15px; }
       div#sidebar            { position: fixed; top: 50px; right: 0;
@@ -57,7 +58,7 @@
 
       <table id="regular" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - Regular Schedule - {{gymDay}}</th>
+	  <th colspan="2" id="currday">{{date}} <span class="break"><br/></span> Regular Schedule - {{gymDay}} Day</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
@@ -106,7 +107,7 @@
       
       <table id="homeroom" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - Homeroom Schedule</th>
+	  <th colspan="2" id="currday">{{date}} <span class="break"><br/></span> Homeroom Schedule - {{gymDay}} Day</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
@@ -155,7 +156,7 @@
 
       <table id="conference" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - Conference Schedule</th>
+	  <th colspan="2" id="currday">{{date}} <span class="break"><br/></span> Conference Schedule - {{gymDay}} Day</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
@@ -204,7 +205,7 @@
 
       <table id="special" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - Special Schedule</th>
+	  <th colspan="2" id="currday">{{date}} <span class="break"><br/></span> Special Schedule - {{gymDay}} Day</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="period">Period 0</span> - <span id="time">00:00:00</span></td>
@@ -235,7 +236,7 @@
 	</tr>
 	<tr id="period7">
 	  <td>Period 7</td>
-	  <td>11:14pm - 12:52pm</td>
+	  <td>12:14pm - 12:52pm</td>
 	</tr>
 	<tr id="period8">
 	  <td>Period 8</td>
@@ -253,7 +254,7 @@
 
       <table id="unknown" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - Unknown Schedule</th>
+	  <th colspan="2" id="currday">{{date}} - Unknown Schedule</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="time">00:00:00</span></td>
@@ -270,7 +271,7 @@
       
       <table id="closed" class="bell hide" border="1">
 	<tr>
-	  <th colspan="2">{{date}} - School Closed!</th>
+	  <th colspan="2" id="currday">{{date}} - School Closed!</th>
 	</tr>
 	<tr>
 	  <td colspan="2" id="currtime"><span id="time">00:00:00</span></td>

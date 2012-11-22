@@ -14,7 +14,7 @@ def main():
     return render_template('home.html',
                            news=news,
                            schedule=schedule,
-                           bellDay=bellDay,
+                           bellDay="Unknown",
                            gymDay=gymDay,
                            date=date)
 
