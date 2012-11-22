@@ -1,9 +1,9 @@
 from bs4 import BeautifulSoup
-import urllib2
+import urllib2,html5lib
 import datetime
 
 def loadStuySite():
-    home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
+    home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read(),"html5lib")
     scheduleurl = "http://stuy.enschool.org" + home.find("a",text="Weekly Schedule")['href']
     schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read()).find(class_="content")
     return [home,schedule,scheduleurl]
