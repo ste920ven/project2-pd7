@@ -5,7 +5,7 @@ import datetime
 def loadStuySite():
     home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read(),"html5lib")
     scheduleurl = "http://stuy.enschool.org" + home.find("a",text="Weekly Schedule")['href']
-    schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read()).find(class_="content")
+    schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read(),"html5lib").find(class_="content")
     return [home,schedule,scheduleurl]
 
 def getSchedule(schedule,scheduleurl):
@@ -30,20 +30,23 @@ def getSchedule(schedule,scheduleurl):
     schedule.find("a",text="Calendar View").extract()
     schedule.find("a",text="Monthly View").extract()
 
-    #remove the >> (&raquo;) characters
-    schedule = BeautifulSoup(schedule.prettify().replace(unicode(u"\u00BB"),""))
-
     #make the wrapper div have an id of schedule instead of a class of content
-    del schedule.div['class']
-    schedule.div['id'] = "schedule"
+    del schedule['class']
+    schedule['id'] = "schedule"
+
+    #convert the html into a string
+    schedulestr = schedule.prettify()
 
     #make the words "Weekly Schedule" a link to the stuy site
-    schedulestr = schedule.prettify().strip().split('\n')
-    schedulestr[1] = '<a href="'+scheduleurl+'">'+schedulestr[1]+'</a>'
+    schedulestr = schedulestr.replace("Weekly Schedule",'<a href="'+scheduleurl+'">Weekly Schedule</a>')
+
+    #remove the >> (&raquo;) characters
+    schedulestr = schedulestr.replace(unicode(u"\u00BB")+"\n","")
 
     #put br tags after every line
-    schedulestr = '<br/>\n'.join(schedulestr)
-    return schedulestr.replace('<br/>','',1)
+    schedulestr = '<br/>\n'.join(schedulestr.strip().split('\n')).replace('<br/>','',1)
+
+    return schedulestr
 
 def getNews(home):
 
@@ -102,3 +105,7 @@ def getGymDay(schedule):
                     if 'B2' in lines[i+2] : return 'B2'
                     else : return 'B'
     return "unknown"
+
+if (__name__=="__main__"):
+    data = loadStuySite()
+    print getSchedule(data[1],data[2])
