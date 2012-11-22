@@ -144,10 +144,12 @@ $(document).ready(function(){
 	$('div#sidebar').animate({right:"-33%"},2000,function(){
 	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},1000);
 	});
+	$('div#main').animate({padding:"4% 20%"},2000);
     },function(){
 	$('div#sidebar div#toggle').animate({left:"0px"},1000,function(){
 	    $(this).html("&raquo;");
  	    $('div#sidebar').animate({right:"0%"},2000);
+	    $('div#main').animate({padding:"4%"},2000);
 	});
     });
 
