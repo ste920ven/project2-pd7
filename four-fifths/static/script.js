@@ -161,16 +161,16 @@ $(document).ready(function(){
     });
 
     $('div#sidebar div#toggle').toggle(function(){
-	$('div#sidebar').animate({right:"-33%"},2000,function(){
-	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},1000);
+	$('div#sidebar').animate({right:"-33%"},1200,function(){
+	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},500);
 	    $('span.break').html("-");
 	});
-	$('div#main').animate({padding:"4% 12.5%",width:"75%"},2000);
+	$('div#main').animate({padding:"4% 12.5%",width:"75%"},1200);
     },function(){
-	$('div#sidebar div#toggle').animate({left:"0px"},1000,function(){
+	$('div#sidebar div#toggle').animate({left:"0px"},500,function(){
 	    $(this).html("&raquo;");
- 	    $('div#sidebar').animate({right:"0%"},2000);
-	    $('div#main').animate({padding:"4%",width:"59%"},2000);
+ 	    $('div#sidebar').animate({right:"0%"},1200);
+	    $('div#main').animate({padding:"4%",width:"59%"},1200);
 	    $('span.break').html("<br/>")
 	});
     });
