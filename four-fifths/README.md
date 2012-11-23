@@ -2,8 +2,7 @@
 <h2>Project: Stuy Student Dashboard (improve the Stuy website)</h2>
 We want to make a new version of the Stuy site that's actually useful,
 so you can see stuff like
-<ul>
-  <li>the bell schedule</li>
+<ul><li>the bell schedule</li>
   <li>the Brooks tools (time left in pd, etc)</li>
   <li>A or B day?!?!!!1!11!</li>
   <li>stuy news</li>
@@ -16,7 +15,6 @@ so you can see stuff like
     </ul>
   </li>
 </ul>
-
 <ul>
   <li>You can also interface with the site through texting commands</li>
   <li>You can also change the skin of the site</li>
@@ -25,23 +23,19 @@ so you can see stuff like
 </ul>
 
 Modules that must be installed to run...
-<ul>
-  <li><strong>Website server</strong></li>
-    <ul>
-      <li>flask</li>
+<ul><li><strong>Website server</strong></li>
+    <ul><li>flask</li>
       <li>beautifulsoup4</li>
       <li>html5lib</li>
     </ul>
   <li><strong>Text server</strong></li>
-    <ul>
-      <li>flask</li>
+    <ul><li>flask</li>
       <li>twilio</li>
     </ul>
 </ul>
 
 People:
-<ul>
-  <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
+<ul><li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
   <li>Jason: Twilio API</li>
   <li>Cameron: Weather!</li>
   <li>Jack: Incoming SMS interpretation, login functionality</li>
