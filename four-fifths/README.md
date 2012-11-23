@@ -9,8 +9,7 @@ so you can see stuff like
   <li>stuy news</li>
   <li>It will tell you the weather</li>
   <li>Links to:
-    <ul>
-      <li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
+    <ul><li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
       <li><a href="http://www.schools.nyc.gov">NYC schools site</a></li>
       <li><a href="http://www.mta.info">MTA</a></li>
       <li>NYC school calendar</li>
