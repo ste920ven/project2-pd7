@@ -42,7 +42,7 @@ Modules that must be installed to run...
 People:
 <ul>
   <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
-  <li>Jason: Twilio API</li>
+  <li>Jason: site design</li>
   <li>Cameron: Weather!</li>
-  <li>Jack: Incoming SMS interpretation, login functionality</li>
+  <li>Jack: Twilio API. SMS and voice information on demand.</li>
 </ul>
