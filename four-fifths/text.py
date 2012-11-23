@@ -9,18 +9,35 @@ def text():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
     resp = twiml.Response()
-    ab = extractor.getGymDay(schedule)
-    bell = extractor.getBellDay(schedule)
-    message = "Today's Phys. Ed. cycle is %s. Today's schedule is %s."%(ab, bell)
+    gymDay = extractor.getGymDay(schedule)
+    bellDay = extractor.getBellDay(schedule)
+    message = "Today's Phys. Ed. cycle is %s. Today's schedule is %s."%(gymDay, bellDay)
     resp.sms(message)
     return str(resp)
 
-@app.route('/voice', methods=['GET', 'POST'])
-def voice():
+@app.route('/incomingVoice', methods=['GET', 'POST'])
+def incomingVoice():
+    resp = twiml.Response()
+#note: spelled out "fizz" because it probably can't pronounce "phys"
+    welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
+    resp.say("Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today")
+#WARNING: hardcoded url and port
+    resp.gather(numDigits=1, action="ml7.stuycs.org:7005/schedule")
+    return str(resp)
+
+@app.route('/schedule', methods=['GET', 'POST'])
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
+    gymDay = extractor.getGymDay(schedule)
+    bellDay = extractor.getBellDay(schedule)
     resp = twiml.Response()
-    resp.say("Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today.")
+#'a' or 'an' depending on the following word: B1/B2 ('a') or A1/A2/unknown ('an')
+    if gymDay[0] = "B" : article = "a"
+    else : article = "an"
+#remember to account for e.g. "School is closed today"
+#instead of "Today's schedule is closed"
+    message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay) 
+    resp.say(message)
     return str(resp)
 
 if __name__ == '__main__':
