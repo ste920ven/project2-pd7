@@ -28,25 +28,36 @@ def incomingVoice():
 def schedule():
     digit = request.form['Digits']
     resp = twiml.Response()
+#---pressed 1: schedule---
     if int(digit) == 1 :
         print "1 case: schedule"
         data = extractor.loadStuySite()
         schedule = extractor.getSchedule(data[1], data[2])
-        gymDay = extractor.getGymDay(schedule)
         bellDay = extractor.getBellDay(schedule)
-#'a' or 'an' depending on the next word: B1/B2 ('a') or A1/A2/unknown ('an')
-        if gymDay[0] == "B" : article = "a"
-        else : article = "an"
-#remember to account for e.g. "School is closed today"
-#instead of "Today's schedule is closed"
-        message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay)
+        if bellDay == "Closed" :
+            message = "School is closed today."
+        elif bellDay == "Weekend" :
+            message = "It's a weekend. There is no school today."
+        elif bellDay == "Unknown" :
+            message = "We don't have today's schedule. How embarrassing."
+        else :
+#'a' or 'an' depending on the next word:
+#B1/B2 ('a') or A1/A2/Unknown ('an')
+            gymDay = extractor.getGymDay(schedule)
+            if gymDay[0] == "B" : article = "a"
+            else : article = "an"
+            message = "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+#---pressed 2: weather---
     elif int(digit) == 2 :
         print "2 case: weather"
-        message = "We don't have a working weather system yet, but we can tell that you pressed two!"
+        message = "We don't have a working weather system yet. Our apologies."
+#---pressed another button
     else :
         print "Not 1 or 2. Bad user."
         message = "You didn't press one or two. Bad user."
+    message += " Press any key to go back."
     resp.say(message)
+    resp.gather(numDigits=1, action="/incomingVoice")
     return str(resp)
 
 if __name__ == '__main__':
