@@ -8,6 +8,7 @@ app = Flask(__name__)
 def text():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
+    bellDay = extractor.getBellDay(schedule)
     resp = twiml.Response()
     if bellDay == "Closed" :
         message = "School is closed today."
