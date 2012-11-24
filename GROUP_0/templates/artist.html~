@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1 text-align:"center">Rate Your Artists</h1>
+{% endblock %}
+{% block body %}
+<ul>
+  {% for artist in artists %}
+  <li>{{artist}}</li>
+<ul>
+{% endblock %}

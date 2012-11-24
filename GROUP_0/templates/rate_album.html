@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>{{album}}</h1>
+{% endblock %}
+
+{% block body %}
+<img src="{{image}}" alt="{{album}}'s image"><br>
+Artist: {{artist}}<br>
+Genre: {{genre}}<br>
+Label: {{label}}<br>
+EMusic Ratings: {{ratings}}<br>
+Released Date: {{date}}<br>
+Listen to the album <a href="{{link}}">here!</a><br></br>
+<form action="album" method="POST">
+  <br>How awesome is {{song}}?<br>
+  <input type="radio" name="rating" value="0" checked="checked">0 </input>
+  <input type="radio" name="rating" value="1">1 </input>
+  <input type="radio" name="rating" value="2">2 </input>
+  <input type="radio" name="rating" value="3">3 </input>
+  <input type="radio" name="rating" value="4">4 </input>
+  <input type="radio" name="rating" value="5">5 </input>
+  <br></br>
+
+  Comments<br>
+  <textarea name="comment" cols="50" rows="5"></textarea><br></br>
+  <input type="submit" name="button" value="rate">
+
+
+{% endblock %}

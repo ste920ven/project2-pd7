@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>Rate Albums</h1>
+{% endblock %}
+
+{% block body %}
+<ul>
+{% for album in albums %}
+<li><a href="http://127.0.0.1:5000/hello/album/{{album}}">{{album}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
