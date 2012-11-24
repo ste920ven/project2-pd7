@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>  
 <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script type="text/javascript" src="js/prettify.js"></script> <!-- PRETTIFY -->
+    <script type="text/javascript" src="js/kickstart.js"></script> <!-- KICKSTART -->
+    <link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" /> <!-- KICKSTART -->
+    <link rel="stylesheet" type="text/css" href="style.css" media="all" /> <!-- CUSTOM STYLES -->
     <style type="text/css">
       body {background-color:PowderBlue}
       p {color:cadetblue}
       h1 {font-size:30px;font-family:times;text-align:center;}
     </style>
-    <script src="jquery.js"></script>
-    <div id="head">{% block head %}{% endblock %}
- </head>
-<body>
+      <div id="head">{% block head %}{% endblock %}
+  </head>
+  <body>
   <div id="body">{% block body %}{% endblock %}
     <div id="content1">{% block content1 %}{% endblock %}
       <div id="content2">{% block content2 %}{% endblock %}
-	</div>
       </div>
     </div>
-</body>
+  </div>
+  </body>
 <html>
