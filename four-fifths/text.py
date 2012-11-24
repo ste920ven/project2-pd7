@@ -29,7 +29,7 @@ def schedule():
     digit = request.form['Digits']
     print digit
     resp = twiml.Response()
-    if str(digit) == '1' :
+    if str(digit) == "1" :
         data = extractor.loadStuySite()
         schedule = extractor.getSchedule(data[1], data[2])
         gymDay = extractor.getGymDay(schedule)
