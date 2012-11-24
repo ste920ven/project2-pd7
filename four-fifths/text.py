@@ -27,7 +27,6 @@ def incomingVoice():
 @app.route('/scheduleweather', methods=['POST'])
 def schedule():
     digit = request.form['Digits']
-    print digit
     resp = twiml.Response()
     if int(digit) == 1 :
         print "1 case: schedule"
