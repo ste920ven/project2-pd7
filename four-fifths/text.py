@@ -33,7 +33,7 @@ def schedule():
     bellDay = extractor.getBellDay(schedule)
     resp = twiml.Response()
 #'a' or 'an' depending on the following word: B1/B2 ('a') or A1/A2/unknown ('an')
-    if gymDay[0] = "B" : article = "a"
+    if gymDay[0] == "B" : article = "a"
     else : article = "an"
 #remember to account for e.g. "School is closed today"
 #instead of "Today's schedule is closed"
