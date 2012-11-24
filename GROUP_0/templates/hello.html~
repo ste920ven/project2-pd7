@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>Hello, {{name}}</h1>
+{% endblock %}
+{% block body %}
+<form action="" method="GET">
+  <input type="submit" name="button" value="rate artists"><br></br>
+  <input type="submit" name="button" value="rate albums"><br></br>
+  <input type="submit" name="button" value="rate songs"><br></br>
+  <input type="submit" name="button" value="see your ratings"><br></br>
+</form>
+{% endblock %}
+
