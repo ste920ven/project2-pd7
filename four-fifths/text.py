@@ -9,9 +9,19 @@ def text():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
     resp = twiml.Response()
-    gymDay = extractor.getGymDay(schedule)
-    bellDay = extractor.getBellDay(schedule)
-    message = "Today's Phys. Ed. cycle is %s. Today's schedule is %s."%(gymDay, bellDay)
+    if bellDay == "Closed" :
+        message = "School is closed today."
+    elif bellDay == "Weekend" :
+        message = "It's a weekend. There is no school today."
+    elif bellDay == "Unknown" :
+        message = "We don't have today's schedule. How embarrassing."
+    else :
+#'a' or 'an' depending on the next word:
+#B1/B2 ('a') or A1/A2/Unknown ('an')
+        gymDay = extractor.getGymDay(schedule)
+        if gymDay[0] == "B" : article = "a"
+        else : article = "an"
+        message = "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
     resp.sms(message)
     return str(resp)
 
@@ -20,7 +30,6 @@ def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
     welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
-#    resp.say(welcome)
     resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
     return str(resp)
 
@@ -56,8 +65,7 @@ def schedule():
         print "Not 1 or 2. Bad user."
         message = "You didn't press one or two. Bad user."
     message += " Press any key to go back."
-    resp.say(message)
-    resp.gather(numDigits=1, action="/incomingVoice")
+    resp.gather(numDigits=1, action="/incomingVoice").say(message)
     return str(resp)
 
 if __name__ == '__main__':
