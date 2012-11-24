@@ -8,43 +8,32 @@
       html, body             { width: 100%; height: 100%;
                                background-color: #B0DEF6; }
       .hide                  { display: none; }
+      a                      { color: #384256; }
 
-      header                 {
-                               display: block; width: 100%; height: 50px; position: fixed; z-index: 100;
-                               background-color: #384256; //#325090;
-                              /*
-                               background-image: url(images/fallback-gradient.png);
-                               background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#6699CC), to(#1a82f7));
-                               background-image: -webkit-linear-gradient(top, #578DBF, #225686);
-                               background-image:    -moz-linear-gradient(top, #6699CC, #1a82f7);
-                               background-image:     -ms-linear-gradient(top, #6699CC, #1a82f7);
-                               background-image:      -o-linear-gradient(top, #6699CC, #1a82f7);
-                               background-image:         linear-gradient(top, #6699CC, #1a82f7);
-                               border-bottom: 3px solid #383D4E;
-                              */
-                             }
+      header                 { display: block; width: 100%; height: 50px; position: fixed; z-index: 100;
+                               background-color: #384256; }
 
       header a               { display: block; width:  25%; height: 50px; float: left;
                                text-align: center; line-height: 50px;
                                font-size: 20px; text-decoration: none; color: white; }
       header a:hover,
       header a:focus,
-      header a:active        { background: rgba(255,255,255,0.3); }
+      header a:active        { background: #6E90B7; }
 
       div#main               { display: block; width: 59%; padding: 4%;
                                margin-top: 50px; float: left; }
 
       section#info           { width: 80%; margin: 0 auto; }
 
-      div#statusbar          { width: 100%; height: 50px; background: #384256; border-radius: 25px;
-                               margin-bottom: 30px; }
+      div#statusbar          { width: 100%; height: 50px; background: #6E90B7; border-radius: 29px;
+                               border: 4px solid #384256; margin-bottom: 30px; }
       div#schoolday          { width: 45%; float:  left; text-align: center; }
       div#date               { width: 45%; float: right; text-align: center; }
-      p#period, p#time       { line-height: 50px; font-size: 30px; font-weight: bold; color: white; }
-      div#weather            { display: block; width: 80px; height: 80px;
-                               border-radius: 42.5px; border: 5px solid #999; background: #DDD;
-                               position: relative; top: -17.5px; margin: 0 auto;
-                               line-height: 80px; text-align: center; font-size: 30px; }
+      p#period, p#time       { line-height: 50px; font-size: 30px; font-weight: bold; color: white; padding-bottom: 8px; }
+      div#weather            { display: block; width: 90px; height: 90px;
+                               border-radius: 49px; border: 4px solid #384256; background: #6E90B7;
+                               position: relative; top: -25px; margin: 0 auto;
+                               line-height: 90px; text-align: center; font-size: 30px; color: white; }
 
       table.bell             { margin: 0 auto; text-align: center; margin-bottom: 30px;
                                border-collapse: collapse; width: 100%; }
@@ -55,8 +44,11 @@
 
       div#unknown            { text-align: center; }
       div#unknown button     { margin: 0 15px; }
+
+
       ul#news                { padding-top: 20px; }
       ul#news li             { padding-bottom: 15px; }
+
       div#sidebar            { position: fixed; top: 50px; right: 0;
                                display: block; width: 25%; height: 90%; padding: 4%;
                                font-size: 16px; text-align: center; background: rgba(255,255,255,0.3); }
@@ -106,7 +98,7 @@
 	    <p id="day">{{date}}</p>
 	  </div>
 
-	  <div id="weather">78&deg;</div>	   
+	  <div id="weather">&nbsp;78&deg;</div>	   
 
 	</div>
 
