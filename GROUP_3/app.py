@@ -10,13 +10,13 @@ def home():
         #print "cardamom"
         #print request.form['foodname']
         foodname = request.form['foodname']
-        return findprice()
+        return findprice(foodname)
     else:
         return render_template("index.html")
 
 @app.route("/findprice", methods = ["GET", "POST"])
-def findprice():
-    print "SUCESS"
+def findprice(foodname):
+    print foodname
     return render_template("pricer.html")
 
 if __name__ == '__main__':
