@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>Rate Your Artists</h1>
+{% endblock %}
+
+{% block body %}
+<ul>
+{% for artist in artists %}
+<li><a href="http://127.0.0.1:5000/hello/artist/{{artist}}">{{artist}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
