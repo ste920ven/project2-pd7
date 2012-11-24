@@ -13,16 +13,36 @@ so you can see stuff like
       <li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
       <li><a href="http://www.schools.nyc.gov">NYC schools site</a></li>
       <li><a href="http://www.mta.info">MTA</a></li>
-      <li>Something</li>
       <li>NYC school calendar</li>
     </ul>
   </li>
 </ul>
-
 <ul>
   <li>You can also interface with the site through texting commands</li>
   <li>You can also change the skin of the site</li>
-  <li>With an account, you can customize the widgets</li>
-  <li>YAY!</li>
-  <li>On snow days, there will be snow falling in the background</li>
+  <li>With an account, you can customize the widgets. <em>note: not sure if this is going to happen</em></li>
+  <li>On snow days, there will be snow falling in the background, and similar animations for rain, sun, etc</li>
+</ul>
+
+Modules that must be installed to run...
+<ul>
+  <li><strong>Website server</strong></li>
+    <ul>
+    <li>flask</li>
+      <li>beautifulsoup4</li>
+      <li>html5lib</li>
+    </ul>
+  <li><strong>Text server</strong></li>
+    <ul>
+      <li>flask</li>
+      <li>twilio</li>
+    </ul>
+</ul>
+
+People:
+<ul>
+  <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
+  <li>Jason: site design</li>
+  <li>Cameron: Weather!</li>
+  <li>Jack: Twilio API. SMS and voice information on demand.</li>
 </ul>
