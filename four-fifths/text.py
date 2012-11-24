@@ -20,9 +20,9 @@ def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
     welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
-    resp.say("Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today")
+    resp.say("Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today.")
 #WARNING: hardcoded url and port
-    resp.gather(numDigits=1, action="ml7.stuycs.org:7005/schedule")
+    resp.gather(numDigits=1, action="/schedule")
     return str(resp)
 
 @app.route('/schedule', methods=['GET', 'POST'])
