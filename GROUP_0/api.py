@@ -15,7 +15,7 @@ def create_album():
     result=json.loads(request.read())
     for item in result["albums"]:
         album_title=item["name"].encode('ascii','ignore')
-        album[album_title]={"genre":item["genre"]["name"].encode('ascii','ignore'),"image":item["image"].encode('ascii','ignore'),"label":item["label"]["name"].encode('ascii','ignore'),"ratings":item["ratings"]["communityRating"]["average"].encode('ascii','ignore'),"url":item["url"].encode('ascii','ignore')}
+        album[album_title]={"genre":item["genre"]["name"].encode('ascii','ignore'),"image":item["image"].encode('ascii','ignore'),"label":item["label"]["name"].encode('ascii','ignore'),"ratings":item["ratings"]["communityRating"]["average"].encode('ascii','ignore'),"url":item["url"].encode('ascii','ignore'),"artist":item["artist"]["name"],"date":item["released"]}
     return album
 
 def create_artist():

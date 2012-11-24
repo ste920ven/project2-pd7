@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<% extends "head.html" %}
+{% block head %}
+<h1>Rate Songs</h1>
+{% endblock %}
+
