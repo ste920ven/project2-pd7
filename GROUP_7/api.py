@@ -44,18 +44,3 @@ distanceFrom(original, destination, m)
 durationTo(original, destination, m)
 
 
-def test2():
-    distance_url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=345+Chambers+Street+New+York+NY&destinations=Brooklyn+NY&sensor=false&mode=walking&units=imperial"
-    maps_request = urllib.urlopen(distance_url)
-    result = json.loads(maps_request.read())
-    print("distance: ")
-    print result['rows'][0]
-
-key='AIzaSyCM_M56XMiApQyGP8gYGVafJmix15AcUng'
-loc="40.714353,-74.005973"
-radius="30000"
-tag="park"
-
-test2()
-
-
