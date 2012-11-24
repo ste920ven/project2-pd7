@@ -41,6 +41,7 @@ def schedule():
         message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay)
     if digit == 2 :
         message = "We don't have a working weather system yet, but we can tell that you pressed two!"
+    else : message = "You didn't press one or two. Bad user."
     resp.say(message)
     return str(resp)
 
