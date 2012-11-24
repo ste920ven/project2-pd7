@@ -105,7 +105,7 @@ def getGymDay(schedule):
                     if 'B1' in lines[i+2] : return 'B1'
                     if 'B2' in lines[i+2] : return 'B2'
                     else : return 'B'
-    return "unknown"
+    return "Unknown"
 
 if (__name__=="__main__"):
     data = loadStuySite()

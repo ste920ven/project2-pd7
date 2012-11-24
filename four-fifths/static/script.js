@@ -66,30 +66,41 @@ function loadBellSchedule(bellDay)
     if (bellDay=="Regular")
     {
 	bellSchedule = regular;
+	$('span#schedule').text('Regular Schedule');
 	$('table#regular').removeClass('hide');
     }
 
     if (bellDay=="Homeroom")
     {
 	bellSchedule = homeroom;
+	$('span#schedule').text('Homeroom Schedule');
 	$('table#homeroom').removeClass('hide');
     }
 
     if (bellDay=="Conference")
     {
 	bellSchedule = conference;
+	$('span#schedule').text('Conference Schedule');
 	$('table#conference').removeClass('hide');
     }
 
     if (bellDay=="Special")
     {
 	bellSchedule = special;
+	$('span#schedule').text('Special Schedule');
 	$('table#special').removeClass('hide');
     }
 
-    if (bellDay=="Closed" || bellDay=="Weekend")
+    if (bellDay=="Weekend")
     {
-	$('table#closed').removeClass('hide');
+	$('p#period').text('Weekend');
+	$('p#currschedule').addClass('hide');
+    }
+
+    if (bellDay=="Closed")
+    {
+	$('p#period').text('Closed');
+	$('p#currschedule').addClass('hide');
     }
 }
 
@@ -104,16 +115,16 @@ function getTime()
 function tick()
 {
     now = new Date();
-    $('span#time').text(getTime());
+    $('p#time').text(getTime());
 
     //reset period
     $('table.bell tr').css('color','black');
 
     if (now<bellSchedule[0].start)
-	$('span#period').text("Before School");
+	$('p#period').text("Before School");
 
     if (bellSchedule[9].end<now)
-	$('span#period').text("After School");
+	$('p#period').text("After School");
 
     var found = false;
     for (var i=0; i<10; i++)
@@ -123,7 +134,7 @@ function tick()
 	{
 	    found = true;
 	    pdnum = i+1;
-	    $('span#period').text("Period "+pdnum);
+	    $('p#period').text("Period "+pdnum);
 	    $('table.bell tr#period'+pdnum).css('color','red');
 	}
     }
@@ -140,7 +151,7 @@ function tick()
 		nextPDnum = i+2;
 		$('table.bell tr#period'+prevPDnum).css('color','red');
 		$('table.bell tr#period'+nextPDnum).css('color','red');	
-		$('span#period').text("Passing");	
+		$('p#period').text("Passing");	
 	    }
 	}
     }
@@ -149,13 +160,13 @@ function tick()
 
 $(document).ready(function(){
     if (bellDay=="Unknown") 
-	$('table#unknown').removeClass('hide');
+	$('div#unknown').removeClass('hide');
     else
 	loadBellSchedule(bellDay);
 
     setInterval(tick,1000);
 
-    $('table#unknown button').click(function(){
+    $('div#unknown button').click(function(){
 	loadBellSchedule($(this).text());
 	$(this).parent().parent().parent().parent().addClass('hide');
     });
