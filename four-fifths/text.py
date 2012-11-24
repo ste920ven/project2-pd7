@@ -26,6 +26,7 @@ def incomingVoice():
     return str(resp)
 
 @app.route('/schedule', methods=['GET', 'POST'])
+def schedule():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
     gymDay = extractor.getGymDay(schedule)
