@@ -5,12 +5,17 @@
 {% endblock %}
 
 {% block body %}
+<div style="width:500px;position:relative;bottom:20px;left:20px">
 <img src="{{image}}" alt="{{song}}'s image"><br>
+<p>
+<font size="3">
 Album: {{album}}<br>
 Artist: {{artist}}<br>
 Genre: {{genre}}<br>
 Label: {{label}}<br>
 Listen to the song <a href="{{link}}">here!</a><br></br>
+</font>
+</p>
 <form action="song" method="POST">
   <br>How awesome is {{song}}?<br>
   <input type="radio" name="rating" value="0" checked="checked">0 </input>
@@ -24,6 +29,6 @@ Listen to the song <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
-
+</div>
 
 {% endblock %}
