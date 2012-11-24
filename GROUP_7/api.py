@@ -34,13 +34,24 @@ def durationTo(origins, destinations, mode):
     print "\n The time it takes to travel  between %s and %s is" % (original, destination)
     print result['rows'][0]['elements'][0]['duration']['text']
 
+def isPOI(origins):
+    geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"%(origins)
+    maps_request = urllib.urlopen(geocode_url)
+    geo_results = json.loads(maps_request.read())
+    if(geo_results['results'][0]['types'].count('point_of_interest') == 1):
+        return "Yes"
+    else:
+        return "No"
+    
+
 original = "345 Chambers Street"
 destination = "97 Warren Street"
+poi = "Empire State Building"
 #somehow we have to restrict the modes they can choose from. cause certain inputs like "walking" "driving" and "car" (i believe) work, but "foot" doesn't. so maybe do a dropdown menu somewhere in utils/app.py. i'll change the variable values once we have a more solid thing to work off of
 m = "walking" 
 getAddress(original)
 getLatLong(original)
 distanceFrom(original, destination, m)
 durationTo(original, destination, m)
-
-
+print "\n Is %s a POI? : %s" %(original, isPOI(original))
+print "\n Is %s a POI? : %s" %(poi, isPOI(poi))
