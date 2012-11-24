@@ -1,11 +1,11 @@
 from bs4 import BeautifulSoup
-import urllib2
+import urllib2,html5lib
 import datetime
 
 def loadStuySite():
-    home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read())
+    home = BeautifulSoup(urllib2.urlopen("http://stuy.enschool.org/").read(),"html5lib")
     scheduleurl = "http://stuy.enschool.org" + home.find("a",text="Weekly Schedule")['href']
-    schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read()).find(class_="content")
+    schedule = BeautifulSoup(urllib2.urlopen(scheduleurl).read(),"html5lib").find(class_="content")
     return [home,schedule,scheduleurl]
 
 def getSchedule(schedule,scheduleurl):
@@ -30,26 +30,32 @@ def getSchedule(schedule,scheduleurl):
     schedule.find("a",text="Calendar View").extract()
     schedule.find("a",text="Monthly View").extract()
 
-    #remove the >> (&raquo;) characters
-    schedule = BeautifulSoup(schedule.prettify().replace(unicode(u"\u00BB"),""))
-
     #make the wrapper div have an id of schedule instead of a class of content
-    del schedule.div['class']
-    schedule.div['id'] = "schedule"
+    del schedule['class']
+    schedule['id'] = "schedule"
+
+    #convert the html into a string
+    schedulestr = schedule.prettify()
 
     #make the words "Weekly Schedule" a link to the stuy site
-    schedulestr = schedule.prettify().strip().split('\n')
-    schedulestr[1] = '<a href="'+scheduleurl+'">'+schedulestr[1]+'</a>'
-    schedulestr = '<br/>\n'.join(schedulestr)
+    schedulestr = schedulestr.replace("Weekly Schedule",'<a href="'+scheduleurl+'">Weekly Schedule</a>')
+
+    #remove the >> (&raquo;) characters
+    schedulestr = schedulestr.replace(unicode(u"\u00BB")+"\n","")
 
     #put br tags after every line
-    return schedulestr.replace('<br/>','',1)
+    schedulestr = '<br/>\n'.join(schedulestr.strip().split('\n')).replace('<br/>','',1)
+
+    return schedulestr
 
 def getNews(home):
 
     news = home.table.find_all("td",id="r")
 
     for entry in news:
+        #make each td tag into an li tag with no id
+        entry.name = "li"
+        del entry['id']
         #remove all the br tags
         i = len(entry.find_all("br"))
         for x in xrange(0,i):
@@ -58,7 +64,8 @@ def getNews(home):
         for link in entry.find_all("a",href=True):
             if not("http" in link['href']):
                 link['href'] = "http://stuy.enschool.org" + link['href']
-            link.insert_after(home.new_tag("br"))
+        #put br tags after each news item's title link
+        entry.find("a",href=True).insert_after(home.new_tag("br"))
         entry = entry.prettify()
     return news
 
@@ -77,6 +84,7 @@ def getBellDay(schedule):
             if "SPECIAL"    in line.upper(): return "Special"
             if "CONFERENCE" in line.upper(): return "Conference"
             if "CLOSED"     in line.upper(): return "Closed"
+            if datetime.datetime.today().weekday()>4: return "Weekend"
             else:                            return "Unknown"
         if (month.upper() in line.upper()) and (str(day) in line): found = True
     if found==False: return "unknown"
@@ -97,3 +105,7 @@ def getGymDay(schedule):
                     if 'B2' in lines[i+2] : return 'B2'
                     else : return 'B'
     return "unknown"
+
+if (__name__=="__main__"):
+    data = loadStuySite()
+    print getSchedule(data[1],data[2])
