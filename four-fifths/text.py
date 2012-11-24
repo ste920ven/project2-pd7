@@ -15,7 +15,7 @@ def text():
     resp.sms(message)
     return str(resp)
 
-@app.route('/incomingVoice', methods=['GET', 'POST'])
+@app.route('/incomingVoice', methods=['POST'])
 def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
@@ -24,9 +24,9 @@ def incomingVoice():
     resp.gather(numDigits=1, action="/scheduleweather")
     return str(resp)
 #self.request.get('Digits')
-@app.route('/scheduleweather', methods=['GET', 'POST'])
+@app.route('/scheduleweather', methods=['POST'])
 def schedule():
-    digit = request.get('Digits')
+    digit = request.form['Digits']
     resp = twiml.Response()
     if digit == 1 :
         data = extractor.loadStuySite()
