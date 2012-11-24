@@ -20,24 +20,27 @@ def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
     welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
-    resp.say("Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today.")
-#WARNING: hardcoded url and port
-    resp.gather(numDigits=1, action="/schedule")
+    resp.say(welcome)
+    resp.gather(numDigits=1, action="/scheduleweather")
     return str(resp)
-
-@app.route('/schedule', methods=['GET', 'POST'])
+#self.request.get('Digits')
+@app.route('/scheduleweather', methods=['GET', 'POST'])
 def schedule():
-    data = extractor.loadStuySite()
-    schedule = extractor.getSchedule(data[1], data[2])
-    gymDay = extractor.getGymDay(schedule)
-    bellDay = extractor.getBellDay(schedule)
+    digit = request.get('Digits')
     resp = twiml.Response()
-#'a' or 'an' depending on the following word: B1/B2 ('a') or A1/A2/unknown ('an')
-    if gymDay[0] == "B" : article = "a"
-    else : article = "an"
+    if digit == 1 :
+        data = extractor.loadStuySite()
+        schedule = extractor.getSchedule(data[1], data[2])
+        gymDay = extractor.getGymDay(schedule)
+        bellDay = extractor.getBellDay(schedule)
+#'a' or 'an' depending on the next word: B1/B2 ('a') or A1/A2/unknown ('an')
+        if gymDay[0] == "B" : article = "a"
+        else : article = "an"
 #remember to account for e.g. "School is closed today"
 #instead of "Today's schedule is closed"
-    message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay) 
+        message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay)
+    if digit == 2 :
+        message = "We don't have a working weather system yet, but we can tell that you pressed two!"
     resp.say(message)
     return str(resp)
 
