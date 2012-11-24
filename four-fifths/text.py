@@ -23,15 +23,6 @@ def incomingVoice():
     resp.say(welcome)
     resp.gather(numDigits=1, action="/scheduleweather")
     return str(resp)
-#self.request.get('Digits')
-
-
-
-
-
-
-
-
 
 @app.route('/scheduleweather', methods=['POST'])
 def schedule():
