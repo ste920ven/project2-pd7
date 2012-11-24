@@ -84,10 +84,11 @@ def getBellDay(schedule):
             if "SPECIAL"    in line.upper(): return "Special"
             if "CONFERENCE" in line.upper(): return "Conference"
             if "CLOSED"     in line.upper(): return "Closed"
-            if datetime.datetime.today().weekday()>4: return "Weekend"
             else:                            return "Unknown"
         if (month.upper() in line.upper()) and (str(day) in line): found = True
-    if found==False: return "unknown"
+    if found==False:
+        if datetime.datetime.today().weekday()>4: return "Weekend"
+        return "Unknown"
 
 def getGymDay(schedule):
     month = datetime.datetime.today().strftime("%b")
