@@ -34,7 +34,6 @@ def create_song():
     for item in result["tracks"]:
         song_title=item["name"].encode('ascii','ignore')
         album=item["album"]
-<<<<<<< HEAD
         song[song_title]={"album":album["name"].encode('ascii','ignore'),"artist":album["artist"]["name"].encode('ascii','ignore'),"genre":album["genre"]["name"].encode('ascii','ignore'),"label":album["label"]["name"].encode('ascii','ignore'),"image":album["image"].encode('ascii','ignore'),"id":album["id"], "url":album["url"].encode('ascii','ignore')}
     return song
 
