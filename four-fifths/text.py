@@ -29,7 +29,7 @@ def schedule():
     digit = request.form['Digits']
     print digit
     resp = twiml.Response()
-    if digit == '1' :
+    if str(digit) == '1' :
         data = extractor.loadStuySite()
         schedule = extractor.getSchedule(data[1], data[2])
         gymDay = extractor.getGymDay(schedule)
@@ -40,7 +40,7 @@ def schedule():
 #remember to account for e.g. "School is closed today"
 #instead of "Today's schedule is closed"
         message = "Today's schedule is %s. Today is %s %s day."%(bellDay, article, gymDay)
-    if digit == 2 :
+    if str(digit) == '2' :
         message = "We don't have a working weather system yet, but we can tell that you pressed two!"
     else : message = "You didn't press one or two. Bad user."
     resp.say(message)
