@@ -25,11 +25,19 @@
 		<hr><br>
 		</header>
 		<font color="white">
-			Breakdown for: {{Recipe}}
-			Ingredients: 
+			You searched for:: {{foodname}}
+			<br>
+			<br>
+			<u>Recipe title:</u> {{title}}
+			<br><br>
+			<u>Ingredients: </u>
 				{% for element in ingredients %}
-					<li>element</li>
+					<li>{{element}}</li>
 				{% endfor %}
+		<br><br><font size="2">
+			Source: {{sURL}}
+			</font>
 		</font>
+		
 	</body>
 </html>
