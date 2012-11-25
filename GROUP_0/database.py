@@ -33,46 +33,30 @@ def returnAllAccounts():
 #basic login method that verifies input username and password
 
 
-def addSong(song):
-    pass
-
-def addAlbum(album):
-    pass
-
 def addSongRating(song,artist,rating,comment):
     ratingList = SongRatings.find_one({'song':song,'artist':artist})
+    commentList = SongRatings.find_one({'song':song,'artist':artist})
     if ratingList == None:
-        pass
+        SongRatings.insert({'song':song,'artist':artist,'rating':[rating],'comment':[comment]})
     else:
         ratingList = ratingList['rating']
-
-    commentList = SongRatings.find_one({'song':song,'artist':artist})
-    if commentList == None:
-        pass
-    else:
         commentList = commentList['comment']
-    if ratingList == None:
-        ratingList = [rating]
-    else:
         ratingList.append(rating)
-    if commentList == None:
-        commentList = [comment]
-    else:
-        commentList.append(str(comment))
-    SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+        commentList.append(comment)
+        SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
 
 def addAlbumrating(album,artist,rating,comment):
-    ratingList = AlbumRatings.find_one({'album':album,'artist':artist})['rating']
-    commentList = AlbumRatings.find_one({'album':album,'artist':artist})['comment']
+    ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
+    commentList = SongRatings.find_one({'album':album,'artist':artist})
     if ratingList == None:
-        ratingList = [rating]
+        AlbumRatings.insert({'album':album,'artist':artist,'rating':[rating],'comment':[comment]})
     else:
+        ratingList = ratingList['rating']
+        commentList = commentList['comment']
         ratingList.append(rating)
-    if commentList == None:
-        commentList = [comment]
-    else:
-        commentList.append(str(comment))
-    AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+        commentList.append(comment)
+        AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+
     
 def getSongRating(song,artist):
     return SongRatings.find_one({'song':song,'artist':artist})
@@ -83,8 +67,4 @@ def getAlbumRating(album,artist):
 
 
 if __name__ == '__main__':
-    addSongRating('YAH','BYE',10,'TEEHEE')
-    addSongRating('YAH','BYE',5,'KEKEKEE')
-    print getSongRating('YAH','BYE')
-        
-    
+    pass
