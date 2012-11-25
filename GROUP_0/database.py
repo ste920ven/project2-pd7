@@ -6,30 +6,38 @@ songList = []
 albumList = []
 
 
-def saveUsername():
+def saveInfo(username, password):
+    if username in usernames:
+        return false
+    else:
+        usernames.append(username)
 
-def savePassword():
+    passwords.append(password)
+
 
 
 #We will take input on from the register page and "save" it by putting the username and password in their respective lists
 
 
 def verifyLogin(username, password):
-    if username in usernames:
+    if username in usernames:                                       
         if password in passwords:
-            return true
-        else
-        return false
+            i = usernames.index(username)        #@Brian <---- what I was talking about
+            if passwords[i]==password:
+                return true
+            else:
+                return false
+                
 
-
+ 
 #basic login method that verifies input username and password
 
 
 def addSong(song):
-    songList.append(song)
+
 
 def addAlbum(album):
-    albumList.append(album)
+
 
 def addSongRating(song):
     
