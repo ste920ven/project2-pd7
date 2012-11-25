@@ -118,7 +118,7 @@ function tick()
     $('p#time').text(getTime());
 
     //reset period
-    $('table.bell tr').css('color','black');
+    $('table.bell tr').removeClass('active');
 
     if (now<bellSchedule[0].start)
 	$('p#period').text("Before School");
@@ -135,7 +135,7 @@ function tick()
 	    found = true;
 	    pdnum = i+1;
 	    $('p#period').text("Period "+pdnum);
-	    $('table.bell tr#period'+pdnum).css('color','red');
+	    $('table.bell tr#period'+pdnum).addClass('active');
 	}
     }
 
@@ -149,8 +149,8 @@ function tick()
 	    {
 		prevPDnum = i+1;
 		nextPDnum = i+2;
-		$('table.bell tr#period'+prevPDnum).css('color','red');
-		$('table.bell tr#period'+nextPDnum).css('color','red');	
+		$('table.bell tr#period'+prevPDnum).addClass('active');
+		$('table.bell tr#period'+nextPDnum).addClass('active');	
 		$('p#period').text("Passing");	
 	    }
 	}
