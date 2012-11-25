@@ -40,12 +40,13 @@ def addAlbum(album):
     pass
 
 def addSongRating(song,artist,rating,comment):
-    ratingList = SongRatings.findOne({'song':song,'artist':artist})
+    ratingList = SongRatings.find_one({'song':song,'artist':artist})
     if ratingList == None:
         pass
     else:
         ratingList = ratingList['rating']
-    commentList = SongRatings.findOne({'song':song,'artist':artist})
+
+    commentList = SongRatings.find_one({'song':song,'artist':artist})
     if commentList == None:
         pass
     else:
@@ -61,8 +62,8 @@ def addSongRating(song,artist,rating,comment):
     SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
 
 def addAlbumrating(album,artist,rating,comment):
-    ratingList = AlbumRatings.findOne({'album':album,'artist':artist})['rating']
-    commentList = AlbumRatings.findOne({'album':album,'artist':artist})['comment']
+    ratingList = AlbumRatings.find_one({'album':album,'artist':artist})['rating']
+    commentList = AlbumRatings.find_one({'album':album,'artist':artist})['comment']
     if ratingList == None:
         ratingList = [rating]
     else:
@@ -74,9 +75,9 @@ def addAlbumrating(album,artist,rating,comment):
     AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
     
 def getSongRating(song,artist):
-    return SongRatings.findOne({'song':song,'artist':artist})
+    return SongRatings.find_one({'song':song,'artist':artist})
 def getAlbumRating(album,artist):
-    return AlbumRatings.findOne({'album':album,'artist':artist})
+    return AlbumRatings.find_one({'album':album,'artist':artist})
 #will return the rating of the song/album
     
 
@@ -84,5 +85,6 @@ def getAlbumRating(album,artist):
 if __name__ == '__main__':
     addSongRating('YAH','BYE',10,'TEEHEE')
     addSongRating('YAH','BYE',5,'KEKEKEE')
+    print getSongRating('YAH','BYE')
         
     
