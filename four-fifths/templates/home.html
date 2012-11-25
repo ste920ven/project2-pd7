@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Stuy Student Dashboard</title>
+
+    <style>
+      *                      { margin: 0; padding: 0; font-family: Georgia; }
+      html, body             { width: 100%; height: 100%;
+                               //background-color: #B0DEF6;
+			       background: url("{{ url_for('static', filename="images/squarehatch-lightgray.jpg") }}"); }
+      a                      { color: #3A3A3A; }
+      a:hover,
+      a:active, a:focus      { text-decoration: none; }
+			       
+      .hide                  { display: none; }
+
+      header                 { display: block; width: 100%; height: 50px; position: fixed; z-index: 100;
+                               background-color: rgba(0,0,0,0.4);/*#384256;*/
+                               border-bottom: 2px solid #FF9500;
+			     }
+
+      header a               { display: block; width:  25%; height: 50px; float: left;
+                               text-align: center; line-height: 50px;
+                               font-size: 20px; text-decoration: none; color: white; }
+      header a:hover,
+      header a:focus,
+      header a:active        { background: rgba(0,0,0,0.3); /*#6E90B7;*/ }
+
+      div#main               { display: block; width: 62%; padding: 4%;
+                               margin-top: 50px; float: left; }
+
+      section#info           { width: 80%; margin: 0 auto; }
+
+      div#statusbar          { width: 100%; height: 50px; background: rgba(0,0,0,0.6); /*#6E90B7;*/ border-radius: 29px;
+                               border: 3px solid #FF9500; /*#384256;*/ margin-bottom: 30px; color: #3A3A3A; }
+      div#schoolday          { width: 45%; float:  left; text-align: center; }
+      div#date               { width: 45%; float: right; text-align: center; }
+      p#period, p#time       { line-height: 50px; font-size: 30px; font-weight: bold; color: white; padding-bottom: 8px; }
+      div#weather            { display: block; width: 90px; height: 90px;
+                               border-radius: 49px; border: 3px solid
+                               #FF9500; /*#384256;*/ background: #3A3A3A; /*#6E90B7;*/
+                               position: relative; top: -24px; margin: 0 auto;
+                               line-height: 90px; text-align: center; font-size: 30px; color: white; }
+
+      table.bell             { margin: 0 auto; text-align: center; margin-bottom: 30px;
+                               border-collapse: collapse; width: 100%; }
+      table.bell
+      tr td:first-child      { width: 50%; text-align: right; padding: 2px 15% 2px 0; border-right: 1px solid #FF9500; }
+      table.bell
+      tr td:last-child       { width: 50%; text-align:  left; padding: 2px 0 2px 15%; }
+
+      div#unknown            { text-align: center; }
+      div#unknown button     { margin: 0 15px; }
+
+
+      ul#news                { padding-top: 20px; }
+      ul#news li             { padding-bottom: 15px; color: #3A3A3A; }
+      ul#news li a           { font-weight: bold; }
+
+      div#sidebar            { position: fixed; top: 50px; right: 0;
+                               display: block; width: 22%; height: 90%; padding: 4%;
+                               font-size: 16px; text-align: center;
+                               background: rgba(255,255,255,0.3);
+                               color: #3A3A3A; }
+      div#sidebar div#toggle { display: block; width: 70px; height: 70px;
+                               position: absolute; top: 0; left: 0; //background: rgba(255,255,255,0.3);
+                               font-size: 60px; line-height: 70px; text-align: center; color: #777; }
+      div#sidebar
+      div#toggle:hover,
+      div#sidebar
+      div#toggle:focus,
+      div#sidebar
+      div#toggle:active      { color: black; }
+      div#sidebar a          { font-size: 20px; font-weight: bold; }
+
+      div#sidebar
+      div#toggle.hidden             { color: black; }
+      div#sidebar
+      div#toggle.hidden:hover,
+      div#sidebar
+      div#toggle.hidden:focus,
+      div#sidebar
+      div#toggle.hidden:active      { color: #FF9500; }
+      
+    </style>
+
+    <script>var bellDay='{{bellDay}}';</script>
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+  </head>
+  
+  <body>
+
+    <header>
+      <a href="http://stuy.enschool.org/">Stuy Homepage</a>
+      <a href="https://students-stuyhs.theschoolsystem.net/login.rb">Student Tools</a>
+      <a href="http://schools.nyc.gov/Calendar/default.htm">NYC School Calendar</a>
+      <a href="http://mta.info/">MTA</a>
+    </header>
+
+    <div id="main">
+
+      <section id="info">
+	
+	<div id="statusbar">
+	  
+	  <div id="schoolday">
+	    <p id="period">Period 0</p>
+	    <p id="currschedule">
+	      <span id="schedule"></span>
+	      <span id="gym"> {% if gymDay!="Unknown" %} - {{gymDay}} Day {% endif %} </span>
+	    </p>
+	  </div>
+
+	  <div id="date">
+	    <p id="time">00:00:00</p>
+	    <p id="day">{{date}}</p>
+	  </div>
+
+	  <div id="weather">&nbsp;78&deg;</div>	   
+
+	</div>
+
+	<table id="regular" class="bell hide">
+	  <tr id="period1">
+	    <td>Period 1</td>
+	    <td>8:00am - 8:41am</td>
+	  </tr>
+	  <tr id="period2">
+	    <td>Period 2</td>
+	    <td>8:45am - 9:26am</td>
+	  </tr>
+	  <tr id="period3">
+	    <td>Period 3</td>
+	    <td>9:30am - 10:15am</td>
+	  </tr>
+	  <tr id="period4">
+	    <td>Period 4</td>
+	    <td>10:19am - 11:00am</td>
+	  </tr>
+	  <tr id="period5">
+	    <td>Period 5</td>
+	    <td>11:04am - 11:45am</td>
+	  </tr>
+	  <tr id="period6">
+	    <td>Period 6</td>
+	    <td>11:49am - 12:30pm</td>
+	  </tr>
+	  <tr id="period7">
+	    <td>Period 7</td>
+	    <td>12:34pm - 1:15pm</td>
+	  </tr>
+	  <tr id="period8">
+	    <td>Period 8</td>
+	    <td>1:19pm - 2:00pm</td>
+	  </tr>
+	  <tr id="period9">
+	    <td>Period 9</td>
+	    <td>2:04pm - 2:45pm</td>
+	  </tr>
+	  <tr id="period10">
+	    <td>Period 10</td>
+	    <td>2:49pm - 3:30pm</td>
+	  </tr>
+	</table>
+      
+	<table id="homeroom" class="bell hide">
+	  <tr id="period1">
+	    <td>Period 1</td>
+	    <td>8:00am - 8:40am</td>
+	  </tr>
+	  <tr id="period2">
+	    <td>Period 2</td>
+	    <td>8:44am - 9:24am</td>
+	  </tr>
+	  <tr id="period3">
+	    <td>Period 3</td>
+	    <td>9:28am - 10:08am</td>
+	  </tr>
+	  <tr id="period4">
+	    <td>Period 4</td>
+	    <td>10:26am - 11:06am</td>
+	  </tr>
+	  <tr id="period5">
+	    <td>Period 5</td>
+	    <td>11:10am - 11:50am</td>
+	  </tr>
+	  <tr id="period6">
+	    <td>Period 6</td>
+	    <td>11:54am - 12:34pm</td>
+	  </tr>
+	  <tr id="period7">
+	    <td>Period 7</td>
+	    <td>12:38pm - 1:18pm</td>
+	  </tr>
+	  <tr id="period8">
+	    <td>Period 8</td>
+	    <td>1:22pm - 2:02pm</td>
+	  </tr>
+	  <tr id="period9">
+	    <td>Period 9</td>
+	    <td>2:06pm - 2:46pm</td>
+	  </tr>
+	  <tr id="period10">
+	    <td>Period 10</td>
+	    <td>2:50pm - 3:30pm</td>
+	  </tr>
+	</table>
+
+	<table id="conference" class="bell hide">
+	  <tr id="period1">
+	    <td>Period 1</td>
+	    <td>8:00am - 8:37am</td>
+	  </tr>
+	  <tr id="period2">
+	    <td>Period 2</td>
+	    <td>8:41am - 9:18am</td>
+	  </tr>
+	  <tr id="period3">
+	    <td>Period 3</td>
+	    <td>9:22am - 9:59am</td>
+	  </tr>
+	  <tr id="period4">
+	    <td>Period 4</td>
+	    <td>10:03am - 10:40am</td>
+	  </tr>
+	  <tr id="period5">
+	    <td>Period 5</td>
+	    <td>10:44am - 11:21am</td>
+	  </tr>
+	  <tr id="period6">
+	    <td>Period 6</td>
+	    <td>11:25am - 12:02pm</td>
+	  </tr>
+	  <tr id="period7">
+	    <td>Period 7</td>
+	    <td>12:06pm - 12:43pm</td>
+	  </tr>
+	  <tr id="period8">
+	    <td>Period 8</td>
+	    <td>12:47pm - 1:24pm</td>
+	  </tr>
+	  <tr id="period9">
+	    <td>Period 9</td>
+	    <td>1:28pm - 2:05pm</td>
+	  </tr>
+	  <tr id="period10">
+	    <td>Period 10</td>
+	    <td>2:09pm - 2:46pm</td>
+	  </tr>
+	</table>
+
+	<table id="special" class="bell hide">
+	  <tr id="period1">
+	    <td>Period 1</td>
+	    <td>8:00am - 8:38am</td>
+	  </tr>
+	  <tr id="period2">
+	    <td>Period 2</td>
+	    <td>8:42am - 9:20am</td>
+	  </tr>
+	  <tr id="period3">
+	    <td>Period 3</td>
+	    <td>9:24am - 10:04am</td>
+	  </tr>
+	  <tr id="period4">
+	    <td>Period 4</td>
+	    <td>10:08am - 10:46am</td>
+	  </tr>
+	  <tr id="period5">
+	    <td>Period 5</td>
+	    <td>10:50am - 11:28am</td>
+	  </tr>
+	  <tr id="period6">
+	    <td>Period 6</td>
+	    <td>11:32am - 12:10pm</td>
+	  </tr>
+	  <tr id="period7">
+	    <td>Period 7</td>
+	    <td>12:14pm - 12:52pm</td>
+	  </tr>
+	  <tr id="period8">
+	    <td>Period 8</td>
+	    <td>12:56pm - 1:34pm</td>
+	  </tr>
+	  <tr id="period9">
+	    <td>Period 9</td>
+	    <td>1:38pm - 2:16pm</td>
+	  </tr>
+	  <tr id="period10">
+	    <td>Period 10</td>
+	    <td>2:20pm - 2:58pm</td>
+	  </tr>
+	</table>
+
+	<div id="unknown" class="hide">
+	    <button id="regular">Regular</button>
+	    <button id="homeroom">Homeroom</button>
+	    <button id="special">Special</button>
+	    <button id="conference">Conference</button>
+	</div>
+
+      </section>
+      
+      <ul id="news">
+	{% for article in news %}
+	{{article|safe}}
+	{% endfor %}
+      </ul>
+
+    </div>
+
+    <div id="sidebar">
+      <div id="toggle">&raquo;</div>
+      {{schedule|safe}}
+    </div>
+
+  </body>
+</html>

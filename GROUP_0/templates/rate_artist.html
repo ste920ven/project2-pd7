@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>{{artist}}</h1>
+{% endblock %}
+
+{% block body %}
+<div style="width:500px;position:relative;bottom:20px;left:20px">
+<p><font size="3">
+Check out his/her music <a href="{{link}}">here!</a><br></br>
+</font></p>
+<form action="artist" method="POST">
+  <br>How awesome is {{artist}}?<br>
+  <input type="radio" name="rating" value="0" checked="checked">0 </input>
+  <input type="radio" name="rating" value="1">1 </input>
+  <input type="radio" name="rating" value="2">2 </input>
+  <input type="radio" name="rating" value="3">3 </input>
+  <input type="radio" name="rating" value="4">4 </input>
+  <input type="radio" name="rating" value="5">5 </input>
+  <br></br>
+
+  Comments<br>
+  <textarea name="comment" cols="50" rows="5"></textarea><br></br>
+  <input type="submit" name="button" value="rate">
+</div>
+{% endblock %}

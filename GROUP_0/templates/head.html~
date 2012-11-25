@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <style type="text/css">
+      body {background-color:PowderBlue}
+      p {color:cadetblue}
+      h1 {font-size:30px;font-family:times;text-align:center;}
+    </style>
+    <div id="head">{% block head %}{% endblock %}
+ </head>
+<body>
+  <div id="body">{% block body %}{% endblock %}
+    <div id="content1">{% block content1 %}{% endblock %}
+      <div id="content2">{% block content2 %}{% endblock %}
+	</div>
+      </div>
+    </div>
+</body>
+<html>

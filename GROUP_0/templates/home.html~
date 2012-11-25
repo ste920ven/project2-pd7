@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+      body {background-color:PowderBlue}
+      p {color:cadetblue}
+      h1 {font-size:30px;font-family:times;text-align:center;}
+    </style>
+    <h1>
+      Music Site
+    </h1>
+  </head>
+  <body>
+  </body>
+</html>
