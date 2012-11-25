@@ -6,7 +6,8 @@ db = Connection.admin
 res=db.authenticate('ml7','ml7')
 db = Connection['MIBO']
 Accounts = db.Accounts
-Ratings = db.Ratings
+SongRatings = db.SongRatings
+AlbumRatings = db.AlbumRatings
 
 
 def saveInfo(username, password):
@@ -38,28 +39,50 @@ def addSong(song):
 def addAlbum(album):
     pass
 
-def addSongRating(song):
-    pass
-def addAlbumRating(album):
-    pass
+def addSongRating(song,artist,rating,comment):
+    ratingList = SongRatings.findOne({'song':song,'artist':artist})
+    if ratingList == None:
+        pass
+    else:
+        ratingList = ratingList['rating']
+    commentList = SongRatings.findOne({'song':song,'artist':artist})
+    if commentList == None:
+        pass
+    else:
+        commentList = commentList['comment']
+    if ratingList == None:
+        ratingList = [rating]
+    else:
+        ratingList.append(rating)
+    if commentList == None:
+        commentList = [comment]
+    else:
+        commentList.append(str(comment))
+    SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
 
-def getSongRating(song):
-    pass
-def getAlbumRating(album):
-    pass
+def addAlbumrating(album,artist,rating,comment):
+    ratingList = AlbumRatings.findOne({'album':album,'artist':artist})['rating']
+    commentList = AlbumRatings.findOne({'album':album,'artist':artist})['comment']
+    if ratingList == None:
+        ratingList = [rating]
+    else:
+        ratingList.append(rating)
+    if commentList == None:
+        commentList = [comment]
+    else:
+        commentList.append(str(comment))
+    AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+    
+def getSongRating(song,artist):
+    return SongRatings.findOne({'song':song,'artist':artist})
+def getAlbumRating(album,artist):
+    return AlbumRatings.findOne({'album':album,'artist':artist})
 #will return the rating of the song/album
     
 
 
 if __name__ == '__main__':
-    saveInfo('briantotheyanyan','BY4695')
-    saveInfo('briantotheyanyan','brian4695')
-    saveInfo('briantotheyanyan','HI')
-    saveInfo('IVANISAWESOME','YAH')
-    saveInfo('THANKYOUMENGDIFORYOURHELP','YAH')
-    print returnAllAccounts()
-    print verifyLogin('briantotheyanyan','BY4695')
-    print verifyLogin('briantotheyanyan','brian4695')
-
+    addSongRating('YAH','BYE',10,'TEEHEE')
+    addSongRating('YAH','BYE',5,'KEKEKEE')
         
     
