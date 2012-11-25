@@ -5,7 +5,8 @@ Connection=Connection('mongo.stuycs.org')
 db = Connection.admin
 res=db.authenticate('ml7','ml7')
 db = Connection['MIBO']
-Accounts = db.collection1
+Accounts = db.Accounts
+Ratings = db.Ratings
 
 
 def saveInfo(username, password):
