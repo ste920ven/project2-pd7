@@ -8,7 +8,7 @@ track_url="http://api.emusic.com/track/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&fo
 album_url="http://api.emusic.com/album/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json"
 artist_url="http://api.emusic.com/artist/charts?apiKey=nxs4nu8b9u3ekhuv5gfynr7s&format=json"
 
-#EVERYTHING IS IN UNICODE! CONVERT TO STRING WHEN NEEDED!!
+
 def create_album():
     album={}
     request=urllib2.urlopen(album_url)
