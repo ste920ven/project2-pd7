@@ -43,6 +43,12 @@ def ingredients(recipe):
             pass
     return b
 
+def getImage(url):
+    soup = BeautifulSoup(urllib2.urlopen(url).read())
+    a = soup.findAll(True, {'id':"metaOpenGraphImage"})
+    return a[0].attrs['content']
+
+
 """
 print ingredients('http://allrecipes.com/recipe/brownie-frosting/detail.aspx?event8=1&prop24=SR_Title&e11=brownies&e8=Quick%20Search&event10=1&e7=Home%20Page')
 I removed the unneccessary parameters from the URL to make it easier to use
@@ -77,3 +83,5 @@ rr = search("lemon merengue pie")
 
 prices(ingredients(rr),recipeName(rr),key)
 
+der = search("orange")
+getImage(der)

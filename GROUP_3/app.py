@@ -19,7 +19,12 @@ def findprice(foodname):
     searchURL = utils.search(foodname)
     recipeTitle = utils.recipeName(searchURL)
     ingred= utils.ingredients(searchURL)
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred)
+    imgURL= utils.getImage(searchURL)
+
+    pricelist=[]
+    for ingredient in ingred:
+        pricelist.append(str(utils.getPrice(key, ingredient))+ " for " + ingredient)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist)
 
 if __name__ == '__main__':
     app.run(debug = True)
