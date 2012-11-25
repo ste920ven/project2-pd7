@@ -1,58 +1,70 @@
-usernames = []
-passwords = []
-#songRatings = []
-#albumRatings = []
 songList = []
 albumList = []
+from pymongo import Connection
+Connection=Connection('mongo.stuycs.org')
+db = Connection.admin
+res=db.authenticate('ml7','ml7')
+db = Connection['MIBO']
+Accounts = db.Accounts
+SongRatings = db.SongRatings
+AlbumRatings = db.AlbumRatings
 
 
 def saveInfo(username, password):
-    if username in usernames:
-        return false
+    if Accounts.find({'usernames':username}).count() == 0:
+        Accounts.insert({'usernames':username,'passwords':password})
+        return True
     else:
-        usernames.append(username)
-
-    passwords.append(password)
-
-
-
-#We will take input on from the register page and "save" it by putting the username and password in their respective lists
+        return False
 
 
 def verifyLogin(username, password):
-    if username in usernames:                                       
-        if password in passwords:
-            i = usernames.index(username)        #@Brian <---- what I was talking about
-            if passwords[i]==password:
-                return true
-            else:
-                return false
-                
+    if Accounts.find({'usernames':username,'passwords':password}).count() != 0:
+        return True
+    else:
+        return False
+def returnAllAccounts():
+    accounts = []
+    for account in Accounts.find():
+        accounts.append('Username: '+str(account['usernames'])+'Password: '+str(account['passwords']))
+    return accounts
 
  
 #basic login method that verifies input username and password
 
 
-def addSong(song):
+def addSongRating(song,artist,rating,comment):
+    ratingList = SongRatings.find_one({'song':song,'artist':artist})
+    commentList = SongRatings.find_one({'song':song,'artist':artist})
+    if ratingList == None:
+        SongRatings.insert({'song':song,'artist':artist,'rating':[rating],'comment':[comment]})
+    else:
+        ratingList = ratingList['rating']
+        commentList = commentList['comment']
+        ratingList.append(rating)
+        commentList.append(comment)
+        SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
 
+def addAlbumrating(album,artist,rating,comment):
+    ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
+    commentList = AlbumRatings.find_one({'album':album,'artist':artist})
+    if ratingList == None:
+        AlbumRatings.insert({'album':album,'artist':artist,'rating':[rating],'comment':[comment]})
+    else:
+        ratingList = ratingList['rating']
+        commentList = commentList['comment']
+        ratingList.append(rating)
+        commentList.append(comment)
+        AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
 
-def addAlbum(album):
-
-
-def addSongRating(song):
     
-def addAlbumRating(album):
-        
-
-def getSongRating(song):
-
-def getAlbumRating(album):
-
+def getSongRating(song,artist):
+    return SongRatings.find_one({'song':song,'artist':artist})
+def getAlbumRating(album,artist):
+    return AlbumRatings.find_one({'album':album,'artist':artist})
 #will return the rating of the song/album
     
 
 
-
-
-        
-    
+if __name__ == '__main__':
+    pass
