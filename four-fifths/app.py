@@ -14,8 +14,8 @@ def main():
     return render_template('home.html',
                            news=news,
                            schedule=schedule,
-                           bellDay="Homeroom",#bellDay,
-                           gymDay="A",#gymDay,
+                           bellDay=bellDay,
+                           gymDay=gymDay,
                            date=date)
 
 if __name__ == '__main__':
