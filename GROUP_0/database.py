@@ -47,7 +47,7 @@ def addSongRating(song,artist,rating,comment):
 
 def addAlbumrating(album,artist,rating,comment):
     ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
-    commentList = SongRatings.find_one({'album':album,'artist':artist})
+    commentList = AlbumRatings.find_one({'album':album,'artist':artist})
     if ratingList == None:
         AlbumRatings.insert({'album':album,'artist':artist,'rating':[rating],'comment':[comment]})
     else:
