@@ -5,27 +5,27 @@ Connection=Connection('mongo.stuycs.org')
 db = Connection.admin
 res=db.authenticate('ml7','ml7')
 db = Connection['MIBO']
-collection = db.collection1
+Accounts = db.collection1
 
 
 def saveInfo(username, password):
-    if collection.find({'usernames':username}).count() == 0:
-        collection.insert({'usernames':username,'passwords':password})
+    if Accounts.find({'usernames':username}).count() == 0:
+        Accounts.insert({'usernames':username,'passwords':password})
         return True
     else:
         return False
 
 
 def verifyLogin(username, password):
-    if collection.find({'usernames':username,'passwords':password}).count() != 0:
+    if Accounts.find({'usernames':username,'passwords':password}).count() != 0:
         return True
     else:
         return False
 def returnAllAccounts():
-    Accounts = []
-    for account in collection.find():
-        Accounts.append('Username: '+str(account['usernames'])+'Password: '+str(account['passwords']))
-    return Accounts
+    accounts = []
+    for account in Accounts.find():
+        accounts.append('Username: '+str(account['usernames'])+'Password: '+str(account['passwords']))
+    return accounts
 
  
 #basic login method that verifies input username and password
