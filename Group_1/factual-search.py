@@ -18,9 +18,12 @@ def searchZip(name, zipcode):
     #print result.data()[0]
     return result.data()[0]
 
-def getSearchData(input):
-    parameters = imput.split(,)
+def getSearchData(inputs):
     result = {}
+    parameters = inputs.split(',')
+    for x in parameters:
+        parameters[x] = parameters[x].lstrip().rstrip()
+
     if(parameters[3]):
         result = searchAddress(parameters[0],parameters[1],parameters[2],parameters[3])
     elif(parameters[2]):
