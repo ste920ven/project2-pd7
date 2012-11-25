@@ -15,6 +15,11 @@
 			color: cyan;
 		}
 		img{
+			border-style:solid;
+			border-color:#1A1B1B;
+			padding-left: 3%;
+			padding-top: 3%;
+			padding-bottom: 3%;
 			padding-right: 3%;
 		}
 	</style>
@@ -39,9 +44,6 @@
 				{% for element in ingredients %}
 					<li>{{element}}</li>
 				{% endfor %}
-		<br><br><font size="2">
-			Source: <a color="white" href={{sURL}}>allrecipes.com</a><br>
-			</font>
 		<br>
 		<u>Price of recipe:</u><br>
 		<ul>
@@ -49,6 +51,12 @@
 			<li>{{price}}</li>
 		{% endfor %}
 		</ul>
+		</font>
+		<form action="back">
+		<input type="submit" name="Home" value="Home"></input>
+		</form>
+		<br><br><font size="2" color="white">
+		  Source: <a href={{sURL}}>allrecipes.com</a><br>
 		</font>
 		
 	</body>

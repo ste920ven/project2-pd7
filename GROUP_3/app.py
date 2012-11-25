@@ -26,5 +26,9 @@ def findprice(foodname):
         pricelist.append(str(utils.getPrice(key, ingredient))+ " for " + ingredient)
     return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist)
 
+@app.route("/back", methods = ["GET", "POST"])
+def back():
+    return home()
+
 if __name__ == '__main__':
     app.run(debug = True)
