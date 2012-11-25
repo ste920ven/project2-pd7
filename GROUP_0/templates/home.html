@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
-      body {background-color:PowderBlue}
-      p {color:cadetblue}
-      h1 {font-size:30px;font-family:times;text-align:center;}
-    </style>
-    <h1>
-      Mibo
-    </h1>
-  </head>
-  <body>
+{% extends "head.html" %}
+{% block head %}
+<h1 text-align:"center">Welcome to Mibo</h1>
+{% endblock%}
+
+{% block body %}
+<div style="width:200px;position:relative;bottom:20px;left:20px">
     <form action="" method="POST">
-        Username: <input type="text" name="username"><br></br>
-        Password: <
-        <input type="submit" name
+      <label for="text1">Name</label>
+      <input type="text" name="name" placeholder="Name"><br>
+      <input type="submit" name="button" value="login">
     </form>
-  </body>
-</html>
+</div>
+{% endblock %}
+
