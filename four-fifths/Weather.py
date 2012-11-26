@@ -1,11 +1,6 @@
-from flask import Flask
 import urllib2,json
 
-app=Flask(__name__)
-
-
-
-def temp():
+def getTemp():
     url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
     d=url.read()
     y = "temp="
@@ -14,7 +9,7 @@ def temp():
     return x
 
 
-def forecast():
+def getForecast()):
     d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderstorms","mixed rain and snow",
 	"mixed rain and sleet",
 	"mixed snow and sleet",
@@ -63,9 +58,7 @@ def forecast():
     y = "code="
     x = d.find(y)
     x = d[x+6:x+9]
-    return d1[int(x)]
+    return d1[int(x)+1]
     
 
-if __name__=="__main__":
-    app.debug=True
-    app.run()
+
