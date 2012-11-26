@@ -64,16 +64,13 @@ def getPrice(k,name):
     result2 = json.loads(request.read())
     price = result2['items'][0]['product']['inventories'][0]['price']
     name = result2['items'][0]['product']['title']
-    #print str(name) + " " + str(price)
-    return  (str(name),str(price))
-
+    return price,str(name)
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
     for item in l:
-        
-        founditem,price=getPrice(k,item)
-        recipe['gredients'].append( (item,founditem,price))
+        founditem,price =getPrice(k,item)
+        recipe['gredients'].append( (item, founditem, price))
     return recipe
 
 
