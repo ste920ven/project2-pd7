@@ -1,5 +1,5 @@
 **Group Members**
-  :<br> Leopold Spohngellert<br>Ellie Abrams<br> Hayden Karp Hecker<br>Peter Jasko
+  :<br> Leopold Spohngellert: Will be working on API data acccess and CSS styling. <br>Ellie Abrams  <br> Hayden Karp Hecker<br>Peter Jasko (GROUP LEADER)
 
 **Idea**:
 
@@ -12,3 +12,6 @@ Find movies
 
 *http://www.factual.com/data-apis/places
 Restaurants, Places to Travel
+
+*http://developer.espn.com/docs/teams#overview
+Find baseball scores

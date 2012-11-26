@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "head.html" %}
+{% block head %}
+<h1>{{song}}</h1>
+{% endblock %}
+
+{% block body %}
+album: {{album}}<br>
+artist: {{artist}}<br>
+genre: {{genre}}<br>
+label: {{label}}<br>
+Listen to the song <a href="{{link}}">here!</a><br></br>
+<form action="song" method="POST">
+
+
+
+{% endblock %}

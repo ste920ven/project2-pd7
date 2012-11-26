@@ -17,7 +17,6 @@ so you can see stuff like
     </ul>
   </li>
 </ul>
-
 <ul>
   <li>You can also interface with the site through texting commands</li>
   <li>You can also change the skin of the site</li>
@@ -25,10 +24,25 @@ so you can see stuff like
   <li>On snow days, there will be snow falling in the background, and similar animations for rain, sun, etc</li>
 </ul>
 
+Modules that must be installed to run...
+<ul>
+  <li><strong>Website server</strong></li>
+    <ul>
+    <li>flask</li>
+      <li>beautifulsoup4</li>
+      <li>html5lib</li>
+    </ul>
+  <li><strong>Text server</strong></li>
+    <ul>
+      <li>flask</li>
+      <li>twilio</li>
+    </ul>
+</ul>
+
 People:
 <ul>
   <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
-  <li>Jason: Twilio API</li>
+  <li>Jason: site design</li>
   <li>Cameron: Weather!</li>
-  <li>Jack: Incoming SMS interpretation, login functionality</li>
+  <li>Jack: Twilio API. SMS and voice information on demand.</li>
 </ul>
