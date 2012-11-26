@@ -63,9 +63,10 @@ def forecast():
     y = "code="
     x = d.find(y)
     x = d[x+6:x+9]
-    return d1[int(x)]
+    return d1[int(x)+1]
     
 
 if __name__=="__main__":
     app.debug=True
-    app.run()
+    app.forecast()
+    app.temp()
