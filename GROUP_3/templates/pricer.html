@@ -14,10 +14,18 @@
 		header{
 			color: cyan;
 		}
+		img{
+			border-style:solid;
+			border-color:#1A1B1B;
+			padding-left: 3%;
+			padding-top: 3%;
+			padding-bottom: 3%;
+			padding-right: 3%;
+		}
 	</style>
 		<title>Recipe Pricer</title>
 	</head>
-	<body bgcolor=#333333>
+	<body bgcolor=#333333 link="white">
 		<header>
 		<font size="20">
 			Recipe Pricer
@@ -25,11 +33,36 @@
 		<hr><br>
 		</header>
 		<font color="white">
-			Breakdown for: {{Recipe}}
-			Ingredients: 
+			<font size=2><u>You searched for:</u> {{foodname}}</font>
+			<img src={{imgURL}} align="right">
+			<br>
+			<h2><u>{{title}}</u></h2>
+			<br>
+			<h3><u>Ingredients: </u></h3>
 				{% for element in ingredients %}
-					<li>element</li>
+					<li>{{element}}</li>
 				{% endfor %}
+		<br>
+		<h3><u>Price List:</u></h3>
+		<ul>
+		  <table>
+		    {% for price in prices %}
+		    <tr style="color:white">
+		      <td> {{"$" + price[0]}} &nbsp; &nbsp; </td>
+		      <td> {{(price[1])}} </td>
+		    </tr>
+		    {% endfor %}
+		  </table>
+		</ul>
+		<b><u>Total:</u> ${{total}}</b>
 		</font>
+		<br><br><br><br>
+		<form action="back">
+		<input type="submit" name="Home" value="Home"></input>
+		</form>
+		<font size="2" color="white">
+		  Source: <a href={{sURL}}>allrecipes.com</a><br>
+		</font>
+		
 	</body>
 </html>

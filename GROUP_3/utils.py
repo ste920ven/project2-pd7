@@ -43,6 +43,12 @@ def ingredients(recipe):
             pass
     return b
 
+def getImage(url):
+    soup = BeautifulSoup(urllib2.urlopen(url).read())
+    a = soup.findAll(True, {'id':"metaOpenGraphImage"})
+    return a[0].attrs['content']
+
+
 """
 print ingredients('http://allrecipes.com/recipe/brownie-frosting/detail.aspx?event8=1&prop24=SR_Title&e11=brownies&e8=Quick%20Search&event10=1&e7=Home%20Page')
 I removed the unneccessary parameters from the URL to make it easier to use
@@ -58,16 +64,13 @@ def getPrice(k,name):
     result2 = json.loads(request.read())
     price = result2['items'][0]['product']['inventories'][0]['price']
     name = result2['items'][0]['product']['title']
-    #print str(name) + " " + str(price)
-    return  (str(name),str(price))
-
+    return price,str(name)
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
     for item in l:
-        
-        founditem,price=getPrice(k,item)
-        recipe['gredients'].append( (item,founditem,price))
+        founditem,price =getPrice(k,item)
+        recipe['gredients'].append( (item, founditem, price))
     return recipe
 
 
@@ -77,3 +80,5 @@ rr = search("lemon merengue pie")
 
 prices(ingredients(rr),recipeName(rr),key)
 
+der = search("orange")
+getImage(der)
