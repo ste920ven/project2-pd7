@@ -1,10 +1,6 @@
-
 import urllib2,json
 
-
-
-
-def temp():
+def getTemp():
     url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
     d=url.read()
     y = "temp="
@@ -13,7 +9,7 @@ def temp():
     return x
 
 
-def forecast():
+def getForecast()):
     d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderstorms","mixed rain and snow",
 	"mixed rain and sleet",
 	"mixed snow and sleet",
