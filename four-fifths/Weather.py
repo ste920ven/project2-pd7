@@ -1,7 +1,6 @@
-from flask import Flask
+
 import urllib2,json
 
-app=Flask(__name__)
 
 
 
@@ -66,7 +65,4 @@ def forecast():
     return d1[int(x)+1]
     
 
-if __name__=="__main__":
-    app.debug=True
-    app.forecast()
-    app.temp()
+
