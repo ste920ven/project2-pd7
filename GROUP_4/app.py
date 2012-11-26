@@ -3,6 +3,7 @@ from pymongo import connection
 #import espn
 #import factual
 #import upcoming
+
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
@@ -13,7 +14,7 @@ def home():
 @app.route("/survey", methods=["GET","POST"])
 def survey():
     if request.method == "GET":
-        return render_template("survey.html")
+        return render_template("htmlkickstart-joshuagatcke/survey.html")
     if request.method == "POST":
         #button = request.form["button"]
         #if button == "SAVE!!!":
