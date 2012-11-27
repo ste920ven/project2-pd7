@@ -42,9 +42,15 @@ def getImages():
 		images.append(line['image'])
 	return images
 
+#Returns the image and ratings with the _url (for unittesting purposes)
+def returnImage(_url):
+	return collection.find_one({'image' : _url})
+
 #Removes all the image URLs and ratings from the database
 def wipeDatabase():
 	for line in collection.find():
 		removeImage(line['image'])
+	
+	
 	
 	
