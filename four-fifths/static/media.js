@@ -1,8 +1,10 @@
+var mediaQuery = "only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5), only screen and (max-width: 500px), only screen and (max-device-width: 500px)";
+
 $(document).ready(function(){
 
     if (matchMedia)
     { 
-	var mq = window.matchMedia("only screen and (max-width: 500px), only screen and (max-device-width: 500px)");  
+	var mq = window.matchMedia(mediaQuery);  
 	mq.addListener(WidthChange);  
 	WidthChange(mq);  
     }
