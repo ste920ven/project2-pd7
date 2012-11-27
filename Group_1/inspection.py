@@ -20,7 +20,7 @@ def getGradeFor(restname):
     global inspections
     for line in inspections:
         #if that restaurant appears in the array        
-        if (line.find(restname.upper()) != -1):
+        if (line.find(str(restname).upper()) != -1):
             #tell me the index of the restaurant
             restIndex = inspections.index(line)
             #make that line into a list
