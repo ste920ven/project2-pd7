@@ -24,6 +24,8 @@ so you can see stuff like
   <li>On snow days, there will be snow falling in the background, and similar animations for rain, sun, etc</li>
 </ul>
 
+<strong>Note: runs on ml7.stuycs.org port 7004</strong>
+
 Modules that must be installed to run...
 <ul>
   <li><strong>Website server</strong></li>
