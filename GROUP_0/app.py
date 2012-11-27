@@ -2,21 +2,36 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import url_for,redirect,flash
-import api
+import api,database
 
 app=Flask(__name__)
+app.secret_key="secret"
 
 data_artist=api.create_artist()
 data_song=api.create_song()
 data_album=api.create_album()
-
+username=""
 @app.route("/",methods=['GET','POST'])
 def login():
     if request.method=="GET":
         return render_template("home.html")
     if request.method=="POST":
-        if (request.form["button"]=="login"):
-            return render_template("hello.html",name=request.form["name"])
+        if (request.form["button"]=="register"):
+            username=request.form["name"]
+            password=request.form["password"]
+            if (database.saveInfo(username,password)):
+                flash("Registered successfully!")
+            else:
+                flash("The name is taken, choose a new name")
+            return redirect(url_for("login"))
+        if(request.form["button"]=="login"):
+            username=request.form["name"]
+            password=request.form["password"]
+            if (not database.verifyLogin(username,password)):
+                flash("Arrh! Wrong password. Try again!")
+                return redirect(url_for("login"))
+            else:
+                return render_template("hello.html",name=username)
 
 @app.route("/hello",methods=['GET','POST'])
 def hello():
