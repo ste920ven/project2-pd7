@@ -1,4 +1,4 @@
-from flask  import Flask, request
+from flask  import Flask, request, url_for
 from twilio import twiml
 import extractor
 
@@ -30,10 +30,10 @@ def text():
 def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
-    welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
-   # audio = url_for("static", filename = "/audio/welcome-1-big.mp3")
-#    resp.play(audio)
-    resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
+#    welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
+ #   resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
+    audio = url_for("static", filename = "audio/welcome-1 big.mp3")
+    resp.gather(numDigits=1, action="/scheduleweather").play(audio)
     return str(resp)
 
 @app.route('/scheduleweather', methods=['POST'])
