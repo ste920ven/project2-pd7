@@ -18,7 +18,10 @@ def searchZip(name, zipcode):
     filters = table.filters({'postcode': zipcode}).limit(1)
     result = filters.search(name)
     #print result.data()[0]
-    return result.data()[0]
+    try:
+        return result.data()[0]
+    except IndexError:
+        return {}
 
 def getSearchData(inputs):
     result = {}
@@ -43,6 +46,7 @@ def getSearchString(input):
     data = getSearchData(input)
     if(data != {}):
         rating = inspection.getGradeFor(data["name"])
+        print rating
         if(printVitals(data)):
             if(rating):
                 return printVitals(data) + " Sanitation Rating: " + rating
@@ -59,7 +63,10 @@ def search(name):
     
     result = table.search(name)
     #print result.data()[0]
-    return result.data()[0]
+    try:
+        return result.data()[0]
+    except IndexError:
+        return {}
 
 def searchAddress(name,street,city,state):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
@@ -68,7 +75,10 @@ def searchAddress(name,street,city,state):
     filters = table.filters({'address': street, 'locality':city, 'region': state}).limit(1)
     result = filters.search(name)
     #print result.data()[0]
-    return result.data()[0]
+    try:
+        return result.data()[0]
+    except IndexError:
+        return {}
 
 def searchCity(name,city,state):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
@@ -116,5 +126,5 @@ def searchAndPrintVitalsWZip(name, zipcode):
     print string
     return string
 
-getSearchString("Bar,Bronx,NY")
+getSearchString("Bar,10021")
  
