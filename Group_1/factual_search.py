@@ -40,10 +40,13 @@ def getSearchData(inputs):
 def getSearchString(input):
     data = getSearchData(input)
     rating = getGradeFor(data["name"])
-    if(rating):
-        return printVitals(data) + " Sanitation Rating: " + rating
+    if(printVitals(data)):
+        if(rating):
+            return printVitals(data) + " Sanitation Rating: " + rating
+        else:
+            return printVitals(data)
     else:
-        return printVitals(data)
+        return "returning something"
 
 def search(name):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
