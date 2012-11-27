@@ -20,11 +20,15 @@ def findprice(foodname):
     recipeTitle = utils.recipeName(searchURL)
     ingred= utils.ingredients(searchURL)
     imgURL= utils.getImage(searchURL)
+    t = 0
 
     pricelist=[]
     for ingredient in ingred:
-        pricelist.append(str(utils.getPrice(key, ingredient))+ " for " + ingredient)
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist)
+        p, n = utils.getPrice(key, ingredient)
+        t += p;
+        pListelement = [str(p), (str(n) + " (" + ingredient) + ")"]
+        pricelist.append(pListelement)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():

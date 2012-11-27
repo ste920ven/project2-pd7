@@ -5,7 +5,7 @@ Better name to be determined.
 <h3>What we want to do:</h3>
 Use the flickr, wikipedia, and wikiquotes API to:
 <br/>
-    1. Take a random image from flickr. This is now the album cover.
+    1. Take a random image from flickr (and crop to a square). This is now the album cover.
 <br />
     2. Take the title of a random article from wikipedia. This is now  the name of a band.
 <br />
@@ -33,19 +33,19 @@ Shan suggested the idea; it was inspired by a 4chan game.
 <br />
 <b>Daryl</b>
 <br />
-Team leader, app.py server stuff & Step 4
+Imagemagick
 <br />
 <b>John</b>
 <br />
-Main writing thorough unit tests (we should lean towards test-driven development) person
+app/db
 <br />
 <b>Shan</b>
 <br />
-Main Step 4 person; secondary HTML/CSS person
+HTML/CSS/PHP/Javascript
 <br />
 <b>Shreya</b>
 <br />
-Main HTML/CSS Design (and JavaScript/JQuery/etc. if we end up using it) person; secondary Step 4 person
+app/db
 <br />
 
 Later on in this project the roles are subject to change.

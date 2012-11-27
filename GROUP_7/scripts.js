@@ -78,3 +78,19 @@ function calcRoute() {
     });
 }
 
+// END GOOGLE STUFF
+
+function changeBGC(str){
+    if(str==='aliens'){
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%)');
+    }
+    else if(str==='fire'){
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(248,181,0,1) 6%,rgba(252,205,77,1) 50%,rgba(251,223,147,1) 100%)');
+    }
+    else if(str==='hurricane'){
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(160,216,239,1) 100%)');
+    }
+    else{
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(241,111,92,1) 5%,rgba(248,80,50,1) 33%,rgba(240,47,23,1) 67%,rgba(246,41,12,1) 84%,rgba(231,56,39,1) 100%)');
+    }
+}
