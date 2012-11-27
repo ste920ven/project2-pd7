@@ -11,7 +11,7 @@ def hello_monkey():
     result = factual-search.getSearchString(text)
     resp = twilio.twiml.Response()
     resp.sms(result)
-    #resp.sms("Hello, Mobile Monkey")
+    resp.sms("Hello")
     return str(resp)
  
 if __name__ == "__main__":
