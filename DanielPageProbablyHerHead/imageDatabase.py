@@ -22,6 +22,29 @@ def getRatings(_url):
 
 #Returns the one (averaged) rating of the image with the given _url
 def getRating(_url):
-	x = getRatings(_url);
+	x = getRatings(_url)
 	return ( sum(x) / collection.find_one({'image': _url})['ratings'].count() )
+
+#Removes the image with the given _url
+def removeImage(_url):
+	collection.remove({'image' : _url})
+
+#Removes all the ratings for the image with the given _url
+def deleteRatings(_url):
+	removeImage(_url)
+	addImage(_url)
+
+#Returns all image URLs in the database
+def getImages():
+	images = []
+	results = collection.find()
+	for line in results:
+		images.append(line['image'])
+	return images
+
+#Removes all the image URLs and ratings from the database
+def wipeDatabase():
+	for line in collection.find():
+		removeImage(line['image'])
+	
 	
