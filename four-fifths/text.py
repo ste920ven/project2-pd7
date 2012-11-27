@@ -31,6 +31,8 @@ def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
     welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
+    audio = url_for("static", filename = "/audio/welcome-1-big.mp3")
+    resp.play(audio)
     resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
     return str(resp)
 
@@ -71,4 +73,4 @@ def schedule():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host="0.0.0.0", port=7005, debug=True)
+    app.run(host="0.0.0.0", port=7255, debug=True)
