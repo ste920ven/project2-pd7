@@ -28,4 +28,4 @@ def getGradeFor(restname):
             if (details[12][1] != '"'):
                 return details[12][1]
 
-print getGradeFor("Baluchi")
+#print getGradeFor("Baluchi")
