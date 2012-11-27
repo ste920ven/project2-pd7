@@ -31,7 +31,7 @@ def incomingVoice():
     resp = twiml.Response()
 #note: spelled out "fizz" because it probably can't pronounce "phys"
     welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
-    audio = url_for("static", filename = "/audio/welcome-1-big.mp3")
+    audio = url_for("static", filename = "audio/welcome-1-big.mp3")
     resp.play(audio)
     resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
     return str(resp)
