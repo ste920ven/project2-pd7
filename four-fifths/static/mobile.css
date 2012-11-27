@@ -1,0 +1,20 @@
+header   { position: static; height: 70px; }
+header a { width: 50%; line-height: 35px; height: 35px; font-size: 15px; }
+
+div.main { width: 100%; float: none; padding: 0; margin: 0; margin-top: 40px; }
+
+div#statusbar    { font-size: 14px; height: 35px; border-radius: 21px; }
+p#period, p#time { font-size: 20px; line-height: 35px; }
+div#weather      { width: 60px; height: 60px; border-radius: 35px; top: -15px; line-height: 60px; font-size: 20px; }
+
+table.bell             { margin-bottom: 20px; }
+table.bell
+tr td:first-child      { width: 50%; padding: 2px 8% 2px 0; }
+table.bell
+tr td:last-child       { width: 50%; padding: 2px 0 2px 8%; }
+
+
+ul#news { width: 85%; margin: 0 auto; }
+
+div#sidebar { position: static; width: 100%; height: auto; padding: 15px 0; margin: 0; }
+div#sidebar div#toggle { display: none; }
