@@ -5,6 +5,8 @@ import json
 import sys
 from factual import Factual
 
+import inspection
+
 FACTUAL_KEY = "h38jlPEHTOOI1CjxUD2OY6lXc181MrDfXZE6BMJI"
 FACTUAL_SECRET = "oOmtPt9dfknPS63W2TYrExQPX49HvsVQOKFhiFZN"
 
@@ -37,7 +39,11 @@ def getSearchData(inputs):
 
 def getSearchString(input):
     data = getSearchData(input)
-    return printVitals(data)
+    rating = getGradeFor(data["name"])
+    if(rating):
+        return printVitals(data) + " Sanitation Rating: " + rating
+    else:
+        return printVitals(data)
 
 def search(name):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
