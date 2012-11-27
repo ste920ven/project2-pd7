@@ -23,7 +23,9 @@ def searchZip(name, zipcode):
 def getSearchData(inputs):
     result = {}
     parameters = inputs.split(',')
-    for x in parameters:
+    for x in range(0,4):
+        parameters.append("")
+    for x in range(0,len(parameters)):
         parameters[x] = parameters[x].lstrip().rstrip()
 
     if(parameters[3]):
@@ -39,14 +41,17 @@ def getSearchData(inputs):
 
 def getSearchString(input):
     data = getSearchData(input)
-    rating = getGradeFor(data["name"])
-    if(printVitals(data)):
-        if(rating):
-            return printVitals(data) + " Sanitation Rating: " + rating
+    if(data != {}):
+        rating = inspection.getGradeFor(data["name"])
+        if(printVitals(data)):
+            if(rating):
+                return printVitals(data) + " Sanitation Rating: " + rating
+            else:
+                return printVitals(data)
         else:
-            return printVitals(data)
+            return "returning something"
     else:
-        return "returning something"
+        return "Search returned no results"
 
 def search(name):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
@@ -72,15 +77,21 @@ def searchCity(name,city,state):
     filters = table.filters({'locality': city, 'region': state}).limit(1)
     result = filters.search(name)
     #print result.data()[0]
-    return result.data()[0]
+    try:
+        return result.data()[0]
+    except IndexError:
+        return {}
 
 #In the future printVitals can be edited or replaced to reflect what we actually want to return to the user
 def printVitals(data):
     string = ""
     string = string + "Name: " + data["name"] + '\n'
-    string = string + "Category: " + data["category"]
+    string = string + "Category: " + data["category"] + '\n'
     string = string + "Address: " + data["address"] + " " + data["locality"] + ", " + data["region"] + " " + data["postcode"] + '\n'
-    string = string + "Rating: " + str(data["rating"]) + '\n'
+    try:
+        string = string + "Rating: " + str(data["rating"]) + '\n'
+    except KeyError:
+        pass
     print string
     return string
 
@@ -104,4 +115,6 @@ def searchAndPrintVitalsWZip(name, zipcode):
     string = string + "Rating: " + str(data["rating"]) + '\n'
     print string
     return string
+
+getSearchString("Bar,Bronx,NY")
  
