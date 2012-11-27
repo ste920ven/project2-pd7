@@ -1,3 +1,4 @@
+**Optimized for Google Chrome (for now)**
 groupmembers
 
 Ian Outhwaite -- head of api access  
