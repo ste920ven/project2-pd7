@@ -49,13 +49,16 @@ def getSearchString(input):
         print rating
         if(printVitals(data)):
             if(rating):
-                return printVitals(data) + " Sanitation Rating: " + rating
+                r = printVitals(data) + "Sanitation Rating: " + rating
             else:
-                return printVitals(data)
+                r = printVitals(data)
         else:
-            return "returning something"
+            r = "returning something"
     else:
-        return "Search returned no results"
+        r = "Search returned no results"
+        
+    print r
+    return r
 
 def search(name):
     f = Factual(FACTUAL_KEY, FACTUAL_SECRET)
@@ -101,7 +104,7 @@ def printVitals(data):
     try:
         string = string + "Rating: " + str(data["rating"]) + '\n'
     except KeyError:
-        pass
+        string = string + "Rating: No rating" + '\n'
     print string
     return string
 
