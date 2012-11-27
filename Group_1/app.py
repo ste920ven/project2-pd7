@@ -8,12 +8,12 @@ app = Flask(__name__)
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
     text = request.values.get('Body', None)
-    result = factual-search.getSearchString(text)
+    result = factual_search.getSearchString(text)
     resp = twilio.twiml.Response()
-    resp.sms(result)
-    #resp.sms("Hello, Mobile Monkey")
+    #resp.sms(result)
+    resp.sms("Hello")
     return str(resp)
  
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.debug = True
     app.run(host="0.0.0.0", port=7001, debug=True)
