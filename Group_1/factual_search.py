@@ -96,7 +96,7 @@ def searchCity(name,city,state):
 def printVitals(data):
     string = ""
     string = string + "Name: " + data["name"] + '\n'
-    string = string + "Category: " + data["category"] + '\n'
+    #string = string + "Category: " + data["category"] + '\n'
     string = string + "Address: " + data["address"] + " " + data["locality"] + ", " + data["region"] + " " + data["postcode"] + '\n'
     try:
         string = string + "Rating: " + str(data["rating"]) + '\n'
