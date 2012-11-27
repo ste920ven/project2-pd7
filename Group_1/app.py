@@ -10,7 +10,7 @@ def hello_monkey():
     text = request.values.get('Body', None)
     result = factual_search.getSearchString(text)
     resp = twilio.twiml.Response()
-    resp.sms(result)
+    resp.sms(str(resp))
     #resp.sms("Hello")
     return str(resp)
  
