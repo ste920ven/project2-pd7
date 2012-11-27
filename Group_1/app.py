@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect
 import twilio.twiml
-import factual-search
+import factual_search
 
 app = Flask(__name__)
  
