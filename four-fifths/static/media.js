@@ -1,4 +1,4 @@
-var mediaQuery = "all and (max-width: 500px)";
+var mediaQuery = "all and (max-width: 640px)";
 
 $(document).ready(function(){
 
