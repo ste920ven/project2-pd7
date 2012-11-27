@@ -23,7 +23,11 @@ def getRatings(_url):
 #Returns the one (averaged) rating of the image with the given _url
 def getRating(_url):
 	x = getRatings(_url)
-	return ( sum(x) / collection.find_one({'image': _url})['ratings'].count() )
+	y = 0
+	for rating in x:
+		y = y + int(rating)
+	z = len(collection.find_one({'image': _url})['ratings'])
+	return ( y / z)
 
 #Removes the image with the given _url
 def removeImage(_url):
