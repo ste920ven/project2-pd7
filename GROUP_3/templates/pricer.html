@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<style type="text/css">
+		body{
+			font-family: "Arial";
+			padding-top:2%;
+			padding-left:2%
+		}
+		body>div{
+			padding-left: 5%;
+			padding-right: 1%;
+			color:white;
+		}
+		header{
+			color: cyan;
+		}
+		img{
+			border-style:solid;
+			border-color:#1A1B1B;
+			padding-left: 3%;
+			padding-top: 3%;
+			padding-bottom: 3%;
+			padding-right: 3%;
+		}
+	</style>
+		<title>Recipe Pricer</title>
+	</head>
+	<body bgcolor=#333333 link="white">
+		<header>
+		<font size="20">
+			Recipe Pricer
+		</font>
+		<hr><br>
+		</header>
+		<font color="white">
+			You searched for: {{foodname}}
+			<img src={{imgURL}} align="right">
+			<br>
+			<br>
+			<u>Recipe title:</u> {{title}}
+			<br><br>
+			
+			<u>Ingredients: </u>
+				{% for element in ingredients %}
+					<li>{{element}}</li>
+				{% endfor %}
+		<br>
+		<u>Price of recipe:</u><br>
+		<ul>
+		{% for price in prices %}
+			<li>{{price}}</li>
+		{% endfor %}
+		</ul>
+		</font>
+		<form action="back">
+		<input type="submit" name="Home" value="Home"></input>
+		</form>
+		<br><br><font size="2" color="white">
+		  Source: <a href={{sURL}}>allrecipes.com</a><br>
+		</font>
+		
+	</body>
+</html>

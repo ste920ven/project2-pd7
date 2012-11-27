@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+{% extends "haed.html" %}
+{% block head %}
+<h1>{{artist}}</h1>
+{% endblock %}
