@@ -49,7 +49,7 @@ def getSearchString(input):
         print rating
         if(printVitals(data)):
             if(rating):
-                r = printVitals(data) + "Sanitation Rating: " + rating
+                r = printVitals(data) + "Sanitation Grade: " + rating
             else:
                 r = printVitals(data)
         else:
