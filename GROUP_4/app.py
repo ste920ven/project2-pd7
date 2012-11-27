@@ -14,7 +14,7 @@ def home():
 @app.route("/survey", methods=["GET","POST"])
 def survey():
     if request.method == "GET":
-        return render_template("htmlkickstart-joshuagatcke/survey.html")
+        return render_template("survey.html")
     if request.method == "POST":
         #button = request.form["button"]
         #if button == "SAVE!!!":
