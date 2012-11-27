@@ -7,11 +7,11 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def hello_monkey():
     """Respond to incoming calls with a simple text message."""
-    #text = request.values.get('Body', None)
-    #result = factual-search.getSearchString(text)
+    text = request.values.get('Body', None)
+    result = factual_search.getSearchString(text)
     resp = twilio.twiml.Response()
-    #esp.sms(result)
-    resp.sms("Hello")
+    resp.sms(result)
+    #resp.sms("Hello")
     return str(resp)
  
 if __name__ == "__main__":
