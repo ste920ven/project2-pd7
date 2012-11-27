@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     if (matchMedia)
     { 
-	var mq = window.matchMedia("screen and (max-width: 500px), screen and (max-device-width: 500px)");  
+	var mq = window.matchMedia("only screen and (max-width: 500px), only screen and (max-device-width: 500px)");  
 	mq.addListener(WidthChange);  
 	WidthChange(mq);  
     }
