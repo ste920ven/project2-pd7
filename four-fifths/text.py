@@ -39,9 +39,10 @@ def incomingVoice():
 #don't have MTA or info pages just yet
 #  audio.append("press-3.mp3")
 #  audio.append("press-4.mp3")
+    gather = resp.gather(numDigits=1, action="/scheduleweather")
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
-        resp.gather(numDigits=1, action="/scheduleweather").play(url)
+        gather.play(url)
     print str(resp)
     return str(resp)
 
