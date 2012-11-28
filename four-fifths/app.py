@@ -20,7 +20,7 @@ render_template = _my_render_template
 @app.route('/')
 def main():
     isMobile = user_agent_parser.Parse(request.user_agent.string)['device']['is_mobile']
-
+    print isMobile
     if isMobile:
         redirect(url_for('mobile'))
 
