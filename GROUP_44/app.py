@@ -15,8 +15,14 @@ def home():
         if button == 'Save!':
             print "post works!!"
             r1 = request.form.get('zipcode') ##returns Zipcode
+            #print r1
             r2 = request.form.get('select1') ##returns fav. baseball team
-            print r2
+            #print r2
+            r3 = request.form['Action']
+            print r3
+            if r3 == "on":
+                ##means it was selected
+                return Action
             return render_template("results.html")
 
 
