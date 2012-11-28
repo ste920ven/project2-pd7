@@ -42,6 +42,7 @@ def incomingVoice():
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
         resp.gather(numDigits=1, action="/scheduleweather").play(url)
+    print str(resp)
     return str(resp)
 
 @app.route('/scheduleweather', methods=['POST'])
