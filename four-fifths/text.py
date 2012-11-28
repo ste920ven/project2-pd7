@@ -62,6 +62,8 @@ def schedule():
             audio.append("unknown.mp3")
         else :
             gymDay = extractor.getGymDay(schedule)
+            audio.append("%s.mp3"%(bellDay))
+            audio.append("cycle.mp3")
             audio.append("%s.mp3"%(gymDay))            
 #---pressed 2: weather---
     elif int(digit) == 2 :
