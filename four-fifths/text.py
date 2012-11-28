@@ -32,8 +32,16 @@ def incomingVoice():
 #note: spelled out "fizz" because it probably can't pronounce "phys"
 #    welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
  #   resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
-    audio = url_for("static", filename = "audio/welcome-1 big.mp3")
-    resp.gather(numDigits=1, action="/scheduleweather").play(audio)
+    audio = []
+    audio.append("welcome-1.mp3")
+    audio.append("press-1.mp3")
+    audio.append("press-2.mp3")
+#don't have MTA or info pages just yet
+  #  audio.append("press-3.mp3")
+  #  audio.append("press-4.mp3")
+    for each in audio:
+        url = url_for("static", filename=("audio/%s"%(each))
+        resp.gather(numDigits=1, action="/scheduleweather").play(url)
     return str(resp)
 
 @app.route('/scheduleweather', methods=['POST'])
