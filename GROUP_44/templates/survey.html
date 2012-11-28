@@ -8,13 +8,13 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
       }
     </style>
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -67,66 +67,68 @@
 <br>
   <div class="row">
   <div class="span4">
-What are your favorite movie genres?<br><br>
-    <label class="checkbox">
-    <input type="checkbox" id="Action & Adventure"> Action & Adventure</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Comedy"> Comedy</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Documentary"> Documentary</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Drama"> Drama</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Family"> Family</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Foreign"> Foreign</label>
-    <label class="checkbox">
-    <input type="checkbox" id="History"> History</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Horror"> Horror</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Independent"> Independent</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Romance"> Romance</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Sci-Fi & Fantasy"> Sci-Fi & Fantasy</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Sports"> Sports</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Thriller"> Thriller</label>
-    <label class="checkbox">
-    <input type="checkbox" id="War"> War</label>
+What movie genre are you in the mood for?<br><br>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Action & Adventure"> Action & Adventure</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Comedy" value="Comedy"> Comedy</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Documentary" value="Documentary"> Documentary</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Drama" value="Drama"> Drama</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Family" value="Family"> Family</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Foreign" value="Foreign"> Foreign</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="History" value="History"> History</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Horror" value="Horror"> Horror</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Independent" value="Independent"> Independent</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Romance" value="Romance"> Romance</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Sci-Fi & Fantasy"
+      value="Sci-Fi & Fantasy"> Sci-Fi & Fantasy</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Sports" value="Sports"> Sports</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="Thriller" value="Sports"> Thriller</label>
+    <label class="radio">
+    <input type="radio" name="Genres" id="War" value="War"> War</label>
   </div>
   <div class="span4">
-    What are your favorite types of food?<br><br>
-<label class="checkbox">
-    <input type="checkbox" id="American"> American</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Asian"> Asian</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Bakery"> Bakery</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Chinese"> Chinese</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Diner"> Diner</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Fast Food"> Fast Food</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Indian"> Indian</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Italian"> Italian</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Mexican"> Mexican</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Pizza"> Pizza</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Sandwiches"> Sandwiches</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Seafood"> Seafood</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Steakhouse"> Steakhouse</label>
-    <label class="checkbox">
-    <input type="checkbox" id="Sushi"> Sushi</label>
+    What cuisine are you in the mood for?<br><br>
+<label class="radio">
+    <input type="radio" name="Cuisines" id="American" value="American"> American</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Asian" value="Asian"> Asian</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Bakery" value="Bakery"> Bakery</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Chinese" value="Chinese"> Chinese</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Diner" value="Diner"> Diner</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Fast Food"
+      value="Fast Food"> Fast Food</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Indian" value="Indian"> Indian</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Italian" value="Italian"> Italian</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Mexican" value="Mexican"> Mexican</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Pizza" value="Pizza"> Pizza</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Sandwiches" value="Sandwiches"> Sandwiches</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Seafood" value="Seafood"> Seafood</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Steakhouse" value="Steakhouse"> Steakhouse</label>
+    <label class="radio">
+    <input type="radio" name="Cuisines" id="Sushi" value="Sushi"> Sushi</label>
   </div>
   <div class="span4">
 What is your favorite baseball team?<br><br>
@@ -165,26 +167,27 @@ What is your favorite baseball team?<br><br>
   </div>
 </div>
 <br>
-<center><input type=submit name=button value="Save!"></input></center>
+<form method="POST">
+<center><input type="submit" name=button value="Save!"></input></center>
 <br><br><br><br>
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
 
   </body>
 </html>

@@ -6,11 +6,11 @@ res = db.authenticate('ml7','ml7')
 db = Connection['z-pd7-DanielPageProbablyHerHead']
 collection = db.collection
 
-#Add's an image _url to the db
+#Adds an image _url to the db
 def addImage(_url):
 	collection.insert({'image': str(_url), 'ratings': []})
 
-#Add's a rating '_rating' to the image with the given _url
+#Adds a rating '_rating' to the image with the given _url
 def addRating(_url, _rating):
 	x = collection.find_one({'image': _url})['ratings']
 	x.append(_rating)
@@ -23,9 +23,9 @@ def getRatings(_url):
 #Returns the one (averaged) rating of the image with the given _url
 def getRating(_url):
 	x = getRatings(_url)
-	y = 0
+        y = 0
 	for rating in x:
-		y = y + int(rating)
+		y = y + int(rating) #cast to int because the ratings are unicode
 	z = len(collection.find_one({'image': _url})['ratings'])
 	return ( y / z)
 

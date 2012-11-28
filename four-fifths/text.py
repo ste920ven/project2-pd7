@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor
+import extractor, Weather
 
 app = Flask(__name__)
 
@@ -29,17 +29,24 @@ def text():
 @app.route('/incomingVoice', methods=['POST'])
 def incomingVoice():
     resp = twiml.Response()
-#note: spelled out "fizz" because it probably can't pronounce "phys"
-#    welcome = "Welcome to the Stuyvesant information hotline. Press one for today's schedule and fizz ed cycle. Press two for the weather at Stuyvesant today."
- #   resp.gather(numDigits=1, action="/scheduleweather").say(welcome)
-    audio = url_for("static", filename = "audio/welcome-1 big.mp3")
-    resp.gather(numDigits=1, action="/scheduleweather").play(audio)
+    audio = []
+    audio.append("welcome-1.mp3")
+    audio.append("press-1.mp3")
+    audio.append("press-2.mp3")
+#don't have MTA page just yet
+#  audio.append("press-3.mp3")
+    audio.append("press-4.mp3")
+    gather = resp.gather(numDigits=1, action="/scheduleweather")
+    for each in audio:
+        url = url_for("static", filename=("audio/%s"%(each)))
+        gather.play(url)
     return str(resp)
 
 @app.route('/scheduleweather', methods=['POST'])
 def schedule():
     digit = request.form['Digits']
     resp = twiml.Response()
+    audio = []
 #---pressed 1: schedule---
     if int(digit) == 1 :
         print "1 case: schedule"
@@ -47,28 +54,54 @@ def schedule():
         schedule = extractor.getSchedule(data[1], data[2])
         bellDay = extractor.getBellDay(schedule)
         if bellDay == "Closed" :
-            message = "School is closed today."
+            audio.append("Closed.mp3")
         elif bellDay == "Weekend" :
-            message = "It's a weekend. There is no school today."
+# pending weekend recording
+            audio.append("Closed.mp3")
         elif bellDay == "Unknown" :
-            message = "We don't have today's schedule. How embarrassing."
+            audio.append("Unknown.mp3")
         else :
-#'a' or 'an' depending on the next word:
-#B1/B2 ('a') or A1/A2/Unknown ('an')
             gymDay = extractor.getGymDay(schedule)
-            if gymDay[0] == "B" : article = "a"
-            else : article = "an"
-            message = "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+            audio.append("%s.mp3"%(bellDay))
+            audio.append("cycle.mp3")
+            audio.append("%s.mp3"%(gymDay))            
 #---pressed 2: weather---
     elif int(digit) == 2 :
         print "2 case: weather"
-        message = "We don't have a working weather system yet. Our apologies."
+        temp = Weather.getTemp()
+        high = Weather.getHigh()
+        low = Weather.getLow()
+#"today the high will be __ Fahrenheit, or __ Celsius,"
+        audio.append("high.mp3")
+        audio.append("%d.mp3"%(high))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%(int((high-32)*5/9)))
+        audio.append("celsius.mp3")
+#"and the low will be __ Fahrenheit, or __ Celsius."
+        audio.append("low.mp3")
+        audio.append("%d.mp3"%(low))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%(int((low-32)*5/9)))
+        audio.append("celsius.mp3")
+#"It is now __ Fahrenheit, or __ Celsius."
+        audio.append("now.mp3")
+        audio.append("%d.mp3"%(temp))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%(int((temp-32)*5/9)))
+        audio.append("celsius.mp3")
+#---pressed 4: credits---
+    elif int(digit) == 4 :
+        audio.append("credits.mp3")
 #---pressed another button
     else :
         print "Not 1 or 2. Bad user."
-        message = "You didn't press one or two. Bad user."
-    message += " Press any key to go back."
-    resp.gather(numDigits=1, action="/incomingVoice").say(message)
+        audio.append("baduser.mp3")
+    audio.append("back.mp3")
+    gather = resp.gather(numDigits=1, action="/incomingVoice")
+#temp fix until we get number mp3s
+    for each in audio:
+        url = url_for("static", filename=("audio/%s"%(each)))
+        gather.play(url)
     return str(resp)
 
 if __name__ == '__main__':
