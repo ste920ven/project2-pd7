@@ -33,9 +33,9 @@ def incomingVoice():
     audio.append("welcome-1.mp3")
     audio.append("press-1.mp3")
     audio.append("press-2.mp3")
-#don't have MTA or info pages just yet
+#don't have MTA page just yet
 #  audio.append("press-3.mp3")
-#  audio.append("press-4.mp3")
+    audio.append("press-4.mp3")
     gather = resp.gather(numDigits=1, action="/scheduleweather")
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
@@ -54,12 +54,12 @@ def schedule():
         schedule = extractor.getSchedule(data[1], data[2])
         bellDay = extractor.getBellDay(schedule)
         if bellDay == "Closed" :
-            audio.append("closed.mp3")
+            audio.append("Closed.mp3")
         elif bellDay == "Weekend" :
 # pending weekend recording
-            audio.append("closed.mp3")
+            audio.append("Closed.mp3")
         elif bellDay == "Unknown" :
-            audio.append("unknown.mp3")
+            audio.append("Unknown.mp3")
         else :
             gymDay = extractor.getGymDay(schedule)
             audio.append("%s.mp3"%(bellDay))
@@ -69,6 +69,9 @@ def schedule():
     elif int(digit) == 2 :
         print "2 case: weather"
         message = "We don't have a working weather system yet. Our apologies."
+#---pressed 4: credits---
+    elif int(digit) == 4 :
+        audio.append("credits.mp3")
 #---pressed another button
     else :
         print "Not 1 or 2. Bad user."
