@@ -70,7 +70,7 @@ def schedule():
         print "2 case: weather"
         message = "We don't have a working weather system yet. Our apologies."
 #---pressed 4: credits---
-    elif int(digit) == 3 :
+    elif int(digit) == 4 :
         audio.append("credits.mp3")
 #---pressed another button
     else :
