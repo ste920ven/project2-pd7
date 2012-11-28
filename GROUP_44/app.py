@@ -21,7 +21,10 @@ def home():
             r2 = request.form.get('select1') ##returns fav. baseball team
             print r2
             ######## START CHECKBOXES ###########
-
+            #r3 = ["",""]
+            r4 = request.form['Action']
+            print r4
+            #print tmp
 
      #       r3 = ["test","test2"]
             ##i think i'm going to have to hardcode each checkbox
