@@ -38,7 +38,8 @@ def ingredients(recipe):
     b = []
     for item in a:
         try:
-            b.append(str(item.contents[0]))
+            if str(item.contents[0]) != 'water':
+                b.append(str(item.contents[0]))
         except:
             pass
     return b
@@ -54,9 +55,10 @@ def getPrice(k,name):
     url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&tbs=cat:422&q=%s'%(k,name)
     request = urllib2.urlopen(url2)
     result2 = json.loads(request.read())
+    #print result2['items']
     price = result2['items'][0]['product']['inventories'][0]['price']
     name = result2['items'][0]['product']['title']
-    return price,str(name)
+    return price, str(name)
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
