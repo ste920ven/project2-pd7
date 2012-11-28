@@ -13,22 +13,22 @@ def home():
 
 @app.route("/survey", methods=["GET","POST"])
 def survey():
+    print "woo"
     if request.method == "GET":
+        print "woo2"
+        button = request.form["button"]
         return render_template("survey.html")
-    if request.method == "POST":
-        #button = request.form["button"]
+    else:
+        return render_template("survey.html")
+        print "fucking a"
+    
         #if button == "SAVE!!!":
             #blah
-        r1 = request.form['question1']
+        #r1 = request.form['question1']
         #r2 = request.form['question2']
-        '''
-        AN API METHOD WILL NOW SEARCH USING THE DATA
-        GATHERED IN variable r1
-        send1 = espn(r1)
-        '''
-        send1 = ["Hello Testing Hello", "TEST ! @ #"]
-        return render_template("results.html",list1 = send1)
-
+        #send1 = ["Hello Testing Hello", "TEST ! @ #"]
+        #return render_template("results.html",list1 = send1)
+    #print "wooo"
 @app.route("/results",methods=["GET","POST"])
 def results():
     return render_template("survey.html") ##this template doesnt exist yet

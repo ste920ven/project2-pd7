@@ -19,11 +19,29 @@ def getStateId(x):
         states[item['name']] = item['id']         
     return states[x]
 
-def getEvent(artist,zip_code):
-    request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.search&search_text=" + artist + "&location=" + str(zip_code) +"&format=json"
-    print request
+def getEvent(event,zip_code):
+    request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.search&search_text=" + event + "&location=" + str(zip_code) +"&format=json"
     print sendRequest(request)
+    return sendRequest(request)
+
+def getEventInfo(event,zip_code,detail):
+    x = getEvent(event,zip_code)
+    info = {"id" : detail}
+    for item in x['rsp']['event']:
+        info[item['id']] = item[detail]
+    return info;
+
+def getEventByID(id):
+    request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.getInfo&event_id=" + str(id) + "&format=json"
+    return sendRequest(request)
+    
+def getEventIDInfo(id,detail):
+    x = getEventByID(id)
+    info = {"id" : detail}
+    for item in x['rsp']['event']:
+        info[item['id']] = item[detail]
+    return info
 
 
 
-getMusicShow("Comedy",11354)
+
