@@ -39,9 +39,12 @@
 			<h2><u>{{title}}</u></h2>
 			<br>
 			<h3><u>Ingredients: </u></h3>
+			<BLOCKQUOTE>
 				{% for element in ingredients %}
 					<li>{{element}}</li>
 				{% endfor %}
+			</BLOCKQUOTE>
+			<!-- BLOCKQUOTE for indentation -->
 		<br>
 		<h3><u>Price List:</u></h3>
 		<ul>
