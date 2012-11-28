@@ -14,9 +14,9 @@ def home():
         print "post1"
         if button == 'Save!':
             print "post works!!"
-            r1 = request.form.get('zipcode') ##returns "None" - how can i get to return 
-                                             ## the text that the user inputs??
-            print r1
+            r1 = request.form.get('zipcode') ##returns Zipcode
+            r2 = request.form.get('select1') ##returns fav. baseball team
+            print r2
             return render_template("results.html")
 
 
