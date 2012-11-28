@@ -1,19 +1,15 @@
-from flask import Flask
-from flask import session,url_for,request,redirect
-from flask import render_template
-import mongo
+from flask import Flask, render_template, request, redirect, url_for, session
+import db
 
 app = Flask(__name__)
 
-quote = wiki-proof.getQuote()
-title = wiki-proof.getTitle()
+#quote = wiki-proof.getQuote()
+#title = wiki-proof.getTitle()
 
 @app.route("/",methods=['GET','POST'])
-def Home():
-
-    
+def home():
+    return render_template("index.html")
 
 if __name__ == "__main__":
-    app.debug=True
-    app.run()		
+    app.run(debug=True)	
 
