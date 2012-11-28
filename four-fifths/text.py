@@ -37,10 +37,10 @@ def incomingVoice():
     audio.append("press-1.mp3")
     audio.append("press-2.mp3")
 #don't have MTA or info pages just yet
-  #  audio.append("press-3.mp3")
-  #  audio.append("press-4.mp3")
+#  audio.append("press-3.mp3")
+#  audio.append("press-4.mp3")
     for each in audio:
-        url = url_for("static", filename=("audio/%s"%(each))
+        url = url_for("static", filename=("audio/%s"%(each)))
         resp.gather(numDigits=1, action="/scheduleweather").play(url)
     return str(resp)
 
