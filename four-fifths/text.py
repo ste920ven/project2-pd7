@@ -71,17 +71,23 @@ def schedule():
         temp = Weather.getTemp()
         high = Weather.getHigh()
         low = Weather.getLow()
-#"today the high will be __ Fahrenheit, or __ Celsius"
+#"today the high will be __ Fahrenheit, or __ Celsius,"
         audio.append("high.mp3")
         audio.append("%d.mp3"%(high))
         audio.append("fahrenheit.mp3")
-        audio.append("%d.mp3"%((high-32)*5/9))
+        audio.append("%d.mp3"%(int((high-32)*5/9)))
         audio.append("celsius.mp3")
-#"and the low will be __ Fahrenheit, or __ Celsius"
+#"and the low will be __ Fahrenheit, or __ Celsius."
         audio.append("low.mp3")
         audio.append("%d.mp3"%(low))
         audio.append("fahrenheit.mp3")
-        audio.append("%d.mp3"%((low-32)*5/9))
+        audio.append("%d.mp3"%(int((low-32)*5/9)))
+        audio.append("celsius.mp3")
+#"It is now __ Fahrenheit, or __ Celsius."
+        audio.append("now.mp3")
+        audio.append("%d.mp3"%(temp))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%(int((temp-32)*5/9)))
         audio.append("celsius.mp3")
 #---pressed 4: credits---
     elif int(digit) == 4 :
