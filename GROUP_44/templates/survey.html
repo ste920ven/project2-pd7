@@ -62,10 +62,10 @@
 
       <center><h1>Personal Survey:</h1></center>
       <br>
-<form method="GET">
+<form method="POST">
       <center><label for="zipcode">What is your zipcode?</label>
-      <input name=zipcode type="text" placeholder="Zipcode"></center>
-</form>
+      <input name=zipcode type="text" id="input" placeholder="Zipcode"></center>
+
 <br>
   <div class="row">
   <div class="span4">
@@ -132,7 +132,7 @@ What are your favorite movie genres?<br><br>
   </div>
   <div class="span4">
 What is your favorite baseball team?<br><br>
-    <select>
+    <select name=select1>
   <option value="Choose">Choose</option>
   <option value="Arizona Diamondbacks">Arizona Diamondbacks</option>
   <option value="Atlanta Braves">Atlanta Braves</option>
@@ -167,7 +167,7 @@ What is your favorite baseball team?<br><br>
   </div>
 </div>
 <br>
-<form method="POST">
+
 <center><input type="submit" name=button value="Save!"></input></center>
 <br><br><br><br>
     </div> <!-- /container -->
