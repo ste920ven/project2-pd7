@@ -11,9 +11,13 @@ def home():
         return render_template("survey.html")
     else:
         button=request.form.get('button',"")
+        print "post1"
         if button == 'Save!':
             print "post works!!"
-            return render_template("survey.html")
+            r1 = request.form.get('zipcode') ##returns "None" - how can i get to return 
+                                             ## the text that the user inputs??
+            print r1
+            return render_template("results.html")
 
 
 if __name__ == "__main__":
