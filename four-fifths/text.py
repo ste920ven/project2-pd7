@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor
+import extractor, Weather
 
 app = Flask(__name__)
 
@@ -68,7 +68,21 @@ def schedule():
 #---pressed 2: weather---
     elif int(digit) == 2 :
         print "2 case: weather"
-        message = "We don't have a working weather system yet. Our apologies."
+        temp = Weather.getTemp()
+        high = Weather.getHigh()
+        low = Weather.getLow()
+#"today the high will be __ Fahrenheit, or __ Celsius"
+        audio.append("high.mp3")
+        audio.append("%d.mp3"%(high))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%((high-32)*5/9))
+        audio.append("celsius.mp3")
+#"and the low will be __ Fahrenheit, or __ Celsius"
+        audio.append("low.mp3")
+        audio.append("%d.mp3"%(low))
+        audio.append("fahrenheit.mp3")
+        audio.append("%d.mp3"%((low-32)*5/9))
+        audio.append("celsius.mp3")
 #---pressed 4: credits---
     elif int(digit) == 4 :
         audio.append("credits.mp3")
@@ -78,6 +92,7 @@ def schedule():
         audio.append("baduser.mp3")
     audio.append("back.mp3")
     gather = resp.gather(numDigits=1, action="/incomingVoice")
+#temp fix until we get number mp3s
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
         gather.play(url)
