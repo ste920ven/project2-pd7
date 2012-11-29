@@ -15,5 +15,4 @@ def hello_monkey():
     return str(resp)
  
 if __name__ == "__main__":
-    app.debug = True
-    app.run(host="0.0.0.0", port=7201, debug=True)
+    app.run(host="0.0.0.0", port=7201, debug=False)
