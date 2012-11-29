@@ -1,6 +1,7 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
 import extractor, Weather
+import random
 
 app = Flask(__name__)
 
@@ -36,13 +37,13 @@ def incomingVoice():
 #don't have MTA page just yet
 #  audio.append("press-3.mp3")
     audio.append("press-4.mp3")
-    gather = resp.gather(numDigits=1, action="/scheduleweather")
+    gather = resp.gather(numDigits=1, action="/choice")
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
         gather.play(url)
     return str(resp)
 
-@app.route('/scheduleweather', methods=['POST'])
+@app.route('/choice', methods=['POST'])
 def schedule():
     digit = request.form['Digits']
     resp = twiml.Response()
@@ -71,19 +72,19 @@ def schedule():
         temp = Weather.getTemp()
         high = Weather.getHigh()
         low = Weather.getLow()
-#"today the high will be __ Fahrenheit, or __ Celsius,"
+        #"today the high will be __ Fahrenheit, or __ Celsius,"
         audio.append("high.mp3")
         audio.append("%d.mp3"%(high))
         audio.append("fahrenheit.mp3")
         audio.append("%d.mp3"%(int((high-32)*5/9)))
         audio.append("celsius.mp3")
-#"and the low will be __ Fahrenheit, or __ Celsius."
+        #"and the low will be __ Fahrenheit, or __ Celsius."
         audio.append("low.mp3")
         audio.append("%d.mp3"%(low))
         audio.append("fahrenheit.mp3")
         audio.append("%d.mp3"%(int((low-32)*5/9)))
         audio.append("celsius.mp3")
-#"It is now __ Fahrenheit, or __ Celsius."
+        #"It is now __ Fahrenheit, or __ Celsius."
         audio.append("now.mp3")
         audio.append("%d.mp3"%(temp))
         audio.append("fahrenheit.mp3")
@@ -94,16 +95,31 @@ def schedule():
         audio.append("credits.mp3")
 #---pressed another button
     else :
-        print "Not 1 or 2. Bad user."
+        print "Not valid number. Bad user."
         audio.append("baduser.mp3")
     audio.append("back.mp3")
-    gather = resp.gather(numDigits=1, action="/incomingVoice")
-#temp fix until we get number mp3s
+#play all queued audio
+    gather = resp.gather(numDigits=1, action="/chance", timeout=10)
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
         gather.play(url)
     return str(resp)
 
+@app.route("/chance", methods = ['POST'])
+def chance():
+#user has two seconds to press another button and get an easter egg
+    resp = twiml.Response()
+    resp.gather(numDigits=1, action = '/egg', timeout = 2)
+    resp.redirect(url="/incomingVoice")
+    return str(resp)
+
+@app.route("/egg", methods = ['POST'])
+#play one of the fourteen easter eggs at random
+def egg:
+    resp = twiml.Response()
+    resp.play("egg-%d.mp3"%(random.randInt(0,13)))
+    resp.redirect(url="/incomingVoice")
+
 if __name__ == '__main__':
     app.debug = True
-    app.run(host="0.0.0.0", port=7255, debug=True)
+    app.run(host="0.0.0.0", port=7255, debug = True)
