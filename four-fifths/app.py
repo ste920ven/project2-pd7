@@ -28,7 +28,7 @@ def main():
 
     # Some select mobile OSs report a desktop browser.
     # make sure we note they're mobile
-    mobile_os_families = ['Windows Phone 6.5','Windows CE','Symbian OS']
+    mobile_os_families = ['Windows Phone 6.5','Windows CE','Symbian OS','iOS']
 
     ua_family = user_agent_parser.ParseUserAgent(user_agent_string)['family']
     print ua_family
@@ -45,7 +45,7 @@ def main():
         is_mobile = False
 
     if is_mobile:
-        redirect(url_for('mobile'))
+        return redirect(url_for('mobile'))
 
     else:
         data     = extractor.loadStuySite()
