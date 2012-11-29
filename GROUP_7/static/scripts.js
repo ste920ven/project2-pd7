@@ -27,7 +27,6 @@ function initialize() {
 	if(map.zoom < minZoomLevel) map.setZoom(minZoomLevel);
     });
 
-    changeMS('aliens');
     google.maps.event.addListener(map, 'dragend', function() {
 	if (strictBounds.contains(map.getCenter())) return;
 	var c = map.getCenter(),
@@ -106,15 +105,15 @@ function calcRoute() {
 
 function changeBGC(str){
     if(str==='aliens'){
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%)');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #aebcbf 0%,#6e7774 50%,#0a0e0a 51%,#0a0809 100%)');
     }
     else if(str==='fire'){
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(252,234,187,1) 0%,rgba(248,181,0,1) 6%,rgba(252,205,77,1) 50%,rgba(251,223,147,1) 100%)');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%)');
     }
     else if(str==='hurricane'){
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(254,255,255,1) 0%,rgba(221,241,249,1) 35%,rgba(160,216,239,1) 100%)');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%)');
     }
     else{
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(241,111,92,1) 5%,rgba(248,80,50,1) 33%,rgba(240,47,23,1) 67%,rgba(246,41,12,1) 84%,rgba(231,56,39,1) 100%)');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%)');
     }
 }
