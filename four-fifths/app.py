@@ -19,9 +19,32 @@ render_template = _my_render_template
 
 @app.route('/')
 def main():
-    device = user_agent_parser.ParseDevice(request.user_agent.string)
-    print device
-    if device['is_mobile']:
+    #device = user_agent_parser.ParseDevice(request.user_agent.string)
+    #print device
+
+    user_agent_string = request.user_agent.string
+
+    mobile_user_agent_families = ['Firefox Mobile','Opera Mobile','Opera Mini','Mobile Safari','webOS','IE Mobile','Playstation Portable','Nokia','Blackberry','Palm','Silk','Android','Maemo','Obigo','Netfront','AvantGo','Teleca','SEMC-Browser','Bolt','Iris','UP.Browser','Symphony','Minimo','Bunjaloo','Jasmine','Dolfin','Polaris','BREW','Chrome Mobile','UC Browser','Tizen Browser']
+
+    # Some select mobile OSs report a desktop browser.
+    # make sure we note they're mobile
+    mobile_os_families = ['Windows Phone 6.5','Windows CE','Symbian OS']
+
+    ua_family = user_agent_parser.ParseUserAgent(user_agent_string)['family']
+    print ua_family
+
+    os_family = user_agent_parser.ParseOS(user_agent_string)['family']
+    print os_family
+
+# Bits to match some of dmolsen's device booleans.
+    if ua_family in mobile_user_agent_families:
+        is_mobile = True
+    elif os_family in mobile_os_families:
+        is_mobile = True
+    else:
+        is_mobile = False
+
+    if is_mobile:
         redirect(url_for('mobile'))
 
     else:
