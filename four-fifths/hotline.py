@@ -109,7 +109,7 @@ def schedule():
 
     #"Press any button to go back."
     audio.append("back.mp3")
-    #play all queued audio, accepting any key as an interrupt
+    #play all queued audio, accepting any button as an interrupt
     gather = resp.gather(numDigits=1, action="/chance", timeout=10)
     for each in audio:
         url = url_for("static", filename=("audio/%s"%(each)))
@@ -118,7 +118,7 @@ def schedule():
 
 @app.route("/chance", methods = ['POST'])
 def chance():
-#user has two seconds to press another button and get an easter egg
+#user has two seconds to press any button and get an easter egg
     resp = twiml.Response()
     resp.gather(numDigits=1, action = '/egg', timeout = 2)
     resp.redirect(url="/incomingVoice")
