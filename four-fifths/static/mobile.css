@@ -6,12 +6,12 @@ a:active, a:focus      { text-decoration: none; }
 
 .hide                  { display: none; }
 
-header                 { position: static; height: 70px; display: block; width: 100%;
+header                 { position: static; height: 60px; display: block; width: 100%;
                          background-color: rgba(0,0,0,0.4);
                          border-bottom: 2px solid #FF9500;
 		       }
 
-header a               { width: 50%; line-height: 35px; height: 35px; font-size: 15px;
+header a               { width: 50%; line-height: 30px; height: 30px; font-size: 13px;
 			 display: block; float: left; text-align: center;
                          text-decoration: none; color: white; }
 header a:hover,
@@ -20,31 +20,32 @@ header a:active        { background: rgba(0,0,0,0.3); }
 
 section#info           { width: 100%; }
 
-div#statusbar          { width: 80%; margin: 0 auto; height: 40px; background: rgba(0,0,0,0.6); border-radius: 23px; 
-                         border: 3px solid #FF9500; margin-top: 20px; margin-bottom: 30px; color: #3A3A3A; }
+div#statusbar          { width: 90%; margin: 0 auto; height: 35px; background: rgba(0,0,0,0.6); border-radius: 19px; 
+                         border: 2px solid #FF9500; font-size: 10px;
+			 margin-top: 20px; margin-bottom: 30px; color: #3A3A3A; }
 div#schoolday          { width: 45%; float:  left; text-align: center; }
 div#date               { width: 45%; float: right; text-align: center; }
 p#period, p#time       { font-size: 15px; line-height: 35px; font-weight: bold;
 			 color: white; padding-bottom: 8px; overflow: hidden; }
 div#weather            { width: 60px; height: 60px; border-radius: 35px; top: -15px;
-			 line-height: 60px; font-size: 20px; display: block;
-			 border: 3px solid #FF9500; background: #3A3A3A;
+			 line-height: 60px; font-size: 15px; display: block;
+			 border: 2px solid #FF9500; background: #3A3A3A;
                          position: relative; margin: 0 auto;
                          text-align: center; color: white; }
 
-table.bell             { margin: 0 auto; text-align: center; margin-bottom: 20px;
+table.bell             { margin: 0 auto; margin-bottom: 20px;
                          border-collapse: collapse; width: 100%; }
 table.bell tr.active   { color: #FF9500; text-shadow: 1px 1px rgba(0,0,0,0.5); }
 table.bell
-tr td:first-child      { padding: 2px 8% 2px 0; width: 50%; text-align: right; border-right: 3px solid #FF9500; }
+tr td:first-child      { padding: 2px 8% 2px 0; text-align: right; border-right: 2px solid #FF9500; }
 table.bell
-tr td:last-child       { padding: 2px 0 2px 8%; width: 50%; text-align:  left; border-left:  3px solid #FF9500; }
+tr td:last-child       { padding: 2px 0 2px 8%; text-align:  left; border-left:  2px solid #FF9500; }
 
 div#unknown            { text-align: center; }
 div#unknown button     { margin: 0 15px; }
 
 
-ul#news                { padding-top: 20px; width: 85%; margin: 0 auto; }
+ul#news                { padding-top: 20px; width: 85%; margin: 0 auto; list-style: none; }
 ul#news li             { padding-bottom: 15px; color: #3A3A3A; }
 ul#news li a           { font-weight: bold; }
 
