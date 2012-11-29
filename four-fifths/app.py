@@ -1,21 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for
 from ua_parser import user_agent_parser
-#from mobile.sniffer.detect import  detect_mobile_browser
-#from mobile.sniffer.utilities import get_user_agent
 import extractor
 
 app = Flask(__name__)
-
-
-'''
-#use mobile site if needed
-_render_template = render_template
-def _my_render_template(*args, **kwargs):
-    if detect_mobile_browser(request.user_agent.string):
-        args = ('m/' + args[0],) + args[1:]
-    return _render_template(*args, **kwargs)
-render_template = _my_render_template
-'''
 
 @app.route('/')
 def main():
