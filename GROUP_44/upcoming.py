@@ -21,7 +21,7 @@ def getStateId(x):
 
 def getEvent(event,zip_code):
     request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.search&search_text=" + event + "&location=" + str(zip_code) +"&format=json"
-    print sendRequest(request)
+#    print sendRequest(request)
     return sendRequest(request)
 
 def getEventInfo(event,zip_code,detail):

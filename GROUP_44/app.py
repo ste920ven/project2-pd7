@@ -1,5 +1,8 @@
 from flask import Flask,url_for,redirect,flash,session,escape,request,render_template
 from pymongo import connection
+import upcoming
+#import espn
+#import factual
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -23,20 +26,27 @@ def home():
             r3 = request.form['Genres']
             print r3
             ##Get Cuisine
-            r4 = request.form['Cuisine']
+            r4 = request.form['Cuisines']
             print r4
 
             #### Interact with APIs ####
-            if r1 == "":
+            if r1 != "":
                 ##r1 was not chosen
                 r1 = "NOTCHOSEN"
-            if r2 == "Choose":
+                ##
+                ## put methods here that need r1
+                ##
+            if r2 != "Choose":
                 ##r2 was not chosen
                 r2 = "NOTCHOSEN"
+                ##
+                ## put methods here that need r2
+                ##
 
     ##remember to hard code in s/t radio buttons cannot be left blank 
-    
             
+            s3 = upcoming.getEvent(r3,"10128")
+            print s3
 
             #### End API interaction ####
             return render_template("results.html")
