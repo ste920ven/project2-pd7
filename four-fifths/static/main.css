@@ -20,7 +20,7 @@
       header a:focus,
       header a:active        { background: rgba(0,0,0,0.3); }
 
-      div.main               { display: block; width: 62%; padding: 4%;
+      div#main               { display: block; width: 62%; padding: 4%;
                                margin-top: 50px; float: left; }
 
       section#info           { width: 80%; margin: 0 auto; }
