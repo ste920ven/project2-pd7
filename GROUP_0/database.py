@@ -67,4 +67,5 @@ def getAlbumRating(album,artist):
 
 
 if __name__ == '__main__':
-    pass
+    pass;
+

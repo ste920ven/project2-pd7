@@ -102,7 +102,7 @@ def printVitals(data):
     #string = string + "Category: " + data["category"] + '\n'
     string = string + "Address: " + data["address"] + " " + data["locality"] + ", " + data["region"] + " " + data["postcode"] + '\n'
     try:
-        string = string + "Rating: " + str(data["rating"]) + '\n'
+        string = string + "Rating: " + str(data["rating"]) + '/5\n'
     except KeyError:
         string = string + "Rating: No rating" + '\n'
     print string
@@ -129,5 +129,5 @@ def searchAndPrintVitalsWZip(name, zipcode):
     print string
     return string
 
-getSearchString("Bar,10021")
+getSearchString("Bar,New York,NY")
  

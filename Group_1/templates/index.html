@@ -1,19 +1,80 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html> <head>
 <title></title>
+
+
+<style>
+h1{font-size:50px;
+color:green;
+}
+
+h3{
+font-size:25px;
+color:blue;
+}
+
+
+#login{
+position:absolute;
+right:20px;
+top:20px;
+}
+
+#what{
+
+top:75px;
+right:20px;
+text-align:justify;
+width:500px;
+z-index:2;
+}
+
+#how{
+width:500px;
+position:absolute;
+top:75px;
+left: 540px;
+z-index:1;
+}
+
+
+</style>
+
 </head>
 
 <body>
 
 <h1>Restaurant Ratings</h1>
 
-<p>Please Login:</p>
+
+<div id ='login'>
+Login:
 <form method="POST" action ="">
-Name: <input type="text" id = "number" name = "number"></input>
+Phone Number: <input type="text" id = "number" name = "number"></input>
 </form>
 
+</div>
 
-<hr>
-<address></address>
-<!-- hhmts start -->Last modified: Sat Nov 17 21:05:53 EST 2012 <!-- hhmts end -->
+
+<div id = "what">
+<h3> What is this? </h3>
+<p>
+This app is designed to enable people without smartphones to increase
+  the functionality of their phones through sms messaging. In order to
+  use it they text the name of a restaurant and a zipcode or adress
+  to the number 1-917-231231231. The app will then return a text
+  message with a rating for the restaurant based on the factual
+  database. It will also return the sanitation rating given to every
+  restaurant in the New York City Metropolitan area.
+</p>
+</div>
+
+<div id = "how">
+<h3> How to use this </h3>
+<p>
+To use this app text 1-917-92322 a text in the format:restaurant name,
+  zipcode, blah, blah
+</p>
+</div>
+
 </body> </html>

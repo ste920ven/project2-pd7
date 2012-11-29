@@ -1,5 +1,7 @@
 <html>
+  <title>Recipe Pricer: {{title}}</title>
 	<head>
+	  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		<style type="text/css">
 		body{
 			font-family: "Arial";
@@ -39,9 +41,12 @@
 			<h2><u>{{title}}</u></h2>
 			<br>
 			<h3><u>Ingredients: </u></h3>
+			<BLOCKQUOTE>
 				{% for element in ingredients %}
 					<li>{{element}}</li>
 				{% endfor %}
+			</BLOCKQUOTE>
+			<!-- BLOCKQUOTE for indentation -->
 		<br>
 		<h3><u>Price List:</u></h3>
 		<ul>
@@ -60,6 +65,7 @@
 		<form action="back">
 		<input type="submit" name="Home" value="Home"></input>
 		</form>
+		<!--Put script to remove ingredient when it is clicked -->
 		<font size="2" color="white">
 		  Source: <a href={{sURL}}>allrecipes.com</a><br>
 		</font>
