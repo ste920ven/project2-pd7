@@ -29,12 +29,14 @@ def home():
             #### Interact with APIs ####
             if r1 == "":
                 ##r1 was not chosen
+                r1 = "NOTCHOSEN"
             if r2 == "Choose":
                 ##r2 was not chosen
-                
+                r2 = "NOTCHOSEN"
+
     ##remember to hard code in s/t radio buttons cannot be left blank 
     
-                
+            
 
             #### End API interaction ####
             return render_template("results.html")
