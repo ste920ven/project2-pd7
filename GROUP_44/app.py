@@ -1,5 +1,8 @@
 from flask import Flask,url_for,redirect,flash,session,escape,request,render_template
 from pymongo import connection
+import upcoming
+#import espn
+#import factual
 
 app = Flask(__name__)
 app.secret_key = 'some_secret'
@@ -12,40 +15,27 @@ def home():
     else:
         button=request.form.get('button',"")
         #print "post1"
-        if button == 'Save!':
-            
+        if button == 'Save!':            
             ##GET ZIPCODE
-            r1 = request.form.get('zipcode') ##returns Zipcode
+            r1 = request.form['zipcode'] ##returns Zipcode
             print r1
             ##GET FAV BASEBALL TEAM
-            r2 = request.form.get('select1') ##returns fav. baseball team
+            r2 = request.form['select1'] ##returns fav. baseball team
             print r2
-            ######## START CHECKBOXES ###########
-            #r3 = ["",""]
-            r4 = request.form['Action']
+            ##Get Genre
+            r3 = request.form['Genres']
+            print r3
+            ##Get Cuisine
+            r4 = request.form['Cuisines']
             print r4
-            #print tmp
 
-     #       r3 = ["test","test2"]
-            ##i think i'm going to have to hardcode each checkbox
-     #       tmp = request.form['cb1']
-     #       if tmp == "on":
-     #           r3.append("Action & Adventure")
-     #       tmp = request.form['cb2']
-     #       if tmp == "on":
-     #           r3.append(tmp)
-     #       print r3    
-            #r3 = request.form['Action']
-            #print r3
-            #if r3 == "on": ##means it was selected
-            #    r3 = Action & Adventure        
+            #### Interact with APIs ####
+    ##remember to hard code in s/t nothing can  be left blank 
+            s3 = upcoming.getEvent(r3,r1)
+            print s3
 
+            #### End API interaction ####
 
-            ########### END CHECKBOXES ##############
-
-            ## Interact with APIs ##
-
-            ## End API interaction ##
             return render_template("results.html")
 
 
