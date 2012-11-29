@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from ua_parser import user_agent_parser
-import extractor
+import extractor, Weather
 
 app = Flask(__name__)
 
@@ -12,6 +12,7 @@ def main():
     bellDay  = extractor.getBellDay(schedule)
     gymDay   = extractor.getGymDay(schedule)
     date     = extractor.getDate()
+    temp     = Weather.getTemp()
 
     user_agent_string = request.user_agent.string
     mobile_user_agent_families = ['Firefox Mobile','Opera Mobile','Opera Mini','Mobile Safari','webOS','IE Mobile','Playstation Portable','Nokia','Blackberry','Palm','Silk','Android','Maemo','Obigo','Netfront','AvantGo','Teleca','SEMC-Browser','Bolt','Iris','UP.Browser','Symphony','Minimo','Bunjaloo','Jasmine','Dolfin','Polaris','BREW','Chrome Mobile','UC Browser','Tizen Browser']
@@ -25,7 +26,8 @@ def main():
                                schedule=schedule,
                                bellDay=bellDay,
                                gymDay=gymDay,
-                               date=date)
+                               date=date,
+                               temp=temp)
 
     else:
         return render_template('home.html',
@@ -33,7 +35,8 @@ def main():
                                schedule=schedule,
                                bellDay=bellDay,
                                gymDay=gymDay,
-                               date=date)
+                               date=date,
+                               temp=temp)
 
 if __name__ == '__main__':
     app.debug = True
