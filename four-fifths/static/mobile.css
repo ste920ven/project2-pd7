@@ -45,7 +45,7 @@ div#unknown            { text-align: center; }
 div#unknown button     { margin: 0 15px; }
 
 
-ul#news                { padding-top: 20px; width: 85%; margin: 0 auto; }
+ul#news                { padding-top: 20px; width: 85%; margin: 0 auto; list-style: none; }
 ul#news li             { padding-bottom: 15px; color: #3A3A3A; }
 ul#news li a           { font-weight: bold; }
 
