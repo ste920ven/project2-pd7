@@ -20,7 +20,7 @@ def main():
     os_family = user_agent_parser.ParseOS(user_agent_string)['family']
 
     if ua_family in mobile_user_agent_families or os_family in mobile_os_families:
-        return render_template('mobile',
+        return render_template('mobile.html',
                                news=news,
                                schedule=schedule,
                                bellDay=bellDay,
