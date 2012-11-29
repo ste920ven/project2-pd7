@@ -28,9 +28,9 @@ div#date               { width: 45%; float: right; text-align: center; }
 p#period, p#time       { font-size: 17px; line-height: 35px; font-weight: bold;
 			 color: white; padding-bottom: 8px; overflow: hidden; }
 div#weather            { width: 60px; height: 60px; border-radius: 35px; top: -15px;
-			 line-height: 60px; font-size: 18px; display: block;
+			 line-height: 60px; font-size: 20px; display: block;
 			 border: 2px solid #FF9500; background: #3A3A3A;
-                         position: relative; margin: 0 auto;
+                         position: absolute; margin: 0 auto;
                          text-align: center; color: white; }
 
 table.bell             { margin: 0 auto; margin-bottom: 20px;
