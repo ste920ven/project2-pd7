@@ -3,6 +3,9 @@ import math
 from flask import session,url_for,redirect,flash
 import urllib2
 
+
+import twilio_records
+
 app = Flask(__name__)
 
 
@@ -13,12 +16,24 @@ def index():
         num = request.form['number']
         url=urllib2.quote('/rates/%s'%(num))
         return redirect(url)
+    #print twilio_records.getRecords(num)
     return render_template('index.html')
 
 
 @app.route("/rates/<num>", methods = ['GET', 'POST'])
 def rates(num):
-    return render_template('restaurants.html', numb = num)
+    ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
+    return render_template('restaurants.html', numb = num, ratings = ratings )
+
+@app.route("/getrating/<num>/<name>", methods = ['GET', 'POST'])
+def getrating(num, name):
+    ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
+    return ratings[name]
+
+# @app.route("/ratesimages/preload.gif")
+# def preload():
+#     return render_template('preload.html')
+    
 
 
 if __name__=="__main__":

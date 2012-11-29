@@ -5,12 +5,27 @@
 {% endblock%}
 
 {% block body %}
-<div style="width:200px;position:relative;bottom:20px;left:20px">
-    <form action="" method="POST">
-      <label for="text1">Name</label>
-      <input type="text" name="name" placeholder="Name"><br>
-      <input type="submit" name="button" value="login">
-    </form>
+<div style="position:relative" align="center">
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+	{% for message in messages %}
+	  <p>{{message}}</p>
+	{% endfor %}
+   {% endif %}
+{% endwith %}
 </div>
+<form action="" method="POST">
+  <div style="position:relative;" align="center">
+    <label for="text1">Name</label>
+    <input type="text" name="name" right="20px"><br>
+  </div>
+  <div style="position:relative;right:10px" align="center">
+    <label for="text2">Password</label>
+    <input type="password" name="password"><br>
+  </div>
+  <div style="position:relative;left:25px" align="center">
+    <input type="submit" name="button" value="login"> or 
+    <input type="submit" name="button" value="register">
+</form>
 {% endblock %}
 

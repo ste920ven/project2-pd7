@@ -1,6 +1,5 @@
-import urllib2
+import urllib2, json, sys
 from bs4 import BeautifulSoup
-import json
 
 key = 'AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA'
 
@@ -20,6 +19,7 @@ def search(food):
 
     soup = BeautifulSoup(urllib2.urlopen(searchu).read())
     a = soup.findAll(True,{'id':"ctl00_CenterColumnPlaceHolder_rptResults_ctl00_ucResultContainer_ucRecipe_lnkImage"})
+#this return statement is where the program trips up if the search term, say quetzalcoatl, doesn't give a recipe
     return a[0].attrs['href']
 
 def recipeName(url):
@@ -38,7 +38,8 @@ def ingredients(recipe):
     b = []
     for item in a:
         try:
-            b.append(str(item.contents[0]))
+            if str(item.contents[0]) != 'water':
+                b.append(str(item.contents[0]))
         except:
             pass
     return b
@@ -48,23 +49,20 @@ def getImage(url):
     a = soup.findAll(True, {'id':"metaOpenGraphImage"})
     return a[0].attrs['content']
 
-
-"""
-print ingredients('http://allrecipes.com/recipe/brownie-frosting/detail.aspx?event8=1&prop24=SR_Title&e11=brownies&e8=Quick%20Search&event10=1&e7=Home%20Page')
-I removed the unneccessary parameters from the URL to make it easier to use
-with future code, but I'll keep the long one commented in case we need it
-in the future. -Brian
-"""
-
 def getPrice(k,name):
     name = name + "+food"
     name=urllib2.quote(name)
-    url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&q=%s'%(k,name)
+    url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&tbs=cat:422&q=%s'%(k,name)
     request = urllib2.urlopen(url2)
     result2 = json.loads(request.read())
-    price = result2['items'][0]['product']['inventories'][0]['price']
-    name = result2['items'][0]['product']['title']
-    return price,str(name)
+    #provisional nonsense to get around the error that happens with some foods that DO return recipes, like calamari
+    try:
+        price = result2['items'][0]['product']['inventories'][0]['price']
+        name = result2['items'][0]['product']['title']
+        return price, str(name)
+    except:
+        sys.exit("No, no, is no work")
+        #maybe replace this with an error page?
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
@@ -76,9 +74,11 @@ def prices(l,name,k):
 
 #print ingredients(search("lemon merengue pie stuff"))
 #recipeName(search("lemon merengue pie"))
+"""
 rr = search("lemon merengue pie")
 
 prices(ingredients(rr),recipeName(rr),key)
 
 der = search("orange")
 getImage(der)
+"""

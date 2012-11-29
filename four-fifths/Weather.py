@@ -1,21 +1,38 @@
-from flask import Flask
 import urllib2,json
 
-app=Flask(__name__)
-
-
-
-def temp():
+def getTemp():
     url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
     d=url.read()
     y = "temp="
     x = d.find(y)
-    x = d[x+6:x+9]
-    return x
+    x = d[x+6:x+8]
+    return int(x)
 
+def getHigh():
+    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
+    d=url.read()
+    y = "high="
+    x = d.find(y)
+    x = d[x+6:x+8]
+    return int(x)
 
-def forecast():
-    d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderstorms","mixed rain and snow",
+def getLow():
+    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
+    d=url.read()
+    y = "low="
+    x = d.find(y)
+    x = d[x+5:x+7]
+    return int(x)
+
+def getForecast():
+    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
+    d=url.read()
+    y = "code="
+    x = d.find(y)
+    x = d[x+6:x+8]
+    return int(x)
+"""
+d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderstorms","mixed rain and snow",
 	"mixed rain and sleet",
 	"mixed snow and sleet",
 	"freezing drizzle",
@@ -58,14 +75,8 @@ def forecast():
 	"thundershowers",
 	"snow showers",
     "isolated thundershowers"]
-    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
-    d=url.read()
-    y = "code="
-    x = d.find(y)
-    x = d[x+6:x+9]
-    return d1[int(x)]
+"""    
+
     
 
-if __name__=="__main__":
-    app.debug=True
-    app.run()
+
