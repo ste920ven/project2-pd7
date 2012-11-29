@@ -4,7 +4,7 @@ from flask import session,url_for,redirect,flash
 import urllib2
 
 
-#import twilio_records.py
+import twilio_records
 
 app = Flask(__name__)
 
