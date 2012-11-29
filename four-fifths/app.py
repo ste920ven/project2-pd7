@@ -25,7 +25,7 @@ def main():
     ua_family = user_agent_parser.ParseUserAgent(user_agent_string)['family']
     os_family = user_agent_parser.ParseOS(user_agent_string)['family']
 
-    if ua_family in mobile_user_agent_famililies or os_family in mobile_os_families:
+    if ua_family in mobile_user_agent_families or os_family in mobile_os_families:
         return redirect(url_for('mobile'))
 
     else:
