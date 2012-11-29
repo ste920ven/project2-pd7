@@ -18,7 +18,7 @@ header a:hover,
 header a:focus,
 header a:active        { background: rgba(0,0,0,0.3); }
 
-section#info           { width: 100%; margin: 0 auto; }
+section#info           { width: 100%; }
 
 div#statusbar          { width: 80%; background: rgba(0,0,0,0.6);
                          border: 3px solid #FF9500; margin-bottom: 30px; color: #3A3A3A; }
