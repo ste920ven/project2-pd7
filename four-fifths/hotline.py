@@ -1,7 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
 import extractor, Weather
-import random
 
 app = Flask(__name__)
 
@@ -128,7 +127,7 @@ def chance():
 #play one of the fourteen easter eggs at random
 def egg():
     resp = twiml.Response()
-    resp.play("egg-%d.mp3"%(random.randInt(0,13)))
+    resp.play("egg-%d.mp3"%(randInt(1,14)))
     resp.redirect(url="/incomingVoice")
 
 if __name__ == '__main__':
