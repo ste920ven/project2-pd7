@@ -159,6 +159,9 @@ function tick()
 }
 
 $(document).ready(function(){
+    
+    $('a').attr('target','_blank');
+
     if (bellDay=="Unknown") 
     {
 	$('div#unknown').removeClass('hide');
