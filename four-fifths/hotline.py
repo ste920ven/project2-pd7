@@ -92,7 +92,7 @@ def schedule():
         audio.append("fahrenheit.mp3")
         #"It is now __ Fahrenheit"
         audio.append("now.mp3")
-        if now < 0 :
+        if temp < 0 :
             audio.append("negative.mp3")
         audio.append("%d.mp3"%(temp))
         audio.append("fahrenheit.mp3")
@@ -128,8 +128,10 @@ def chance():
 #play one of the fourteen easter eggs at random
 def egg():
     resp = twiml.Response()
-    resp.play("egg-%d.mp3"%(random.randInt(0,13)))
+    url = url_for("static", filename=("audio/egg-%d.mp3"%(random.randint(1,13))))
+    resp.play(url)
     resp.redirect(url="/incomingVoice")
+    return str(resp)
 
 if __name__ == '__main__':
     app.debug = True
