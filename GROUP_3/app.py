@@ -21,6 +21,7 @@ def findprice(foodname):
     recipeTitle = utils.recipeName(searchURL)
     ingred= utils.ingredients(searchURL)
     imgURL= utils.getImage(searchURL)
+    directions= utils.getDirections(searchURL)
     t = 0.0
 
     pricelist=[]
@@ -34,7 +35,7 @@ def findprice(foodname):
         pListelement = [p, (n.replace("#food", "") + " (" + ingredient) + ")"]
         #getting #food in the ingredient names was a problem
         pricelist.append(pListelement)
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=searchURL, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t,directions=directions)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():

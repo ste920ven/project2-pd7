@@ -52,7 +52,11 @@ def getImage(url):
 def getDirections(url):
     soup = BeautifulSoup(urllib2.urlopen(url).read())
     a = soup.findAll('ol')
-    return a[0]
+    b = a[0].findAll('li')
+    c = []
+    for item in b:
+        c.append(item.string)
+    return c
 
 def getPrice(k,name):
     name = name + "+food"
