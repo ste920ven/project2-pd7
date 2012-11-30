@@ -49,6 +49,11 @@ def getImage(url):
     a = soup.findAll(True, {'id':"metaOpenGraphImage"})
     return a[0].attrs['content']
 
+def getDirections(url):
+    soup = BeautifulSoup(urllib2.urlopen(url).read())
+    a = soup.findAll('ol')
+    return a[0]
+
 def getPrice(k,name):
     name = name + "+food"
     name=urllib2.quote(name)
@@ -74,11 +79,13 @@ def prices(l,name,k):
 
 #print ingredients(search("lemon merengue pie stuff"))
 #recipeName(search("lemon merengue pie"))
-"""
-rr = search("lemon merengue pie")
 
+rr = search("lemon merengue pie")
+"""
 prices(ingredients(rr),recipeName(rr),key)
 
 der = search("orange")
 getImage(der)
 """
+
+print getDirections(rr)
