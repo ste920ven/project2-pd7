@@ -160,7 +160,11 @@ function tick()
 
 $(document).ready(function(){
     if (bellDay=="Unknown") 
+    {
 	$('div#unknown').removeClass('hide');
+	$('p#period').text('Unknown');
+	$('span#schedule').text('Schedule Select');
+    }
     else
 	loadBellSchedule(bellDay);
 
@@ -168,7 +172,7 @@ $(document).ready(function(){
 
     $('div#unknown button').click(function(){
 	loadBellSchedule($(this).text());
-	$(this).parent().parent().parent().parent().addClass('hide');
+	$(this).parent().addClass('hide');
     });
 
 });
