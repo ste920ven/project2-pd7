@@ -4,6 +4,7 @@ var directionDisplay;
 var directionsService = new google.maps.DirectionsService();
 var styles;
 var minZoomLevel = 10;
+var maxZoomLevel = 19;
 
 var strictBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(40.473069,-74.31015), 
@@ -25,6 +26,7 @@ function initialize() {
     
     google.maps.event.addListener(map, 'zoom_changed', function() {
 	if(map.zoom < minZoomLevel) map.setZoom(minZoomLevel);
+	if(map.zoom > maxZoomLevel) map.setZoom(maxZoomLevel);
     });
     google.maps.event.addListener(map, 'dragend', function() {
 	if (strictBounds.contains(map.getCenter())) return;
