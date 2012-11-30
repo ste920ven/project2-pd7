@@ -2,6 +2,7 @@ import utils
 from flask import Flask
 from flask import request
 from flask import render_template
+from flask import redirect
 
 app = Flask(__name__)
 key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
@@ -37,7 +38,7 @@ def findprice(foodname):
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
-    return home()
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug = True, port=7203)

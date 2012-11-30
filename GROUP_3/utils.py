@@ -79,13 +79,12 @@ def prices(l,name,k):
 
 #print ingredients(search("lemon merengue pie stuff"))
 #recipeName(search("lemon merengue pie"))
-
-rr = search("lemon merengue pie")
 """
+rr = search("lemon merengue pie")
+
 prices(ingredients(rr),recipeName(rr),key)
 
 der = search("orange")
 getImage(der)
 """
 
-print getDirections(rr)
