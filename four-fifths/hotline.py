@@ -130,6 +130,7 @@ def egg():
     resp = twiml.Response()
     resp.play("egg-%d.mp3"%(random.randint(1,14)))
     resp.redirect(url="/incomingVoice")
+    return str(resp)
 
 if __name__ == '__main__':
     app.debug = True
