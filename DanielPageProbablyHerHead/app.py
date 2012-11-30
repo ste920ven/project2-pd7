@@ -10,8 +10,7 @@ app = Flask(__name__)
 def index():
     if request.method == 'POST':
         allAlbums = db.getImages()
-        button = request.form['button']
-        if button == 'Generate stuff!':
+        if request.form['button'] == 'Generate stuff!':
             db.addImage('1')
     else:
         return render_template("index.html")
