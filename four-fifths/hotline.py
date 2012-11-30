@@ -72,6 +72,7 @@ def schedule():
 #---pressed 2: weather---
     elif int(digit) == 2 :
         print "2 case: weather"
+        forecast = Weather.getForecast()
         temp = Weather.getTemp()
         high = Weather.getHigh()
         low = Weather.getLow()
