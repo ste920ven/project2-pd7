@@ -84,7 +84,7 @@ def schedule():
             audio.append("adjective.mp3")
         #if noun, e.g. "thunderstorms"
         #"Today there will be __"
-        else if forecast in nouns:
+        elif forecast in nouns:
             audio.append("noun.mp3")
         #special cases, e.g. hurricane, have their own intros
         audio.append("weather-%d.mp3"%(forecast))        
