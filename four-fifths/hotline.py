@@ -128,7 +128,8 @@ def chance():
 #play one of the fourteen easter eggs at random
 def egg():
     resp = twiml.Response()
-    resp.play("egg-%d.mp3"%(random.randint(1,14)))
+    url = url_for("static", filename=("egg-%d.mp3"%(random.randint(1,14))))
+    resp.play(url)
     resp.redirect(url="/incomingVoice")
     return str(resp)
 
