@@ -4,6 +4,7 @@ var directionDisplay;
 var directionsService = new google.maps.DirectionsService();
 var styles;
 var minZoomLevel = 10;
+var maxZoomLevel = 19;
 
 var strictBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(40.473069,-74.31015), 
@@ -22,11 +23,11 @@ function initialize() {
     map = new google.maps.Map(document.getElementById('map_canvas'),
 			      mapOptions);
     directionsDisplay.setMap(map);
-
+    
     google.maps.event.addListener(map, 'zoom_changed', function() {
 	if(map.zoom < minZoomLevel) map.setZoom(minZoomLevel);
+	if(map.zoom > maxZoomLevel) map.setZoom(maxZoomLevel);
     });
-
     google.maps.event.addListener(map, 'dragend', function() {
 	if (strictBounds.contains(map.getCenter())) return;
 	var c = map.getCenter(),
@@ -36,15 +37,59 @@ function initialize() {
         maxY = strictBounds.getNorthEast().lat(),
         minX = strictBounds.getSouthWest().lng(),
         minY = strictBounds.getSouthWest().lat();
-	
 	if (x < minX) x = minX;
 	if (x > maxX) x = maxX;
 	if (y < minY) y = minY;
 	if (y > maxY) y = maxY;
-	
 	map.setCenter(new google.maps.LatLng(y, x));
     });
+    
+    var input = document.getElementById('target');
+    var searchBox = new google.maps.places.SearchBox(input);
+    var markers = [];
+    
+    google.maps.event.addListener(searchBox, 'places_changed', function() {
+        var places = searchBox.getPlaces();
+        for (var i = 0, marker; marker = markers[i]; i++) {
+           marker.setMap(null);
+        }
+	
+        markers = [];
+        var bounds = new google.maps.LatLngBounds();
+        for (var i = 0, place; place = places[i]; i++) {
+            var image = new google.maps.MarkerImage(
+                place.icon, new google.maps.Size(71, 71),
+                new google.maps.Point(0, 0), new google.maps.Point(17, 34),
+                new google.maps.Size(25, 25));
+	    
+            var marker = new google.maps.Marker({
+		map: map,
+		icon: image,
+		title: place.name,
+		position: place.geometry.location
+            });
+	    
+            markers.push(marker);
+	    
+            bounds.extend(place.geometry.location);
+        }
+	
+        map.fitBounds(bounds);
+    });
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+        var bounds = map.getBounds();
+        searchBox.setBounds(bounds);
+    });
+    
+    google.maps.event.addListener(map, 'bounds_changed', function() {
+        var bounds = map.getBounds();
+        searchBox.setBounds(bounds);
+    });
+    //var trafficLayer = new google.maps.TrafficLayer();
+    //trafficLayer.setMap(map);
 }
+
 
 function changeMS(str){
     if(str === 'zombies'){

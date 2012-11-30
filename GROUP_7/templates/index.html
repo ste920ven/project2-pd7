@@ -2,15 +2,15 @@
 <html>
   <head>
     <style type="text/css">
-      html, body, #map_canvas 
+      html, body, #map_canvas
       {
-      background: -webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%);
+      background: -webkit-linear-gradient(-45deg, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%);
       width: 100%;
       height: 85%;
       margin: 0px;
       padding: 0;
       }   
-
+      
       h
       {
       text-transform: uppercase;
@@ -22,32 +22,38 @@
       text-shadow: -1px 0 0 #000000, 1px 1px 0 #000000,
                   2px -1px 0 #000000, 3px 0 0 #000000;
       }
+      #target{
+      width: 350px;
+      }
     </style>
-
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="/static/jquery.js"></script>
-    <script src="/static/scripts.js"></script>
-    <script type="text/javascript" src="/static/js/prettify.js"></script>            
+    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+ 
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="/static/jquery.js"></script>
+    <script type="text/javascript" src="/static/scripts.js"></script>
+    <script type="text/javascript" src="/static/js/prettify.js"></script>      
     <script type="text/javascript" src="/static/js/kickstart.js"></script>  
-
-    <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">    
+    
     <link rel="stylesheet" type="text/css" href="/static/css/kickstart.css" media="all" >
     <link rel="stylesheet" type="text/css" href="/static/style.css" media="all" />  
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:bold" rel="stylesheet" type="text/css">  
   </head>
 <!---End Header--->
 
-  <body onload="initialize(),changeBGC('aliens')">
+  <body onload="initialize(),changeBGC('fire')">
     <h>The Survival Kit</h><br></br>
     <ul class="button-bar" style="margin-left:20px">
-      <li onclick="changeBGC('aliens'),changeMS('')"><a href="#tabs left"><span class="icon blue" data-icon="G"></span> Aliens</a></li>
-      <li onclick="changeBGC('fire'),changeMS('')"><a href="#tabs left"><span class="icon blue" data-icon="F"></span> Fire</a></li>
-      <li onclick="changeBGC('hurricane'),changeMS('')"><a href="#tabs left"><span class="icon blue" data-icon="a"></span> Hurricane</a></li>
+      <li onclick="changeBGC('fire'),changeMS('fire')"><a href="#tabs left"><span class="icon blue" data-icon="F"></span> Fire</a></li>
+      <li onclick="changeBGC('aliens'),changeMS('aliens')"><a href="#tabs left"><span class="icon blue" data-icon="G"></span> Aliens</a></li>
+      <li onclick="changeBGC('hurricane'),changeMS('hurricane')"><a href="#tabs left"><span class="icon blue" data-icon="a"></span> Hurricane</a></li>
       <li onclick="changeBGC('zombies'),changeMS('zombies')"'><a href="#tabs left"><span class="icon blue" data-icon="u"></span> Zombies</a></li>
     </ul>
     
     <ul class="tabs left">
       <li><a href="#tabr1">Map Your Location</a></li>
       <li><a href="#tabr2">Get Directions</a></li>
+      <li><a href="#tabr3">Search for Anything</a></li>
     </ul>
     
     <div id="tabr1" class="tab-content">
@@ -65,6 +71,11 @@
 	<option value="TRANSIT">Public Transit</option>
       </select>
     </div>
-    <div id="map_canvas" style="top:30px"></div>    
+    <div id="tabr3" class="tab-content">
+      <div id="search-panel">
+	<input id="target" type="text" placeholder="Enter Keywords">
+      </div>
+    </div>
+    <div id="map_canvas" style="top:30px"></div>
   </body>  
 </html>

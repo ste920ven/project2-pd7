@@ -26,6 +26,9 @@ def findprice(foodname):
 
     pricelist=[]
     for ingredient in ingred:
+        if utils.getPrice(key, ingredient) == "null":
+            print "redirected"
+            return redirect('/')
         p, n = utils.getPrice(key, ingredient)
         t += p;
         p = str(p);

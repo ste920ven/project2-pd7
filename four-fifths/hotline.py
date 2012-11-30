@@ -72,9 +72,22 @@ def schedule():
 #---pressed 2: weather---
     elif int(digit) == 2 :
         print "2 case: weather"
+        forecast = Weather.getForecast()
         temp = Weather.getTemp()
         high = Weather.getHigh()
         low = Weather.getLow()
+        adjectives = [20,22,23,24,25,26,27,28,29,30,31,32,33,34,36]
+        nouns = [4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,21,35,37,38,39,40,41,42,43,44,45,46,47]
+        #if adjective, e.g. "cold"
+        #"Today it will be __"
+        if forecast in adjectives:
+            audio.append("adjective.mp3")
+        #if noun, e.g. "thunderstorms"
+        #"Today there will be __"
+        elif forecast in nouns:
+            audio.append("noun.mp3")
+        #special cases, e.g. hurricane, have their own intros
+        audio.append("weather-%d.mp3"%(forecast))        
         #"Today the high will be __ Fahrenheit."
         audio.append("high.mp3")
         #one of the number mp3s
@@ -92,7 +105,7 @@ def schedule():
         audio.append("fahrenheit.mp3")
         #"It is now __ Fahrenheit"
         audio.append("now.mp3")
-        if now < 0 :
+        if temp < 0 :
             audio.append("negative.mp3")
         audio.append("%d.mp3"%(temp))
         audio.append("fahrenheit.mp3")
@@ -126,10 +139,12 @@ def chance():
 
 @app.route("/egg", methods = ['POST'])
 #play one of the fourteen easter eggs at random
-def egg:
+def egg():
     resp = twiml.Response()
-    resp.play("egg-%d.mp3"%(random.randInt(0,13)))
+    url = url_for("static", filename=("audio/egg-%d.mp3"%(random.randint(1,13))))
+    resp.play(url)
     resp.redirect(url="/incomingVoice")
+    return str(resp)
 
 if __name__ == '__main__':
     app.debug = True
