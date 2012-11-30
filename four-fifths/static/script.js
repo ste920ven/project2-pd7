@@ -115,6 +115,10 @@ function getTime()
 function tick()
 {
     now = new Date();
+
+    if (now.getTime()-today.getTime()>86400000)
+	window.location.reload();
+
     $('p#time').text(getTime());
 
     //reset period
