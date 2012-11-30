@@ -92,7 +92,7 @@ def schedule():
         audio.append("fahrenheit.mp3")
         #"It is now __ Fahrenheit"
         audio.append("now.mp3")
-        if now < 0 :
+        if temp < 0 :
             audio.append("negative.mp3")
         audio.append("%d.mp3"%(temp))
         audio.append("fahrenheit.mp3")
