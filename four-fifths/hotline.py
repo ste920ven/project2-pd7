@@ -126,7 +126,7 @@ def chance():
 
 @app.route("/egg", methods = ['POST'])
 #play one of the fourteen easter eggs at random
-def egg:
+def egg():
     resp = twiml.Response()
     resp.play("egg-%d.mp3"%(random.randInt(0,13)))
     resp.redirect(url="/incomingVoice")
