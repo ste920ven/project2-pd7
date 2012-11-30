@@ -68,6 +68,13 @@
 		    <!--move clicked items here and vice versa-->
 		  </table>
 		</ul>
+
+		<b><u>Directions:</u></b>
+		<ol>
+		  {% for direct in directions %}
+		  <li>{{direct}}</li>
+		  {% endfor %}
+		</ol>
 		</font>
 		<br><br><br><br>
 		<form action="back">
