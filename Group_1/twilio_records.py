@@ -9,7 +9,7 @@ def get_records(number):
     re = json.loads(rq.read())
     sent={}
     for sms in re["sms_messages"]:
-        if sms["status"] == "sent" and sms["To"] == number:
+        if sms["status"] == "sent" and sms["to"] == number:
             key = sms['body'][6:sms['body'].find('\n')]
             sent[key]=sms['body']                               
     return sent
