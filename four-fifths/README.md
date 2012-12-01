@@ -53,7 +53,7 @@
   <li>You can then remove the dir ua-parser from your hard drive.</li>
 </ul>
 
-<h6>Note: app.py runs on ml7.stuycs.org:7205...</h6>
+<h6>Note: app.py runs on <a href="http://ml7.stuycs.org:7205">ml7.stuycs.org:7205</a>...</h6>
 
 <h4>GROUP four-fifths:</h4>
 
