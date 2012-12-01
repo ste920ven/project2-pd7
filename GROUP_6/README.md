@@ -17,7 +17,7 @@ We also need:
 -a picture page (gallery form instead of slideshow form.    
 -maybe a search function. (reminder to self: add pic titles)
 
-So the other person working on HTML, work on one or two of them.
+So the other person working on HTML, work on one or two of them. WE NEED A DATABASE.PY, too.
 
 Also, how does this work again? Does the site download the pics and save them for future use, or does it refresh new images in real time?
 I mean, are the picture temporary, or permanent? If they're temporary, then the comments and tags are meaningless.

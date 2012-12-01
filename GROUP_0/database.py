@@ -33,7 +33,7 @@ def returnAllAccounts():
 #basic login method that verifies input username and password
 
 
-def addSongRating(song,artist,rating,comment):
+def addSongRating(username,song,artist,rating,comment):
     ratingList = SongRatings.find_one({'song':song,'artist':artist})
     commentList = SongRatings.find_one({'song':song,'artist':artist})
     if ratingList == None:
@@ -44,6 +44,7 @@ def addSongRating(song,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+    addSongRatingForUsername(username,song,artist,rating,comment)
 
 def addAlbumrating(album,artist,rating,comment):
     ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
@@ -56,6 +57,7 @@ def addAlbumrating(album,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+    addAlbumRatingForUsername(username,album,artist,rating,comment)
 
     
 def getSongRating(song,artist):
@@ -80,9 +82,27 @@ def addSongRatingForUsername(username,song,artist,rating,comment):
             songList.append(temp)
             Accounts.update({'usernames':username},{'$set':{'songList':songList}})
 
+def addAlbumRatingForUsername(username,album,artist,rating,comment):
+    temp = album,artist,rating,comment
+    albumList = Accounts.find_one({'usernames':username})
+    if albumList == None:
+        albumList = [temp]
+        Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+    else:
+        albumList = albumList['albumList']
+        if albumList == None:
+            albumList = [temp]
+            Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+        else:
+            albumList.append(temp)
+            Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+
 
 def getSongRatingsByUser(username):
     return Accounts.find_one({'usernames':username})['songList']
+
+def getAlbumRatingsByUser(username):
+    return Accounts.find_one({'usernames':username})['albumList']
 
 
 
