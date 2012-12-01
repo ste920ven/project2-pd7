@@ -1,6 +1,5 @@
-import urllib2
+import urllib2, json, sys
 from bs4 import BeautifulSoup
-import json
 
 key = 'AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA'
 
@@ -20,33 +19,33 @@ def search(food):
 
     soup = BeautifulSoup(urllib2.urlopen(searchu).read())
     a = soup.findAll(True,{'id':"ctl00_CenterColumnPlaceHolder_rptResults_ctl00_ucResultContainer_ucRecipe_lnkImage"})
-    return a[0].attrs['href']
-
-def recipeName(url):
-    soup = BeautifulSoup(urllib2.urlopen(url).read())
+    toreturn = []
+    searchURL = a[0].attrs['href']
+    soup = BeautifulSoup(urllib2.urlopen(searchURL).read())
     a = soup.findAll(True, {"id":"itemTitle"})
     name = a[0].string
-    return name
+    toreturn.append(name)
 
-def ingredients(recipe):
-    """
-    Gets a list of all the ingredients in any given recipe
-    """
-    soup = BeautifulSoup(urllib2.urlopen(recipe).read())
-    
     a = soup.findAll(True, {'class':"ingredient-name"})
     b = []
     for item in a:
         try:
-            b.append(str(item.contents[0]))
+            if str(item.contents[0]) != 'water':
+                b.append(str(item.contents[0]))
         except:
             pass
-    return b
+    toreturn.append(b)
 
-def getImage(url):
-    soup = BeautifulSoup(urllib2.urlopen(url).read())
     a = soup.findAll(True, {'id':"metaOpenGraphImage"})
-    return a[0].attrs['content']
+    toreturn.append(a[0].attrs['content'])
+
+    a = soup.findAll('ol')
+    b = a[0].findAll('li')
+    c = []
+    for item in b:
+        c.append(item.string)
+    toreturn.append(c)
+    return toreturn
 
 def getPrice(k,name):
     name = name + "+food"
@@ -54,9 +53,15 @@ def getPrice(k,name):
     url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&tbs=cat:422&q=%s'%(k,name)
     request = urllib2.urlopen(url2)
     result2 = json.loads(request.read())
-    price = result2['items'][0]['product']['inventories'][0]['price']
-    name = result2['items'][0]['product']['title']
-    return price,str(name)
+    #provisional nonsense to get around the error that happens with some foods that DO return recipes, like calamari
+    try:
+        price = result2['items'][0]['product']['inventories'][0]['price']
+        name = result2['items'][0]['product']['title']
+        return price, str(name)
+    except:
+        #sys.exit("No, no, is no work")
+        #maybe replace this with an error page?
+        return None, None 
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
@@ -76,3 +81,4 @@ prices(ingredients(rr),recipeName(rr),key)
 der = search("orange")
 getImage(der)
 """
+

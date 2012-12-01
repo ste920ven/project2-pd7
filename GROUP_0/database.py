@@ -12,7 +12,7 @@ AlbumRatings = db.AlbumRatings
 
 def saveInfo(username, password):
     if Accounts.find({'usernames':username}).count() == 0:
-        Accounts.insert({'usernames':username,'passwords':password})
+        Accounts.insert({'usernames':username,'passwords':password,'songList':[],'albumList':[]})
         return True
     else:
         return False
@@ -63,9 +63,28 @@ def getSongRating(song,artist):
 def getAlbumRating(album,artist):
     return AlbumRatings.find_one({'album':album,'artist':artist})
 #will return the rating of the song/album
-    
+
+
+def addSongRatingForUsername(username,song,artist,rating,comment):
+    temp = song,artist,rating,comment
+    songList = Accounts.find_one({'usernames':username})
+    if songList == None:
+        songList = [temp]
+        Accounts.update({'usernames':username},{'$set':{'songList':songList}})
+    else:
+        songList = songList['songList']
+        if songList == None:
+            songList = [temp]
+            Accounts.update({'usernames':username},{'$set':{'songList':songList}})
+        else:
+            songList.append(temp)
+            Accounts.update({'usernames':username},{'$set':{'songList':songList}})
+
+
+def getSongRatingsByUser(username):
+    return Accounts.find_one({'usernames':username})['songList']
+
 
 
 if __name__ == '__main__':
-    pass;
-
+    pass

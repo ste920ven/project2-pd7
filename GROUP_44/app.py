@@ -14,10 +14,10 @@ def login():
         return render_template("user.html")
 
     if request.method == "POST":
-       # if request.form["button"] == "Submit": #creating a username
+       if request.form["button"] == "Submit": #creating a username
            #username = str(request.form['username'])
            #login.newUser(username)
-        return redirect(url_for('home'))
+           return redirect(url_for('home'))
 
 
 @app.route("/home", methods= ["GET","POST"])

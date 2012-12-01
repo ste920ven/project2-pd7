@@ -1,5 +1,7 @@
 <html>
+  <title>Recipe Pricer: {{title}}</title>
 	<head>
+	  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 		<style type="text/css">
 		body{
 			font-family: "Arial";
@@ -39,13 +41,16 @@
 			<h2><u>{{title}}</u></h2>
 			<br>
 			<h3><u>Ingredients: </u></h3>
+			<BLOCKQUOTE>
 				{% for element in ingredients %}
 					<li>{{element}}</li>
 				{% endfor %}
+			</BLOCKQUOTE>
+			<!-- BLOCKQUOTE for indentation -->
 		<br>
 		<h3><u>Price List:</u></h3>
 		<ul>
-		  <table>
+		  <table id="need">
 		    {% for price in prices %}
 		    <tr style="color:white">
 		      <td> {{"$" + price[0]}} &nbsp; &nbsp; </td>
@@ -54,16 +59,32 @@
 		    {% endfor %}
 		  </table>
 		</ul>
+		<!-- need to change the way total is calculated to reflect ingredient additions and deletions -->
 		<b><u>Total:</u> ${{total}}</b>
+		<br><br>
+		<h3><u>Already Have</u></h3>
+		<ul>
+		  <table id="have">
+		    <!--move clicked items here and vice versa-->
+		  </table>
+		</ul>
+
+		<b><u>Directions:</u></b>
+		<ol>
+		  {% for direct in directions %}
+		  <li>{{direct}}</li>
+		  {% endfor %}
+		</ol>
 		</font>
 		<br><br><br><br>
 		<form action="back">
 		<input type="submit" name="Home" value="Home"></input>
 		</form>
-		<!--Put script to remove ingredient when it is clicked -->
 		<font size="2" color="white">
-		  Source: <a href={{sURL}}>allrecipes.com</a><br>
+		  Source: <a href="http://www.allrecipes.com">allrecipes.com</a><br>
 		</font>
-		
+		<script src="jquery.js"></script>
+		<!--Script to move ingredient when it is clicked -->
+		<script src="pricer.js"></script>
 	</body>
 </html>
