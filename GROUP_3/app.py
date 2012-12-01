@@ -6,6 +6,7 @@ from flask import redirect
 
 app = Flask(__name__)
 key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
+fail = False
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -13,7 +14,7 @@ def home():
         foodname = request.form['foodname']
         return findprice(foodname)
     else:
-        return render_template("index.html")
+        return render_template("index.html", fail=fail)
 
 @app.route("/findprice", methods = ["GET", "POST"])
 def findprice(foodname):
@@ -27,8 +28,8 @@ def findprice(foodname):
     pricelist=[]
     for ingredient in ingred:
         if utils.getPrice(key, ingredient) == "null":
-            print "redirected"
-            return redirect('/')
+            print "Your search has failed.  Please try another recipe."
+            failed()
         p, n = utils.getPrice(key, ingredient)
         t += p;
         p = str(p);
@@ -42,6 +43,12 @@ def findprice(foodname):
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
+    return redirect('/')
+
+@app.route("/failed", methods = ["GET","POST"])
+def failed():
+    fail = True
+    print "something"
     return redirect('/')
 
 if __name__ == '__main__':
