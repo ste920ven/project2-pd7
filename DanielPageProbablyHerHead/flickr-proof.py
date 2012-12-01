@@ -27,4 +27,3 @@ if __name__ == '__main__':
 
 #flickr = flickrapi.FlickrAPI(api_key, format='json')
 #print flickr.photos_getRecent()
-
