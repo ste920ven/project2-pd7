@@ -1,12 +1,11 @@
 <h1>StuyDash</h1>
-<h2>By group <a href="#group">four-fifths</a></h2>
+<h2>By group <a href="#group-four-fifths">four-fifths</a></h2>
 
 <h3>Project: Stuy Student Dashboard - Everything a stuy student needs.</h3>
 
 <h4>Website Services:</h4>
 <ul>
-  <li>
-    <p>Intellegent Bell Schedule App</p>
+  <li>Intellegent Bell Schedule App
     <ul>
       <li>Detects which bell schedule the current day is</li>
       <li>Displays the proper bell schedule app for the current day</li>
