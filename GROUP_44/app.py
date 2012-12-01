@@ -39,26 +39,22 @@ def home():
     if request.method == "GET":
         print "get!!"
         return render_template("survey2.html", username = username)
-    
-    #if  button==request.form.get('button',""):
-    #    print "post1"
-    #    if button == 'Save!':
-    #        print "post works!!"
     else:
         r1 = request.form['zipcode'] ##returns Zipcode
         print r1
         r2 = request.form['select1'] ##returns fav. baseball team
         print r2
-        r3 = request.form['Genres']
+        r3 = request.form['Genres'] 
         print r3
         r4 = request.form['Cuisines']
         print r4
 
 
-
-        #    teamId = espn.getTeamID(r2)
-         #   headlines = espn.getTeamNews(teamId)
-
+        ## API Interactions HERE ##
+        
+        #teamId = espn.getTeamID(r2)
+        #headlines = espn.getTeamNews(teamId)
+        
         return render_template("results.html", username = username)
 
 if __name__ == "__main__":
