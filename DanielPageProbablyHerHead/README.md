@@ -3,13 +3,13 @@ GROUP 2
 Better name to be determined.
 
 <h3>What we want to do:</h3>
-Use the flickr, wikipedia, and wikiquotes API to:
+Use the flickr, wikipedia, and iheartquotes API to:
 <br/>
     1. Take a random image from flickr (and crop to a square). This is now the album cover.
 <br />
     2. Take the title of a random article from wikipedia. This is now  the name of a band.
 <br />
-    3. Take the last four words of a random quote from wikiquotes. This is now the name of the album.
+    3. Take the last four words of a random quote. This is now the name of the album.
 <br />
     4. Throws everything together in a way that is aesthetically pleasing; ideally, we can come up with something that creates a unique design for each input. If we can't, all the albums will look kind of lame, but Daryl has a feeling he can at least come up with a design generator based on some reasonably large database of templates.
 <br />
@@ -24,8 +24,7 @@ Shan suggested the idea; it was inspired by a 4chan game.
 <br />
 <h3>What we're currently doing:</h3>
 <li>
-    <ul>Figuring out what's up with Step 4</ul>
-    <ul>Deciding on what we're currently doing</ul>
+    <ul>Getting together the UI and pixastic for step 4</ul>
 </li>
 
 <br />
@@ -33,7 +32,7 @@ Shan suggested the idea; it was inspired by a 4chan game.
 <br />
 <b>Daryl</b>
 <br />
-Imagemagick
+Step 4 + Team Lead
 <br />
 <b>John</b>
 <br />
@@ -47,5 +46,3 @@ HTML/CSS/PHP/Javascript
 <br />
 app/db
 <br />
-
-Later on in this project the roles are subject to change.

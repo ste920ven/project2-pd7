@@ -4,12 +4,6 @@ import json
 key = '49hvkyvay6f9dtx738jxnj3t'
 shared_secret = 'FAfHeFfmASXXHmv6zfztXdHu'
 
-def getRoster():  
-    getTeam =  'http://api.espn.com/v1/sports/baseball/mlb/athletes/3748?rostertype=active&_accept=application%2Fjson&apikey=' + key
-    url= urllib2.urlopen(getTeam)
-    result = json.loads(url.read())
-    print result
-    return result
 
 def getTeam(teamId):  
     getTeam =  'http://api.espn.com/v1/sports/baseball/mlb/teams/' + str(teamId) + '?rostertype=active&_accept=application%2Fjson&apikey=' + key
@@ -36,7 +30,6 @@ def getTeamNews(teamId):
         print "Description: " + result["headlines"][x]["description"]  + "\n"
    # print result["headlines"][0]["links"]["api"]["news"]
 
-getRoster()
 sox = getTeam(23)
 getLocation(sox)
 getName(sox)

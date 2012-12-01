@@ -1,15 +1,237 @@
 <!doctype html>
-
 <html>
-
   <head>
-    <title> Mobile Site </title>
-  </head>
+    <title>Stuy Student Dashboard</title>
 
+    <link rel="shortcut icon"  href="{{ url_for('static', filename='images/favicon.ico') }}">
+
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <style type="text/css"> @import "{{ url_for('static', filename='mobile.css') }}"; </style>
+
+    <script>var bellDay='{{bellDay}}';</script>
+    <script src="{{ url_for('static', filename='jquery.js')   }}"></script>
+    <script src="{{ url_for('static', filename='script.js')   }}"></script>
+
+  </head>
+  
   <body>
 
-    <h1>You are on a mobile device!</h1>
+    <header>
+      <a href="http://stuy.enschool.org/">Stuy Homepage</a>
+      <a href="https://students-stuyhs.theschoolsystem.net/login.rb">Student Tools</a>
+      <a href="http://schools.nyc.gov/Calendar/default.htm">NYC School Calendar</a>
+      <a href="http://mta.info/">MTA</a>
+    </header>
+
+    <section id="info">
+      
+      <div id="statusbar">
+	
+	<div id="schoolday">
+	  <p id="period">Period 0</p>
+	  <p id="currschedule">
+	    <span id="schedule"></span>
+	    <span id="gym"> {% if gymDay!="Unknown" %} - {{gymDay}} Day {% endif %} </span>
+	  </p>
+	</div>
+
+	<div id="date">
+	  <p id="time">00:00:00</p>
+	  <p id="day">{{date}}</p>
+	</div>
+
+	<div id="weather">&nbsp;{{temp}}&deg;</div>	   
+
+      </div>
+
+      <table id="regular" class="bell hide">
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:41am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:45am - 9:26am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:30am - 10:15am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:19am - 11:00am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>11:04am - 11:45am</td>
+	</tr>
+	<tr id="period6">
+	  <td>Period 6</td>
+	  <td>11:49am - 12:30pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:34pm - 1:15pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>1:19pm - 2:00pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>2:04pm - 2:45pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:49pm - 3:30pm</td>
+	</tr>
+      </table>
+      
+      <table id="homeroom" class="bell hide">
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:40am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:44am - 9:24am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:28am - 10:08am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:26am - 11:06am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>11:10am - 11:50am</td>
+	</tr>
+	<tr id="period6">
+	  <td>Period 6</td>
+	  <td>11:54am - 12:34pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:38pm - 1:18pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>1:22pm - 2:02pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>2:06pm - 2:46pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:50pm - 3:30pm</td>
+	</tr>
+      </table>
+
+      <table id="conference" class="bell hide">
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:37am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:41am - 9:18am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:22am - 9:59am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:03am - 10:40am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>10:44am - 11:21am</td>
+	</tr>
+	<tr id="period6">
+	  <td>Period 6</td>
+	  <td>11:25am - 12:02pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:06pm - 12:43pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>12:47pm - 1:24pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>1:28pm - 2:05pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:09pm - 2:46pm</td>
+	</tr>
+      </table>
+
+      <table id="special" class="bell hide">
+	<tr id="period1">
+	  <td>Period 1</td>
+	  <td>8:00am - 8:38am</td>
+	</tr>
+	<tr id="period2">
+	  <td>Period 2</td>
+	  <td>8:42am - 9:20am</td>
+	</tr>
+	<tr id="period3">
+	  <td>Period 3</td>
+	  <td>9:24am - 10:04am</td>
+	</tr>
+	<tr id="period4">
+	  <td>Period 4</td>
+	  <td>10:08am - 10:46am</td>
+	</tr>
+	<tr id="period5">
+	  <td>Period 5</td>
+	  <td>10:50am - 11:28am</td>
+	</tr>
+	<tr id="period6">
+	  <td>Period 6</td>
+	  <td>11:32am - 12:10pm</td>
+	</tr>
+	<tr id="period7">
+	  <td>Period 7</td>
+	  <td>12:14pm - 12:52pm</td>
+	</tr>
+	<tr id="period8">
+	  <td>Period 8</td>
+	  <td>12:56pm - 1:34pm</td>
+	</tr>
+	<tr id="period9">
+	  <td>Period 9</td>
+	  <td>1:38pm - 2:16pm</td>
+	</tr>
+	<tr id="period10">
+	  <td>Period 10</td>
+	  <td>2:20pm - 2:58pm</td>
+	</tr>
+      </table>
+
+      <div id="unknown" class="hide">
+	<button id="regular">Regular</button>
+	<button id="homeroom">Homeroom</button>
+	<button id="special">Special</button>
+	<button id="conference">Conference</button>
+      </div>
+
+    </section>
+    
+    {{schedule|safe}}
+
+    <ul id="news" class="main">
+      {% for article in news %}
+      {{article|safe}}
+      {% endfor %}
+    </ul>
 
   </body>
-
 </html>
