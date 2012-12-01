@@ -71,7 +71,7 @@ def newAlbumPicture():
     """
 
     #API Call
-    flickr = flickrapi.FlickrApi("c190109eeac99e777f3246f6da0f263a", format = "json")
+    flickr = flickrapi.FlickrApi(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
     #Getting the list of the most recently added public photos on flickr
     photoList = flickr.photos_getRecent()
