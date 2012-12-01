@@ -1,7 +1,7 @@
 <h1>StuyDash</h1>
 <h2>By group <a href="#group">four-fifths</a></h2>
 
-<p>Project: Stuy Student Dashboard - Everything a stuy student needs.</p>
+<h3>Project: Stuy Student Dashboard - Everything a stuy student needs.</h3>
 
 <h4>Website Services:</h4>
 <ul>
@@ -56,7 +56,7 @@
 
 <h6>Note: app.py runs on ml7.stuycs.org:7205, ...</h6>
 
-<h4 id="group">GROUP four-fifths:</h4>
+<h4>GROUP four-fifths:</h4>
 
 <ul>
 
