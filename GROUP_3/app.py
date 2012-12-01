@@ -3,8 +3,10 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import redirect
+from flask import flash
 
 app = Flask(__name__)
+app.secret_key="blah"
 key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
 fail = False
 
@@ -27,10 +29,10 @@ def findprice(foodname):
 
     pricelist=[]
     for ingredient in ingred:
-        if utils.getPrice(key, ingredient) == "null":
-            print "Your search has failed.  Please try another recipe."
-            failed()
-        p, n = utils.getPrice(key, ingredient)
+        p,n = utils.getPrice(key, ingredient)
+        if p == None:
+            flash("Your search has failed.  Please try another recipe.")
+            return redirect('/')
         t += p;
         p = str(p);
         if len(p[p.find('.'):]) < 3:
@@ -45,11 +47,6 @@ def findprice(foodname):
 def back():
     return redirect('/')
 
-@app.route("/failed", methods = ["GET","POST"])
-def failed():
-    fail = True
-    print "something"
-    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug = True, port=7203)
