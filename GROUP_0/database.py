@@ -63,9 +63,24 @@ def getSongRating(song,artist):
 def getAlbumRating(album,artist):
     return AlbumRatings.find_one({'album':album,'artist':artist})
 #will return the rating of the song/album
-    
+
+
+def addSongRatingForUsername(username,password,song,artist,rating,comment):
+    temp = ();
+    temp.append(song)
+    temp.append(artist)
+    temp.append(rating)
+    temp.append(comment)
+    songList = songList['songList']
+    if songList == None:
+        Accounts.insert({'usernames':username,'songList':songList})
+    else:
+        songList = songList['songList']
+        songList.append(temp)
+        Accounts.update({'usernames':username},{'$set':{'songList':songList}})
+        
+
 
 
 if __name__ == '__main__':
     pass;
-
