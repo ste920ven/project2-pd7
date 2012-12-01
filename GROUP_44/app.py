@@ -1,7 +1,9 @@
 from flask import Flask,url_for,redirect,flash,session,escape,request,render_template
 from pymongo import connection
-
-
+import random
+from random import choice
+import upcoming
+import movies
 import login
 #import espn
 
@@ -51,11 +53,18 @@ def home():
 
 
         ## API Interactions HERE ##
-        
+        s3 = upcoming.getEventInfo(r3,r1,"id")
+        x = random.choice(s3.keys())
+        name =  upcoming.getEventIDInfo(x,"name")
+        description =  upcoming.getEventIDInfo(x,"description")
+
+        movies_available = movies.getMovieNames()
+        movie = choice(movies_available)
+        synopsis = movies.getSynopsis(movie)
         #teamId = espn.getTeamID(r2)
         #headlines = espn.getTeamNews(teamId)
         
-        return render_template("results.html", username = username)
+        return render_template("results.html", username = username,name=name,description = description,movie = movie,synopsis = synopsis)
 
 if __name__ == "__main__":
     app.run(debug = True)
