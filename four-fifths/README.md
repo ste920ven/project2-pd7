@@ -1,7 +1,7 @@
 <h1>StuyDash</h1>
 <h2>By group <a href="#group-four-fifths">four-fifths</a></h2>
 
-<h3>Project: Stuy Student Dashboard - Everything a stuy student needs.</h3>
+<h3>Project: Stuy Student Dashboard - Everything a Stuy student needs.</h3>
 
 <h4>Website Services:</h4>
 <ul>
@@ -14,6 +14,7 @@
       <li>Current Temperature and Conditions (as of the page load)</li>
     </ul>
   </li>
+
   <li>Full Weekly Schedule with link to the post on the Stuy site</li>
   <li>Displays current Stuy news entries with links to their posts</li>
   <li>Quick links to:
@@ -42,7 +43,7 @@
   <li>html5lib</li>
   <li>twilio</li>
   <li>ua_parser (download source from <a href="https://github.com/tobie/ua-parser">GitHub</a>)</li>
-<ul>
+</ul>
 
 <h6>ua_parser setup</h6>
 <ul>
