@@ -14,7 +14,7 @@
       <li>Current Temperature and Conditions (as of the page load)</li>
     </ul>
   </li>
-
+  <br/>
   <li>Full Weekly Schedule with link to the post on the Stuy site</li>
   <li>Displays current Stuy news entries with links to their posts</li>
   <li>Quick links to:
@@ -27,7 +27,7 @@
   </li>
 </ul>
 
-<h4>Features:<h4>
+<h4>Features:</h4>
 <ul>
   <li>Convenient text interface</li>
   <li>Mobile Site</li>
