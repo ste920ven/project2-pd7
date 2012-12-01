@@ -6,6 +6,7 @@ key = 'AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA'
 def search(food):
     """
     Returns the first item on the search list of that food
+    I went through the extra hassle of using mobile.allrecipes.com because its webpages are much lighter. It looks like our program runs much faster too, from about 3.5 seconds to load the recipe to 1.25 seconds!
     """
     l = food.split()
     d = ""
@@ -14,30 +15,42 @@ def search(food):
             d = d + item + "%20"
         else:
             d = d + item    
+    #print ("http://allrecipes.com/search/default.aspx?qt=k&wt=%s&rt=r&origin=Recipe%%20Search%%20Results"%(d))
+    #searchu = "http://allrecipes.com/search/default.aspx?qt=k&wt=%s&rt=r&origin=Recipe%%20Search%%20Results"%(d)
 
-    searchu = "http://allrecipes.com/search/default.aspx?qt=k&wt=%s&rt=r&origin=Recipe%%20Search%%20Results"%(d)
+    searchu = "http://mobile.allrecipes.com/search/recipes?wt=%s"%(d)
 
     soup = BeautifulSoup(urllib2.urlopen(searchu).read())
-    a = soup.findAll(True,{'id':"ctl00_CenterColumnPlaceHolder_rptResults_ctl00_ucResultContainer_ucRecipe_lnkImage"})
+    a = soup.find(True,{'class':"jqRecipeListItem rec-list-view bdr-dotted template-margin"})
     toreturn = []
-    searchURL = a[0].attrs['href']
+    searchURL = "http://mobile.allrecipes.com/recipe/"+a.attrs["data-recipeid"]+"/"+a.attrs["data-title"]
     soup = BeautifulSoup(urllib2.urlopen(searchURL).read())
-    a = soup.findAll(True, {"id":"itemTitle"})
-    name = a[0].string
+    a = soup.find(True, {"class":"rec-image-thumb rec-shadow"})
+    name = a.attrs["alt"]
     toreturn.append(name)
 
-    a = soup.findAll(True, {'class':"ingredient-name"})
+    a = soup.findAll(True, {'class':"recipe-ingred_txt"})
     b = []
     for item in a:
         try:
-            if str(item.contents[0]) != 'water':
-                b.append(str(item.contents[0]))
+            temp = str(item.contents[0])
+            if temp == 'water':
+                continue
+            else:
+                if temp.find(')') > -1:
+                    q, w, temp = temp.partition(')')
+                else:
+                    temp= temp[temp.find(' ', temp.find(' ') + 1)+1:]
+                b.append(temp)
+                print temp
         except:
             pass
     toreturn.append(b)
 
-    a = soup.findAll(True, {'id':"metaOpenGraphImage"})
-    toreturn.append(a[0].attrs['content'])
+    #gets image of the food
+    a = soup.find(True, {'class':"rec-image-thumb rec-shadow"})
+    imglink = a.attrs['src']
+    toreturn.append(imglink.replace('140x140','250x250',1))
 
     a = soup.findAll('ol')
     b = a[0].findAll('li')
@@ -45,6 +58,7 @@ def search(food):
     for item in b:
         c.append(item.string)
     toreturn.append(c)
+    toreturn.append(searchURL)
     return toreturn
 
 def getPrice(k,name):
@@ -70,15 +84,4 @@ def prices(l,name,k):
         recipe['gredients'].append( (item, founditem, price))
     return recipe
 
-
-#print ingredients(search("lemon merengue pie stuff"))
-#recipeName(search("lemon merengue pie"))
-"""
-rr = search("lemon merengue pie")
-
-prices(ingredients(rr),recipeName(rr),key)
-
-der = search("orange")
-getImage(der)
-"""
 

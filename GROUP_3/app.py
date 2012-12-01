@@ -1,4 +1,5 @@
 import utils
+import time
 from flask import Flask
 from flask import request
 from flask import render_template
@@ -20,20 +21,24 @@ def home():
 
 @app.route("/findprice", methods = ["GET", "POST"])
 def findprice(foodname):
-    results = utils.search(foodname)
-    recipeTitle = results[0]
-    ingred= results[1]
-    imgURL= results [2]
-    directions= results[3]
-    """
-    searchURL = utils.search(foodname)
-    recipeTitle = utils.recipeName(searchURL)
-    ingred= utils.ingredients(searchURL)
-    imgURL= utils.getImage(searchURL)
-    directions= utils.getDirections(searchURL)
-    """
-    t = 0.0
+    #timer for debugging
+    one=time.time()*1000.0
 
+    results = utils.search(foodname)
+
+    #timer 2
+    two=time.time()*1000.0
+
+    recipeTitle = results[0]
+    ingred = results[1]
+    imgURL = results [2]
+    directions = results[3]
+    source = results[4]
+
+    #timer 3
+    three=time.time()*1000.0
+
+    t = 0.0
     pricelist=[]
     for ingredient in ingred:
         p,n = utils.getPrice(key, ingredient)
@@ -46,9 +51,14 @@ def findprice(foodname):
             p += '0'
         #sometimes the price shows up with 1 decimal place. I'm assuming it lopped off a 0 somehow.
         pListelement = [p, (n.replace("#food", "") + " (" + ingredient) + ")"]
-        #getting #food in the ingredient names was a problem
+        #getting '#food' in the ingredient names was a problem
         pricelist.append(pListelement)
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=foodname, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t,directions=directions)
+
+    four=time.time()*1000.0
+    #printing load time to look for bottlenecks in the program, and for science
+    print "time to search food: "+str((two-one))+" time to assign some params: "+str((three-two))+" time to populate/price ingredients: "+str((four-three))
+
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t,directions=directions)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
