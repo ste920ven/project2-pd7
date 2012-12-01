@@ -80,9 +80,27 @@ def addSongRatingForUsername(username,song,artist,rating,comment):
             songList.append(temp)
             Accounts.update({'usernames':username},{'$set':{'songList':songList}})
 
+def addAlbumRatingForUsername(username,album,artist,rating,comment):
+    temp = album,artist,rating,comment
+    albumList = Accounts.find_one({'usernames':username})
+    if albumList == None:
+        albumList = [temp]
+        Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+    else:
+        albumList = albumList['albumList']
+        if albumList == None:
+            albumList = [temp]
+            Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+        else:
+            albumList.append(temp)
+            Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+
 
 def getSongRatingsByUser(username):
     return Accounts.find_one({'usernames':username})['songList']
+
+def getAlbumRatingsByUser(username):
+    return Accounts.find_one({'usernames':username})['albumList']
 
 
 
