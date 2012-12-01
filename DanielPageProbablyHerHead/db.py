@@ -20,14 +20,14 @@ def addRating(_url, _rating):
 def getRatings(_url):
 	return collection.find_one({'image': _url})['ratings']
 
-#Returns the one (averaged) rating of the image with the given _url
+#Returns the one (averaged, and rounded to the nearest half) rating of the image with the given _url
 def getRating(_url):
 	x = getRatings(_url)
-        y = 0
+        y = 0.0
 	for rating in x:
 		y = y + int(rating) #cast to int because the ratings are unicode
 	z = len(collection.find_one({'image': _url})['ratings'])
-	return ( y / z)
+	return (round((y / z) * 2, 0) / 2)
 
 #Removes the image with the given _url
 def removeImage(_url):
