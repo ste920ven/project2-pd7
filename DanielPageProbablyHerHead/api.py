@@ -67,11 +67,27 @@ def newAlbumName():
 
 def newAlbumPicture():
     """
-    Returns the URL of a random flickr image. 
+    Returns the URL of a random flickr image.
     """
-    pass
+
+    #API Call
+    flickr = flickrapi.FlickrApi("c190109eeac99e777f3246f6da0f263a", format = "json")
+
+    #Getting the list of the most recently added public photos on flickr
+    photoList = flickr.photos_getRecent()
+    
+    #Generating the URLs for the most recently added public photos on flickr
+    photoURLs = []
+    for photo in photoList:
+	   photoURLs.append("http://" str(farm(photo['farm'])) + ".staticflickr.com/" + str(photo['server']) + "/" + str(photo['id'])+ "_" + str(photo['secret']) + ".jpg")
+
+    #Choosing a random URL from the recent photos URL list
+    randNum = randint(0, len(photoURLs) - 1)
+    return photoUrls[randNum]
 
 if __name__ == '__main__':
     print "Title:" + newArtistName()
     print "Quote:" + newAlbumName()
+    print "Image URL:" + newAlbumPicture()
+
 
