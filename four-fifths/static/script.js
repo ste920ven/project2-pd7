@@ -115,6 +115,10 @@ function getTime()
 function tick()
 {
     now = new Date();
+
+    if (now.getTime()-today.getTime()>86400000)
+	window.location.reload();
+
     $('p#time').text(getTime());
 
     //reset period
@@ -159,8 +163,15 @@ function tick()
 }
 
 $(document).ready(function(){
+    
+    $('a').attr('target','_blank');
+
     if (bellDay=="Unknown") 
+    {
 	$('div#unknown').removeClass('hide');
+	$('p#period').text('Unknown');
+	$('span#schedule').text('Schedule Select');
+    }
     else
 	loadBellSchedule(bellDay);
 
@@ -168,7 +179,7 @@ $(document).ready(function(){
 
     $('div#unknown button').click(function(){
 	loadBellSchedule($(this).text());
-	$(this).parent().parent().parent().parent().addClass('hide');
+	$(this).parent().addClass('hide');
     });
 
 });
