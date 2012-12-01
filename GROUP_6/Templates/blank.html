@@ -12,15 +12,24 @@
 </head><body ><a id="top-of-page"></a><div id="wrap" style="background-color:skyblue;" class="clearfix">
 <!-- ===================================== END HEADER ===================================== -->
 
+<!--Made the slideshow scrollable, so that fixes any issues with too many overcrowding, WORKS PERFECTLY :D -->
+<style>
+ul {overflow-x: scroll; overflow-y:hidden;}
+</style>
+
+
 <body>
 
-<div id="container" >
+	<div id="container" >
 
+<!-- Header -->
+	
 <div id="header" style="background-color:#2B60DE;">
 <h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
 
 <!-- Menu Vertical Left -->
-<ul class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:600px;width:20%;float:left;">
+		
+<ol class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:600px;width:20%;float:left;">
 <li class="current"><a href="">Item 1</a></li>
 <li><a href="">Item 2</a></li>
 <li><a href="">Item 3</a>
@@ -38,10 +47,13 @@
 	</ul>
 </li>
 <li><a href="">Item 4</a></li>
-</ul>
+</ol>
 
+<!-- Tag bar-->
 
 <div id="content" style="background-color:#EEEEEE;height:600px;width:60%;float:left;">
+
+<!-- Tags-implement later -->
 
 <div class="col_12">
 <a href="/">Buildings</a>
@@ -49,6 +61,7 @@
 <a href="/">Water</a>
 <a href="/">Fire</a>
 
+<!-- Tagging menu -->
 <div style="float:right;">
 <label for="select1">Add tag</label>
 <select id="select1" class="fancy">
@@ -57,33 +70,34 @@
 <option value="2">Option 2</option>
 <option value="3">Option 3</option>
 </select>
-
+<!-- Disappearing "add new tag" -->
 <a onclick ="javascript:ShowHide('HiddenDiv')" href="javascript:;" >Add new tag</a>
-
 <div class="mid" id="HiddenDiv" style="DISPLAY: none" >
 <label for="text1"></label>
 <input id="Addnewtag" type="text" />
 <button class="submitnewtag">Submit</button>
 </div>
-
+</div>
 
 
 </div>
 
-</div>
+<!-- Slideshow bar, can take unlimited-->
 
-<ul class="slideshow" width="550" height="350">
+<ul class="slideshow" id="slideshow" width="550" height="350">
 <li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
 <li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
 <li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
-<li><h3>Slide Anything</h3><p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, 
-sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p></li>
 </ul>
+
+<!-- Upvote/Downvote-glitchy, might cut out later -->
 
 <button class="large"><span class="icon gray">q</span></button>
 <button class="large"><span class="icon gray">r</span></button>
 
 </div>
+
+<!--Comments- To be implemented -->
 
 <div id="comments" style="background-color:#EEEEEE;height:600px;width:20%;float:right;">
 <div class="col_12">This is a comment. Not very much.</div>
@@ -91,13 +105,11 @@ sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat vol
 <div class="col_12">OMG! This is so OMG! What does that even mean?</div>
 <textarea id="comment" placeholder="Comments or Questions?"></textarea>
 <button class="submit comment">Submit</button>
-
 </div>
 
-
+<!-- Footer-->
 <div id="footer" style="background-color:#2B60DE;clear:both;text-align:center;">
 Copyright</div>
-
 </div>
  
 </body>
@@ -109,7 +121,7 @@ Copyright</div>
 			{	document.getElementById(divId).style.display='block';		}
 		else
 			{	document.getElementById(divId).style.display = 'none';		}
-}
+	}
 </script>
 
 

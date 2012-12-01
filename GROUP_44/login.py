@@ -31,6 +31,7 @@ def username(username):
         return -1
     else:
         res = db.username.find_one({"username": username})['username']
+        return 1
         print res
 
 
@@ -40,8 +41,4 @@ def deleteAll():
 
 
 
-newUser("Leopold")
-#test("Leopold")
-username("Leopold")
-username("Raquel")
 
