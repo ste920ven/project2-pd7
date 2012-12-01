@@ -3,7 +3,7 @@ from pymongo import connection
 
 
 import login
-import espn
+#import espn
 
 
 app = Flask(__name__)
@@ -38,7 +38,7 @@ def home():
     global headlines
     if request.method == "GET":
         print "get!!"
-        return render_template("survey.html", username = username)
+        return render_template("survey2.html", username = username)
     
     if  button==request.form.get('button',""):
         print "post1"
@@ -55,7 +55,7 @@ def home():
                 ##means it was selected
                 return Action
             #return render_template("results.html")
-            return render_template("survey.html", username = username)
+            return render_template("survey2.html", username = username)
 
 if __name__ == "__main__":
     app.run(debug = True)
