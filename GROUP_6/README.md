@@ -12,9 +12,12 @@ __________________________________________________________________________
 
 Ok, added the html. Basic frame. Once the app.py is finished, should be easy to connect them.
 
-We also need:
--a homepage
--a picture page (gallery form instead of slideshow form.
+We also need:    
+
+-a homepage       
+
+-a picture page (gallery form instead of slideshow form.    
+
 -maybe a search function. (reminder to self: add pic titles)
 
 So the other person working on HTML, work on one or two of them.
