@@ -1,10 +1,4 @@
-var today = new Date();
-today.setHours(0);
-today.setMinutes(0);
-today.setSeconds(0);
-today.setMilliseconds(0);
-today = today.getTime();
-
+var today = getToday();
 var now = new Date();
 
 var bellSchedule;
@@ -61,6 +55,17 @@ var special = [
     { "start": new Date(today+51600000), "end": new Date(today+53880000) }
 ];
 
+function getToday()
+{
+    var today = new Date(); 
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
+    today = today.getTime();
+    return today;
+}
+
 function loadBellSchedule(bellDay)
 {
     if (bellDay=="Regular")
@@ -116,8 +121,11 @@ function tick()
 {
     now = new Date();
 
-    if (now.getTime()-today.getTime()>86400000)
+    if (now-today>86400000)
+    {
+	today = getToday();
 	window.location.reload();
+    }
 
     $('p#time').text(getTime());
 
