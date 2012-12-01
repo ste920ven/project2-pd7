@@ -26,7 +26,7 @@ def index():
 @app.route("/rates/<num>", methods = ['GET', 'POST'])
 def rates(num):
     global ratings
-    ratings = twilio_records.get_records(num)
+    ratings = twilio_records.get_records("+1" + str(num))
     #ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
     return render_template('restaurants.html', numb = num, ratings = ratings )
 
