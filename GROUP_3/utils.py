@@ -19,21 +19,13 @@ def search(food):
 
     soup = BeautifulSoup(urllib2.urlopen(searchu).read())
     a = soup.findAll(True,{'id':"ctl00_CenterColumnPlaceHolder_rptResults_ctl00_ucResultContainer_ucRecipe_lnkImage"})
-#this return statement is where the program trips up if the search term, say quetzalcoatl, doesn't give a recipe
-    return a[0].attrs['href']
-
-def recipeName(url):
-    soup = BeautifulSoup(urllib2.urlopen(url).read())
+    toreturn = []
+    searchURL = a[0].attrs['href']
+    soup = BeautifulSoup(urllib2.urlopen(searchURL).read())
     a = soup.findAll(True, {"id":"itemTitle"})
     name = a[0].string
-    return name
+    toreturn.append(name)
 
-def ingredients(recipe):
-    """
-    Gets a list of all the ingredients in any given recipe
-    """
-    soup = BeautifulSoup(urllib2.urlopen(recipe).read())
-    
     a = soup.findAll(True, {'class':"ingredient-name"})
     b = []
     for item in a:
@@ -42,21 +34,18 @@ def ingredients(recipe):
                 b.append(str(item.contents[0]))
         except:
             pass
-    return b
+    toreturn.append(b)
 
-def getImage(url):
-    soup = BeautifulSoup(urllib2.urlopen(url).read())
     a = soup.findAll(True, {'id':"metaOpenGraphImage"})
-    return a[0].attrs['content']
+    toreturn.append(a[0].attrs['content'])
 
-def getDirections(url):
-    soup = BeautifulSoup(urllib2.urlopen(url).read())
     a = soup.findAll('ol')
     b = a[0].findAll('li')
     c = []
     for item in b:
         c.append(item.string)
-    return c
+    toreturn.append(c)
+    return toreturn
 
 def getPrice(k,name):
     name = name + "+food"
