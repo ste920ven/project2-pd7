@@ -35,7 +35,7 @@ def image_crawl(num):
     while (i < num):
         io = StringIO()
         json.dump(results['data']['children'][i]['data']['url'], io)
-        if ('imgur' in io.getvalue() and '#' not in io.getvalue()):
+        if ('imgur' in io.getvalue() and '#' not in io.getvalue() and '/a/' not in io.getvalue()):
             #url = io.getvalue()
             #url = strip(url
             url_list.append(io.getvalue().strip('"'))
@@ -45,13 +45,16 @@ def image_crawl(num):
 
 def get_image_url(url):
     #if url is already just the image link
-    if (url[1] is '.'):
+    if ('i.imgur' in url):
         return url
     else:
-        return 'http://www.i.imgur.com/'+url[-9:]
+        return 'http://www.i.imgur.com/'+url[-5:]+'.jpg'
         
+
 x = image_crawl(20)
-print x
+for i in x:
+    a = get_image_url(i)
+    print a
     
 #print results['data']['children'][0]['data']['url']
 
