@@ -24,7 +24,6 @@
   <title>Recipe Pricer</title>
 </head>
 
-
 <body bgcolor="#333333">
   <header>
     <font size="20">
@@ -33,10 +32,18 @@
     <hr><br>
   </header>
   
-  <font color = "red">
-    {{failed}}
-  </font>
 
+<font color = "red">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+</font>
   <form method="POST">
     <font color="white">
       What would you like to make? 

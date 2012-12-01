@@ -3,9 +3,12 @@ from flask import Flask
 from flask import request
 from flask import render_template
 from flask import redirect
+from flask import flash
 
 app = Flask(__name__)
+app.secret_key="blah"
 key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
+fail = False
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
@@ -13,7 +16,7 @@ def home():
         foodname = request.form['foodname']
         return findprice(foodname)
     else:
-        return render_template("index.html")
+        return render_template("index.html", fail=fail)
 
 @app.route("/findprice", methods = ["GET", "POST"])
 def findprice(foodname):
@@ -26,10 +29,10 @@ def findprice(foodname):
 
     pricelist=[]
     for ingredient in ingred:
-        if utils.getPrice(key, ingredient) == "null":
-            print "redirected"
+        p,n = utils.getPrice(key, ingredient)
+        if p == None:
+            flash("Your search has failed.  Please try another recipe.")
             return redirect('/')
-        p, n = utils.getPrice(key, ingredient)
         t += p;
         p = str(p);
         if len(p[p.find('.'):]) < 3:
@@ -43,6 +46,7 @@ def findprice(foodname):
 @app.route("/back", methods = ["GET", "POST"])
 def back():
     return redirect('/')
+
 
 if __name__ == '__main__':
     app.run(debug = True, port=7203)

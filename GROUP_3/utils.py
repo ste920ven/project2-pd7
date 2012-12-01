@@ -72,7 +72,7 @@ def getPrice(k,name):
     except:
         #sys.exit("No, no, is no work")
         #maybe replace this with an error page?
-        return "null"
+        return None, None 
 
 def prices(l,name,k):
     recipe = {'name':name,'gredients':[]}
