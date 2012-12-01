@@ -16,8 +16,7 @@
   </li>
   <li>Full Weekly Schedule with link to the post on the Stuy site</li>
   <li>Displays current Stuy news entries with links to their posts</li>
-  <li>
-    <p>Quick links to:</p>
+  <li>Quick links to:
     <ul>
       <li><a href="http://stuy.enschool.org">Stuy Homepage</a></li>
       <li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
@@ -58,19 +57,15 @@
 <h4>GROUP four-fifths:</h4>
 
 <ul>
-
-  <li>
-    <p><strong>Group Leader:</strong> Zachary</p>
+  <li><strong>Group Leader:</strong> Zachary
     <ul>
       <li>Screen-Scraping (extractor.py)</li>
       <li>Website Design and Construction (app.py and supporting files)</li>
     </ul>
   </li>
   
-  <li>
-    <p>Jack</p>
-    <ul>
-      <p>Twilio API:<p>
+  <li>Jack
+    <ul>Twilio API:
       <ul>
         <li>SMS interface (sendSMS.py)</li>
         <li>Phone Information Hotline (hotline.py)</li>
@@ -78,18 +73,15 @@
     </ul>
   </li>
   
-  <li>
-    <p>Cameron</p>
+  <li>Cameron
     <ul>
       <li>Weather API (Weather.py)</li>
     </ul>
   </li>
   
-  <li>
-    <p>Jason</p>
+  <li>Jason
     <ul>
       <li>MTA API (MTAService.py)</li>
     </ul>
   </li>
-  
 </ul>
