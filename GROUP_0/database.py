@@ -33,7 +33,7 @@ def returnAllAccounts():
 #basic login method that verifies input username and password
 
 
-def addSongRating(song,artist,rating,comment):
+def addSongRating(username,song,artist,rating,comment):
     ratingList = SongRatings.find_one({'song':song,'artist':artist})
     commentList = SongRatings.find_one({'song':song,'artist':artist})
     if ratingList == None:
@@ -44,6 +44,7 @@ def addSongRating(song,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+    addSongRatingForUsername(username,song,artist,rating,comment)
 
 def addAlbumrating(album,artist,rating,comment):
     ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
@@ -56,6 +57,7 @@ def addAlbumrating(album,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
+    addAlbumRatingForUsername(username,album,artist,rating,comment)
 
     
 def getSongRating(song,artist):
