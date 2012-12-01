@@ -71,13 +71,13 @@ def addSongRatingForUsername(username,password,song,artist,rating,comment):
     temp.append(artist)
     temp.append(rating)
     temp.append(comment)
-    songList = Accounts.find_one({'usernames':username}):
+    songList = songList['songList']
     if songList == None:
-        Accounts.insert({'usernames':username,'songlist':songlist})
+        Accounts.insert({'usernames':username,'songList':songList})
     else:
-        songList = songList['songlist']
+        songList = songList['songList']
         songList.append(temp)
-        Accounts.update({'usernames':username},{'$set':{'songlist':songList}})
+        Accounts.update({'usernames':username},{'$set':{'songList':songList}})
         
 
 
