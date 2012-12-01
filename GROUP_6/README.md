@@ -20,7 +20,7 @@ We also need:
 So the other person working on HTML, work on one or two of them.
 
 Also, how does this work again? Does the site download the pics and save them for future use, or does it refresh new images in real time?
-I mean, are the picture temporary, or permanent? If their temporary, then the comments and tags are meaningless.
+I mean, are the picture temporary, or permanent? If they're temporary, then the comments and tags are meaningless.
 Continue conversation on doc.
 -Allen
 ___________________________________________________________________________
