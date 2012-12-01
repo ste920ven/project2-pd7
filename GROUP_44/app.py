@@ -3,7 +3,7 @@ from pymongo import connection
 
 
 import login
-import espn
+#import espn
 
 
 app = Flask(__name__)
@@ -38,24 +38,28 @@ def home():
     global headlines
     if request.method == "GET":
         print "get!!"
-        return render_template("survey.html", username = username)
+        return render_template("survey2.html", username = username)
     
-    if  button==request.form.get('button',""):
-        print "post1"
-        if button == 'Save!':
-            print "post works!!"
-            r1 = request.form.get('zipcode') ##returns Zipcode
-            #print r1
-            r2 = request.form.get('select1') ##returns fav. baseball team
-            teamId = espn.getTeamID(r2)
-            headlines = espn.getTeamNews(teamId)
-            r3 = request.form['Action']
-            print r3
-            if r3 == "on":
-                ##means it was selected
-                return Action
-            #return render_template("results.html")
-            return render_template("survey.html", username = username)
+    #if  button==request.form.get('button',""):
+    #    print "post1"
+    #    if button == 'Save!':
+    #        print "post works!!"
+    else:
+        r1 = request.form['zipcode'] ##returns Zipcode
+        print r1
+        r2 = request.form['select1'] ##returns fav. baseball team
+        print r2
+        r3 = request.form['Genres']
+        print r3
+        r4 = request.form['Cuisines']
+        print r4
+
+
+
+        #    teamId = espn.getTeamID(r2)
+         #   headlines = espn.getTeamNews(teamId)
+
+        return render_template("results.html", username = username)
 
 if __name__ == "__main__":
     app.run(debug = True)
