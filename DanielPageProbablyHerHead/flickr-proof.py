@@ -9,7 +9,7 @@ api_secret = "f595faa22722ff96"
 
 def getRecentPhotos(recentPhotoList):
 	for photo in recentPhotoList:
-	   print "http://farm(photo['farm']).staticflickr.com/(photo['server'])/(photo['id'])_(photo['secret']).jpg"
+	   print "http://" str(farm(photo['farm'])) + ".staticflickr.com/" + str(photo['server']) + "/" + str(photo['id'])+ "_" + str(photo['secret']) + ".jpg"
 
 #Picks a random photo URL, given a list of photo URLs
 def pickRandomPhoto(photoList):
