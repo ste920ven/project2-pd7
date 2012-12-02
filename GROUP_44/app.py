@@ -11,6 +11,11 @@ import login
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+
+@app.route("/about",methods=["GET","POST"])
+def about():
+    return render_template("about.html")
+
 @app.route("/",methods=["GET","POST"])
 def user():
     global username
@@ -50,7 +55,6 @@ def home():
         print r3
         r4 = request.form['Cuisines']
         print r4
-
 
         ## API Interactions HERE ##
         s3 = upcoming.getEventInfo(r3,r1,"id")
