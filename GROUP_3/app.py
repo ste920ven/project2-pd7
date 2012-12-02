@@ -21,31 +21,31 @@ def home():
 
 @app.route("/findprice", methods = ["GET", "POST"])
 def findprice(foodname):
+    print "Times (in ms):\n"
+
     #timer for debugging
     one=time.time()*1000.0
 
     results = utils.search(foodname)
 
-    #timer 2
-    two=time.time()*1000.0
+    print "Total recipe search: " + str(time.time()*1000.0 - one)
 
+    #the time for the following assignments is negligible
     recipeTitle = results[0]
     ingred = results[1]
     imgURL = results [2]
     directions = results[3]
     source = results[4]
 
-    #timer 3
-    three=time.time()*1000.0
+    #timer 2
+    two=time.time()*1000.0
 
-    t = 0.0
     pricelist=[]
     for ingredient in ingred:
         p,n = utils.getPrice(key, ingredient)
         if p == None:
             flash("Your search has failed.  Please try another recipe.")
             return redirect('/')
-        t += p;
         p = str(p);
         if len(p[p.find('.'):]) < 3:
             p += '0'
@@ -54,11 +54,12 @@ def findprice(foodname):
         #getting '#food' in the ingredient names was a problem
         pricelist.append(pListelement)
 
-    four=time.time()*1000.0
-    #printing load time to look for bottlenecks in the program, and for science
-    print "time to search food: "+str((two-one))+" time to assign some params: "+str((three-two))+" time to populate/price ingredients: "+str((four-three))
+    timer = time.time()*1000.0 - two
+    print "Total ingredient search: " + str(timer)
+    print "   average per ingredient: " + str(timer / len(pricelist))
+    print "Total to find data: " + str(time.time()*1000.0 - one)
 
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t,directions=directions)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, directions=directions)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
