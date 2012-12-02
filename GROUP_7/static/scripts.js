@@ -1,11 +1,3 @@
-$(document).ready(function(){
-    $("#trigger").click(function(){
-	$("#panel").toggle("fast");
-	return false;
-    });
-    $('#tabr1').bind("ready",geoLocateAttempt());
-});
-
 var map;
 var geocoder;
 var directionDisplay;
@@ -18,26 +10,22 @@ var strictBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(40.922852,-73.693542)
 );
 
-//W3C Geolocation
-function geoLocateAttempt(){
-    if (navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-    }
-    else {
-	alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
-    }
-}
+$(document).ready(function(){
+    $("#trigger").click(function(){
+	$("#panel").toggle("fast");
+	return false;
+    });
+    $('#address').keydown(function(){
+	if(event.keyCode == 13)
+	    codeAddress();
+    });
+    $('#start, #end').keydown(function(){
+	if(event.keyCode == 13)
+	    calcRoute();
+    });
+    
+});
 
-function successFunction(position) {
-    var lat = position.coords.latitude;
-    var long = position.coords.longitude;
-    alert('Your latitude is :'+lat+' and longitude is '+long);
-}
-
-function errorFunction(position) {
-    alert('Could not automatically detect location! Please enter manually');
-}
-//END GEOLOCATION
 
 //GOOGLE API
 function initialize() {
@@ -315,15 +303,23 @@ BrowserDetect.init();
 
 function changeBGC(str){
     if(str==='aliens'){
+	$('#disaster').text('Alien Invasion');
+	$('#wheel').css('visibility','visible');
+	$('#wheel').carousel('cycle');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #aebcbf 0%,#6e7774 50%,#0a0e0a 51%,#0a0809 100%)');
     }
     else if(str==='fire'){
+	$('#wheel').css('visibility','hidden');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%)');
     }
     else if(str==='hurricane'){
+	$('#wheel').css('visibility','hidden');
+	$('#disaster').text('Hurricane');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%)');
     }
     else{
+	$('#wheel').css('visibility','hidden');
+	$('#disaster').text('Zombie Apocalypse');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%)');
     }
 }
