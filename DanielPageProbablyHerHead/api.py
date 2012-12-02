@@ -84,7 +84,6 @@ def newAlbumPicture():
     #Getting all the photo attribute values, based of the id, or "start", index
     start = i
     id = str(recentPhotos)[start + 5: start + 15]
-    owner = str(recentPhotos)[start + 28: start + 39]
     secret = str(recentPhotos)[start + 52: start + 62]
     server = str(recentPhotos)[start + 75: start + 79]
     farm = str(recentPhotos)[start + 89: start + 90]
