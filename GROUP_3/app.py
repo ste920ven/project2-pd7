@@ -10,23 +10,29 @@ app = Flask(__name__)
 app.secret_key="blah"
 key = "AIzaSyDm3LFbtgPrB8jtcruyGlf9ED-tidYvYrA"
 fail = False
+food = ""
 
 @app.route("/", methods = ["GET", "POST"])
 def home():
     if request.method == 'POST':
         foodname = request.form['foodname']
-        return findprice(foodname)
+        return findprice(foodname, 0)
     else:
         return render_template("index.html", fail=fail)
 
 @app.route("/findprice", methods = ["GET", "POST"])
-def findprice(foodname):
+def findprice(foodname, mode):
+    global food
+    print "foodname: " + foodname
     print "Times (in ms):\n"
-
-    #timer for debugging
+        
+        #timer for debugging
     one=time.time()*1000.0
-
-    results = utils.search(foodname)
+        
+    if mode == 0:
+        results = utils.search(foodname)
+    else:
+        results = utils.search2(foodname)
 
     print "Total recipe search: " + str(time.time()*1000.0 - one)
 
@@ -39,7 +45,7 @@ def findprice(foodname):
 
     #timer 2
     two=time.time()*1000.0
-
+        
     pricelist=[]
     for ingredient in ingred:
         p,n = utils.getPrice(key, ingredient)
@@ -58,13 +64,17 @@ def findprice(foodname):
     print "Total ingredient search: " + str(timer)
     print "   average per ingredient: " + str(timer / len(pricelist))
     print "Total to find data: " + str(time.time()*1000.0 - one)
-
+    food = foodname
+    
     return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, directions=directions)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
     return redirect('/')
 
+@app.route("/tryagain", methods = ["GET", "POST"])
+def tryagain():
+    return findprice(food, 1)
 
 if __name__ == '__main__':
     app.run(debug = True, port=7203)
