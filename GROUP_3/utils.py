@@ -15,11 +15,7 @@ def search(food):
             d = d + item + "%20"
         else:
             d = d + item    
-    #print ("http://allrecipes.com/search/default.aspx?qt=k&wt=%s&rt=r&origin=Recipe%%20Search%%20Results"%(d))
-    #searchu = "http://allrecipes.com/search/default.aspx?qt=k&wt=%s&rt=r&origin=Recipe%%20Search%%20Results"%(d)
-
     searchu = "http://mobile.allrecipes.com/search/recipes?wt=%s"%(d)
-
     soup = BeautifulSoup(urllib2.urlopen(searchu).read())
     a = soup.find(True,{'class':"jqRecipeListItem rec-list-view bdr-dotted template-margin"})
     toreturn = []
@@ -28,7 +24,6 @@ def search(food):
     a = soup.find(True, {"class":"rec-image-thumb rec-shadow"})
     name = a.attrs["alt"]
     toreturn.append(name)
-
     a = soup.findAll(True, {'class':"recipe-ingred_txt"})
     b = []
     for item in a:
