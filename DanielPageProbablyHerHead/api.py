@@ -96,11 +96,11 @@ def newAlbumPicture():
 	i = str(pickedPhotos).find('id', i + 200)
 	k = k + 1
 
-    #Randomly chooses a photo id out of the list of 50
+    #Randomly chooses a photo id out of the list of 500
     randNum = randint(0, len(idIndices) - 1)
     start = idIndices[randNum]
 
-    #Gets a the attributes of the photo whose id was selected
+    #Gets the attributes of the photo whose id was selected
     id = str(pickedPhotos)[start + 5: start + 15]
     secret = str(pickedPhotos)[start + 52: start + 62]
     server = str(pickedPhotos)[start + 75: start + 79]
@@ -111,7 +111,7 @@ def newAlbumPicture():
         #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
         URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
         return URL
-    #If the values are not valid, then re-generates the attributes
+    #If the values are not valid, then generates a new URL
     else:
         return newAlbumPicture()
 
