@@ -77,7 +77,6 @@ body{
     left:0;
 }
 
-<<<<<<< HEAD
 #link-top{
     position: absolute;
     top:10px;
@@ -132,17 +131,20 @@ h {
 }
 
 #target {
-    width: 350px;
+    width: 250px;
 }
 
-#Home, #Location, #Directions, #Search {
+#Home, #Location, #Directions, #Search{
     background-color: white;
     width: 70%;
+    margin: 10px;
+    margin-bottom: 100px;
 }
 
 #tabsbar {
     padding-top: 30px;
-    width: 60%;
+    width: 70%;
+    margin-left: 10px;
 }
 
 #panel{
@@ -189,21 +191,3 @@ h {
     display: none;
     background-color: white;
 }
-=======
-	#link-top{
-	position: absolute;
-	top:10px;
-	right:10px;
-	*right:25px;/*IE 7 ONLY*/
-	left:auto;
-	color:#666;
-	text-decoration:none;
-	display: inline-block;
-	padding:5px 10px;
-	background:#e5e5e5;
-	line-height:100%;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
-	border-radius:3px;
-	}
->>>>>>> 870d2edb5939f01a3e025f820147f424d82cf461
