@@ -10,16 +10,20 @@
         This website generates album arts. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
         <script type="text/javascript" src="../static/pixlr.js"></script>
-        <b>Open image editor</b><br />
-		<a href="javascript:pixlr.edit({image:'http://developer.pixlr.com/_image/example3.jpg', title:'Example image 3', service:'express', target:'www.google.com', exit:'www.google.com'});"><img src="http://developer.pixlr.com/_image/example3_thumb.jpg" width="250" height="150" title="Edit in pixlr" /></a><br /><br />
-		<br /><br />
+        <br>
+		<button class="generate" type="button" style="width:100px;height:50px">Generate stuff!</button>
+		<br>
+		<div class="generated-art"></div>
+		<br>
+		<button class="save" type="button" style="width:45px;height:50px">Save</button>
+		<button class="edit" type="button" style="width:45px;height:50px">Edit</button>
 	</p>
-	<button type="button" style="width:100px;height:50px">Generate stuff!</button>
-	<div class="generated-art"></div>
+	
+	
 </div>
 
 <body>
-    <h2 style="text-align:center;">I SERIOUSLY HOPE</h2>
+    <h2 style="text-align:center;">I HOPE</h2>
     <!-- Every time someone rates an image:
     <script>
         $.getJSON("http://jsonip.appspot.com?callback=?",
