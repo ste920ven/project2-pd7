@@ -73,23 +73,33 @@ def newAlbumPicture():
     #API Call
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
-    #Gets the list of the most recently added public photos on flickr
-    recentPhotos = flickr.photos_getRecent()
+    #Gets the list of the most recently added "interesting" photos on flickr
+    recentPhotos = flickr.interestingness_getList()
 
-    #Gets the index of the first photo "id" of the recentPhotos (this will be random, as each call to newAlbumPicture will produce a different list of photos)
+    #Gets the list of the indices of the "id"s of the first 50 interesting photos on flickr
+    idIndices = []
+    k = 0
     i = str(recentPhotos).find('id')
 
-    #Gets the photo (with id = "id) attribute values, based off the id, or "start", index
-    start = i
+    while k <= 50:
+	idIndices.append(i)
+	i = str(recentPhotos).find('id', i + 300)
+	k = k + 1
+
+    #Randomly chooses a photo id out of the list of 50
+    randNum = randint(0, len(idIndices) - 1)
+    start = idIndices[randNum]
+
+    #Gets a the attributes of the photo whose id was selected
     id = str(recentPhotos)[start + 5: start + 15]
+    owner = str(recentPhotos)[start + 28: start + 39]
     secret = str(recentPhotos)[start + 52: start + 62]
     server = str(recentPhotos)[start + 75: start + 79]
     farm = str(recentPhotos)[start + 89: start + 90]
 
-    #Generates the image URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
+    #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
     URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
     return URL
-
 
 if __name__ == '__main__':
     print "Title:" + newArtistName()
