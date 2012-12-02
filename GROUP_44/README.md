@@ -20,7 +20,7 @@ Instructions:
 5. Enjoy!
 <br>
 <br>
-Authors:
+Authors:  
 Hayden Karp-Hecker  
 Ellie Abrams  
 Leopold Spohngellert  
