@@ -29,7 +29,7 @@ def user():
             login.newUser(username)
             login.username(username)
             return render_template("user.html")
-           # return redirect(url_for('home'))
+            return redirect(url_for('home'))
 
         if request.form["button"] == "Login":
             username = str(request.form['login'])

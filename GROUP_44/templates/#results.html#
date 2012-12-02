@@ -60,6 +60,8 @@
 
     <div class="container">
 
+
+
 <center><h1>Here's the Latest Things to Do in Your Area</h1></center>
       <br>
 <b>Name: </b> {{name}} <br>                                                  
