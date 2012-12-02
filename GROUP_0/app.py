@@ -45,15 +45,14 @@ def hello():
 def album(album=""):
     if(request.method=="GET"):
         tmp=data_album[album]
-        return render_template("rate_album.html",album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'])
+        return render_template("rate_album.html",album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=database.getAlbumRatingsByUser(username))
     if(request.method=="POST"):
         button=request.form["button"]
         if button == "rate":
             rating_value=str(request.form["rating"])
             comment=str(request.form["comment"])
             name=request.form["albumname"]
-            database.addAlbumRatingForUsername(username,name,data_album[name]["artist"],rating_value,comment)
-            print database.getAlbumRatingsByUser(username)
+            database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys())
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
@@ -66,7 +65,7 @@ def song(song=""):
             rating_value=request.form["rating"]
             comment=request.form["comment"]
             name=request.form["songname"]
-            database.addSongRatingForUsername(username,name,data_song[name]["artist"],rating_value,comment)
+            database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
 
 if __name__=="__main__":

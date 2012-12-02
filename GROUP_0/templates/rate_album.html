@@ -31,5 +31,11 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
   <input type="hidden" name="albumname" value="{{album}}">
 </p>
 </div>
+<div style="width:500px;position:absolute;bottom:20px;left:520px">
+{% for rating in ratings %}
+{{rating}}
+{% endfor %}
+Stuff here!
+</div>
 {% endblock %}
 
