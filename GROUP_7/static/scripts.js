@@ -10,6 +10,25 @@ var strictBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(40.922852,-73.693542)
 );
 
+//W3C Geolocation
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+} else {
+    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+}
+
+function successFunction(position) {
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    alert('Your latitude is :'+lat+' and longitude is '+long);
+}
+
+function errorFunction(position) {
+    alert('Error!');
+}
+//END GEOLOCATION
+
+//GOOGLE API
 function initialize() {
     var browser = BrowserDetect.browser;
     var bversion = BrowserDetect.version;
@@ -107,7 +126,6 @@ function initialize() {
     //trafficLayer.setMap(map);
 }
 
-
 function changeMS(str){
     if(str === 'zombies'){
 	styles = [
@@ -132,6 +150,7 @@ function changeMS(str){
     }
     map.setOptions({styles: styles});
 }
+
 function codeAddress() {
     var address = document.getElementById('address').value;
     geocoder.geocode( { 'address': address}, function(results, status) {
