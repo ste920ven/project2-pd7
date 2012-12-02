@@ -76,17 +76,17 @@ def newAlbumPicture():
     #Gets the list of the most recently added "interesting" photos on flickr
     recentPhotos = flickr.interestingness_getList()
 
-    #Gets the list of the indices of the "id"s of the first 50 interesting photos on flickr
+    #Gets the list of the indices of the "id"s of the first 100 interesting photos on flickr
     idIndices = []
     k = 0
     i = str(recentPhotos).find('id')
 
-    while k <= 50:
+    while k <= 100:
 	idIndices.append(i)
 	i = str(recentPhotos).find('id', i + 300)
 	k = k + 1
 
-    #Randomly chooses a photo id out of the list of 50
+    #Randomly chooses a photo id out of the list of 100
     randNum = randint(0, len(idIndices) - 1)
     start = idIndices[randNum]
 
