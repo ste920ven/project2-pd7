@@ -11,9 +11,9 @@ def index():
         if button == 'Save':
             db.addImage("http://farm9.staticflickr.com/8070/8234964776_708125d9a6_z.jpg")
             return render_template("index.html", allAlbums = allAlbums)
-       if button == 'Edit':
+        if button == 'Edit':
             return render_template("index.html", allAlbums = allAlbums)
-       if button == 'Generate':
+        if button == 'Generate':
             return render_template("index.html", allAlbums = allAlbums)
     else:
         return render_template("index.html", allAlbums = allAlbums)
