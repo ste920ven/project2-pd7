@@ -1,3 +1,4 @@
+
 import json
 import requests
 import urllib
@@ -46,15 +47,12 @@ def image_crawl(num):
 def get_image_url(url):
     #if url is already just the image link
     if ('i.imgur' in url):
-        return url
+        return url, url[-9:]
     else:
-        return 'http://www.i.imgur.com/'+url[-5:]+'.jpg'
+        #this takes
+        return 'http://www.i.imgur.com/'+url[-5:]+'.jpg', url[-5:]+'.jpg'
         
 
-x = image_crawl(20)
-for i in x:
-    a = get_image_url(i)
-    print a
     
 #print results['data']['children'][0]['data']['url']
 
