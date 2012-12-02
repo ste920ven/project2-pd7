@@ -61,7 +61,7 @@ def deleteAll():
     db.username.remove({});  
 
 
-deleteAll()
+#deleteAll()
 
 """
 newUser("Leopold")

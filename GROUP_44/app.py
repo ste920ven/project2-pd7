@@ -11,6 +11,9 @@ import espn
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+@app.route("/help",methods=["GET","POST"])
+def help():
+    return render_template("help.html")
 
 @app.route("/about",methods=["GET","POST"])
 def about():
@@ -29,7 +32,7 @@ def user():
             login.newUser(username)
             login.username(username)
             return render_template("user.html")
-           # return redirect(url_for('home'))
+            return redirect(url_for('home'))
 
         if request.form["button"] == "Login":
             username = str(request.form['login'])
@@ -37,8 +40,6 @@ def user():
                 return redirect(url_for('home'))
             else:
                 return render_template("user.html")
-
-
 
 @app.route("/home", methods= ["GET","POST"])
 def home():
@@ -93,9 +94,6 @@ def home():
                                description1 = description1,
                                description2 = description2,
                                description3 = description3)
-
-
-#@app.route("/profile", methods= ["GET","POST"])
 
 if __name__ == "__main__":
     app.run(debug = True)
