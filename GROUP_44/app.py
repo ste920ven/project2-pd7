@@ -15,10 +15,6 @@ app.secret_key = 'some_secret'
 def help():
     return render_template("help.html")
 
-@app.route("/profile",methods=["GET","POST"])
-def profile():
-    return render_template("profile.html")
-
 @app.route("/about",methods=["GET","POST"])
 def about():
     return render_template("about.html")
@@ -44,8 +40,6 @@ def user():
                 return redirect(url_for('home'))
             else:
                 return render_template("user.html")
-
-
 
 @app.route("/home", methods= ["GET","POST"])
 def home():
@@ -101,8 +95,6 @@ def home():
                                description2 = description2,
                                description3 = description3)
 
-
-#@app.route("/profile", methods= ["GET","POST"])
 
 if __name__ == "__main__":
     app.run(debug = True)
