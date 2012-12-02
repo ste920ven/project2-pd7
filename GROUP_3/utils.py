@@ -32,11 +32,15 @@ def search(food):
             if temp == 'water':
                 continue
             else:
-                if temp.find(')') > -1:
-                    q, w, temp = temp.partition(')')
+                if temp.find('egg') > -1:
+                    temp = temp[temp.find(' ') + 1:]
+                    b.append(temp)
                 else:
-                    temp= temp[temp.find(' ', temp.find(' ') + 1)+1:]
-                b.append(temp)
+                    if temp.find(')') > -1:
+                        q, w, temp = temp.partition(')  ')
+                    else:
+                        temp = temp[temp.find(' ', temp.find(' ') + 1) + 1:]
+                        b.append(temp)
                 print temp
         except:
             pass
