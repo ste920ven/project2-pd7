@@ -75,9 +75,9 @@ def newAlbumPicture():
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
     #To make the photo-picking more random, the "pickedPhotos" list is chosen from the most recent "interesting" photos on flickr 60% of the time, and the most recent public photos 40% of the time
-    randNum = randint(0, 10)
+    randNum = randint(0, 9)
     pickedPhotos = []
-    if (randNum <= 6):
+    if (randNum <= 5):
         pickedPhotos = flickr.interestingness_getList()
     else: 
         pickedPhotos = flickr.photos_getRecent()
@@ -86,7 +86,7 @@ def newAlbumPicture():
     idIndices = []
     k = 0
     i = str(pickedPhotos).find('id')
-    while k <= 500:
+    while k <= 1000:
 	idIndices.append(i)
 	i = str(pickedPhotos).find('id', i + 200)
 	k = k + 1
