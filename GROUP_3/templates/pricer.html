@@ -48,7 +48,10 @@
 	{% endfor %}
       </BLOCKQUOTE><br>
       
-      <h3><u>Price List:</u></h3>
+      <p><font color="white" size="2">Click on an ingredient to move it between the list of ingredients to buy and those that you already have</font></p>
+      <!-- feel free to reword this more eloquently -->
+
+      <h3><u>Ingredients to Buy:</u></h3>
       <ul>
       <table id="need">
 	{% for price in prices %}
@@ -64,7 +67,7 @@
       <b><u>Total:</u> <p id="total" style="display: inline"></p></b>
       <br><br>
       
-      <h3><u>Already Have</u></h3>
+      <h3><u>Ingredients you Have:</u></h3>
       <ul>
       <table id="have">
       </table>
