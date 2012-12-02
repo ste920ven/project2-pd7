@@ -194,13 +194,12 @@ $(function(){
 
 //this gets a generated image and displays it in generated-art
 function gen(){
-	alert("generate is clicked");
+	alert("gen");
 }
-
 
 function edit(){
 	pixlr.edit({
-		image:''
+		image:$('.generatedart')
 		, title:'Example image 3'
 		, service:'express'
 		, target:'www.google.com'
@@ -209,7 +208,7 @@ function edit(){
 }
 
 function save(){
-	alert("save is clicked");
+	alert("save");
 }
 
 $(document).ready(
