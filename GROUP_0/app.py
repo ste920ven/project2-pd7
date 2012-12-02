@@ -11,6 +11,7 @@ app.secret_key="secret"
 data_song=lastfm.create_song()
 data_album=lastfm.create_album()
 username=""
+album_name=""
 @app.route("/",methods=['GET','POST'])
 def login():
     if request.method=="GET":
@@ -42,6 +43,7 @@ def hello():
 
 @app.route("/hello/album/<album>",methods=['GET','POST'])
 def album(album=""):
+    album_name=album
     if(request.method=="GET"):
         tmp=data_album[album]
         return render_template("rate_album.html",album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'])
@@ -50,7 +52,7 @@ def album(album=""):
         if button == "rate":
             rating_value=request.form["rating"]
             comment=request.form["comment"]
-            database.addAlbumrating(username,album,data_album[album]["artist"],rating_value,comment)
+            database.addAlbumRatingForUsername(username,album_name,data_album[album_name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys())
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])

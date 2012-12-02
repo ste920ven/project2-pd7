@@ -22,7 +22,7 @@ def create_song():
     result=json.loads(request.read())
     for item in result["toptracks"]["track"]:
         song_title=item["name"].encode('ascii','ignore')
-        song[song_title]={"artist":item["artist"]["name"].encode('ascii','ignore'),"image":item["image"][3]["#text"].encode('ascii','ignore'),"url":item["url"].encode('ascii','ignore'),"artist url":item["artist"]["url"].encode('ascii','ignore')}
+        song[song_title]={"artist":item["artist"]["name"].encode('ascii','ignore'),"image":item["image"][3]["#text"].encode('ascii','ignore'),"url":item["url"].encode('ascii','ignore'),"artist url":item["artist"]["url"].encode('ascii','ignore'),"rank":item["@attr"]["rank"].encode('ascii','ignore')}
     return song
 
 if __name__ == "__main__":
