@@ -3,15 +3,21 @@
 {% block head %}
 <h1>{{album}}</h1>
 <style type="text/css">
+  #menu {
+  position:relative;
+  width:200px;
+  left:20px;
+  float:left;
+  }
   #content {
   position:relative;
   width: 250px;
-  padding:10px;
+  padding:50px;
   float:left;
   }
   #ratepage {
   position:relative;
-  top:20px;
+  top:45px;
   width: 200px;
   left:250px;
   float:left;
@@ -20,6 +26,14 @@
 {% endblock %}
 
 {% block body %}
+<div id="menu">
+<ul class="menu vertical">
+{% for album in albums %}
+<li><a href="http://127.0.0.1:5000/hello/album/{{album}}">{{album}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
 <div id="content" style="left:20px">
 <img src="{{image}}" alt="{{album}}'s image"/>
 <p>
