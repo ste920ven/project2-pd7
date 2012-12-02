@@ -1,3 +1,11 @@
+$(document).ready(function(){
+    $("#trigger").click(function(){
+	$("#panel").toggle("fast");
+	return false;
+    });
+    $('#tabr1').bind("ready",geoLocateAttempt());
+});
+
 var map;
 var geocoder;
 var directionDisplay;
@@ -11,10 +19,13 @@ var strictBounds = new google.maps.LatLngBounds(
 );
 
 //W3C Geolocation
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-} else {
-    alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+function geoLocateAttempt(){
+    if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+    }
+    else {
+	alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+    }
 }
 
 function successFunction(position) {
@@ -24,7 +35,7 @@ function successFunction(position) {
 }
 
 function errorFunction(position) {
-    alert('Error!');
+    alert('Could not automatically detect location! Please enter manually');
 }
 //END GEOLOCATION
 
