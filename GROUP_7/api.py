@@ -55,26 +55,26 @@ def getFacilityList(origin, category, mode):
         print "\n", facility
 
     
-        """
-        #fac_in_order = []
-        #dist_in_order = []
-        for facility in facilities:
-        #fac_add = getAddress(facility)
-        #distance = distanceFrom(origin, fac_add, mode)
-        #dist_in_order.append(distance)
+        
+    fac_in_order = []
+    dist_in_order = []
+    for facility in facilities:
+        fac_add = getAddress(facility)
+        distance = distanceFrom(origin, fac_add, mode)
+        dist_in_order.append(distance)
         if len(fac_in_order) == 0: 
-        fac_in_order.append(facility)
+            fac_in_order.append(facility)
         else:
-        if this.distance > fac_in_order[0].distance:
-        fac_in_order.append(facility)
-        else:
-        for a in fac_in_order:
-        if this.distance <= a.distance:
-        fac_in_order.insert((fac_in_order.index(a)), facility)
-        dist_in_order.sort()
-        print fac_in_order
-        print dist_in_order
-        """
+            if this.distance > fac_in_order[0].distance:
+                fac_in_order.append(facility)
+            else:
+                for a in fac_in_order:
+                    if this.distance <= a.distance:
+                        fac_in_order.insert((fac_in_order.index(a)), facility)
+                        dist_in_order.sort()
+    print fac_in_order
+    print dist_in_order
+        
         
 
 original = "345 Chambers Street"
