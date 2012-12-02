@@ -46,7 +46,7 @@ def addSongRating(username,song,artist,rating,comment):
         SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
     addSongRatingForUsername(username,song,artist,rating,comment)
 
-def addAlbumrating(album,artist,rating,comment):
+def addAlbumrating(username,album,artist,rating,comment):
     ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
     commentList = AlbumRatings.find_one({'album':album,'artist':artist})
     if ratingList == None:

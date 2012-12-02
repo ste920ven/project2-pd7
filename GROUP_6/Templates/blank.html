@@ -13,8 +13,11 @@
 <!-- ===================================== END HEADER ===================================== -->
 
 <!--Made the slideshow scrollable, so that fixes any issues with too many overcrowding, WORKS PERFECTLY :D -->
-<style>
-ul {overflow-x: scroll; overflow-y:hidden;}
+<style type="text/css">
+ul {overflow-x:scroll; overflow-y:visible;}
+ul.menu {overflow-x: visible; overflow-y:visible;}
+ul.submenu {overflow-x: visible; overflow-y:visible;}
+#comments {overflow-x: hidden; overflow-y:scroll; }
 </style>
 
 
@@ -29,14 +32,14 @@ ul {overflow-x: scroll; overflow-y:hidden;}
 
 <!-- Menu Vertical Left -->
 		
-<ol class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:600px;width:20%;float:left;">
-<li class="current"><a href="">Item 1</a></li>
+<ul class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:600px;width:14%;float:left;">
+<li><a href="">Item 1</a></li>
 <li><a href="">Item 2</a></li>
 <li><a href="">Item 3</a>
-	<ul>
+	<ul class="submenu">
 	<li><a href="">Sub Item</a></li>
 	<li><a href="">Sub Item</a>
-		<ul>
+		<ul class="submenu">
 		<li><a href="">Sub Item</a></li>
 		<li><a href="">Sub Item</a></li>
 		<li><a href="">Sub Item</a></li>
@@ -47,11 +50,11 @@ ul {overflow-x: scroll; overflow-y:hidden;}
 	</ul>
 </li>
 <li><a href="">Item 4</a></li>
-</ol>
+</ul>
 
 <!-- Tag bar-->
 
-<div id="content" style="background-color:#EEEEEE;height:600px;width:60%;float:left;">
+<div id="content" style="background-color:#EEEEEE;height:600px;width:66%;float:left;">
 
 <!-- Tags-implement later -->
 
@@ -71,7 +74,7 @@ ul {overflow-x: scroll; overflow-y:hidden;}
 <option value="3">Option 3</option>
 </select>
 <!-- Disappearing "add new tag" -->
-<a onclick ="javascript:ShowHide('HiddenDiv')" href="javascript:;" >Add new tag</a>
+<a onclick ="javascript:ShowHide('HiddenDiv')" href="javascript:;" >Add a tag</a>
 <div class="mid" id="HiddenDiv" style="DISPLAY: none" >
 <label for="text1"></label>
 <input id="Addnewtag" type="text" />
@@ -82,18 +85,42 @@ ul {overflow-x: scroll; overflow-y:hidden;}
 
 </div>
 
-<!-- Slideshow bar, can take unlimited-->
 
-<ul class="slideshow" id="slideshow" width="550" height="350">
+<ul class="slideshow"  width="550" height="350">
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
 <li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
 <li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
 <li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
 </ul>
-
-<!-- Upvote/Downvote-glitchy, might cut out later -->
-
-<button class="large"><span class="icon gray">q</span></button>
-<button class="large"><span class="icon gray">r</span></button>
 
 </div>
 

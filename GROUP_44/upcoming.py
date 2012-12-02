@@ -21,7 +21,7 @@ def getStateId(x):
 
 def getEvent(event,zip_code):
     request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.search&search_text=" + event + "&location=" + str(zip_code) +"&format=json"
-#    print sendRequest(request)
+
     return sendRequest(request)
 
 def getEventInfo(event,zip_code,detail):
@@ -33,14 +33,19 @@ def getEventInfo(event,zip_code,detail):
 
 def getEventByID(id):
     request = "http://upcoming.yahooapis.com/services/rest/?api_key=74fb5c7bc0&method=event.getInfo&event_id=" + str(id) + "&format=json"
-    return sendRequest(request)
-    
+    x = sendRequest(request)
+    return x
+
 def getEventIDInfo(id,detail):
     x = getEventByID(id)
     info = {"id" : detail}
     for item in x['rsp']['event']:
         info[item['id']] = item[detail]
-    return info
+        retval = info[id].replace("&#39;s","s")
+        retval.replace("&#39;","\'")
+        retval.replace("&amp;","&")
+        retval.replace("&quot;","\"")
+        return retval
 
 
 

@@ -9,10 +9,8 @@
 <img src="{{image}}" alt="{{song}}'s image"><br>
 <p>
 <font size="3">
-Album: {{album}}<br>
-Artist: {{artist}}<br>
-Genre: {{genre}}<br>
-Label: {{label}}<br>
+Artist: <a href="{{url}}">{{artist}}</a><br>
+Rank: {{rank}}<br>
 Listen to the song <a href="{{link}}">here!</a><br></br>
 </font>
 </p>
@@ -29,6 +27,8 @@ Listen to the song <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
+  <input type="hidden" name="songname" value="{{song}}">
 </div>
 
 {% endblock %}
+

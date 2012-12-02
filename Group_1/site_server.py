@@ -6,6 +6,9 @@ import urllib2
 
 import twilio_records
 
+
+#global ratings
+
 app = Flask(__name__)
 
 
@@ -22,13 +25,15 @@ def index():
 
 @app.route("/rates/<num>", methods = ['GET', 'POST'])
 def rates(num):
-    ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
+    global ratings
+    ratings = twilio_records.get_records("+1" + str(num))
+    #ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
     return render_template('restaurants.html', numb = num, ratings = ratings )
 
 @app.route("/getrating/<num>/<name>", methods = ['GET', 'POST'])
 def getrating(num, name):
-    ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
-    return ratings[name]
+    #ratings = {"toast":"This restaurant has a good burger", "abbey": "Great atmosphere", "five guys": "Two Patties!"}
+    return str(ratings[name])
 
 # @app.route("/ratesimages/preload.gif")
 # def preload():
