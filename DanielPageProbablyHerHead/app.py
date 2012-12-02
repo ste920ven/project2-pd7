@@ -7,8 +7,10 @@ app = Flask(__name__)
 def index():
     allAlbums = db.getImages()
     if request.method == 'POST':
-        if request.form['button'] == 'Save':
+        if request.form['button'] == 'Generate':
+            print "Hello"
             db.addImage("http://farm9.staticflickr.com/8070/8234964776_708125d9a6_z.jpg")
+            return render_template("index.html", allAlbums = allAlbums)
     else:
         return render_template("index.html", allAlbums = allAlbums)
 

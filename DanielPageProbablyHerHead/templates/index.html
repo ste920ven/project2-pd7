@@ -24,6 +24,8 @@ function tables() {
 }
 </script>
 
+<form action="" method= "POST">
+
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
 	<h3>Albumartinator</h3>
@@ -32,7 +34,7 @@ function tables() {
         <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
         <script type="text/javascript" src="../static/pixlr.js"></script>
         <br>
-		<button class="generate" type="button" style="width:100px;height:50px">Generate stuff!</button>
+		<input type=submit name=button value="Generate">
 		<br>
 		<img src="" alt="" class="generated-art"></img>
 		<br>
@@ -53,3 +55,4 @@ function tables() {
     Use the above function to access the user's IP, then pass it into the database.
     -->
 </body>
+</form>
