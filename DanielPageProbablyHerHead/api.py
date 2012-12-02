@@ -75,7 +75,8 @@ def newAlbumPicture():
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
     #Gets the list of the most recently added "interesting" photos on flickr
-    interestingPhotos = flickr.interestingness_getList()
+    interestingPhotos = flickr.interestingness_getList() 
+    #Gets the list of the most recently added public photos on flickr
     recentPhotos = flickr.photos_getRecent()
 
     #To make the photo-picking more random, the "pickedPhotos" list is chosen from interestingPhotos 60% of the time, and recentPhotos 40% of the time
