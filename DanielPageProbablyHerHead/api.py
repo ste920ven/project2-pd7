@@ -8,7 +8,6 @@ api_key = "c190109eeac99e777f3246f6da0f263a"
 
 """
 api.py houses all of our code that deals with web APIs.
-The Flickr API will be added soon.
 """
 def newArtistName():
     """
