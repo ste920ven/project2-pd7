@@ -71,19 +71,24 @@ def newAlbumPicture():
     """
 
     #API Call
-    flickr = flickrapi.FlickrApi(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
+    flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json", nojsoncallback = 1)
 
     #Getting the list of the most recently added public photos on flickr
-    photoList = flickr.photos_getRecent()
+    recentPhotos = flickr.photos_getRecent()
     
+    #Parsing the json output
+    photoList = json.loads(recentPhotos)
+
     #Generating the URLs for the most recently added public photos on flickr
     photoURLs = []
-    for photo in photoList:
-	   photoURLs.append("http://" str(farm(photo['farm'])) + ".staticflickr.com/" + str(photo['server']) + "/" + str(photo['id'])+ "_" + str(photo['secret']) + ".jpg")
+    for image in photoList['photos']['photo']:
+	URL = "http://farm" + str(image['farm']) + ".staticflickr.com/" + str(image['server']) + "/" + str(image['id']) + "_" + str(image['secret']) + ".jpg"
+        photoURLs.append(URL)
 
     #Choosing a random URL from the recent photos URL list
     randNum = randint(0, len(photoURLs) - 1)
-    return photoUrls[randNum]
+    return photoURLs[randNum]
+
 
 if __name__ == '__main__':
     print "Title:" + newArtistName()
