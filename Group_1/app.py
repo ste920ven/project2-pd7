@@ -9,10 +9,7 @@ app = Flask(__name__)
 @app.route("/", methods=['GET', 'POST'])
 def sendSMS():
     text = request.values.get('Body', None)
-    try:
-        result = factual_search.getSearchString(text)
-    except:
-        result = ""
+    result = factual_search.getSearchString(text)
     resp = twilio.twiml.Response()
     resp.sms(result)
     #resp.sms("Hello")
