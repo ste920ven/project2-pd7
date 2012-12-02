@@ -1,41 +1,132 @@
 <!doctype HTML>
 <form action="" method="post">
 
+ <script type=text/javascript src="{{
+  url_for('static', filename='jquery.js') }}"></script>
+<style type="text/css">
+  html { 
+background: rgb(125,126,125); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(125,126,125,1) 51%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(51%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  rgba(125,126,125,1) 51%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  rgba(125,126,125,1) 51%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  rgba(125,126,125,1) 51%,rgba(14,14,14,1) 100%); /* IE10+ */
+background: linear-gradient(135deg,  rgba(125,126,125,1) 51%,rgba(14,14,14,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
+
+h1 {
+  display: block; text-decoration: none;
+  font: 150px Helvetica, Arial, Sans-Serif; letter-spacing: -5px;  
+  text-align: center;
+  color: #FFFFF2; text-shadow: 0px 3px 8px #2a2a2a; 
+position:relative;
+top:-75px;
+}
+#subtitle{
+  display: block; text-decoration: none;
+  font: 75px Helvetica, Arial, Sans-Serif; letter-spacing: -5px;
+  text-align: center;
+  color: #FFFFF2; text-shadow: 0px 3px 8px #2a2a2a;
+  
+position:relative;
+top:-150px;
+ }
+#ocreate{
+display: block; text-decoration: none;
+  font: 60px Helvetica, Arial, Sans-Serif; letter-spacing: 0px;
+  text-align: center;
+  color: #FFFFF2; text-shadow: 0px 3px 8px #2a2a2a;
+
+position:relative;
+top:-60px;
+}
+
+#user{
+  font: 30px Helvetica, Arial, Sans-Serif; letter-spacing: 0px;
+position:relative;
+top:-100px;
+
+}
+#login{
+position:relative;
+top:-60px;
+}
+#olog{
+display: block; text-decoration: none;
+  font: 60px Helvetica, Arial, Sans-Serif; letter-spacing: 0px;
+  text-align: center;
+  color: #FFFFF2; text-shadow: 0px 3px 8px #2a2a2a;
+
+position:relative;
+top:-60px;}
+input{
+  font-family: Helvetica;font-size: 30px; color:#000000;text-shadow: 0px -1px 0px #334f71; 
+  padding: 9px;
+  border: solid 2px #E5E5E5;
+  outline: 0;
+  width: 400px;
+  background: #FFFFFF;
+  }
+  </style>
   <title>H.E.L.P.</title>
 
-<style> 
-body{background-color: #ff0000;}
-h{
-position:absolute;
-left:1300px;
-top:740px;
-}
-h {font-size:30px;}
-h:hover{background-color: #ffffff;}
-a:hover{background-color: #ffffff;}
-c:hover{background-color: #ffffff;}
-h1:hover{background-color: #ffffff;}
-</style>
+<script>
+  $(document).ready(function(){
+  $('#title').fadeOut(0);
+$('#option').fadeOut(0);
+  
+  $("#createUsername").fadeOut(0);
+$("#login").fadeOut(0);
+$('#subtitle').fadeOut(0);
+$('#subtitle').fadeIn(2000);
+$('#title').fadeIn(750);
+$('#option').fadeIn(750);
+$('#ocreate').click(function() {
+   $('#option').fadeOut(500);
+  $('#createUsername').fadeIn(600);
 
-<h class = "help"> H.E.L.P. </h> 
+});
+$('#olog').click(function() {
+  $('#option').fadeOut(500);
+  $('#login').fadeIn(600);
+});
+});
+</script>
+<h class = "help"> </h> 
+<div id = "title">
+<h1>H.E.L.P</h1> 
+</div>
 
-<h1> Login Page </h1> 
+<center>
+<div id = "subtitle">
+Need something to do? Let us help you!<br>
+</div>
+<div id = "option">
+<div id = "ocreate">
+  Create Account<br> </div>     <br>    <div id = "olog" >  Login
+</div>
+</div>
 
+<div id = "user">
+<div id = "createUsername">
 <form name="input" action="html_form_action.asp" method="get">
-<a> Create a username</a> <input type="text" name="username"><br>
+<a> Create a username</a><br> <input type="text" name="username"><br>
 <br></br>
 <input type="submit" name="button" value="Submit">
+</div>
 
 
-
-
+<div id = "login">
 <br></br>
 <name="input" action="html_form_action.asp" method="get">
-<c>Login by entering your username</c> <input type="text" name="login"><br>
+<c>Login by entering your username</c><br> <input type="text" name="login"><br>
 <br></br>
 <input type="submit" name="button" value="Login">
-
-
+</div>
+</div>
+</center>
 </form>
 
 
