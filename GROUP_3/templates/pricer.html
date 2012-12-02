@@ -46,9 +46,15 @@
 	{% for element in ingredients %}
 	<li>{{element}}</li>
 	{% endfor %}
-      </BLOCKQUOTE><br>
+      </BLOCKQUOTE>
+      <font color="white" size="2">
+	<p>Did the ingredients come out wrong? </p>
+	<!-- gets the recipe from the non-mobile site instead. much slower, but the ingredients should come out right -->
+	<form action="tryagain">
+	  <input type="submit" name="tryagain" value="Try Again">
+	</form><br>
       
-      <p><font color="white" size="2">Click on an ingredient to move it between the list of ingredients to buy and those that you already have</font></p>
+      <p>Click on an ingredient to move it between the list of ingredients to buy and those that you already have</p></font>
       <!-- feel free to reword this more eloquently -->
 
       <h3><u>Ingredients to Buy:</u></h3>
@@ -57,7 +63,6 @@
 	{% for price in prices %}
 	<tr style="color:white" type="n" cost="{{price[0]}}">
 	  <td>{{"$" + price[0]}} &nbsp; &nbsp;</td>
-	  <!--<td> {{"$" + price[0]}} &nbsp; &nbsp; </td>-->
 	  <td> {{(price[1])}} </td>
 	</tr>
 	{% endfor %}
@@ -82,10 +87,10 @@
     </font>
     <br><br><br><br>
     <form action="back">
-      <input type="submit" name="Home" value="Home"></input>
+      <input type="submit" name="Home" value="Home">
     </form>
     <font size="2" color="white">
-      Source: <a href={{sURL}}>mobile.allrecipes.com</a><br>
+      Source: <a href={{sURL}}>allrecipes.com</a><br>
     </font>
     <script src="static/jquery.js"></script>
     <script src="static/pricer.js"></script>
