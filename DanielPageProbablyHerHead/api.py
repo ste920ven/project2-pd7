@@ -81,7 +81,7 @@ def newAlbumPicture():
     k = 0
     i = str(recentPhotos).find('id')
 
-    #Getting all the photo attribute values, based of the id, or "start, index
+    #Getting all the photo attribute values, based of the id, or "start", index
     start = i
     id = str(recentPhotos)[start + 5: start + 15]
     owner = str(recentPhotos)[start + 28: start + 39]
