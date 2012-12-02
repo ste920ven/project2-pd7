@@ -10,6 +10,8 @@ app.secret_key="secret"
 #data_artist=api.create_artist()
 data_song=lastfm.create_song()
 data_album=lastfm.create_album()
+images_song=lastfm.create_song_images()
+images_album=lastfm.create_album_images()
 username=""
 album_name=""
 @app.route("/",methods=['GET','POST'])
@@ -45,7 +47,13 @@ def hello():
 def album(album=""):
     if(request.method=="GET"):
         tmp=data_album[album]
-        return render_template("rate_album.html",album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=database.getAlbumRatingsByUser(username))
+        try:
+            ratings=database.getAlbumRating(album,tmp["artist"])
+            average=database.getAverageRating(album,tmp["artist"])
+        except Exception:
+            ratings=False
+            average="No ratings yet, rate this album now!"
+        return render_template("rate_album.html",album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
         button=request.form["button"]
         if button == "rate":
@@ -53,12 +61,18 @@ def album(album=""):
             comment=str(request.form["comment"])
             name=request.form["albumname"]
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
-            return render_template("album.html", albums=data_album.keys())
+            return render_template("album.html", albums=data_album.keys(),images_album=images_album)
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
 def song(song=""):
     if(request.method=="GET"):
-        return render_template("rate_song.html",song=song,link=data_song[song]["url"],artist=data_song[song]["artist"],image=data_song[song]["image"],rank=data_song[song]["rank"],url=data_song[song]["artist url"])
+        try:
+            ratings=database.getSongRating(song,data_song[song]["artist"])
+            average=database.getAverageSongRating(song,data_song[song]["artist"])
+        except Exception:
+            ratings=False;
+            average="No ratings yet, rate this song now!";
+        return render_template("rate_song.html",song=song,link=data_song[song]["url"],artist=data_song[song]["artist"],image=data_song[song]["image"],rank=data_song[song]["rank"],url=data_song[song]["artist url"],average=average,ratings=ratings)
     if(request.method=="POST"):
         button=request.form["button"]
         if button == "rate":

@@ -61,10 +61,11 @@ def addAlbumrating(username,album,artist,rating,comment):
 
     
 def getSongRating(song,artist):
-    return SongRatings.find_one({'song':song,'artist':artist})
+    tmp= SongRatings.find_one({'song':song,'artist':artist})
+    return tmp
 def getAlbumRating(album,artist):
-    return AlbumRatings.find_one({'album':album,'artist':artist})
-#will return the rating of the song/album
+    tmp= AlbumRatings.find_one({'album':album,'artist':artist})
+    return tmp
 
 
 def addSongRatingForUsername(username,song,artist,rating,comment):
@@ -96,6 +97,23 @@ def addAlbumRatingForUsername(username,album,artist,rating,comment):
         else:
             albumList.append(temp)
             Accounts.update({'usernames':username},{'$set':{'albumList':albumList}})
+
+def getAverageRating(album,artist):
+    ratings=getAlbumRating(album,artist)["rating"]
+    sum=0
+    for item in ratings:
+        sum=int(item)+sum
+    average=sum/(len(ratings)+1)
+    return average
+
+def getAverageSongRating(song,artist):
+    ratings=getSongRating(song,artist)["rating"]
+    sum=0
+    for item in ratings:
+        sum=int(item)+sum
+    average=sum/(len(ratings)+1)
+    return average
+
 
 
 def getSongRatingsByUser(username):
