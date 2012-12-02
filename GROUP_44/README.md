@@ -5,8 +5,8 @@ might interest you.
   
 Click this link to access H. E. L. P.:  
   
-  
-  
+http://ml7.stuycs.org:portgoeshere  
+    
 Instructions:
 <br>
 1. Create a Username
