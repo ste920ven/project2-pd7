@@ -1,87 +1,50 @@
-<h1>StuyDash</h1>
-<h2>By group <a href="#group-four-fifths">four-fifths</a></h2>
-
-<h3>Project: Stuy Student Dashboard - Everything a Stuy student needs.</h3>
-
-<h4>Website Services:</h4>
+<h1>GROUP four-fifths</h1>
+<h2>Project: Stuy Student Dashboard (improve the Stuy website)</h2>
+We want to make a new version of the Stuy site that's actually useful,
+so you can see stuff like
 <ul>
-  <li>Intellegent Bell Schedule App
+  <li>the bell schedule</li>
+  <li>the Brooks tools (time left in pd, etc)</li>
+  <li>A or B day?!?!!!1!11!</li>
+  <li>stuy news</li>
+  <li>It will tell you the weather</li>
+  <li>Links to:
     <ul>
-      <li>Detects which bell schedule the current day is</li>
-      <li>Displays the proper bell schedule app for the current day</li>
-      <li>Information on which period it is (or what periods we are between)</li>
-      <li>Displays the current Gym day (A, A1, A2, B, B1, B2)</li>
-      <li>Current Temperature and Conditions (as of the page load)</li>
-    </ul>
-  </li>
-  <br/>
-  <li>Full Weekly Schedule with link to the post on the Stuy site</li>
-  <li>Displays current Stuy news entries with links to their posts</li>
-  <li>Quick links to:
-    <ul>
-      <li><a href="http://stuy.enschool.org">Stuy Homepage</a></li>
       <li><a href="http://www.students-stuyhs.theschoolsystem.net/login.rb">Student Tools<a></li>
-      <li><a href="http://schools.nyc.gov/Calendar/default.htm">NYC Calendar</a></li>
+      <li><a href="http://www.schools.nyc.gov">NYC schools site</a></li>
       <li><a href="http://www.mta.info">MTA</a></li>
+      <li>NYC school calendar</li>
     </ul>
   </li>
 </ul>
-
-<h4>Features:</h4>
 <ul>
-  <li>Convenient text interface</li>
-  <li>Mobile Site</li>
-  <li>Phone Hotline</li>
+  <li>You can also interface with the site through texting commands</li>
+  <li>You can also change the skin of the site</li>
+  <li>With an account, you can customize the widgets. <em>note: not sure if this is going to happen</em></li>
+  <li>On snow days, there will be snow falling in the background, and similar animations for rain, sun, etc</li>
 </ul>
 
-<h4>Setup:</h4>
+<strong>Note: runs on ml7.stuycs.org port 7004</strong>
 
-<h6>Required Modules ("pip install modulename")</h6>
+Modules that must be installed to run...
 <ul>
-  <li>flask</li>
-  <li>beautifulsoup4</li>
-  <li>html5lib</li>
-  <li>twilio</li>
-  <li>ua_parser (download source from <a href="https://github.com/tobie/ua-parser">GitHub</a>)</li>
+  <li><strong>Website server</strong></li>
+    <ul>
+    <li>flask</li>
+      <li>beautifulsoup4</li>
+      <li>html5lib</li>
+    </ul>
+  <li><strong>Text server</strong></li>
+    <ul>
+      <li>flask</li>
+      <li>twilio</li>
+    </ul>
 </ul>
 
-<h6>ua_parser setup</h6>
+People:
 <ul>
-  <li>"git clone https://github.com/tobie/ua-parser.git"</li>
-  <li>"cd ua-parser"</li>
-  <li>"python setup.py"</li>
-  <li>You can then remove the dir ua-parser from your hard drive.</li>
-</ul>
-
-<h6>Note: app.py runs on <a href="http://ml7.stuycs.org:7205">ml7.stuycs.org:7205</a>...</h6>
-
-<h4>GROUP four-fifths:</h4>
-
-<ul>
-  <li><strong>Group Leader:</strong> Zachary
-    <ul>
-      <li>Screen-Scraping (extractor.py)</li>
-      <li>Website Design and Construction (app.py and supporting files)</li>
-    </ul>
-  </li>
-  
-  <li>Jack
-    <ul>
-	<li>Twilio API:</li>
-    	<li>SMS interface (sendSMS.py)</li>
-    	<li>Phone Information Hotline (hotline.py)</li>
-    </ul>
-  </li>
-  
-  <li>Cameron
-    <ul>
-      <li>Weather API (Weather.py)</li>
-    </ul>
-  </li>
-  
-  <li>Jason
-    <ul>
-      <li>MTA API (MTAService.py)</li>
-    </ul>
-  </li>
+  <li><strong>Zach (leader)</strong>: Stuy screen scraping, site design</li>
+  <li>Jason: site design</li>
+  <li>Cameron: Weather!</li>
+  <li>Jack: Twilio API. SMS and voice information on demand.</li>
 </ul>

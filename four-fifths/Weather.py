@@ -5,32 +5,11 @@ def getTemp():
     d=url.read()
     y = "temp="
     x = d.find(y)
-    x = d[x+6:x+8]
+    x = d[x+6:x+9]
     return int(x)
 
-def getHigh():
-    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
-    d=url.read()
-    y = "high="
-    x = d.find(y)
-    x = d[x+6:x+8]
-    return int(x)
 
-def getLow():
-    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
-    d=url.read()
-    y = "low="
-    x = d.find(y)
-    x = d[x+5:x+7]
-    return int(x)
-
-def getForecast():
-    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
-    d=url.read()
-    y = "code="
-    x = d.find(y)
-    x = d[x+6:x+8]
-    return int(x)
+def getForecast()):
 """
 d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderstorms","mixed rain and snow",
 	"mixed rain and sleet",
@@ -75,8 +54,13 @@ d1 = ["tornado", "tropical storm", 'hurricane',"severe thunderstorms","thunderst
 	"thundershowers",
 	"snow showers",
     "isolated thundershowers"]
-"""    
-
+    url=urllib2.urlopen("http://weather.yahooapis.com/forecastrss?w=2459115")
+  """
+  d=url.read()
+    y = "code="
+    x = d.find(y)
+    x = d[x+6:x+9]
+    return int(x)
     
 
 

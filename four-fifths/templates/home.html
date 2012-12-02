@@ -4,14 +4,20 @@
     <title>Stuy Student Dashboard</title>
 
     <link rel="shortcut icon"  href="{{ url_for('static', filename='images/favicon.ico') }}">
-   
-    <style type="text/css"> @import "{{ url_for('static', filename='main.css') }}"; </style>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+    <style type="text/css" media="screen">
+      @import "{{ url_for('static', filename='main.css') }}";
+    </style>
+    <style type="text/css" media="all and (max-width: 640px)">
+      @import "{{ url_for('static', filename='mobile.css') }}"
+    </style>
 
     <script>var bellDay='{{bellDay}}';</script>
-    <script src="{{ url_for('static', filename='jquery.js')  }}"></script>
-    <script src="{{ url_for('static', filename='script.js')  }}"></script>
-    <script src="{{ url_for('static', filename='widget.js')  }}"></script>
-    <script src="{{ url_for('static', filename='sidebar.js') }}"></script>
+    <script src="{{ url_for('static', filename='jquery.js')   }}"></script>
+    <script src="{{ url_for('static', filename='enquire.js')  }}"></script>
+    <script src="{{ url_for('static', filename='script.js')   }}"></script>
+    <script src="{{ url_for('static', filename='media.js')    }}"></script>
 
   </head>
   
@@ -24,7 +30,7 @@
       <a href="http://mta.info/">MTA</a>
     </header>
 
-    <div id="main">
+    <div class="main">
       <section id="info">
 	
 	<div id="statusbar">
@@ -42,7 +48,7 @@
 	    <p id="day">{{date}}</p>
 	  </div>
 
-	  <div id="weather">&nbsp;{{temp}}&deg;</div>	   
+	  <div id="weather">&nbsp;78&deg;</div>	   
 
 	</div>
 
@@ -226,17 +232,19 @@
 	</div>
 
       </section>
+    </div>
     
+    <div id="sidebar">
+      <div id="toggle">&raquo;</div>
+      {{schedule|safe}}
+    </div>
+
+    <div class="main">
       <ul id="news" class="main">
 	{% for article in news %}
 	{{article|safe}}
 	{% endfor %}
       </ul>
-    </div>
-
-    <div id="sidebar">
-      <div id="toggle">&raquo;</div>
-      {{schedule|safe}}
     </div>
 
   </body>
