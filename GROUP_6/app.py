@@ -5,7 +5,7 @@ app = Flask(__name__)
 #app.secret_key = "secret"
 
 @app.route('/', methods=['GET', 'POST'])
-def main():
+def home():
 	if request.method=="GET":
 		return render_template("home.html")
         if request.method=="POST":

@@ -193,7 +193,7 @@ $(function(){
 });
 
 //this gets a generated image and displays it in generated-art
-/*
+
 function gen(){
 	alert("gen");
 }
@@ -214,7 +214,7 @@ function edit(){
 function save(){
 	alert("save");
 }
-*/
+
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
