@@ -193,6 +193,7 @@ $(function(){
 });
 
 //this gets a generated image and displays it in generated-art
+/*
 function gen(){
 	alert("gen");
 }
@@ -202,20 +203,23 @@ function edit(){
 		image:$('.generatedart')
 		, title:'Example image 3'
 		, service:'express'
+                //target should be the URL of a php script that will save the image that pixlr sends it
 		, target:'www.google.com'
+                //exit should be the URL that the user returns to after saving or closing
 		, exit:'www.google.com'
 	});
 }
 
+
 function save(){
 	alert("save");
 }
-
+*/
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
-		$('.generate').click(gen);
-		$('.edit').click(edit);
-		$('.save').click(save);
+		//$('.generate').click(gen);
+		//$('.edit').click(edit);
+		//$('.save').click(save);
 	}
 );
