@@ -4,7 +4,7 @@ import api,db
 app = Flask(__name__)
 #app.secret_key = "secret"
 
-@app.route('/', methods=['GET', 'POST'])
+app.route('/', methods=['GET', 'POST'])
 def main():
 	if request.method=="GET":
 		return render_template("home.html")
@@ -22,7 +22,7 @@ def slide():
 		tags = db.getTags(pic)
 		piclist = db.getPics(<tag>)
 		commentlist = db.getComments(pic)
-		return render_template("slide.html", taglist = taglist, tags =tags, piclist =piclist, commentlist = commentlist)
+		return render_template("slide.html", taglist = taglist, tags =tags, piclist =piclist, commentlist = commentlist, url = url)
 	else:	
 		button = request.form['button']
 		pic = request.get('current').href
