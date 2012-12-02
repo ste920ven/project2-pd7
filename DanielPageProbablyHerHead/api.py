@@ -76,7 +76,7 @@ def newAlbumPicture():
     #Getting the list of the most recently added public photos on flickr
     recentPhotos = flickr.photos_getRecent()
 
-    #Getting the list of the index of the first photo "id" of the most recently added public photos on flickr
+    #Getting the index of the first photo "id" of the recentPhotos (this will be random, as each call to newAlbumPicture will produce a different list of photos)
     i = str(recentPhotos).find('id')
 
     #Getting all the photo attribute values, based of the id, or "start", index
