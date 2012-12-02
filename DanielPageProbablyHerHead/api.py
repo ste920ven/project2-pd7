@@ -1,9 +1,10 @@
 from random import randint
+import urllib2
+import simplejson
 import flickrapi
 #This app requires the flickr api to run.
 #install with 'sudo apt-get install python-flickrapi'
-import urllib2
-import simplejson
+api_key = "c190109eeac99e777f3246f6da0f263a"
 
 """
 api.py houses all of our code that deals with web APIs.
