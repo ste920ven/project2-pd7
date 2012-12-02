@@ -107,4 +107,4 @@ def getAlbumRatingsByUser(username):
 
 
 if __name__ == '__main__':
-    print getAlbumRatingsByUser('a')
+    pass

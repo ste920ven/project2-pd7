@@ -49,8 +49,8 @@ def album(album=""):
     if(request.method=="POST"):
         button=request.form["button"]
         if button == "rate":
-            rating_value=request.form["rating"]
-            comment=request.form["comment"]
+            rating_value=str(request.form["rating"])
+            comment=str(request.form["comment"])
             name=request.form["albumname"]
             database.addAlbumRatingForUsername(username,name,data_album[name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys())
@@ -64,7 +64,8 @@ def song(song=""):
         if button == "rate":
             rating_value=request.form["rating"]
             comment=request.form["comment"]
-            database.addSongRatingForUsername(username,song,data_song[song]["artist"],rating_value,comment)
+            name=request.form["songname"]
+            database.addSongRatingForUsername(username,name,data_song[name]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
 '''
 @app.route("/hello/artist/<artist>",methods=['GET','POST'])
