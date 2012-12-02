@@ -65,6 +65,7 @@ def newAlbumName():
     quote = quote.split()[-4] + " " + quote.split()[-3] + " " + quote.split()[-2] + " " + quote.split()[-1]
     return quote
 
+
 def newAlbumPicture():
     """
     Returns the URL of a random flickr image.
@@ -74,32 +75,45 @@ def newAlbumPicture():
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
     #Gets the list of the most recently added "interesting" photos on flickr
-    recentPhotos = flickr.interestingness_getList()
+    interestingPhotos = flickr.interestingness_getList()
+    recentPhotos = flickr.photos_getRecent()
 
-    #Gets the list of the indices of the "id"s of the first 500 interesting photos on flickr
+    #To make the photo-picking more random, the "pickedPhotos" list is chosen from interestingPhotos 60% of the time, and recentPhotos 40% of the time
+    randNum = randint(0, 10)
+    pickedPhotos = []
+    if (randNum <= 6):
+        pickedPhotos = interestingPhotos
+    else: 
+        pickedPhotos = recentPhotos
+
+    #Gets the list of the indices of the "id"s of the first 500 photos from pickedPhotos
     idIndices = []
     k = 0
-    i = str(recentPhotos).find('id')
-
+    i = str(pickedPhotos).find('id')
     while k <= 500:
 	idIndices.append(i)
-	i = str(recentPhotos).find('id', i + 300)
+	i = str(pickedPhotos).find('id', i + 200)
 	k = k + 1
 
-    #Randomly chooses a photo id out of the list of 500
+    #Randomly chooses a photo id out of the list of 50
     randNum = randint(0, len(idIndices) - 1)
     start = idIndices[randNum]
 
     #Gets a the attributes of the photo whose id was selected
-    id = str(recentPhotos)[start + 5: start + 15]
-    owner = str(recentPhotos)[start + 28: start + 39]
-    secret = str(recentPhotos)[start + 52: start + 62]
-    server = str(recentPhotos)[start + 75: start + 79]
-    farm = str(recentPhotos)[start + 89: start + 90]
+    id = str(pickedPhotos)[start + 5: start + 15]
+    secret = str(pickedPhotos)[start + 52: start + 62]
+    server = str(pickedPhotos)[start + 75: start + 79]
+    farm = str(pickedPhotos)[start + 89: start + 90]
 
-    #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
-    URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
-    return URL
+    #Checks if the attributes have valid values
+    if (farm.isdigit() and server.isdigit() and id.isdigit()): 
+        #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
+        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
+        return URL
+    #If the values are not valid, then re-generates the attributes
+    else:
+        return newAlbumPicture()
+
 
 if __name__ == '__main__':
     print "Title:" + newArtistName()
