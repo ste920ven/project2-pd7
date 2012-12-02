@@ -9,9 +9,15 @@ app = Flask(__name__)
 @app.route("/",methods=['GET','POST'])
 def index():
     if request.method == 'POST':
-        allAlbums = db.getImages()
-        if request.form['button'] == 'Generate stuff!':
-            db.addImage('1')
+        #allAlbums = db.getImages()
+        print str(request.form['button'])
+        """
+        button = str(request.form['button'])
+        if button == "Generate":
+            #db.addImage('1')
+            print "the generate button was recognized!"
+            return render_template("index.html"), 404
+        """
     else:
         return render_template("index.html")
 
