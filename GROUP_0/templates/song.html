@@ -3,10 +3,18 @@
 
 {% block head %}
 <h1>Rate Songs</h1>
+<style type="text/css">
+  #menu {
+  position:relative;
+  width:200px;
+  left:20px;
+  float:left;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
-<div style="width:200px;position:relative;bottom:20px;left:20px">
+<div id="menu">
 
 <ul class="menu vertical">
 {% for song in songs %}

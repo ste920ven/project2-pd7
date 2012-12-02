@@ -11,6 +11,9 @@ import espn
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+@app.route("/help",methods=["GET","POST"])
+def help():
+    return render_template("help.html")
 
 @app.route("/about",methods=["GET","POST"])
 def about():
@@ -38,8 +41,6 @@ def user():
             else:
                 return render_template("user.html")
 
-
-
 @app.route("/home", methods= ["GET","POST"])
 def home():
     global headlines
@@ -54,7 +55,7 @@ def home():
         print r2
         r3 = request.form['Genres'] 
         print r3
-        r4 = request.form['Cuisines']
+        r4 = request.form['Categories']
         print r4
 
 ##Saving Team preferences using mongo ##
@@ -64,8 +65,11 @@ def home():
         ## API Interactions HERE ##
         s3 = upcoming.getEventInfo(r3,r1,"id")
         x = random.choice(s3.keys())
+        print "x: " +str( x)
         name =  upcoming.getEventIDInfo(x,"name")
+        print "name: " + name
         description =  upcoming.getEventIDInfo(x,"description")
+        print "description: " + description 
 
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
@@ -93,9 +97,6 @@ def home():
                                description1 = description1,
                                description2 = description2,
                                description3 = description3)
-
-
-#@app.route("/profile", methods= ["GET","POST"])
 
 if __name__ == "__main__":
     app.run(debug = True)
