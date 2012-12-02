@@ -79,14 +79,14 @@ def newAlbumPicture():
     #Gets the index of the first photo "id" of the recentPhotos (this will be random, as each call to newAlbumPicture will produce a different list of photos)
     i = str(recentPhotos).find('id')
 
-    #Gets all the photo (with id = "id") attribute values, based off the id, or "start", index
+    #Gets the photo (with id = "id) attribute values, based off the id, or "start", index
     start = i
     id = str(recentPhotos)[start + 5: start + 15]
     secret = str(recentPhotos)[start + 52: start + 62]
     server = str(recentPhotos)[start + 75: start + 79]
     farm = str(recentPhotos)[start + 89: start + 90]
 
-    #Generates the photo URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
+    #Generates the image URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
     URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
     return URL
 
