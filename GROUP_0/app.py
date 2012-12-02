@@ -53,6 +53,7 @@ def album(album=""):
             comment=request.form["comment"]
             name=request.form["albumname"]
             database.addAlbumRatingForUsername(username,name,data_album[name]["artist"],rating_value,comment)
+            print database.getAlbumRatingsByUser(username)
             return render_template("album.html", albums=data_album.keys())
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
@@ -66,20 +67,7 @@ def song(song=""):
             comment=request.form["comment"]
             database.addSongRatingForUsername(username,song,data_song[song]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
-'''
-@app.route("/hello/artist/<artist>",methods=['GET','POST'])
-def artist(artist=""):
-    if(request.method=="GET"):
-        return render_template("rate_artist.html",artist=artist,link=data_artist[artist]["url"])
-    if(request.method=="POST"):
-        button=request.form["button"]
-        if button == "rate":
-            #need to be stored in a database
-            rating_value=request.form["rating"]
-            #need to be stored in a database
-            comment=request.form["comment"]
-            return render_template("artist.html", artists=data_artist.keys())
-'''
+
 if __name__=="__main__":
     app.debug=True
     app.run(port=5000)
