@@ -61,6 +61,7 @@ def home():
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
         synopsis = movies.getSynopsis(movie)
+
         #teamId = espn.getTeamID(r2)
         #headlines = espn.getTeamNews(teamId)
         
