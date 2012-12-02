@@ -1,4 +1,10 @@
-var today = getToday();
+var today = new Date();
+today.setHours(0);
+today.setMinutes(0);
+today.setSeconds(0);
+today.setMilliseconds(0);
+today = today.getTime();
+
 var now = new Date();
 
 var bellSchedule;
@@ -55,17 +61,6 @@ var special = [
     { "start": new Date(today+51600000), "end": new Date(today+53880000) }
 ];
 
-function getToday()
-{
-    var today = new Date(); 
-    today.setHours(0);
-    today.setMinutes(0);
-    today.setSeconds(0);
-    today.setMilliseconds(0);
-    today = today.getTime();
-    return today;
-}
-
 function loadBellSchedule(bellDay)
 {
     if (bellDay=="Regular")
@@ -120,13 +115,6 @@ function getTime()
 function tick()
 {
     now = new Date();
-
-    if (now-today>86400000)
-    {
-	today = getToday();
-	window.location.reload();
-    }
-
     $('p#time').text(getTime());
 
     //reset period
@@ -171,15 +159,8 @@ function tick()
 }
 
 $(document).ready(function(){
-    
-    $('a').attr('target','_blank');
-
     if (bellDay=="Unknown") 
-    {
 	$('div#unknown').removeClass('hide');
-	$('p#period').text('Unknown');
-	$('span#schedule').text('Schedule Select');
-    }
     else
 	loadBellSchedule(bellDay);
 
@@ -187,7 +168,20 @@ $(document).ready(function(){
 
     $('div#unknown button').click(function(){
 	loadBellSchedule($(this).text());
-	$(this).parent().addClass('hide');
+	$(this).parent().parent().parent().parent().addClass('hide');
+    });
+
+    $('div#sidebar div#toggle').toggle(function(){
+	$('div#sidebar').animate({right:"-30%"},1200,function(){
+	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},500).addClass('hidden');
+       	});
+	$('div.main').animate({padding:"4% 12.5%",width:"75%"},1200);
+    },function(){
+	$('div#sidebar div#toggle').animate({left:"0px"},500,function(){
+	    $(this).html("&raquo;");
+ 	    $('div#sidebar').animate({right:"0%"},1200);
+	    $('div.main').animate({padding:"4%",width:"62%"},1200);
+	}).removeClass('hidden');
     });
 
 });

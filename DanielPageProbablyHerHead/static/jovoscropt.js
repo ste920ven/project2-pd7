@@ -1,41 +1,17 @@
-/*
-    tabSlideOUt v1.3
-    
-    By William Paoli: http://wpaoli.building58.com
-
-    To use you must have an image ready to go as your tab
-    Make sure to pass in at minimum the path to the image and its dimensions:
-    
-    example:
-    
-        $('.slide-out-div').tabSlideOut({
-                tabHandle: '.handle',                         //class of the element that will be your tab -doesnt have to be an anchor
-                pathToTabImage: 'images/contact_tab.gif',     //relative path to the image for the tab
-                imageHeight: '133px',                         //height of tab image
-                imageWidth: '44px',                           //width of tab image   
-        });
-
-    or you can leave out these options
-    and set the image properties using css
-    
-*/
-
-
-(function($){
+//this sets up the slideything
+$(function(){
     $.fn.tabSlideOut = function(callerSettings) {
         var settings = $.extend({
-            tabHandle: '.handle',
-            speed: 300, 
-            action: 'click',
-            tabLocation: 'left',
-            topPos: '200px',
-            leftPos: '20px',
-            fixedPosition: false,
-            positioning: 'absolute',
-            pathToTabImage: null,
-            imageHeight: null,
-            imageWidth: null,
-            onLoadSlideOut: false                       
+			tabHandle: '.handle',                     //class of the element that will become your tab
+			pathToTabImage: '../static/arrows.jpg', 			  //path to the image for the tab //Optionally can be set using css
+			imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
+			imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
+			tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
+			speed: 300,                               //speed of animation
+			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
+			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
+			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
+			fixedPosition: false                      //options: true makes it stick(fixed position) on scroll                     
         }, callerSettings||{});
 
         settings.tabHandle = $(settings.tabHandle);
@@ -214,4 +190,32 @@
         };
         
     };
-})(jQuery);
+});
+
+//this gets a generated image and displays it in generated-art
+function gen(){
+	alert("gen");
+}
+
+function edit(){
+	pixlr.edit({
+		image:$('.generatedart')
+		, title:'Example image 3'
+		, service:'express'
+		, target:'www.google.com'
+		, exit:'www.google.com'
+	});
+}
+
+function save(){
+	alert("save");
+}
+
+$(document).ready(
+	function() {
+		$('.slide-out-div').tabSlideOut({});
+		$('.generate').click(gen);
+		$('.edit').click(edit);
+		$('.save').click(save);
+	}
+);

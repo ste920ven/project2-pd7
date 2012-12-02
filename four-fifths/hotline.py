@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor, Weather
+import extractor, Weather, MTAService
 import random
 
 app = Flask(__name__)
@@ -34,8 +34,7 @@ def incomingVoice():
     audio.append("welcome-1.mp3")
     audio.append("press-1.mp3")
     audio.append("press-2.mp3")
-#don't have MTA page just yet
-#audio.append("press-3.mp3")
+    audio.append("press-3.mp3")
     audio.append("press-4.mp3")
     gather = resp.gather(numDigits=1, action="/choice")
     for each in audio:
@@ -94,8 +93,6 @@ def schedule():
         if high < 0 :
             audio.append("negative.mp3")
         audio.append("%d.mp3"%(abs(high)))
-#NOTE: TRIM 'OR' FROM 'FAHRENHEIT, OR'
-#!!!!!!!!!
         audio.append("fahrenheit.mp3")
         #"and the low will be __ Fahrenheit."
         audio.append("low.mp3")
@@ -109,6 +106,14 @@ def schedule():
             audio.append("negative.mp3")
         audio.append("%d.mp3"%(temp))
         audio.append("fahrenheit.mp3")
+
+#---pressed 3: MTA---
+    elif int(digit) == 3 :
+        print "3 case: MTA"
+        delays = MTAService.getDelays()
+        audio.append["delays.mp3"]
+        for each in delays :
+            
 
 #---pressed 4: credits---
     elif int(digit) == 4 :
