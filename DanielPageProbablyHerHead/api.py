@@ -71,19 +71,35 @@ def newAlbumPicture():
     """
 
     #API Call
-    flickr = flickrapi.FlickrApi(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
+    flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
-    #Getting the list of the most recently added public photos on flickr
-    photoList = flickr.photos_getRecent()
-    
-    #Generating the URLs for the most recently added public photos on flickr
-    photoURLs = []
-    for photo in photoList:
-	   photoURLs.append("http://" str(farm(photo['farm'])) + ".staticflickr.com/" + str(photo['server']) + "/" + str(photo['id'])+ "_" + str(photo['secret']) + ".jpg")
+    #Gets the list of the most recently added "interesting" photos on flickr
+    recentPhotos = flickr.interestingness_getList()
 
-    #Choosing a random URL from the recent photos URL list
-    randNum = randint(0, len(photoURLs) - 1)
-    return photoUrls[randNum]
+    #Gets the list of the indices of the "id"s of the first 500 interesting photos on flickr
+    idIndices = []
+    k = 0
+    i = str(recentPhotos).find('id')
+
+    while k <= 500:
+	idIndices.append(i)
+	i = str(recentPhotos).find('id', i + 300)
+	k = k + 1
+
+    #Randomly chooses a photo id out of the list of 500
+    randNum = randint(0, len(idIndices) - 1)
+    start = idIndices[randNum]
+
+    #Gets a the attributes of the photo whose id was selected
+    id = str(recentPhotos)[start + 5: start + 15]
+    owner = str(recentPhotos)[start + 28: start + 39]
+    secret = str(recentPhotos)[start + 52: start + 62]
+    server = str(recentPhotos)[start + 75: start + 79]
+    farm = str(recentPhotos)[start + 89: start + 90]
+
+    #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
+    URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
+    return URL
 
 if __name__ == '__main__':
     print "Title:" + newArtistName()

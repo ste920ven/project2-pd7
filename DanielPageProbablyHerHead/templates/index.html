@@ -1,49 +1,62 @@
+<!doctype html>
+<head>
+    <title>DanielPageProbablyHerHead</title>
+    <link rel="stylesheet" type = "text/css" href="../static/style.css">
+</head>
+<html>
 <script src="../static/jquery.js" type="text/javascript"></script>
-<script src="../static/tabslideout.js"></script>
+<script src="../static/jovoscropt.js"> type="text/javascript"</script>
 <script type="text/javascript">
-    $(function(){
-        $('.slide-out-div').tabSlideOut({
-            tabHandle: '.handle',                     //class of the element that will become your tab
-            pathToTabImage: '../static/arrows.jpg', 			  //path to the image for the tab //Optionally can be set using css
-            imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
-            imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
-            tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
-            speed: 300,                               //speed of animation
-            action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
-            topPos: '0px',                          //position from the top/ use if tabLocation is left or right
-            leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
-            fixedPosition: false                      //options: true makes it stick(fixed position) on scroll
-        });
-    });
+//this sets up the tables
+function tables() {
+	var body = document.getElementsByTagName("body")[0];
+	var tbl     = document.createElement("table");
+	var tblBody = document.createElement("tbody");
+	var images = [ {{ ','.join(allAlbums) }} ];
+	for (var j = 0; j < 5; j++) {
+		var row = document.createElement("tr");
+		for (var i = 0; i < 5; i++) {
+			var cell = document.createElement("td");
+			var cellText = document.createTextNode(images[i+j]);
+			cell.appendChild(cellText);
+			row.appendChild(cell);
+		}
+		tblBody.appendChild(row);
+	}
+	tbl.appendChild(tblBody);
+	body.appendChild(tbl);
+	tbl.setAttribute("border", "0");
+}
 </script>
 
-<style type="text/css">    
-	.slide-out-div {
-		padding: 20px;
-		width: 250px;
-		background: #000000;
-		border: 1px solid #FFFFFF;
-		color: #FFFFFF;
-	}
-	body{
-		margin-left:auto;
-		margin-right:auto;
-		width:70%;
-		background:#0F0F0F;
-		color:#FAFAFA;
-	}
-</style>
-
-<div class="slide-out-div">
+<body onload="tables()">
+    <!-- Every time someone rates an image:
+    <script>
+        $.getJSON("http://jsonip.appspot.com?callback=?",
+            function(data){
+                alert( "Your ip: " + data.ip);
+                });
+    Use the above function to access the user's IP, then pass it into the database.
+    -->
+    <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
 	<h3>Albumartinator</h3>
 	<p>
-		This website generates album arts. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        This website generates album arts. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
+        <script type="text/javascript" src="../static/pixlr.js"></script>
+        <br />
+        <input type=submit name="button" value="Generate" style="width:100px;height:50px"></input>
+	<br />
+	<img src="" alt="" class="generated-art"></img>
+        <br />	
+        <input type=submit name="button" value="Save" style="width:45px;height:50px"></input>
+    	<input type=submit name="button" value="Edit" style="width:45px;height:50px"></input>
 	</p>
-	<button type="button" style="width:100px;height:50px">Generate stuff!</button>
+	
+	
 </div>
 
-<body>
-	<h2 style="text-align:center;">I SERIOUSLY HOPE</h2>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 </body>
+</html>

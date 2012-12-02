@@ -10,6 +10,24 @@ var strictBounds = new google.maps.LatLngBounds(
     new google.maps.LatLng(40.922852,-73.693542)
 );
 
+$(document).ready(function(){
+    $("#trigger").click(function(){
+	$("#panel").toggle("fast");
+	return false;
+    });
+    $('#address').keydown(function(){
+	if(event.keyCode == 13)
+	    codeAddress();
+    });
+    $('#start, #end').keydown(function(){
+	if(event.keyCode == 13)
+	    calcRoute();
+    });
+    
+});
+
+
+//GOOGLE API
 function initialize() {
     geocoder = new google.maps.Geocoder();
     directionsDisplay = new google.maps.DirectionsRenderer();
@@ -106,6 +124,24 @@ function calcRoute() {
 
 function changeBGC(str){
     if(str==='aliens'){
+	$('#disaster').text('Alien Invasion');
+	$('#wheel').css('visibility','visible');
+	$('#wheel').carousel('cycle');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #aebcbf 0%,#6e7774 50%,#0a0e0a 51%,#0a0809 100%)');
+    }
+    else if(str==='fire'){
+	$('#wheel').css('visibility','hidden');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #fceabb 0%,#fccd4d 50%,#f8b500 51%,#fbdf93 100%)');
+    }
+    else if(str==='hurricane'){
+	$('#wheel').css('visibility','hidden');
+	$('#disaster').text('Hurricane');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%)');
+    }
+    else{
+	$('#wheel').css('visibility','hidden');
+	$('#disaster').text('Zombie Apocalypse');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%)');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%)');
     }
     else if(str==='fire'){

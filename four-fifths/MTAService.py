@@ -45,6 +45,32 @@ def getComplete(soup):
     mesg =  "Delays&ServiceChanges:"+" "+getServiceChangeAndDelays(soup)+"\n"+"Planned Detours:"+" "+getCompletePlannedWork(soup)
     return mesg
 
+#Gets all lines with delays 
+def getDelays(thelines):
+    delayedlines = []
+    for line in thelines:
+        status = str(line.status.get_text(strip=True))
+        if(status=="DELAYS"):
+            name = line.find("name")
+            name.name = "linenames"
+            nname = str(name.get_text(strip=True))
+            delayedlines.append(nname)
+    return delayedlines
+
+#Get service
+def getService(thelines):
+    service = {}
+    for line in thelines:
+        status = str(line.status.get_text(strip=True))
+        if(status =="SERVICE CHANGE"):
+            name = line.find("name")
+            name.name = "linenames"
+            nname = str(name.get_text(strip=True))
+            msg = str(getServiceChangeAndDelays(line))
+            service[nname] = msg
+            
+    return service
+
 #Subway
 def getSubways():
     soup = getStatus()
@@ -518,6 +544,7 @@ def getWHemp():
     elif(status=="SERVICE CHANGE"):
         return getComplete(wh)
 
+#print getSubways()
 #print get123()
 #print get456()
 #print get7()
@@ -529,6 +556,7 @@ def getWHemp():
 #print getNQR()
 #print getS()
 #print getSIR()  
+#print getBuses()
 #print getB1B83()
 #print getB100B103()
 #print getBM1BM5()
@@ -539,6 +567,7 @@ def getWHemp():
 #print getQM1QM25()
 #print getS40S98()
 #print getX1X68()
+#print getLIRR()
 #print getCTZ()
 #print getBaby()
 #print getFR()
@@ -550,6 +579,12 @@ def getWHemp():
 #print getPortW()
 #print getRonkonkoma()
 #print getWHemp()
+print getDelays(getBuses())
+print getDelays(getSubways())
+print getDelays(getLIRR())
+print getService(getBuses())
+print getService(getSubways())
+print getService(getLIRR())
 
 
 

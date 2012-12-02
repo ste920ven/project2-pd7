@@ -1,8 +1,8 @@
 <!doctype HTML>
 <form action="" method="post">
 
- <script type=text/javascript src="{{
-  url_for('static', filename='jquery.js') }}"></script>
+ <script src="jquery.js"></script>
+
 <style type="text/css">
   html { 
 background: rgb(125,126,125); /* Old browsers */

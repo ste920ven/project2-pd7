@@ -25,6 +25,18 @@ def create_song():
         song[song_title]={"artist":item["artist"]["name"].encode('ascii','ignore'),"image":item["image"][3]["#text"].encode('ascii','ignore'),"url":item["url"].encode('ascii','ignore'),"artist url":item["artist"]["url"].encode('ascii','ignore'),"rank":item["@attr"]["rank"].encode('ascii','ignore')}
     return song
 
+def create_album_images():
+    album=create_album()
+    images=[]
+    for key in album.keys():
+        images.append(album[key]["image"])
+    return images
+
+def create_song_images():
+    song=create_song()
+    images=[]
+    for key in song.keys():
+        images.append(song[key]["image"])
+    return images
 if __name__ == "__main__":
-    print create_song()
-    print create_album()
+    pass

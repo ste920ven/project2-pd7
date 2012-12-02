@@ -40,14 +40,12 @@ def findprice(foodname):
     #timer 2
     two=time.time()*1000.0
 
-    t = 0.0
     pricelist=[]
     for ingredient in ingred:
         p,n = utils.getPrice(key, ingredient)
         if p == None:
             flash("Your search has failed.  Please try another recipe.")
             return redirect('/')
-        t += p;
         p = str(p);
         if len(p[p.find('.'):]) < 3:
             p += '0'
@@ -61,7 +59,7 @@ def findprice(foodname):
     print "   average per ingredient: " + str(timer / len(pricelist))
     print "Total to find data: " + str(time.time()*1000.0 - one)
 
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, total=t,directions=directions)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, directions=directions)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
