@@ -9,11 +9,9 @@
 <img src="{{image}}" alt="{{album}}'s image"/>
 <p>
 <font size="3">
-Artist: {{artist}}<br>
-Genre: {{genre}}<br>
-Label: {{label}}<br>
-EMusic Ratings: {{ratings}}<br>
-Released Date: {{date}}<br>
+Artist: <a href="{{url}}">{{artist}}</a><br>
+Rank: {{rank}} <br>
+Rank: {{rank}}<br>
 Listen to the album <a href="{{link}}">here!</a><br></br>
 </font>
 
@@ -30,6 +28,14 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
+  <input type="hidden" name="albumname" value="{{album}}">
 </p>
 </div>
+<div style="width:500px;position:absolute;bottom:20px;left:520px">
+{% for rating in ratings %}
+{{rating}}
+{% endfor %}
+Stuff here!
+</div>
 {% endblock %}
+
