@@ -5,8 +5,12 @@
 <br>Brian Lam
 <p>
 <p>
-<b>Idea: Recipe Pricer</b>
+<b>Project: Recipe Pricer </b>
 <p>
-We will make a recipe-pricer program.  We will get recipes from screen-scraping from allRecipes.com, 
-and then price them out using the Google Shopping API.  The allRecipes website contains the individual ingredients 
-in the recipe, which will make it relatively easy to find the ingredients on Google and see how much they will cost.
+<p>
+<b>Description: </b>
+<p>
+<div> 
+Our project prices out recipes.  You can search up a recipe name, and it will give you back the recipe with a list of ingredients and their prices.  If it cannot find the recipe properly, it will return you to the home page with an error message to allow you to try another recipe.
+</div>
+
