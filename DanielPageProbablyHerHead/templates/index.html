@@ -1,38 +1,7 @@
 <script src="../static/jquery.js" type="text/javascript"></script>
 <script src="../static/tabslideout.js"></script>
-<script type="text/javascript">
-    $(function(){
-        $('.slide-out-div').tabSlideOut({
-            tabHandle: '.handle',                     //class of the element that will become your tab
-            pathToTabImage: '../static/arrows.jpg', 			  //path to the image for the tab //Optionally can be set using css
-            imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
-            imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
-            tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
-            speed: 300,                               //speed of animation
-            action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
-            topPos: '0px',                          //position from the top/ use if tabLocation is left or right
-            leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
-            fixedPosition: false                      //options: true makes it stick(fixed position) on scroll
-        });
-    });
-</script>
-
-<style type="text/css">    
-	.slide-out-div {
-		padding: 20px;
-		width: 250px;
-		background: #000000;
-		border: 1px solid #FFFFFF;
-		color: #FFFFFF;
-	}
-	body{
-		margin-left:auto;
-		margin-right:auto;
-		width:70%;
-		background:#0F0F0F;
-		color:#FAFAFA;
-	}
-</style>
+<link rel="stylesheet" type = "text/css" href="../static/style.css">
+<script src="../static/jovoscropt.js"></script>
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
@@ -42,10 +11,11 @@
         <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
         <script type="text/javascript" src="../static/pixlr.js"></script>
         <b>Open image editor</b><br />
-<a href="javascript:pixlr.edit({image:'http://developer.pixlr.com/_image/example3.jpg', title:'Example image 3', service:'express', target:'www.google.com', exit:'www.google.com'});"><img src="http://developer.pixlr.com/_image/example3_thumb.jpg" width="250" height="150" title="Edit in pixlr" /></a><br /><br />
-<br /><br />
+		<a href="javascript:pixlr.edit({image:'http://developer.pixlr.com/_image/example3.jpg', title:'Example image 3', service:'express', target:'www.google.com', exit:'www.google.com'});"><img src="http://developer.pixlr.com/_image/example3_thumb.jpg" width="250" height="150" title="Edit in pixlr" /></a><br /><br />
+		<br /><br />
 	</p>
 	<button type="button" style="width:100px;height:50px">Generate stuff!</button>
+	<div class="generated-art"></div>
 </div>
 
 <body>
