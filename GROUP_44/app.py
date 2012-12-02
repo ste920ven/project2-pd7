@@ -55,7 +55,7 @@ def home():
         print r2
         r3 = request.form['Genres'] 
         print r3
-        r4 = request.form['Cuisines']
+        r4 = request.form['Categories']
         print r4
 
 ##Saving Team preferences using mongo ##
@@ -65,8 +65,11 @@ def home():
         ## API Interactions HERE ##
         s3 = upcoming.getEventInfo(r3,r1,"id")
         x = random.choice(s3.keys())
+        print "x: " +str( x)
         name =  upcoming.getEventIDInfo(x,"name")
+        print "name: " + name
         description =  upcoming.getEventIDInfo(x,"description")
+        print "description: " + description 
 
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
