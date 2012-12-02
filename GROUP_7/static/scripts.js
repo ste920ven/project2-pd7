@@ -30,7 +30,6 @@ $(document).ready(function(){
     });   
     $('#message').click(function(){
 	codeAddress('South Street Seaport');
-	map.setZoom(15);
     });
     $('#bmessage').click(function(){
 	type();
@@ -58,7 +57,6 @@ function initialize(){
 	if(map.zoom > maxZoomLevel) map.setZoom(maxZoomLevel);
     });
 
-    changeMS('aliens');
     google.maps.event.addListener(map, 'dragend', function() {
 	if (strictBounds.contains(map.getCenter())) return;
 	var c = map.getCenter(),
@@ -149,7 +147,8 @@ function codeAddress(str) {
             if (status == google.maps.GeocoderStatus.OK) {
 		map.setCenter(results[0].geometry.location);
 		var marker = new google.maps.Marker({
-                    map: map,
+		    animation: google.maps.Animation.DROP,
+		    map: map,
                     position: results[0].geometry.location
 		});
             } else {
@@ -163,6 +162,7 @@ function codeAddress(str) {
             if (status == google.maps.GeocoderStatus.OK) {
 		map.setCenter(results[0].geometry.location);
 		var marker = new google.maps.Marker({
+		    animation: google.maps.Animation.DROP,
                     map: map,
                     position: results[0].geometry.location
 		});
@@ -171,6 +171,7 @@ function codeAddress(str) {
             }
 	});
     }
+    map.setZoom(15);
 }
 
 function calcRoute() {
