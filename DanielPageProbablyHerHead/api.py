@@ -78,7 +78,6 @@ def newAlbumPicture():
 
     #Getting the list of the indices of the "id"s of 5 recently added public photos on flickr
     idIndices = []
-    k = 0
     i = str(recentPhotos).find('id')
 
     #Getting all the photo attribute values, based of the id, or "start", index
