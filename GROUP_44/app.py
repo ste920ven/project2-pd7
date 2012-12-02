@@ -95,6 +95,5 @@ def home():
                                description2 = description2,
                                description3 = description3)
 
-
 if __name__ == "__main__":
     app.run(debug = True)
