@@ -23,6 +23,8 @@ Our project prices out recipes.  You can search up a recipe name, and it will gi
 	<li>Open the webpage.</li>
 	<li>Look up a recipe name.</li>
 	<li>Congradulations, you have priced out your recipe!</li>
+	<li>If you already have an ingredient, you can click on it to move it to 'Ingredients you Have'</li>
+	<li>You can also move it back if you make a mistake</li>
 	<li>If you would like to price out another recipe press "home"</li>
 </ol>
 </div>
