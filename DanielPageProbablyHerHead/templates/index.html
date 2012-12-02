@@ -1,6 +1,28 @@
 <script src="../static/jquery.js" type="text/javascript"></script>
 <link rel="stylesheet" type = "text/css" href="../static/style.css">
 <script src="../static/jovoscropt.js"></script>
+<script>
+//this sets up the tables
+function tables() {
+	var body = document.getElementsByTagName("body")[0];
+	var tbl     = document.createElement("table");
+	var tblBody = document.createElement("tbody");
+	var images = [ {{ ','.join(allAlbums) }} ];
+	for (var j = 0; j < 5; j++) {
+		var row = document.createElement("tr");
+		for (var i = 0; i < 5; i++) {
+			var cell = document.createElement("td");
+			var cellText = document.createTextNode(images[i+j]);
+			cell.appendChild(cellText);
+			row.appendChild(cell);
+		}
+		tblBody.appendChild(row);
+	}
+	tbl.appendChild(tblBody);
+	body.appendChild(tbl);
+	tbl.setAttribute("border", "0");
+}
+</script>
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
@@ -21,8 +43,7 @@
 	
 </div>
 
-<body>
-	
+<body onload="tables()">
     <!-- Every time someone rates an image:
     <script>
         $.getJSON("http://jsonip.appspot.com?callback=?",

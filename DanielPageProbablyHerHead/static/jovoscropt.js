@@ -194,8 +194,9 @@ $(function(){
 
 //this gets a generated image and displays it in generated-art
 function gen(){
-	console.log("generate is clicked");
+	alert("generate is clicked");
 }
+
 
 function edit(){
 	pixlr.edit({
@@ -205,13 +206,17 @@ function edit(){
 		, target:'www.google.com'
 		, exit:'www.google.com'
 	});
-	console.log('edit is clicked');
+}
+
+function save(){
+	alert("save is clicked");
 }
 
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
-		$('#generate').click(gen);
-		$('#edit').click(edit);
+		$('.generate').click(gen);
+		$('.edit').click(edit);
+		$('.save').click(save);
 	}
 );
