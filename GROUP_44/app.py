@@ -11,6 +11,13 @@ import espn
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
+@app.route("/help",methods=["GET","POST"])
+def help():
+    return render_template("help.html")
+
+@app.route("/profile",methods=["GET","POST"])
+def profile():
+    return render_template("profile.html")
 
 @app.route("/about",methods=["GET","POST"])
 def about():
