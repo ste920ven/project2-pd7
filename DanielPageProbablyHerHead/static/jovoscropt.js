@@ -193,25 +193,33 @@ $(function(){
 });
 
 //this gets a generated image and displays it in generated-art
+
 function gen(){
-	console.log("generate is clicked");
+	alert("gen");
 }
 
 function edit(){
 	pixlr.edit({
-		image:''
+		image:$('.generatedart')
 		, title:'Example image 3'
 		, service:'express'
+                //target should be the URL of a php script that will save the image that pixlr sends it
 		, target:'www.google.com'
+                //exit should be the URL that the user returns to after saving or closing
 		, exit:'www.google.com'
 	});
-	console.log('edit is clicked');
+}
+
+
+function save(){
+	alert("save");
 }
 
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
-		$('#generate').click(gen);
-		$('#edit').click(edit);
+		//$('.generate').click(gen);
+		//$('.edit').click(edit);
+		//$('.save').click(save);
 	}
 );

@@ -3,14 +3,22 @@
 
 {% block head %}
 <h1>Rate Songs</h1>
+<style type="text/css">
+  #menu {
+  position:relative;
+  width:200px;
+  left:20px;
+  float:left;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
-<div style="width:200px;position:relative;bottom:20px;left:20px">
+<div id="menu">
 
 <ul class="menu vertical">
 {% for song in songs %}
-<li><a href="http://127.0.0.1:5000/hello/song/{{song}}">{{song}}</a></li>
+<li><a href="http://ml7.stuycs.org:6969/hello/song/{{song}}">{{song}}</a></li>
 {% endfor %}
 </ul>
 </div>

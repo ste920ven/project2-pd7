@@ -4,15 +4,15 @@ import api,db
 app = Flask(__name__)
 #app.secret_key = "secret"
 
-app.route('/', methods=['GET', 'POST'])
-def main():
+@app.route('/', methods=['GET', 'POST'])
+def home():
 	if request.method=="GET":
 		return render_template("home.html")
         if request.method=="POST":
-        	
+        	pass
 @app.route('/gallery/<tag>', methods=['GET', 'POST'])
 def gallery():
-	
+	pass
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():

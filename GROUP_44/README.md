@@ -1,16 +1,27 @@
-H.E.L.P.  
+<h1>H. E. L. P.</h1>  
+
+H. E. L. P. was created by four seniors at Stuyvesant High School who grew tired of always looking for something fun to do. By quickly filling out a simple survey (but making sure to answer every question), you receive a number of news articles related to your interests in addition to events happening nearby that 
+might interest you.  
   
-Looking for something new and exicting to do today? Give H.E.L.P. a bit of info about your favorite things and receive article suggestions, restaurant suggestions, and much more.
+Click this link to access H. E. L. P.:  
   
-  
-Click this link to access H.E.L.P.:  
-  
-  
-  
+http://ml7.stuycs.org:7204 
+    
 Instructions:
-
-
-
-Authors:
-Hayden Karp-Hecker
-Ellie
+<br>
+1. Create a Username
+<br>
+2. Sign in to Username
+<br>
+3. Fill out the survey
+<br>
+4. Check out your suggested articles and events
+<br>
+5. Enjoy!
+<br>
+<br>
+Authors:  
+Hayden Karp-Hecker  
+Ellie Abrams  
+Leopold Spohngellert  
+Peter Jasko  

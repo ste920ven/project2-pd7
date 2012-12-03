@@ -25,7 +25,10 @@ def searchZip(name, zipcode):
 
 def getSearchData(inputs):
     result = {}
-    parameters = inputs.split(',')
+    try:
+        parameters = inputs.split(',')
+    except AttributeError:
+        parameters = []
     for x in range(0,4):
         parameters.append("")
     for x in range(0,len(parameters)):
@@ -42,8 +45,8 @@ def getSearchData(inputs):
     
     return result
 
-def getSearchString(input):
-    data = getSearchData(input)
+def getSearchString(inputs):
+    data = getSearchData(inputs)
     if(data != {}):
         rating = inspection.getGradeFor(data["name"])
         print rating

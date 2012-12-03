@@ -54,7 +54,8 @@ def returnImage(_url):
 def wipeDatabase():
 	for line in collection.find():
 		removeImage(line['image'])
-	
-	
+
+if __name__ == "__main__":
+	wipeDatabase()
 	
 	
