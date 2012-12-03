@@ -2,10 +2,10 @@
 
 **Group 1**
 
-*David Kurkovskiy, Project Leader
-*Bernie Birnbaum
-*Steven Huang
-*Ben Huber
+* David Kurkovskiy, Project Leader and Sanitation Worker
+* Bernie Birnbaum, Factual Mastermind
+* Steven Huang, Mass Texter
+* Ben Huber, Web Wizard
 
 RestText has a simple mission: to provide both regular and smart phones with a fast and instructive way to find out about a restaurant before choosing to dine. It returns a rating from the Factual API and the NYC Sanitation Grade, which was found on OpenData.
 
