@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Pixlr API</title>
-    <script type="text/javascript" src="../static/pixlr.js"></script>
-	<script type="text/javascript">
-		pixlr.settings.target = 'ml7.stuycs.org:9018/save/';
-		pixlr.settings.exit = 'ml7.stuycs.org:9018';
-		//pixlr.settings.credentials = true;
-		pixlr.settings.method = 'get';
-	</script>
+    <title>Aviary API</title>
+    <!-- Load Feather code -->
+<script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+
+<!-- Instantiate Feather -->
+<script type="text/javascript">
+        var featherEditor = new Aviary.Feather({
+            apiKey: '046a0b963',
+            apiVersion: 2,
+            tools: 'all',
+            appendTo: '',
+            onSave: function(imageID, this) {
+                var img = document.getElementById(imageID);
+                img.src = newURL;
+            }
+        });
+
+        function launchEditor(id, src) {
+            featherEditor.launch({
+                image: id,
+                url: src
+            });
+            return false;
+        }
+</script>
+
 </head>
 
 <body>
 
-    <b>Open image editor</b><br />
-    <a href="javascript:pixlr.edit({image:'http://developer.pixlr.com/_image/example3.jpg', title:'Example image 3', service:'editor', target:'ml7.stuycs.org:9018/save/', exit:'ml7.stuycs.org:9018'});"><img src="http://developer.pixlr.com/_image/example3_thumb.jpg" width="250" height="150" title="Edit in pixlr" /></a>
-    <br />
+<div id="injection_site"></div>
 
+<img id="image1" src="http://images.aviary.com/imagesv5/feather_default.jpg"/>
+
+<!-- Add an edit button, passing the HTML id of the image and the public URL ot the image -->
+<p><input type="image" src="http://images.aviary.com/images/edit-photo.png" value="Edit photo" onclick="return launchEditor('image1', 'http://images.aviary.com/imagesv5/feather_default.jpg');" /></p>
 </body>
 
 </html>
