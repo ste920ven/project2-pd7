@@ -35,8 +35,12 @@ $(document).ready(function(){
 	type();
 	$('#bmessage').html('<span class="icon medium darkgray" data-icon="9" style="display: inline-block"><span aria-hidden="true">9</span></span></span> (0) Incoming Message');
     });
+    showModal();
 });
 
+function showModal(){
+    $('#myModal').modal('show');
+}
 
 //GOOGLE API
 function initialize(){

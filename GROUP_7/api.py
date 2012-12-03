@@ -6,19 +6,32 @@ from bs4 import BeautifulSoup
 
 #subject to usage limits. shouldnt be a problem for this project, but we should note it in the readme
 
-def getAddress(query, key, sensor):
-    textsearch_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s&sensor=%s&key=%s"%(query, sensor, key)
+def getAddress(query):
+    textsearch_url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=%s&sensor=false&key=AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"%(query)
     textsearch_request = urllib.urlopen(textsearch_url)
     textsearch_results = json.loads(textsearch_request.read())
     return textsearch_results['results'][0]['formatted_address']
-    
-"""def getAddress(address):
+
+
+#max radius = 50000
+def getNearby(radius, types):
+    searchNearby_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.714623,-74.006605&radius=%s&types=%s&sensor=false&key=AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"%(radius,types)
+    searchNearby_request = urllib.urlopen(searchNearby_url)
+    searchNearby_results = json.loads(searchNearby_request.read())
+    counter = 0
+    for item in searchNearby_results['results']:
+        return searchNearby_results['results'][counter]['name']
+        return searchNearby_results['results'][counter]['vicinity']
+        counter+=1
+
+"""
+def getAddress(address):
     geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"%(address)
     maps_request = urllib.urlopen(geocode_url)
     geo_results = json.loads(maps_request.read())
     print ("\n")
-    print geo_results['results'][0]['formatted_address']"""
-
+    print geo_results['results'][0]['formatted_address']
+"""
 def getLatLong(address):
     geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"%(address)
     maps_request = urllib.urlopen(geocode_url)
@@ -62,7 +75,7 @@ def getFacilityList(origin, category, mode, key, sensor):
         facilities.append(item["facility_name"])
     facilities.sort()
     return facilities
-    """
+"""
     for facility in facilities:
         print "\n", facility
         #fac_add = getAddress(facility, key, sensor)
@@ -80,9 +93,9 @@ def getFacilityList(origin, category, mode, key, sensor):
                         fac_in_order.insert((fac_in_order.index(a)), facility)
         dist_in_order.sort()
         print fac_in_order
-        print dist_in_order"""
-        
-""" #Tests:        
+        print dist_in_order
+  
+ #Tests:        
 key = "AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"
 original = "345 Chambers Street"
 destination = "97 Warren Street"
@@ -90,11 +103,12 @@ poi = "Empire State Building"
 #somehow we have to restrict the modes they can choose from. cause certain inputs like "walking" "driving" and "car" (i believe) work, but "foot" doesn't. so maybe do a dropdown menu somewhere in utils/app.py. i'll change the variable values once we have a more solid thing to work off of
 m = "walking" 
 #getAddress(original)
-getAddress("Stuyvesant High School", key, "false")
+getAddress("Stuyvesant High School")
 getLatLong(original)
 distanceFrom(original, destination, m)
 durationTo(original, destination, m)
 print "\n Is %s a POI? : %s" %(original, isPOI(original))
 print "\n Is %s a POI? : %s \n" %(poi, isPOI(poi))
-getFacilityList(original, "Hospital", m, key, "false" );
+getFacilityList(original, "Hospital", m, key, "false" )
+getNearby("50", "food")
 """

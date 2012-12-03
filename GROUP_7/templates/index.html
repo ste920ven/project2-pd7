@@ -24,7 +24,7 @@
       <a onclick="changeBGC('aliens')" href="#aliens"><span class="icon blue" data-icon="G"></span> Alien Invasion</a>
       <a onclick="changeBGC('hurricane')" href="#hurricane"><span class="icon blue" data-icon="a"></span> Hurricane</a>
       <a onclick="changeBGC('zombies')" href="#zombies"><span class="icon blue" data-icon="u"></span> Zombie Apocalypse</a>
-      <a id="trigger" href="#info">What You Need to Know</a>
+      <a id="trigger" href="#info">Tools</a>
     </div>
     
     <div id="panel">
@@ -108,21 +108,21 @@
 	<button id="bmessage" class="medium"><span class="icon medium darkgray" data-icon="9"></span> (1) Incoming Message</button><br></br>
 	<strong id="message"></strong>
       </div>
-      <div id="wheel" style="display: none">
+           <div id="wheel" style="display: none">
 	<h2>Wanted</h2>
 	<h4>Armed and Extremely Dangerous</h4>
 	<div id="myCarousel" class="carousel slide" data-interval="5000">
 	  <!-- Carousel items -->
 	  <div class="carousel-inner">
 	    <div class="active item">
-	    <img src="/static/img/toy_story_alien.jpg"></img>
+	    <img src="/static/img/rsz_toy-story-aliens-3.jpg"></img>
 	    <div class="carousel-caption">
 	      <h4>Jeff</h4>
 	      <p>Jeff enjoys fishing, small talk, and long walks on the beach. He had conquered roughly 4/7ths of the universe as of March 384th 12,845,239,274 ABB (after the big bang).</p>
 	    </div>
 	  </div>
 	  <div class="item">
-	    <img src="/static/img/kang_kodos.jpg"></img>
+	    <img src="/static/img/rsz_simpsons-kang-and-kodos.jpg"></img>
 	    <div class="carousel-caption">
 	      <h4>Kang and Kodos</h4>
 	      <p>These two slime-green beasties hail from Rigel IV, and have bided their time for years trying to understand human culture. However, one brave man realized what they were up to, and decided to devote his life to acting in an often dumb fashion in order to trick them into believing humankind was weak, so that when they did eventually strike they could easily be thwarted, unprepared as they would be.
@@ -130,7 +130,7 @@
 	    </div>
 	  </div>
 	  <div class="item">
-	    <img src="static/img/decepticon.jpg"></img>
+	    <img src="static/img/rsz_transformers_wallpaper_by_decepticon_leader.jpg"></img>
 	    <div class="carousel-caption">
 	      <h4>Decepticons</h4>
 	      <p>Decepticons are gigantic robots composed of vehicle parts, and they really would like nothing more than to see your feeble organic body smushed to pulp. Led by Megatron, they can transform into various mechanical contraptions, such as cars, planes, and old-timey watches.
@@ -158,6 +158,22 @@
 	</select>
 	<input type="button" value="Get Directions" onclick="calcRoute()">
       </form>
+    </div>
+
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+	<h3 id="myModalLabel">WELL, THIS IS IT</h3>
+      </div>
+      <div class="modal-body">
+	<em>It's December 21 2012, and the world is ending.</em><br></br>
+        <p> So, naturally of course, you've come here to figure out how to survive the apocalypse. That's a good start, but you still are not sure exactly what we can do for you. It's simple. No matter what sort of world-ending destruction is threatening your existence, we've figured out just how feasible it is for you to wait out the hurricane/alien attack/zombie plague no matter where you are. Simply enter your location and we'll tell you some nearby places that you should either stay near or avoid at all costs!</p>         
+        <p> For example, lets say you and your buddies are holed up in the Statue of Liberty during an alien invasion. Wait, seriously? COME ON, haven't you seen "Independence Day"??? Why would you even be there in the first place??? Well, as it turns out large landmarks are a bad place to be during an alien invasion (something to do with symbolically destroying humanity).</p>
+	<p>In any case, we wish you well and hope that you survive the cataclysmic destruction of the rest of your race!</p>
+      </div>
+      <div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
     </div>
   </body>  
 </html>

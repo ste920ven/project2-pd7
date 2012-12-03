@@ -43,7 +43,6 @@ def search(food):
                     else:
                         temp = temp[temp.find(' ', temp.find(' ') + 1) + 1:]
                         b.append(temp)
-                print temp
         except:
             pass
     toreturn.append(b)

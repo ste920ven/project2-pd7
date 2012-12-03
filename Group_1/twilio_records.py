@@ -14,4 +14,3 @@ def get_records(number):
             key = sms.body[6:sms.body.find('\n')]
             sent[key]=sms.body                               
     return sent
-
