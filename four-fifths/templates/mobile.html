@@ -8,9 +8,13 @@
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <style type="text/css"> @import "{{ url_for('static', filename='mobile.css') }}"; </style>
 
-    <script>var bellDay='{{bellDay}}';</script>
-    <script src="{{ url_for('static', filename='jquery.js')   }}"></script>
-    <script src="{{ url_for('static', filename='script.js')   }}"></script>
+    <script>
+      var bellDay="{{bellDay}}";
+      var forecastURL="{{ url_for('static', filename='images/fair.png') }}";
+    </script>
+
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
   </head>
   

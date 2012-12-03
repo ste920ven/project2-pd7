@@ -6,13 +6,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    data     = extractor.loadStuySite()
-    news     = extractor.getNews(data[0])
-    schedule = extractor.getSchedule(data[1],data[2])
-    bellDay  = extractor.getBellDay(schedule)
-    gymDay   = extractor.getGymDay(schedule)
-    date     = extractor.getDate()
-    temp     = Weather.getTemp()
+    data        = extractor.loadStuySite()
+    news        = extractor.getNews(data[0])
+    schedule    = extractor.getSchedule(data[1],data[2])
+    bellDay     = extractor.getBellDay(schedule)
+    gymDay      = extractor.getGymDay(schedule)
+    date        = extractor.getDate()
+    temp        = Weather.getTemp()
+    forecastURL = Weather.getForecastURL()
 
     user_agent_string = request.user_agent.string
     mobile_user_agent_families = ['Firefox Mobile','Opera Mobile','Opera Mini','Mobile Safari','webOS','IE Mobile','Playstation Portable','Nokia','Blackberry','Palm','Silk','Android','Maemo','Obigo','Netfront','AvantGo','Teleca','SEMC-Browser','Bolt','Iris','UP.Browser','Symphony','Minimo','Bunjaloo','Jasmine','Dolfin','Polaris','BREW','Chrome Mobile','UC Browser','Tizen Browser']
@@ -27,7 +28,8 @@ def main():
                                bellDay=bellDay,
                                gymDay=gymDay,
                                date=date,
-                               temp=temp)
+                               temp=temp,
+                               forecastURL=forecastURL)
 
     else:
         return render_template('home.html',
@@ -36,7 +38,8 @@ def main():
                                bellDay=bellDay,
                                gymDay=gymDay,
                                date=date,
-                               temp=temp)
+                               temp=temp,
+                               forecastURL=forecastURL)
 
 if __name__ == '__main__':
     app.debug = True
