@@ -29,13 +29,13 @@
 <div id="menu">
 <ul class="menu vertical">
 {% for album in albums %}
-<li><a href="http://127.0.0.1:6969/hello/album/{{album}}">{{album}}</a></li>
+<li><a href="http://ml7.stuycs.org:6969/hello/album/{{album}}">{{album}}</a></li>
 {% endfor %}
 </ul>
 </div>
 
 <div id="content" style="left:20px">
-<img src="{{image}}" alt="{{album}}'s image"/>
+<img src="{{image}}" alt="{{albuma}}'s image"/>
 <p>
 <font size="3">
 Artist: <a href="{{url}}">{{artist}}</a><br>
@@ -45,7 +45,7 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
 </font>
 
 <form action="album" method="POST">
-  <br>How awesome is {{album}}?<br>
+  <br>How awesome is {{albuma}}?<br>
   <input type="radio" name="rating" value="0" checked="checked">0 </input>
   <input type="radio" name="rating" value="1">1 </input>
   <input type="radio" name="rating" value="2">2 </input>
@@ -57,6 +57,7 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
+  <input type="submit" name="button" value="go to songs">  
   <input type="hidden" name="albumname" value="{{album}}">
 </p>
 </div>

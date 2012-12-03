@@ -1,36 +1,14 @@
-#Group 1's API Project 
+##RestText
 
-##Restful Reviews _(working title)_
+**Group 1**
 
-Group 1 will create an app that uses several APIs to return some reviews and possibly (if time permits) NY Sanitation gradings for any restaurant in New York. Users will enter in a restaurant name, and some attribute such as zip code to pinpoint the location, and be able to see the restaurant's overall rating, some reviews, and other misc. information.
+* David Kurkovskiy, Project Leader and Sanitation Worker
+* Bernie Birnbaum, Factual Mastermind
+* Steven Huang, Mass Texter
+* Ben Huber, Web Wizard
 
-*But wait, there's more!* _Restful Reviews_ will be 2 aps in one, as we will give users a book option, and allow them to type in the name of a book and get a rating and some information (and even a preview!) for said book. Another option for this part of the project will allow the user to scroll a list of NYT Bestsellers.
+RestText has a simple mission: to provide both regular and smart phones with a fast and instructive way to find out about a restaurant before choosing to dine. It returns a rating from the Factual API and the NYC Sanitation Grade, which was found on OpenData.
 
-Finally, we will extend this project to allow a simplified version where users can use twilio to get back the rating and sanitation grade of a restaraunt.
+To use, your number must be verified on the Twilio API. Then text your query to **9175252351**. You can query the name of a restaurant. If you have the zip code you can query restaurant name, zip (don't forget that space!)
 
-**APIs that will be used for this project**
-
-* Factual API -- restaurant reviews and info
-* Google Books API -- information about books
-* NYT API -- for bestsellers list
-* Twilio API -- for texting interface.
-
-**Group assignments**
-
-* David Kurkovskiy - Group Leader & Book API developer
-* Bernie Birnbaum - Factual API developer
-* Steven Huang - Server Coordinator & Twilio API developer
-* Ben Huber - JS, Flask, & HTML coordinator
-
-**UPDATE--11/16**
-
-We initially had trouble with the Yelp API, but were able to use Factual API instead!
-
-Please make sure to
-
-* pip install factual-api
-* pip install twilio
-
-when running our code!
-
-
+The web side of our project, where you will be able to type in your number and view the history of the restaurants you searched up (great way to remember a place you didn't have time to visit) can be found on [ml7.stuycs.org:7201](ml7.stuycs.org:7201).

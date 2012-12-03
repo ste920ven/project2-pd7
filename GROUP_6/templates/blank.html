@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html><head>
+<title>HTML KickStart</title>
+<meta charset="UTF-8">
+<meta name="description" content="" />
+<script type="text/javascript" src="js/jquery.js"></script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script type="text/javascript" src="js/prettify.js"></script>                                   <!-- PRETTIFY -->
+<script type="text/javascript" src="js/kickstart.js"></script>                                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="css/kickstart.css" media="all" />                  <!-- KICKSTART -->
+<link rel="stylesheet" type="text/css" href="style.css" media="all" />                          <!-- CUSTOM STYLES -->
+</head><body ><a id="top-of-page"></a><div id="wrap" style="background-color:skyblue;" class="clearfix">
+<!-- ===================================== END HEADER ===================================== -->
+
+<!--Made the slideshow scrollable, so that fixes any issues with too many overcrowding, WORKS PERFECTLY :D -->
+<style type="text/css">
+ul {overflow-x:scroll; overflow-y:visible;}
+ul.menu {overflow-x: visible; overflow-y:visible;}
+ul.submenu {overflow-x: visible; overflow-y:visible;}
+#comments {overflow-x: hidden; overflow-y:scroll; }
+</style>
+
+
+<body>
+
+	<div id="container" >
+
+<!-- Header -->
+	
+<div id="header" style="background-color:#2B60DE;">
+<h1 style="margin-bottom:0;">Main Title of Web Page</h1></div>
+
+<!-- Menu Vertical Left -->
+		
+<ul class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:600px;width:14%;float:left;">
+<li><a href="">Item 1</a></li>
+<li><a href="">Item 2</a></li>
+<li><a href="">Item 3</a>
+	<ul class="submenu">
+	<li><a href="">Sub Item</a></li>
+	<li><a href="">Sub Item</a>
+		<ul class="submenu">
+		<li><a href="">Sub Item</a></li>
+		<li><a href="">Sub Item</a></li>
+		<li><a href="">Sub Item</a></li>
+		<li><a href="">Sub Item</a></li>
+		</ul>
+	</li>
+	<li><a href="">Sub Item</a></li>
+	</ul>
+</li>
+<li><a href="">Item 4</a></li>
+</ul>
+
+<!-- Tag bar-->
+
+<div id="content" style="background-color:#EEEEEE;height:600px;width:66%;float:left;">
+
+<!-- Tags-implement later -->
+
+<div class="col_12">
+<a href="/">Buildings</a>
+<a href="/">Docks</a>
+<a href="/">Water</a>
+<a href="/">Fire</a>
+
+<!-- Tagging menu -->
+<div style="float:right;">
+<label for="select1">Add tag</label>
+<select id="select1" class="fancy">
+<option value="0">-- Choose --</option>
+<option value="1">Option 1</option>
+<option value="2">Option 2</option>
+<option value="3">Option 3</option>
+</select>
+<!-- Disappearing "add new tag" -->
+<a onclick ="javascript:ShowHide('HiddenDiv')" href="javascript:;" >Add a tag</a>
+<div class="mid" id="HiddenDiv" style="DISPLAY: none" >
+<label for="text1"></label>
+<input id="Addnewtag" type="text" />
+<button class="submitnewtag">Submit</button>
+</div>
+</div>
+
+
+</div>
+
+
+<ul class="slideshow"  width="550" height="350">
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/4D99E0/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/75CC00/ffffff.png&text=550x350" width="550" height="350" /></li>
+<li><img src="http://placehold.it/550x350/E49800/ffffff.png&text=550x350" width="550" height="350" /></li>
+</ul>
+
+</div>
+
+<!--Comments- To be implemented -->
+
+<div id="comments" style="background-color:#EEEEEE;height:600px;width:20%;float:right;">
+<div class="col_12">This is a comment. Not very much.</div>
+<div class="col_12">This image sucks! -from your friedly internet troll</div>
+<div class="col_12">OMG! This is so OMG! What does that even mean?</div>
+<textarea id="comment" placeholder="Comments or Questions?"></textarea>
+<button class="submit comment">Submit</button>
+</div>
+
+<!-- Footer-->
+<div id="footer" style="background-color:#2B60DE;clear:both;text-align:center;">
+Copyright</div>
+</div>
+ 
+</body>
+
+
+<script language="JavaScript">
+	function ShowHide(divId){
+		if(document.getElementById(divId).style.display == 'none')
+			{	document.getElementById(divId).style.display='block';		}
+		else
+			{	document.getElementById(divId).style.display = 'none';		}
+	}
+</script>
+
+
+
+	
+
+<!-- ===================================== START FOOTER ===================================== -->
+</div>
+
+</div><!-- END WRAP -->
+</body></html>
