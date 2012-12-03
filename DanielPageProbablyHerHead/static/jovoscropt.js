@@ -193,11 +193,12 @@ $(function(){
 });
 
 //this gets a generated image and displays it in generated-art
-
+//except it's kind of just a useless alart
+/*
 function gen(){
 	alert("gen");
 }
-
+*/
 function edit(){
 	pixlr.edit({
 		image:$('.generatedart')
@@ -210,16 +211,17 @@ function edit(){
 	});
 }
 
-
+//useless alert
+/*
 function save(){
 	alert("save");
 }
-
+*/
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
 		//$('.generate').click(gen);
-		//$('.edit').click(edit);
+		$('.edit').click(edit);
 		//$('.save').click(save);
 	}
 );
