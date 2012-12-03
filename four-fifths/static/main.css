@@ -35,7 +35,7 @@
       p#time.warning         { color: #FF9500; }
       div#weather            { display: block; width: 90px; height: 90px;
                                border-radius: 45px; border: 3px solid #FF9500; box-sizing: border-box;
-			       background: #3A3A3A;
+			       background-size: contain; background-color: #3A3A3A;
                                position: relative; top: -22px; margin: 0 auto;
                                line-height: 90px; text-align: center; font-size: 30px; color: white; }
 

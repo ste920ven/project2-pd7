@@ -112,7 +112,7 @@ function loadBellSchedule(bellDay)
 function getTime()
 {
     now = new Date();
-    return (now.getHours()==12 ? 12 : now.getHours()%12) + ":" +
+    return (now.getHours()%12==0 ? 12 : now.getHours()%12) + ":" +
 	(now.getMinutes()<10 ? '0' : '') + now.getMinutes() + ":" +
 	(now.getSeconds()<10 ? '0' : '') + now.getSeconds();
 }

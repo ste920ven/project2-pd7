@@ -1,6 +1,7 @@
 from random import randint
 import urllib2
 import simplejson
+import db
 import flickrapi
 #This app requires the flickr api to run.
 #install with 'sudo apt-get install python-flickrapi'
@@ -104,8 +105,13 @@ def newAlbumPicture():
     #Checks if the attributes have valid values
     if (farm.isdigit() and server.isdigit() and id.isdigit()): 
         #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
-        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
-        return URL
+        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"   
+
+    #Checks if the URL is already in the database. If not, then generates a new URL.
+	if (db.isInDb(URL) == False): 
+            return URL
+	else:
+	    return newAlbumPicure()
     #If the values are not valid, then generates a new URL
     else:
         return newAlbumPicture()
