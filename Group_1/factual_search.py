@@ -48,7 +48,7 @@ def getSearchData(inputs):
 def getSearchString(inputs):
     data = getSearchData(inputs)
     if(data != {}):
-        rating = inspection.getGradeFor(data["name"])
+        rating = inspection.getGradeForZip(data["name"],data["postcode"])
         print rating
         if(printVitals(data)):
             if(rating):

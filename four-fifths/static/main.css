@@ -32,6 +32,7 @@
       div#date               { width: 43%; float: right; text-align: center; }
       p#period, p#time       { line-height: 50px; font-size: 30px; font-weight: bold;
 			       color: white; padding-bottom: 8px; overflow: hidden; }
+      p#time.warning         { color: #FF9500; }
       div#weather            { display: block; width: 90px; height: 90px;
                                border-radius: 45px; border: 3px solid #FF9500; box-sizing: border-box;
 			       background: #3A3A3A;
