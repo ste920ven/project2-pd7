@@ -58,7 +58,7 @@ def album(album=""):
             average="No ratings yet, rate this album now!"
         return render_template("rate_album.html",albums=data_album.keys(),albuma=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
-        button=request.form["button"]
+        button=request.form['button']
         if button == 'rate':
             rating_value=str(request.form["rating"])
             comment=str(request.form["comment"])
