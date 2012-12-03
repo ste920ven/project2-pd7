@@ -23,26 +23,12 @@ def gallery():
 def slide():
 	global tag
 	if request.method=="GET":
-		pic = request.get('current').href
 		taglist = db.getTaglist()
-		tags = db.getTags(pic)
 		piclist = db.getPics(tag)
-		commentlist = db.getComments(pic)
-		return render_template("slide.html", taglist = taglist, tags =tags, piclist =piclist, commentlist = commentlist, url = url)
+		return render_template("slide.html", taglist = taglist, tags =tags)
 	else:	
-		button = request.form['button']
-		pic = request.get('current').href
-		
-		if button=="submit":
-			aComment = request.form['comment']
-			db.addComment(pic,aComment)
-		elif button == "submitnewtag":
-			if request.form['Addnewtag']:
-				aTag = request.form['Addnewtag']
-				db.addTag(pic,aTag)
-			else:
-				aTag =  request.form['select1']
-				db.addTag(pic,aTag)
+		url = request.form['hidSrc']
+		return redirect(url_for("/slideshow/" + url ))
 		
 		 	 	
 if __name__=="__main__":
