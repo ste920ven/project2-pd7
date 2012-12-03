@@ -133,4 +133,24 @@ for i in x:
 print x
 '''
 
-#send_image_links(40)
+
+send_image_links(40)
+
+#incoming block of links
+urlblock = ['www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&restrict_sr=on', 
+'www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&after=t3_12kaen&restrict_sr=on&count=25', 
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=50&after=t3_12a94y&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=100&after=t3_12g8dd&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=125&after=t3_12jwc2&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=150&after=t3_12bfaq&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=175&after=t3_12azsc&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=200&after=t3_12bpf2&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=225&after=t3_12cwmu&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=250&after=t3_12b74c&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=275&after=t3_12a9r5&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=300&after=t3_12b0lb&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=325&after=t3_12b02z&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=350&after=t3_12baf5&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=375&after=t3_12bx2t&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=400&after=t3_12bdsx&q=sandy&restrict_sr=on',
+'www.reddit.com/r/sandy/search.json?sort=relevance&count=425&after=t3_12fvdh&q=sandy&restrict_sr=on']
