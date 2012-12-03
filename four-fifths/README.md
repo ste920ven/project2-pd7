@@ -60,7 +60,6 @@
 <ul>
 	<li>If the Stuy site is unreachable, StuyDash crashes.</li>
 	<li>The favicon's rounded corners show a white background, not a transparent one.</li>
-	<li>The date passed in by extractor.py is not necessarily in the right time zone.</li>
 	<li>Possible bugs in mobile site's stylesheets.</li>
 	<li>No MTA implementation.</li>
 </ul>
