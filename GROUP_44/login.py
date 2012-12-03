@@ -16,7 +16,10 @@ def connection():
 def newUser(user):
     db = connection()
     team = "NONE"
-    username = {'username': user, 'team': team}
+    music = "NONE"
+    mood = "NONE"
+    zipcode = "NONE"
+    username = {'username': user, 'team': team, 'music': music, 'mood': mood, 'zip': zipcode}
     db.username.save(username)
 
 
@@ -37,6 +40,24 @@ def username(username):
         print res
         return 1
 
+
+def saveTeamID(username, teamName):
+    db = connection()
+    teamId = espn.getTeamID(teamName)
+    db.username.update({"username": username}, {'$set':{ 'team': teamId}})
+
+def saveMusic(username, genre):
+    db = connection()
+    db.username.update({"username":username}, {'$set':{'music': genre}})
+
+def saveMood(username, mood):
+    db = connection()
+    db.username.update({"username":username}, {'$set':{'mood': mood}})
+
+def saveZip(username, zipcode):
+    db = connection()
+    db.username.update({"username":username}, {'$set':{'zip': zipcode}})
+
 def getTeamID(username):
     db = connection()
 #have to parse through in order to get at actual data
@@ -50,11 +71,44 @@ def getTeamID(username):
         print res
         return res
 
-def saveTeamID(username, teamName):
+def getGenre(username):
     db = connection()
-    teamId = espn.getTeamID(teamName)
-    db.username.update({"username": username}, {'$set':{ 'team': teamId}})
-    
+#have to parse through in order to get at actual data
+    d = [x for x in db.username.find({'username':username})]
+     # print d
+    if len(d) == 0:
+        print "This username does not exist"
+        return -1
+    else:
+        res = db.username.find_one({"username": username})['music']
+        print res
+        return res
+
+def getCategory(username):
+    db = connection()
+#have to parse through in order to get at actual data
+    d = [x for x in db.username.find({'username':username})]
+     # print d
+    if len(d) == 0:
+        print "This username does not exist"
+        return -1
+    else:
+        res = db.username.find_one({"username": username})['mood']
+        print res
+        return res
+
+def getZip(username):
+    db = connection()
+#have to parse through in order to get at actual data
+    d = [x for x in db.username.find({'username':username})]
+     # print d
+    if len(d) == 0:
+        print "This username does not exist"
+        return -1
+    else:
+        res = db.username.find_one({"username": username})['zip']
+        print res
+        return res
 
 def deleteAll():
     db = connection()
@@ -63,10 +117,12 @@ def deleteAll():
 
 #deleteAll()
 
-"""
+
 newUser("Leopold")
 saveTeamID("Leopold", "New York Mets")
+saveZip("Leopold", 10023)
+saveMusic("Leopold", "blues")
 username("Leopold")
 test("Leopold")
 getTeamID("Leopold")
-"""
+getZip("Leopold")
