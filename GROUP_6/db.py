@@ -53,8 +53,13 @@ class db:
     def getPictures(self,tag):
         """ Returns a list of pictures with the tag
         """
+        ans = []
         collection = self.db.pictures
-        ans=[x["picture"] for x in collection.find({"tags":tag})]
+        # ans=[x["picture"] for x in collection.find({"tags":tag})]
+        for x in collection.find():
+            picture = x["tags"]
+            if tag in picture:
+                ans.append(x["picture"])
         print ans
         return ans
 
