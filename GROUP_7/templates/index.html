@@ -45,24 +45,24 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="accordion-group">
+	<div style="display:none" class="accordion-group">
 	  <div class="accordion-heading">
 	    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#facilities"><i class="icon-chevron-right"></i>
               Find Facilities
 	    </a>
 	  </div>
-	  <div id="facilities" class="accordion-body collapse">
+	  <div style="display:none" id="facilities" class="accordion-body collapse">
 	    <div class="accordion-inner">
 	      <!--DROPDOWN MENU IS HERE!!!!!!!!!!!!!!-->
 	      <select id="facilitychoose">
-		<option value="0">-- Choose --</option>
-		<option value="1">Hospitals</option>
-		<option value="2">Schools</option>
-		<option value="3">Parks</option>
-		<option value="4">Beaches</option>
-		<option value="5">Food Providers</option>
-		<option value="6">Precincts</option>
-		<option value="7">Landmarks</option>		
+		<option class="fc_option" value="0">-- Choose --</option>
+		<option class="fc_option" value="Hospitals">Hospitals</option>
+		<option class="fc_option" value="Schools">Schools</option>
+		<option class="fc_option" value="Parks">Parks</option>
+		<option class="fc_option" value="Beaches">Beaches</option>
+		<option class="fc_option" value="Food Providers">Food Providers</option>
+		<option class="fc_option" value="Precincts">Precincts</option>
+		<option class="fc_option" value="Landmarks">Landmarks</option>		
 	      </select>
 	      <!--END DROPDOWN MENU!!!!!-->
 	    </div>
@@ -104,6 +104,32 @@
     </ul>
     
     <div id="Home" class="tab-content">
+      <div id="timedate">
+	<h2><b>Today's date is
+	<script type ="text/javascript">
+	var currentTime = new Date()
+	var month = currentTime.getMonth() + 1
+	var day = currentTime.getDate()
+	var year = currentTime.getFullYear()
+	document.write(month + "." + day + "." + year)
+	</script></b></h2>
+	<h2><b>Current time is 
+	<script type ="text/javascript">
+	var currentTime = new Date()
+	var hours = currentTime.getHours()
+	var minutes = currentTime.getMinutes()
+	if (minutes < 10){
+	minutes = "0" + minutes
+	}
+	document.write(hours + ":" + minutes + " ")
+	if(hours > 11){
+	document.write("P.M.")
+	}
+	else{
+	document.write("A.M.")
+	}
+	</script></b></h2>
+      </div>
       <div id="nhc" style="display:none">
 	<h2>National Hurricane Center</h2>
 	<h3>There are no tropical cyclones at this time.</h3>

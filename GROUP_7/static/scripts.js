@@ -35,6 +35,12 @@ $(document).ready(function(){
 	type();
 	$('#bmessage').html('<span class="icon medium darkgray" data-icon="9" style="display: inline-block"><span aria-hidden="true">9</span></span></span> (0) Incoming Message');
     });
+    $('#facilitychoose').change(function(){
+	var str = $('#facilitychoose').val();
+	console.log(str);
+	$('#target').val(str);
+	$('#target').focus().trigger(jQuery.Event('keydown', {which: 13}));
+    });
     showModal();
 });
 
@@ -189,7 +195,6 @@ function calcRoute() {
         }
     });
 }
-
 // END GOOGLE STUFF
 
 function showModal(){
@@ -204,6 +209,7 @@ function type(){
 
 function changeBGC(str){
     if(str==='aliens'){
+	$('#timedate').css('display','none');
 	$('#nhc').css('display','none');
 	$('#about_text').html('<p> An Alien is simply any denizen of the universe that isn’t native to planet Earth. Aliens come in many shapes and sizes, but they all have a deeply profound (and totally not personal, they promise) need to extinguish the human race, born from years of deep, calculated and logical though which cumulated in the decision that another hyperspace bypass was in order (which of course requires that the planet remain intact, but that all life forms on it be destroyed).</p>');
 	$('#helpful_tips_text').html("<ul><li>Do not pet or feed the aliens</li><li>Identify what you are dealing with and determine whether or not you should be panicking</li><li>Different aliens have different weaknesses, so try to take advantage of that (the worst you can do is make it mad)</li></ul><h6>In case all life forms on Earth face extinction:<ul><li>Grab your towel</li><li>Grab your copy of the Guide</li><li>Hitch a ride to the nearest spaceship (yes, even if they are Vogons)</li></ul>");
@@ -215,6 +221,7 @@ function changeBGC(str){
 	changeMS('aliens');
     }
     else if(str==='fire'){
+	$('#timedate').css('display','inline');
 	$('#nhc').css('display','none');
 	$('#radiomessage').css('display','none');
 	$('#wheel').css('display','none');
@@ -222,8 +229,9 @@ function changeBGC(str){
 	changeMS('fire');
     }
     else if(str==='hurricane'){
+	$('#timedate').css('display','none');
 	$('#nhc').css('display','inline');
-	$('#about_text').html('<p>A Hurricane is a large storm comprised of clouds, thunder, lightning, wind, and rain. It typically has an eye, but it is blind. Calling yourself &#8217Nobody&#8217 will not save you from a Hurricane however, as they tend to disregard this sort of thing. Hurricanes are born when the spirits of angry drowned marching-band brass players get together and decide to ruin everyone else&#8217s parade. Typically, Apocalyptic Hurricanes occur when the spirits of rival marching bands run into each other and try to outdoo the other&#8217s Hurricane which really just results in one big mess much to the distress of those still living.</p>');
+	$('#about_text').html('<p>A Hurricane is a large storm comprised of clouds, thunder, lightning, wind, and rain. It typically has an eye, but it is blind. Calling yourself &#8217Nobody&#8217 will not save you from a Hurricane however, as they tend to disregard this sort of thing. Hurricanes are born when the spirits of angry drowned marching-band brass players get together and decide to ruin everyone else&#8217s parade. Typically, Apocalyptic Hurricanes occur when the spirits of rival marching bands run into each other and try to outdo the other&#8217s Hurricane which really just results in one big mess much to the distress of those still living.</p>');
 	$('#helpful_tips_text').html('<ul><li>Don&#8217t go outside. Seriously, you might get knocked off by all manner of objects caught in the wind: branches, bricks, or even turkeys. And turkeys are not a nice way to go.</li><li>Stock up on foodstuffs. In the days after the hurricane has died down, you can use the food as leverage to get valuable commodities such as year-long subscriptions to WoW.</li><li>Keep cleaning supplies handy. You never know when the Johnsons might visit.</li><li> In case your house/hovel/cardboard box is destroyed by the Hurricane, immediately find another shelter. No, umbrellas do not count. Unless Rihanna is holding one, in which case you are probably inside a mansion somewhere anyways.</li></ul>');
 	$('#radiomessage').css('display','none');
 	$('#wheel').css('display','none');
@@ -231,7 +239,18 @@ function changeBGC(str){
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%)');
 	changeMS('hurricane');
     }
+    else if(str==='home'){
+	$('#timedate').css('display','none');
+	$('#nhc').css('display','none');
+	$('#radiomessage').css('display','none');
+	$('#wheel').css('display','none');
+	$('#disaster').text('Home');
+	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #6db3f2 0%,#54a3ee 50%,#3690f0 51%,#1e69de 100%)');
+	changeMS('home');
+    }
+	
     else{
+	$('#timedate').css('display','none');
 	$('#nhc').css('display','none');
 	$('#about_text').html('<p>The Zombie is an animated corpse. It is a member of the elitist &#8217Undead&#8217 club, along with the vampires (sparkly and non-sparkly) and average DMV workers. The Zombie enjoys eating human brains, which is why it often goes to great lengths to get its favorite treat. If a Zombie bites a living human being, than that human being first loses fine motor controls, then the ability to play mahjong, and finally the capacity to distinguish between country rock and heavy metal, at which point the transformation is complete. A Zombie Apocalypse involves lots of Zombies getting together and ridding the world of Beliebers. Unfortunately, Zombies can’t really tell the difference between Beliebers and normal humans.</p>');
 	$('#helpful_tips_text').html("<ul><li>Don&#8217t start singing that song by Neil Diamond, &#8217Believer&#8217 and &#8217Belieber&#8217 sound waaaaay too similar.</li><li>Get yourself some weapons to fight the Zombies off. They&#8217re scared of Fire and simple magic tricks.</li><li>If you find yourself surrounded with no where to run than you should play Dead. The Grateful Dead, that is; preferably on a massive boom box with tricked-out subwoofers.</li></ul>");

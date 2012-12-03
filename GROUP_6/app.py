@@ -15,24 +15,27 @@ def home():
 		print url_list
 		return render_template("gallery.html",url_list = url_list)
 
-@app.route('/gallery/<tag>', methods=['GET', 'POST'])
-def gallery():
-	pass
-
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():
 	global tag
 	if request.method=="GET":
-		pic = request.get('current').href
+		taglist = db.getTaglist()
+		piclist = db.getPics(tag)
+		return render_template("slide.html", taglist = taglist, piclist =piclist)
+	else:	
+		url = request.form['hidSrc']
+		return redirect(url_for("/image/" + url ))
+		
+@app.route('/image/<pic>', methods=['GET', 'POST'])
+def _image():
+	if request.method=="GET":
 		taglist = db.getTaglist()
 		tags = db.getTags(pic)
-		piclist = db.getPics(tag)
 		commentlist = db.getComments(pic)
-		return render_template("slide.html", taglist = taglist, tags =tags, piclist =piclist, commentlist = commentlist, url = url)
+		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = pic)
 	else:	
 		button = request.form['button']
-		pic = request.get('current').href
-		
+				
 		if button=="submit":
 			aComment = request.form['comment']
 			db.addComment(pic,aComment)
