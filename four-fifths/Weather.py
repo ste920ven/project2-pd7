@@ -32,8 +32,7 @@ def getForecast():
     x = d[x+6:x+8]
     return int(x)
 
-def getForecastDescription():
-    code = getForecast()
+def getForecastString(code):
     d1 = ["tornado",
           "tropical storm", 
           'hurricane',
@@ -85,8 +84,7 @@ def getForecastDescription():
     return d1[code]
 
 
-def getForecastURL():
-    code = getForecast()
+def getForecastURL(code):
     d1 = ["tornado", #???
           "tropical storm", #??? 
           "hurricane", #???
