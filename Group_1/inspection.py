@@ -54,8 +54,3 @@ def getGradeForAddress(restname, address, zipString):
             #if there is a sanitation grade return it, otherwise keep parsing
             if (details[12][1] != '"'):
                 return details[12][1]
-
-#print getGradeFor("Baluchi")
-print getGradeForName("Kitchenette")
-print getGradeFor("Kitchenette", "10007")
-print getGradeForAddress("Kitchenette", "Chambers Street", "10007")
