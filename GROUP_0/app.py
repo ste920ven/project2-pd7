@@ -1,4 +1,4 @@
-from flask import Flask
+rom flask import Flask
 from flask import request
 from flask import render_template
 from flask import url_for,redirect,flash
@@ -63,7 +63,7 @@ def album(album=""):
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys(),images_album=images_album)
         if button == "back":
-            return redirect(url_for("hello"))
+            return render_template("hello.html",name=username)
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
 def song(song=""):
@@ -84,7 +84,7 @@ def song(song=""):
             database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
         if button == "back":
-            return redirect(url_for("hello"))
+           return render_template("hello.html",name=username)
 
 if __name__=="__main__":
     app.debug=True
