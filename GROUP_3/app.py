@@ -23,7 +23,6 @@ def home():
 @app.route("/findprice", methods = ["GET", "POST"])
 def findprice(foodname, mode):
     global food
-    print "foodname: " + foodname
     print "Times (in ms):\n"
         
         #timer for debugging
@@ -62,11 +61,11 @@ def findprice(foodname, mode):
 
     timer = time.time()*1000.0 - two
     print "Total ingredient search: " + str(timer)
-    print "   average per ingredient: " + str(timer / len(pricelist))
+    print "Average per ingredient: " + str(timer / len(pricelist))
     print "Total to find data: " + str(time.time()*1000.0 - one)
     food = foodname
     
-    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, directions=directions)
+    return render_template("pricer.html", foodname=foodname, title=recipeTitle, sURL=source, ingredients=ingred,imgURL=imgURL, prices=pricelist, directions=directions, mode = mode)
 
 @app.route("/back", methods = ["GET", "POST"])
 def back():
