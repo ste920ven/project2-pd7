@@ -29,7 +29,7 @@
 <div id="menu">
 <ul class="menu vertical">
 {% for song in songs %}
-<li><a href="http://127.0.0.1:5000/hello/song/{{song}}">{{song}}</a></li>
+<li><a href="http://ml7.stuycs.org:6969/hello/song/{{song}}">{{song}}</a></li>
 {% endfor %}
 </ul>
 </div>
@@ -57,6 +57,7 @@ Listen to the song <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
+  <input type="submit" name="button" value="back">
   <input type="hidden" name="songname" value="{{song}}">
 </div>
 

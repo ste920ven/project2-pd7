@@ -200,6 +200,7 @@ function type(){
 
 function changeBGC(str){
     if(str==='aliens'){
+	$('#helpful_tips_text').html("<ul><li>Do not pet or feed the aliens</li><li>Identify what you are dealing with and determine whether or not you should be panicking</li><li>Different aliens have different weaknesses, so try to take advantage of that (the worst you can do is piss it off)</li></ul><h6>In case all life forms on Earth face extinction:<ul><li>Grab your towel</li><li>Grab your copy of the Guide</li><li>Hitch a ride to the nearest spaceship (yes, even if they are Vogons)</li></ul>");
 	$('#radiomessage').css('display','none');
 	$('#disaster').text('Alien Invasion');
 	$('#wheel').css('display','inline');
