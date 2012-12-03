@@ -83,7 +83,7 @@ class EST(datetime.tzinfo):
 #returns a string with one of the following: regular, homeroom, special, conference, closed or unknown.
 def getBellDay(schedule):
     month = datetime.datetime.now(EST()).strftime("%b")
-    day   = datetime.date.now(EST()).day
+    day   = datetime.datetime.now(EST()).day
     found = False
     for line in schedule.split('<br/>'):
         if found==True:
@@ -100,7 +100,7 @@ def getBellDay(schedule):
 
 def getGymDay(schedule):
     month = datetime.datetime.now(EST()).strftime("%b")
-    day   = datetime.date.now(EST()).day
+    day   = datetime.datetime.now(EST()).day
     lines = schedule.split('<br/>')
     for i in range(len(lines)):
         if (month.upper() in lines[i].upper()) and (str(day) in lines[i]):
