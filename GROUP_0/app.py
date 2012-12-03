@@ -62,6 +62,8 @@ def album(album=""):
             name=request.form["albumname"]
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys(),images_album=images_album)
+        if button == "back":
+        return render_template("album.html", albums=data_album.keys(),images_album=images_album)
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
 def song(song=""):
@@ -81,7 +83,9 @@ def song(song=""):
             name=request.form["songname"]
             database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
+        if button == "back":
+            return render_template("song.html", songs=data_song.keys())
 
 if __name__=="__main__":
     app.debug=True
-    app.run(port=6969)
+    app.run(host="ml7.stuycs.org",port=6969)
