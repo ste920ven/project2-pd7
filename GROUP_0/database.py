@@ -129,3 +129,6 @@ def getAlbumRatingsByUser(username):
 if __name__ == '__main__':
     for stuff in Accounts.find():
         print stuff
+    Accounts.drop()
+    SongRatings.drop()
+    AlbumRatings.drop()

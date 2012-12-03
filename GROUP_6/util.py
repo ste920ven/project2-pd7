@@ -114,8 +114,7 @@ def send_image_links(num):
         #print x
         y = y +1
         newlist.append(x)
-    print newlist
-    print y
+    return newlist
 
 #send_image_links(10)
 #download_images(10)
@@ -133,6 +132,7 @@ for i in x:
     i = get_image_url(i)
 print x
 '''
+
 
 send_image_links(40)
 

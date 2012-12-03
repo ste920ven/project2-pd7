@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor, Weather, MTAService
+import extractor, Weather#, MTAService
 import random
 
 app = Flask(__name__)
@@ -108,11 +108,11 @@ def schedule():
         audio.append("fahrenheit.mp3")
 
 #---pressed 3: MTA---
-    elif int(digit) == 3 :
-        print "3 case: MTA"
-        delays = MTAService.getDelays()
-        audio.append["delays.mp3"]
-        for each in delays :
+  #  elif int(digit) == 3 :
+   #     print "3 case: MTA"
+    #    delays = MTAService.getDelays()
+     #   audio.append["delays.mp3"]
+      #  for each in delays :
             
 
 #---pressed 4: credits---

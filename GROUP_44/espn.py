@@ -123,16 +123,17 @@ def getTeamID(t):
         return 29
     if t == "Tampa Bay Rays":
         return 30
-"""
 
 x = getTeamID("Miami Marlins")
+getHeadline(x, 0)
+getDescription(x, 0)
+
+
+print "\n\n"
+
 sox = getTeam(x)
 getLocation(sox)
 getName(sox)
-getHeadline(x, 0)
-getDescription(x, 0)
-"""
-
 
 
 
