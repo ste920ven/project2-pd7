@@ -15,6 +15,25 @@ user_pass_dict = {'user': username,
                   'passwd': password,
                   'api_type': 'json' }
 
+
+urlblock =['http://www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&after=t3_12kaen&restrict_sr=on&count=25',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=50&after=t3_12a94y&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=100&after=t3_12g8dd&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=125&after=t3_12jwc2&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=150&after=t3_12bfaq&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=175&after=t3_12azsc&q=sandy&restrict_sr=on',
+'http://www..reddit.com/r/sandy/search.json?sort=relevance&count=200&after=t3_12bpf2&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=225&after=t3_12cwmu&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=250&after=t3_12b74c&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=275&after=t3_12a9r5&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=300&after=t3_12b0lb&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=325&after=t3_12b02z&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=350&after=t3_12baf5&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=375&after=t3_12bx2t&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=400&after=t3_12bdsx&q=sandy&restrict_sr=on',
+'http://www.reddit.com/r/sandy/search.json?sort=relevance&count=425&after=t3_12fvdh&q=sandy&restrict_sr=on']
+
 #a header to tell reddit what I'm doing
 headers = { 'user-agent': '/u/ SandyDamage collect images of hurricane sandy'}
 
@@ -27,34 +46,48 @@ j =  json.loads(r.text)
 client.modhash = j['json']['data']['modhash']
 
 #this gets the json data from when you search sandy in reddit
-url = 'http://www.reddit.com/search.json?q=sandy'
+page = 0
+url = urlblock[1] 
 request = urllib.urlopen(url)
 results = json.loads(request.read())
 
+def next_page(page):
+    try:
+        url = urlblock[page+1]
+    except:
+        print "next_page failure"
+
+    request = urllib.urlopen(url)
+    results = json.loads(request.read())
 
 def image_crawl(num):
-    i = 0
+    x = 0
     url_list = []
-    while (i < num):
-        #stringIO allows for manipulation of strings
-        io = StringIO()
+    while (x < num):
+        for i in results['data']['children']:
+            iurl = i['data']['url']
+
+        #stringIO allows fo manipulation of strings
+            io = StringIO()
         #this dumps the JSON data into a string
-        try:
+            try:
 
-            json.dump(results['data']['children'][i]['data']['url'], io)
+                json.dump(iurl, io)
         #this makes sure it's an imgur link that isn't an album
-            if ('imgur' in io.getvalue() and '#' not in io.getvalue() and '/a/' not in io.getvalue() ):
+                if ('imgur' in io.getvalue() and '#' not in io.getvalue() and '/a/' not in io.getvalue() ):
             #get rid of extra quotes 
-                url_list.append(io.getvalue().strip('"'))
+                    url_list.append(io.getvalue().strip('"'))
+                    x = x + 1
+            except KeyError:
+                print "KeyError"
 
-        except KeyError:
-            print "KeyError"
-
-        except:
+            except:
             #print results['data']['children'][i]['data']['url']
-            print sys.exc_info()[0]
-  
-        i = i + 1        
+                print sys.exc_info()[0]
+                next_page(page)
+    
+
+               
     return url_list
 
 
@@ -134,23 +167,6 @@ print x
 '''
 
 
-send_image_links(40)
-
+xx = send_image_links(50)
+print xx
 #incoming block of links
-urlblock = ['www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&restrict_sr=on', 
-'www.reddit.com/r/sandy/search.json?q=sandy&sort=relevance&after=t3_12kaen&restrict_sr=on&count=25', 
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=50&after=t3_12a94y&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=100&after=t3_12g8dd&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=125&after=t3_12jwc2&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=150&after=t3_12bfaq&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=175&after=t3_12azsc&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=200&after=t3_12bpf2&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=225&after=t3_12cwmu&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=250&after=t3_12b74c&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=275&after=t3_12a9r5&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=300&after=t3_12b0lb&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=325&after=t3_12b02z&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=350&after=t3_12baf5&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=375&after=t3_12bx2t&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=400&after=t3_12bdsx&q=sandy&restrict_sr=on',
-'www.reddit.com/r/sandy/search.json?sort=relevance&count=425&after=t3_12fvdh&q=sandy&restrict_sr=on']
