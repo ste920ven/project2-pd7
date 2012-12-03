@@ -64,7 +64,7 @@ def album(album=""):
             comment=str(request.form["comment"])
             name=request.form["albumname"]
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
-            return render_template("album.html", albums=data_album.keys(),images_album=images_album)
+            return render_template('album.html', albums=data_album.keys(),images_album=images_album)
         elif button == "back":
             return redirect(url_for('hello'))
 

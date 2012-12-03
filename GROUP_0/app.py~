@@ -59,7 +59,7 @@ def album(album=""):
         return render_template("rate_album.html",albums=data_album.keys(),albuma=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
         button=request.form["button"]
-        if button == "rate":
+        if button == 'rate':
             rating_value=str(request.form["rating"])
             comment=str(request.form["comment"])
             name=request.form["albumname"]
