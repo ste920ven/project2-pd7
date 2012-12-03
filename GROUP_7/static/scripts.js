@@ -17,13 +17,6 @@ var strictBounds = new google.maps.LatLngBounds(
 );
 
 $(document).ready(function(){
-    $('#mylocurl').click(function(){
-	$('#start').val(user_loc);
-    });
-    $("#trigger").click(function(){
-	$("#panel").toggle("fast");
-	return false;
-    });
     $('#address').keydown(function(){
 	if(event.keyCode == 13){
 	    $.getJSON($SCRIPT_ROOT + "/get_Address", {
@@ -36,12 +29,22 @@ $(document).ready(function(){
 	    return false;
 	}
     });
+    $('#mylocurl').click(function(){
+	$('#start').val(user_loc);
+    });
+    $("#trigger").click(function(){
+	$("#panel").toggle("fast");
+	return false;
+    });
     $('#start, #end').keydown(function(){
 	if(event.keyCode == 13)
 	    calcRoute();
 	else
 	    $('#directionsgmap').css('display','none');
     });   
+    $('#mode').bind('change',function(){
+	calcRoute();
+    });
     $('#message').click(function(){
 	codeAddress('South Street Seaport');
     });
@@ -211,8 +214,30 @@ function calcRoute() {
     var tempurl = "https://maps.google.com/maps?q=from:"+start+"+to:"+end;
     $('#directionsgmap').attr('href',tempurl);
     $('#directionsgmap').css('display','inline');
+    displayAPIvalues();
 }
 // END GOOGLE STUFF
+function displayAPIvalues(){
+    $.getJSON($SCRIPT_ROOT + "/distance_From", {
+	o: $('#start').val(),
+	d: $('#end').val(),
+	m: $('#mode').val()
+    }, function(data){
+	var str = "Distance: "+data.result;
+	$('#distFrom').text(str);
+	$('#distFrom').css('display','inline');
+    });
+    $.getJSON($SCRIPT_ROOT + "/duration_To", {
+	o: $('#start').val(),
+	d: $('#end').val(),
+	m: $('#mode').val(),
+    }, function(data){
+	var str = "Est Travel Time: "+data.result;
+	$('#durTo').text(str);
+	$('#durTo').css('display','inline');
+    });
+    return false;
+}
 
 function showModal(){
     $('#myModal').modal('show');
