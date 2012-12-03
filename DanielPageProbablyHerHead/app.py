@@ -8,15 +8,16 @@ app = Flask(__name__)
 def index():
     allAlbums = db.getImages()
     if request.method == 'POST':
-         button = request.form['button']
-         if button == 'Save':
-             db.addImage("http://farm9.staticflickr.com/8070/8234964776_708125d9a6_z.jpg")
-             return render_template("index.html", allAlbums = allAlbums)
-         if button == 'Edit':
-             return render_template("index.html", allAlbums = allAlbums)
-         if button == 'Generate':
-             source = api.newAlbumPicture()
-             return render_template("index.html", allAlbums = allAlbums, source = source)
+        global source
+        button = request.form['button']
+        if button == 'Generate':
+            source = api.newAlbumPicture()
+            return render_template("index.html", allAlbums = allAlbums, source = source)
+        if button == 'Save':
+            db.addImage(source)
+            return render_template("index.html", allAlbums = allAlbums, source = source)
+        if button == 'Edit':
+            return render_template("index.html", allAlbums = allAlbums)        
     else:
         return render_template("index.html", allAlbums = allAlbums)
             
