@@ -38,7 +38,7 @@ ul.menu {overflow-x: visible; overflow-y:visible;}
 <ul class="menu vertical"  id="menu" style="background-color:#3BB9FF;height:1000px;width:14%;float:left;">
 {% if taglist %}
 {% for x in taglist %} 
-<li><a href="/" + {{x}}>{{x}}</a></li>
+<li><a href="/{{x}}">{{x}}</a></li>
 {% endfor %}
 {% endif %}
 </ul>
