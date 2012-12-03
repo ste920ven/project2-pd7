@@ -32,7 +32,7 @@ def _image():
 		taglist = db.getTaglist()
 		tags = db.getTags(pic)
 		commentlist = db.getComments(pic)
-		return render_template("slide.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = pic)
+		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = pic)
 	else:	
 		button = request.form['button']
 				
