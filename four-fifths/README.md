@@ -60,6 +60,7 @@
 <ul>
 	<li>If the Stuy site is unreachable, StuyDash crashes.</li>
 	<li>The favicon's rounded corners show a white background, not a transparent one.</li>
+	<li>The site may crash if the weather returns an unknown condition</li>
 	<li>Possible bugs in mobile site's stylesheets.</li>
 	<li>No MTA implementation.</li>
 </ul>

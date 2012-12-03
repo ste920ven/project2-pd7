@@ -179,8 +179,6 @@ $(document).ready(function(){
     
     $('a').attr('target','_blank');
 
-    $('div#weather').css('background-image','url('+forecastURL+')');
-
     if (bellDay=="Unknown") 
     {
 	$('div#unknown').removeClass('hide');
