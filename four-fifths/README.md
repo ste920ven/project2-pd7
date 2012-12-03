@@ -77,8 +77,8 @@
   
   <li>Jack
     <ul>
-	<li>Twilio API:</li>
-    	<li>Phone Information Hotline (hotline.py)</li>
+	<li>Twilio API - Phone Information Hotline (hotline.py)</li>
+	<li>Weather icons</li>
     </ul>
   </li>
   
