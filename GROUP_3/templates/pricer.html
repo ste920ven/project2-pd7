@@ -8,26 +8,33 @@
       padding-top:2%;
       padding-left:2%
       }
+      
       body>div{
       padding-left: 5%;
       padding-right: 1%;
       color:white;
       }
+
       header{
       color: cyan;
       }
+      
       img{
       border-style:solid;
-      border-color:#1A1B1B;
-      padding-left: 0%;
-      padding-top: 0%;
-      padding-bottom: 0%;
-      padding-right: 0%;
+      border-color:#FFFFFF;
+      }
+
+      a:visited {
+      COLOR: #FFFFFF;
+      }
+      
+      a:active {
+      COLOR: cyan;
       }
     </style>
     <title>Recipe Pricer</title>
   </head>
-
+  
   <body bgcolor=#333333 link="white">
     <header>
       <font size="20">
@@ -40,7 +47,7 @@
       <font size=2><u>You searched for:</u> {{foodname}}</font>
       <img src={{imgURL}} align="right"><br>
       <h2><u>{{title}}</u></h2><br>
-
+      
       <h3><u>Ingredients: </u></h3>
       <BLOCKQUOTE>
 	{% for element in ingredients %}
@@ -48,25 +55,28 @@
 	{% endfor %}
       </BLOCKQUOTE>
       <font color="white" size="2">
-	<p>Did the ingredients come out wrong? </p>
 	<!-- gets the recipe from the non-mobile site instead. much slower, but the ingredients should come out right -->
+	{% if mode == 0 %}
+	<p>Did the ingredients come out wrong? </p>
 	<form action="tryagain">
 	  <input type="submit" name="tryagain" value="Try Again">
-	</form><br>
+	</form>
+	{% endif %}
+	<br>
       
-      <p>Click on an ingredient to move it between the list of ingredients to buy and those that you already have</p></font>
+	<p>Click on an ingredient to move it between the list of ingredients to buy and those that you already have</p></font>
       <!-- feel free to reword this more eloquently -->
-
+      
       <h3><u>Ingredients to Buy:</u></h3>
       <ul>
-      <table id="need">
-	{% for price in prices %}
-	<tr style="color:white" type="n" cost="{{price[0]}}">
-	  <td>{{"$" + price[0]}} &nbsp; &nbsp;</td>
-	  <td> {{(price[1])}} </td>
-	</tr>
-	{% endfor %}
-      </table>
+	<table id="need">
+	  {% for price in prices %}
+	  <tr style="color:white" type="n" cost="{{price[0]}}">
+	    <td>{{"$" + price[0]}} &nbsp; &nbsp;</td>
+	    <td> {{(price[1])}} </td>
+	  </tr>
+	  {% endfor %}
+	</table>
       </ul>
       
       <b><u>Total:</u> <p id="total" style="display: inline"></p></b>
@@ -74,8 +84,8 @@
       
       <h3><u>Ingredients you Have:</u></h3>
       <ul>
-      <table id="have">
-      </table>
+	<table id="have">
+	</table>
       </ul>
       
       <b><u>Directions:</u></b>
@@ -85,12 +95,17 @@
 	{% endfor %}
       </ol>
     </font>
-    <br><br><br><br>
+    <br><br><br>
     <form action="back">
       <input type="submit" name="Home" value="Home">
     </form>
     <font size="2" color="white">
+      {% if mode == 0 %}
+      Source: <a href={{sURL}}>mobile.allrecipes.com</a><br>
+      {% else %}
       Source: <a href={{sURL}}>allrecipes.com</a><br>
+      {% endif %}
+      <br>
     </font>
     <script src="static/jquery.js"></script>
     <script src="static/pricer.js"></script>

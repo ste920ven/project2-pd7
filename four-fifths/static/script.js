@@ -131,6 +131,7 @@ function tick()
 
     //reset period
     $('table.bell tr').removeClass('active');
+    $('p#time').removeClass('warning');
 
     if (now<bellSchedule[0].start)
 	$('p#period').text("Before School");
@@ -148,6 +149,10 @@ function tick()
 	    pdnum = i+1;
 	    $('p#period').text("Period "+pdnum);
 	    $('table.bell tr#period'+pdnum).addClass('active');
+	    
+	    //if less than 5 minutes left
+	    if (pd.end-now<300000)
+		$('p#time').addClass('warning');
 	}
     }
 

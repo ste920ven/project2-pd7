@@ -7,7 +7,7 @@ import movies
 import login
 import espn
 
-
+global username
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
@@ -28,11 +28,14 @@ def user():
     if request.method == "POST":
         if request.form["button"] == "Submit":
             username = str(request.form['username'])
-            print username
-            login.newUser(username)
-            login.username(username)
+            if (login.inUse(username) != 1):
+                print username
+                login.newUser(username)
+                login.username(username)
+            else:
+                print "gtfo"
             return render_template("user.html")
-            return redirect(url_for('home'))
+            
 
         if request.form["button"] == "Login":
             username = str(request.form['login'])
@@ -41,10 +44,93 @@ def user():
             else:
                 return render_template("user.html")
 
+"""
+            username = str(request.form['login'])
+            if(login.username(username) != -1):
+                r1 = login.getZip(username)
+                if r1 == -1:
+                    return redirect(url_for('home'))
+                r2 = login.getTeamID(username)
+                if r2 == -1:
+                    return redirect(url_for('home'))
+                r3 = login.getGenre(username)
+                if r3 == -1:
+                      return redirect(url_for('home'))
+                r4 = login.getCategory(username)
+                if r4 == -1:
+                      return redirect(url_for('home'))
+                
+                try:
+                    s3 = upcoming.getEventInfo(r3,r1,"id")
+                    x = random.choice(s3.keys())
+                    uname1 =  upcoming.getEventIDInfo(x,"name")
+                    udescription1 =  upcoming.getEventIDInfo(x,"description")
+                except:
+                    uname1 = " "
+                    udescription1 = " "
+                    
+                try:
+                    s4 = upcoming.getEventInfo(r4,r1,"id")
+                    y = random.choice(s4.keys())
+                    uname2 =  upcoming.getEventIDInfo(y,"name")
+                    udescription2 =  upcoming.getEventIDInfo(y,"description")
+                except:
+                    uname2 = " "
+                    udescription2 = " "
+        
+        
+                    movies_available = movies.getMovieNames()
+                    movie = choice(movies_available)
+                    print movie
+                    synopsis = movies.getSynopsis(movie)
+                    print synopsis
+        #teamId = espn.getTeamID(r2)
+                try:
+                    teamId = login.getTeamID(username)
+                    headline1 = espn.getHeadline(teamId, 0)
+                    headline2 = espn.getHeadline(teamId, 1)
+                    headline3 = espn.getHeadline(teamId, 2)
+                    description1 = espn.getDescription(teamId, 0)
+                    description2 = espn.getDescription(teamId, 1)
+                    description3 = espn.getDescription(teamId, 2)
+        #team = espn.getName(espn.getTeam(teamId))
+
+                except:
+                    headline1 = ""
+                    headline2 = ""
+                    headline3 = ""
+                    description1 = " "
+                    description2 = "ESPN API is down. Try again later"
+                    description3 = " " 
+                    
+
+    
+                
+                render_template("results.html", 
+                                username = username,
+                                name=uname1,
+                                description = udescription1,
+                                movie = movie,
+                                #team = team,
+                                synopsis = synopsis, 
+                                headline1 = headline1,
+                                headline2 = headline2,
+                                headline3 = headline3,
+                                description1 = description1,
+                                description2 = description2,
+                                description3 = description3,
+                                name2 = uname2,
+                                udescription2 = udescription2)
+
+"""
+
+
+
 @app.route("/home", methods= ["GET","POST"])
 def home():
     global headlines
     global username
+    username = username
     if request.method == "GET":
         print "get!!"
         return render_template("survey2.html", username = username)
@@ -59,8 +145,13 @@ def home():
         print r4
 
 ##Saving Team preferences using mongo ##
+        login.saveZip(username, r1)
         login.saveTeamID(username, r2)
+        login.saveMusic(username, r3)
+        login.saveMood(username, r4)
+
         login.test(username)
+
 
         ## API Interactions HERE ##
         try:
@@ -87,10 +178,6 @@ def home():
         print movie
         synopsis = movies.getSynopsis(movie)
         print synopsis
-        #teamId = espn.getTeamID(r2)
-        description1 = " "
-        description2 = "ESPN API is down"
-        description3 = " " 
         try:
             teamId = login.getTeamID(username)
             headline1 = espn.getHeadline(teamId, 0)
@@ -102,7 +189,12 @@ def home():
         #team = espn.getName(espn.getTeam(teamId))
 
         except:
-            pass
+              headline1 = "ESPN API is down. Try again later"
+              headline2 = ""
+              headline3 = ""
+              description1 = " "
+              description2 = ""
+              description3 = " " 
         return render_template("results.html", 
                                username = username,
                                name=uname1,

@@ -24,25 +24,4 @@
 <img src=""/>
 </div>
 
-<script type="text/javascript">
-var count=0;
-function next(){
-if (count-1===images_album.length){
-count=0
-}
-image={{images_album}};
-image=image[count+1]
-$("src").attr("src",image);
-}
-
-var myevent;
-function startit(){
-myevent=setInterval(next,1000);
-}
-
-$(document).ready(function(){
-startit();
-}
-
-</script>
 {% endblock %}

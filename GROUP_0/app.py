@@ -34,14 +34,17 @@ def login():
                 flash("Arrh! Wrong password. Try again!")
                 return redirect(url_for("login"))
             else:
-                return render_template("hello.html",name=username)
+                return redirect(url_for("hello"))
 
 @app.route("/hello",methods=['GET','POST'])
 def hello():
-    if(request.form["button"]=="rate songs"):
-        return render_template("song.html", songs=data_song.keys())
-    if(request.form["button"]=="rate albums"):
-        return render_template("album.html",albums=data_album.keys())
+    if request.method == "GET":
+        return render_template("hello.html",name=username)
+    if request.method == "POST":    
+        if(request.form["button"]=="rate songs"):
+             return render_template("song.html", songs=data_song.keys())
+        if(request.form["button"]=="rate albums"):
+             return render_template("album.html",albums=data_album.keys())
 
 @app.route("/hello/album/<album>",methods=['GET','POST'])
 def album(album=""):
@@ -55,15 +58,15 @@ def album(album=""):
             average="No ratings yet, rate this album now!"
         return render_template("rate_album.html",albums=data_album.keys(),albuma=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
-        button=request.form["button"]
-        if button == "rate":
-            rating_value=str(request.form["rating"])
-            comment=str(request.form["comment"])
+        button=request.form['button']
+        if button == 'rate':
+            rating_value=request.form["rating"]
+            comment=request.form["comment"]
             name=request.form["albumname"]
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
-            return render_template("album.html", albums=data_album.keys(),images_album=images_album)
-        if button == "back":
-            return render_template("album.html", albums=data_album.keys(),images_album=images_album)
+            return render_template('album.html', albums=data_album.keys())
+        elif button == "back":
+            return redirect(url_for('hello'))
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
 def song(song=""):
@@ -82,8 +85,10 @@ def song(song=""):
             comment=request.form["comment"]
             name=request.form["songname"]
             database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
-        return render_template("song.html", songs=data_song.keys())
+            return render_template("song.html", songs=data_song.keys())
+        elif button == 'back':
+            return redirect(url_for('hello'))
 
 if __name__=="__main__":
     app.debug=True
-    app.run(host="ml7.stuycs.org",port=6969)
+    app.run(host="0.0.0.0",port=6969)
