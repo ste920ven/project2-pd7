@@ -53,7 +53,7 @@ def album(album=""):
         except Exception:
             ratings=False
             average="No ratings yet, rate this album now!"
-        return render_template("rate_album.html",albums=data_album.keys(),album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
+        return render_template("rate_album.html",albums=data_album.keys(),albuma=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
         button=request.form["button"]
         if button == "rate":
@@ -61,6 +61,8 @@ def album(album=""):
             comment=str(request.form["comment"])
             name=request.form["albumname"]
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
+            return render_template("album.html", albums=data_album.keys(),images_album=images_album)
+        if button == "back":
             return render_template("album.html", albums=data_album.keys(),images_album=images_album)
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
@@ -80,8 +82,8 @@ def song(song=""):
             comment=request.form["comment"]
             name=request.form["songname"]
             database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
-            return render_template("song.html", songs=data_song.keys())
+        return render_template("song.html", songs=data_song.keys())
 
 if __name__=="__main__":
     app.debug=True
-    app.run(port=6969)
+    app.run(host="ml7.stuycs.org",port=6969)

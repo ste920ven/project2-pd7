@@ -77,7 +77,6 @@
   <li>Jack
     <ul>
 	<li>Twilio API:</li>
-    	<li>SMS interface (sendSMS.py)</li>
     	<li>Phone Information Hotline (hotline.py)</li>
     </ul>
   </li>
