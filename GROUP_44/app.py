@@ -63,31 +63,50 @@ def home():
         login.test(username)
 
         ## API Interactions HERE ##
-        s3 = upcoming.getEventInfo(r3,r1,"id")
-        x = random.choice(s3.keys())
-        print "x: " +str( x)
-        name =  upcoming.getEventIDInfo(x,"name")
-        print "name: " + name
-        description =  upcoming.getEventIDInfo(x,"description")
-        print "description: " + description 
+        try:
+            s3 = upcoming.getEventInfo(r3,r1,"id")
+            x = random.choice(s3.keys())
+            uname1 =  upcoming.getEventIDInfo(x,"name")
+            udescription1 =  upcoming.getEventIDInfo(x,"description")
+        except:
+            uname1 = " "
+            udescription1 = " "
 
+        try:
+            s4 = upcoming.getEventInfo(r4,r1,"id")
+            y = random.choice(s4.keys())
+            uname2 =  upcoming.getEventIDInfo(y,"name")
+            udescription2 =  upcoming.getEventIDInfo(y,"description")
+        except:
+            uname2 = " "
+            udescription2 = " "
+        
+        
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
+        print movie
         synopsis = movies.getSynopsis(movie)
-
+        print synopsis
         #teamId = espn.getTeamID(r2)
-        teamId = login.getTeamID(username)
-        headline1 = espn.getHeadline(teamId, 0)
-        headline2 = espn.getHeadline(teamId, 1)
-        headline3 = espn.getHeadline(teamId, 2)
-        description1 = espn.getDescription(teamId, 0)
-        description2 = espn.getDescription(teamId, 1)
-        description3 = espn.getDescription(teamId, 2)
+        description1 = " "
+        description2 = "ESPN API is down"
+        description3 = " " 
+        try:
+            teamId = login.getTeamID(username)
+            headline1 = espn.getHeadline(teamId, 0)
+            headline2 = espn.getHeadline(teamId, 1)
+            headline3 = espn.getHeadline(teamId, 2)
+            description1 = espn.getDescription(teamId, 0)
+            description2 = espn.getDescription(teamId, 1)
+            description3 = espn.getDescription(teamId, 2)
         #team = espn.getName(espn.getTeam(teamId))
+
+        except:
+            pass
         return render_template("results.html", 
                                username = username,
-                               name=name,
-                               description = description,
+                               name=uname1,
+                               description = udescription1,
                                movie = movie,
                                #team = team,
                                synopsis = synopsis, 
@@ -96,7 +115,9 @@ def home():
                                headline3 = headline3,
                                description1 = description1,
                                description2 = description2,
-                               description3 = description3)
+                               description3 = description3,
+                               name2 = uname2,
+                               udescription2 = udescription2)
 
 if __name__ == "__main__":
     app.run(debug = True)
