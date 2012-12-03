@@ -55,6 +55,15 @@
 
 <h6>Note: app.py runs on <a href="http://ml7.stuycs.org:7205">ml7.stuycs.org:7205</a>...</h6>
 
+<h4>Known BUGS in the Website<h4>
+
+<ul>
+	<li>If the Stuy site is unreachable, StuyDash crashes.</li>
+	<li>The favicon's rounded corners show a white background, not a transparent one.</li>
+	<li>Possible bugs in mobile site's stylesheets.</li>
+	<li>No MTA implementation.</li>
+</ul>
+
 <h4>GROUP four-fifths:</h4>
 
 <ul>
@@ -68,7 +77,6 @@
   <li>Jack
     <ul>
 	<li>Twilio API:</li>
-    	<li>SMS interface (sendSMS.py)</li>
     	<li>Phone Information Hotline (hotline.py)</li>
     </ul>
   </li>
