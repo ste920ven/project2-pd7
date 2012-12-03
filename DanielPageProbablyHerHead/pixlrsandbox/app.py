@@ -10,6 +10,7 @@ def index():
 def save():
     if request.method == 'GET':
         print request.args
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(port=9018, debug=True)
