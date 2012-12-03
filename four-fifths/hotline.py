@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor, Weather, MTAService
+import extractor, Weather#, MTAService
 import random
 
 app = Flask(__name__)
