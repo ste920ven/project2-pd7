@@ -42,5 +42,4 @@ def getrating(num, name):
 
 
 if __name__=="__main__":
-    app.debug=True # remove this line to turn off debugging
-    app.run() # connect to localhost:5000 or http://127.0.0.1:5000
+    app.run(host="0.0.0.0", port=7201, debug=True)

@@ -34,6 +34,7 @@ def returnAllAccounts():
 
 
 def addSongRating(username,song,artist,rating,comment):
+    addSongRatingForUsername(username,song,artist,rating,comment)
     ratingList = SongRatings.find_one({'song':song,'artist':artist})
     commentList = SongRatings.find_one({'song':song,'artist':artist})
     if ratingList == None:
@@ -44,9 +45,10 @@ def addSongRating(username,song,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         SongRatings.update({'song':song,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
-    addSongRatingForUsername(username,song,artist,rating,comment)
+
 
 def addAlbumrating(username,album,artist,rating,comment):
+    addAlbumRatingForUsername(username,album,artist,rating,comment)
     ratingList = AlbumRatings.find_one({'album':album,'artist':artist})
     commentList = AlbumRatings.find_one({'album':album,'artist':artist})
     if ratingList == None:
@@ -57,7 +59,7 @@ def addAlbumrating(username,album,artist,rating,comment):
         ratingList.append(rating)
         commentList.append(comment)
         AlbumRatings.update({'album':album,'artist':artist},{'$set':{'comment':commentList,'rating':ratingList}})
-    addAlbumRatingForUsername(username,album,artist,rating,comment)
+
 
     
 def getSongRating(song,artist):
@@ -125,4 +127,5 @@ def getAlbumRatingsByUser(username):
 
 
 if __name__ == '__main__':
-    pass
+    for stuff in Accounts.find():
+        print stuff
