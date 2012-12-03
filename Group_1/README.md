@@ -11,4 +11,4 @@ RestText has a simple mission: to provide both regular and smart phones with a f
 
 To use, your number must be verified on the Twilio API. Then text your query to **9175252351**. You can query the name of a restaurant. If you have the zip code you can query restaurant name, zip (don't forget that space!)
 
-The web side of our project, where you will be able to type in your number and view the history of the restaurants you searched up (great way to remember a place you didn't have time to visit) can be found on [ml7.stuycs.org:7201] (ml7.stuycs.org:7201) .
+The web side of our project, where you will be able to type in your number and view the history of the restaurants you searched up (great way to remember a place you didn't have time to visit) can be found on [ml7.stuycs.org:7201](ml7.stuycs.org:7201).
