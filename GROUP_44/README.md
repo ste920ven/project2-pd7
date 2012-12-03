@@ -5,7 +5,7 @@ might interest you.
   
 Click this link to access H. E. L. P.:  
   
-http://ml7.stuycs.org:portgoeshere  
+http://ml7.stuycs.org:7204 
     
 Instructions:
 <br>

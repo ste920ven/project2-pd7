@@ -9,10 +9,10 @@ def home():
 	if request.method=="GET":
 		return render_template("home.html")
         if request.method=="POST":
-        	
+        	pass
 @app.route('/gallery/<tag>', methods=['GET', 'POST'])
 def gallery():
-	
+	pass
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():

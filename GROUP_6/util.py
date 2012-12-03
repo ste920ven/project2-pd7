@@ -1,3 +1,4 @@
+import sys
 import json
 import requests
 import urllib
@@ -38,39 +39,99 @@ def image_crawl(num):
         #stringIO allows for manipulation of strings
         io = StringIO()
         #this dumps the JSON data into a string
-        json.dump(results['data']['children'][i]['data']['url'], io)
+        try:
+
+            json.dump(results['data']['children'][i]['data']['url'], io)
         #this makes sure it's an imgur link that isn't an album
-        if ('imgur' in io.getvalue() and '#' not in io.getvalue() and '/a/' not in io.getvalue()):
+            if ('imgur' in io.getvalue() and '#' not in io.getvalue() and '/a/' not in io.getvalue() ):
             #get rid of extra quotes 
-            url_list.append(io.getvalue().strip('"'))
-        i = i + 1    
-    
+                url_list.append(io.getvalue().strip('"'))
+
+        except KeyError:
+            print "KeyError"
+
+        except:
+            #print results['data']['children'][i]['data']['url']
+            print sys.exc_info()[0]
+  
+        i = i + 1        
     return url_list
 
-def get_image_url(url):
-    #if url is already just the image link
+
+def get_image_url(url): 
+   
+#if url is already just the image link
     if ('i.imgur' in url):
-        return url, url[-9:]
+        return url
     else:
         #this returns the parameters for retrieving an image.
-        return 'http://www.i.imgur.com/'+url[-5:]+'.jpg', url[-5:]+'.jpg'
+        return 'http://www.i.imgur.com/'+url[-5:]+'.jpg'
+
         
-def save_image(url):
-    
+'''
+def save_image(url):    
     #create image space
     image = urllib.URLopener()
     url,filename = get_image_url(url)
+    print url
+    print filename
     #download file into home directory.
-    image.retrieve(url,filename)
-    
-    src = os.getcwd()+'/'+filename
-    dst = os.getcwd()+'/images/'
-    shutil.move(src,dst)
+    try:
+        print "saving"
+        image.retrieve(url,filename)    
+    #copy image from current directory where it got saved into the images folder
+       src = os.getcwd()+'/'+filename
+       dst = os.getcwd()+'/images/'
+       shutil.move(src,dst)
+
+    except IOError:
+        print "value error not saved"
+'''
 
 
-save_image('http://i.imgur.com/x6nCC.jpg')
-    
-#print results['data']['children'][0]['data']['url']
+
+def download_images(num):
+        url_list = []
+        url_list = image_crawl(num)    
+        
+        for i in url_list:
+            try:
+                print i
+                save_image(i)
+            except KeyError:
+                print "reddit says no"
+            except:
+                print "huh?"
 
 
+def send_image_links(num):
+    y = 0
+    url_list = image_crawl(num)
+    newlist = []
+    #print test
+    for i in url_list:
+        x = get_image_url(i)
+        #print x
+        y = y +1
+        newlist.append(x)
+    print newlist
+    print y
 
+#send_image_links(10)
+#download_images(10)
+
+#save_image('http://i.imgur.com/Jxyof.jpg')
+
+
+#x = get_image_url('http://imgur.com/qepuC')
+#print x
+#print results['data']['children'][20]['data']['url']
+'''
+x = image_crawl(50)
+print x
+for i in x:
+    i = get_image_url(i)
+print x
+'''
+
+send_image_links(40)
