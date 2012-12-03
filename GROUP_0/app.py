@@ -60,12 +60,12 @@ def album(album=""):
     if(request.method=="POST"):
         button=request.form['button']
         if button == 'rate':
-            rating_value=request.form["rating"]
-            comment=request.form["comment"]
-            name=request.form["albumname"]
+            rating_value=request.form['rating']
+            comment=request.form['comment']
+            name=request.form['albumname']
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
-            return render_template('album.html', albums=data_album.keys())
-        elif button == "back":
+            return render_template("album.html", albums=data_album.keys())
+        elif button == 'back':
             return redirect(url_for('hello'))
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
