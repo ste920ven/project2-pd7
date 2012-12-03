@@ -84,4 +84,4 @@ def song(song=""):
 
 if __name__=="__main__":
     app.debug=True
-    app.run(port=5000)
+    app.run(host='ml7.stuycs.org',port=6969)
