@@ -10,8 +10,7 @@ def get_records(number):
     messages = client.sms.messages.list()
     sent={}
     for sms in messages:
-        if str(sms.status)=="sent" and int(sms.to) == number:
+        if str(sms.status)=="sent" and int(sms.to) == int(number):
             key = sms.body[6:sms.body.find('\n')]
             sent[key]=sms.body                               
     return sent
-
