@@ -10,6 +10,7 @@ app = Flask(__name__)
 def home():
 	global tag
 	
+	
 	if request.method == "GET":
 		url_list = util.send_image_links(20)
 		print url_list
@@ -18,34 +19,36 @@ def home():
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():
 	global tag
+	global picurl
 	if request.method=="GET":
 		taglist = db.getTaglist()
 		piclist = db.getPics(tag)
 		return render_template("slide.html", taglist = taglist, piclist =piclist)
 	else:	
 		url = request.form['hidSrc']
-		return redirect(url_for("/image/" + url ))
+		picurl=url
+		return redirect(url_for("/image" ))
 		
-@app.route('/image/<pic>', methods=['GET', 'POST'])
+@app.route('/image', methods=['GET', 'POST'])
 def _image():
 	if request.method=="GET":
 		taglist = db.getTaglist()
-		tags = db.getTags(pic)
-		commentlist = db.getComments(pic)
-		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = pic)
+		tags = db.getTags(picurl)
+		commentlist = db.getComments(picurl)
+		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = picurl)
 	else:	
 		button = request.form['button']
 				
 		if button=="submit":
 			aComment = request.form['comment']
-			db.addComment(pic,aComment)
+			db.addComment(picurl,aComment)
 		elif button == "submitnewtag":
 			if request.form['Addnewtag']:
 				aTag = request.form['Addnewtag']
-				db.addTag(pic,aTag)
+				db.addTag(picurl,aTag)
 			else:
 				aTag =  request.form['select1']
-				db.addTag(pic,aTag)
+				db.addTag(picurl,aTag)
 		
 		 	 	
 if __name__=="__main__":
