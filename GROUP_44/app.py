@@ -7,7 +7,7 @@ import movies
 import login
 import espn
 
-
+global username
 app = Flask(__name__)
 app.secret_key = 'some_secret'
 
@@ -28,19 +28,37 @@ def user():
     if request.method == "POST":
         if request.form["button"] == "Submit":
             username = str(request.form['username'])
-            print username
-            login.newUser(username)
-            login.username(username)
+            if (login.inUse(username) != 1):
+                print username
+                login.newUser(username)
+                login.username(username)
+            else:
+                print "gtfo"
             return render_template("user.html")
-            return redirect(url_for('home'))
+            
 
         if request.form["button"] == "Login":
             username = str(request.form['login'])
             if(login.username(username) != -1):
+                return redirect(url_for('home'))
+            else:
+                return render_template("user.html")
+
+"""
+            username = str(request.form['login'])
+            if(login.username(username) != -1):
                 r1 = login.getZip(username)
+                if r1 == -1:
+                    return redirect(url_for('home'))
                 r2 = login.getTeamID(username)
+                if r2 == -1:
+                    return redirect(url_for('home'))
                 r3 = login.getGenre(username)
+                if r3 == -1:
+                      return redirect(url_for('home'))
                 r4 = login.getCategory(username)
+                if r4 == -1:
+                      return redirect(url_for('home'))
                 
                 try:
                     s3 = upcoming.getEventInfo(r3,r1,"id")
@@ -104,7 +122,7 @@ def user():
                                 name2 = uname2,
                                 udescription2 = udescription2)
 
-
+"""
 
 
 
@@ -112,6 +130,7 @@ def user():
 def home():
     global headlines
     global username
+    username = username
     if request.method == "GET":
         print "get!!"
         return render_template("survey2.html", username = username)
@@ -159,10 +178,6 @@ def home():
         print movie
         synopsis = movies.getSynopsis(movie)
         print synopsis
-        #teamId = espn.getTeamID(r2)
-        description1 = " "
-        description2 = "ESPN API is down. Try again later"
-        description3 = " " 
         try:
             teamId = login.getTeamID(username)
             headline1 = espn.getHeadline(teamId, 0)
@@ -174,7 +189,12 @@ def home():
         #team = espn.getName(espn.getTeam(teamId))
 
         except:
-            pass
+              headline1 = "ESPN API is down. Try again later"
+              headline2 = ""
+              headline3 = ""
+              description1 = " "
+              description2 = ""
+              description3 = " " 
         return render_template("results.html", 
                                username = username,
                                name=uname1,

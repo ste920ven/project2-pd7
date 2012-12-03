@@ -68,6 +68,8 @@ def getTeamID(username):
         return -1
     else:
         res = db.username.find_one({"username": username})['team']
+        if res == "NONE":
+            return -1
         print res
         return res
 
@@ -81,6 +83,8 @@ def getGenre(username):
         return -1
     else:
         res = db.username.find_one({"username": username})['music']
+        if res == "NONE":
+            return -1
         print res
         return res
 
@@ -94,6 +98,8 @@ def getCategory(username):
         return -1
     else:
         res = db.username.find_one({"username": username})['mood']
+        if res == "NONE":
+            return -1
         print res
         return res
 
@@ -107,15 +113,29 @@ def getZip(username):
         return -1
     else:
         res = db.username.find_one({"username": username})['zip']
+        if res == "NONE":
+            return -1
         print res
         return res
+
+def inUse(username):
+    db = connection()
+#have to parse through in order to get at actual data
+    d = [x for x in db.username.find({'username':username})]
+    if len(d) > 0:
+        print 1
+        return 1
+    else:
+        return -1
+
+
 
 def deleteAll():
     db = connection()
     db.username.remove({});  
 
 
-#deleteAll()
+deleteAll()
 
 
 newUser("Leopold")
@@ -126,3 +146,4 @@ username("Leopold")
 test("Leopold")
 getTeamID("Leopold")
 getZip("Leopold")
+inUse("Leopold")
