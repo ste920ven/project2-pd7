@@ -12,9 +12,9 @@
             apiVersion: 2,
             tools: 'all',
             appendTo: '',
-            onSave: function(imageID, this) {
+            onSave: function(imageID, newURL) {
                 var img = document.getElementById(imageID);
-                img.src = this;
+                img.src = newURL;
             }
         });
 
