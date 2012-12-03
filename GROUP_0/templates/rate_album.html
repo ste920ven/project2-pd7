@@ -29,13 +29,13 @@
 <div id="menu">
 <ul class="menu vertical">
 {% for album in albums %}
-<li><a href="http://ml7.stuycs.org:6969/hello/album/{{albuma}}">{{album}}</a></li>
+<li><a href="http://ml7.stuycs.org:6969/hello/album/{{album}}">{{album}}</a></li>
 {% endfor %}
 </ul>
 </div>
 
 <div id="content" style="left:20px">
-<img src="{{image}}" alt="{{albuma}}'s image"/>
+<img src="{{image}}" alt="{{album}}'s image"/>
 <p>
 <font size="3">
 Artist: <a href="{{url}}">{{artist}}</a><br>
@@ -58,7 +58,7 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
   <input type="submit" name="button" value="back">  
-  <input type="hidden" name="albumname" value="{{albuma}}">
+  <input type="hidden" name="albumname" value="{{album}}">
 </p>
 </div>
 <div id="ratepage">
