@@ -34,14 +34,17 @@ def login():
                 flash("Arrh! Wrong password. Try again!")
                 return redirect(url_for("login"))
             else:
-                return render_template("hello.html",name=username)
+                return redirect(url_for("hello"))
 
 @app.route("/hello",methods=['GET','POST'])
 def hello():
-    if(request.form["button"]=="rate songs"):
-        return render_template("song.html", songs=data_song.keys())
-    if(request.form["button"]=="rate albums"):
-        return render_template("album.html",albums=data_album.keys())
+    if request.method == "GET":
+        return render_template("hello.html",name=username)
+    if request.method == "POST":    
+        if(request.form["button"]=="rate songs"):
+             return render_template("song.html", songs=data_song.keys())
+        if(request.form["button"]=="rate albums"):
+             return render_template("album.html",albums=data_album.keys())
 
 @app.route("/hello/album/<album>",methods=['GET','POST'])
 def album(album=""):
@@ -63,7 +66,7 @@ def album(album=""):
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
             return render_template("album.html", albums=data_album.keys(),images_album=images_album)
         if button == "go to songs":
-            return redirect(url_for("login"))
+            return redirect(url_for("hello"))
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])
 def song(song=""):
@@ -84,7 +87,7 @@ def song(song=""):
             database.addSongRating(username,name,data_song[name]["artist"],rating_value,comment)
             return render_template("song.html", songs=data_song.keys())
         if button == "go to albums":
-           return redirect(url_for("login"))
+           return redirect(url_for("hello"))
 
 if __name__=="__main__":
     app.debug=True
