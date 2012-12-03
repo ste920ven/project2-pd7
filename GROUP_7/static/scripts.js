@@ -6,6 +6,7 @@ var styles;
 var minZoomLevel = 10;
 var maxZoomLevel = 19;
 var searchResults = [];
+var user_loc;
 
 var index = 0;
 var text = "My name is Robert Neville. I am a survivor living in New York City. I am broadcasting on all AM frequencies. I will be at the South Street Seaport everyday at mid-day, when the sun is highest in the sky. If you are out there... if anyone is out there... I can provide food, I can provide shelter, I can provide security. If there's anybody out there... anybody... please. You are not alone.";
@@ -16,17 +17,30 @@ var strictBounds = new google.maps.LatLngBounds(
 );
 
 $(document).ready(function(){
+    $('#mylocurl').click(function(){
+	$('#start').val(user_loc);
+    });
     $("#trigger").click(function(){
 	$("#panel").toggle("fast");
 	return false;
     });
     $('#address').keydown(function(){
-	if(event.keyCode == 13)
-	    codeAddress();
+	if(event.keyCode == 13){
+	    $.getJSON($SCRIPT_ROOT + "/get_Address", {
+		a: $('#address').val()
+	    }, function(data){
+		$('#user_location').text(data.result);
+		codeAddress(data.result);
+		user_loc = data.result;
+	    });
+	    return false;
+	}
     });
     $('#start, #end').keydown(function(){
 	if(event.keyCode == 13)
 	    calcRoute();
+	else
+	    $('#directionsgmap').css('display','none');
     });   
     $('#message').click(function(){
 	codeAddress('South Street Seaport');
@@ -194,6 +208,9 @@ function calcRoute() {
             directionsDisplay.setDirections(response);
         }
     });
+    var tempurl = "https://maps.google.com/maps?q=from:"+start+"+to:"+end;
+    $('#directionsgmap').attr('href',tempurl);
+    $('#directionsgmap').css('display','inline');
 }
 // END GOOGLE STUFF
 
