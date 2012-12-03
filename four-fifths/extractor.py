@@ -70,7 +70,6 @@ def getNews(home):
     return news
 
 def getDate():
-    print datetime.datetime.now(EST())
     return datetime.datetime.now(EST()).strftime("%A, %B %e") 
 
 class EST(datetime.tzinfo):
