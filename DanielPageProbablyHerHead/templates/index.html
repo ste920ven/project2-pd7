@@ -15,9 +15,6 @@ function tables() {
 	{% endfor %}
 	"http://www.google.com/images/srpr/logo3w.png"
 	];
-	for (img in images){
-		img = "\""+img +"\"";
-	}
 	for (var j = 0; j < 5; j++) {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
@@ -26,9 +23,6 @@ function tables() {
 			img.src = images[i+j];
 			img.width = 150;
 			img.height = 150;
-			var rate = document.createElement("div");
-			rate.class = "star-rating";
-			rate.innerHTML = "<s><s><s><s><s></s></s></s></s></s>";
 			cell.appendChild(img);
 			row.appendChild(cell);
 		}
@@ -68,7 +62,6 @@ function tables() {
     Use the above function to access the user's IP, then pass it into the database.
     -->
 
-<h2><center>ALBUMARTINATOR</center><h2>
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
