@@ -579,12 +579,12 @@ def getWHemp():
 #print getPortW()
 #print getRonkonkoma()
 #print getWHemp()
-print getDelays(getBuses())
-print getDelays(getSubways())
-print getDelays(getLIRR())
-print getService(getBuses())
-print getService(getSubways())
-print getService(getLIRR())
+#print getDelays(getBuses())
+#print getDelays(getSubways())
+#print getDelays(getLIRR())
+#print getService(getBuses())
+#print getService(getSubways())
+#print getService(getLIRR())
 
 
 
