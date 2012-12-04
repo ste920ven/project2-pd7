@@ -6,9 +6,9 @@ def getStatus():
     #Converts HTML Entities
     soup = soup.prettify(formatter=None)
     soup = BeautifulSoup(soup)
-    i = len(soup.find_all(["img","link","span","br","hr","b",]))
+    i = len(soup.find_all(["img","link","br","hr","b",]))
     for x in xrange(0,i):
-        soup.find(["img","link","span","br","hr","b",]).unwrap()
+        soup.find(["img","link","br","hr","b",]).unwrap()
     return soup
 
 #Planned Work
@@ -29,11 +29,20 @@ def getPlannedWorkDetail(soup):
 
 #Service Changes and Delays
 def getServiceChangeAndDelays(soup):
-    msgs = soup.find_all("p")
-    allmsgs = ""
-    for msg in msgs:
-        allmsgs= allmsgs + msg.get_text(strip=True)
-    return allmsgs
+    texts = soup.find("text")
+    i = len(texts.find_all("span"))
+    for x in xrange(0,i):
+        texts.find("span").clear()
+    texts.a.clear()
+    texts.div.clear()
+    #return text
+    return texts.get_text(strip=True)
+    #msgs = soup.find_all("p")
+    #allmsgs = ""
+    #for msg in msgs:
+    #    allmsgs= allmsgs + msg.get_text(strip=True)
+    #return allmsgs
+    #return text
 
 #Combines the Planned Work notice and alternate routes
 def getCompletePlannedWork(soup):
@@ -42,7 +51,9 @@ def getCompletePlannedWork(soup):
 
 #Service Changes and Planned Works
 def getComplete(soup):
-    mesg =  "Delays&ServiceChanges:"+" "+getServiceChangeAndDelays(soup)+"\n"+"Planned Detours:"+" "+getCompletePlannedWork(soup)
+    soup1 = soup
+    soup2 = soup
+    mesg = "Planned Detours:"+" "+getCompletePlannedWork(soup2)+"\n"+" "+"Delays&ServiceChanges:"+" "+getServiceChangeAndDelays(soup1)
     return mesg
 
 #Gets all lines with delays 
@@ -68,8 +79,16 @@ def getService(thelines):
             nname = str(name.get_text(strip=True))
             msg = str(getServiceChangeAndDelays(line))
             service[nname] = msg
-            
     return service
+
+#Returns matching line with given name
+def getLine(lines,lname):
+    for line in lines:
+        name = line.find("name")
+        name.name = "linenames"
+        nname =str(name.get_text(strip=True))
+        if(lname==nname):
+            return line
 
 #Subway
 def getSubways():
@@ -82,7 +101,7 @@ def getSubways():
 #123
 def get123():
     trains = getSubways()
-    train123 = trains[0]
+    train123 = getLine(trains,"123")
     status = str(train123.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -96,7 +115,7 @@ def get123():
 #456
 def get456():
     trains = getSubways()
-    train456=trains[1]
+    train456=getLine(trains,"456")
     status = str(train456.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -111,7 +130,7 @@ def get456():
 #7
 def get7():
     trains = getSubways()
-    train7=trains[2]
+    train7=getLine(trains,"7")
     status = str(train7.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -126,7 +145,7 @@ def get7():
 #ACE
 def getACE():
     trains = getSubways()
-    trainACE=trains[3]
+    trainACE=getLine(trains,"ACE")
     status = str(trainACE.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -141,7 +160,7 @@ def getACE():
 #BDFM
 def getBDFM():
     trains = getSubways()
-    trainBDFM=trains[4]
+    trainBDFM=getLine(trains,"BDFM")
     status = str(trainBDFM.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -155,7 +174,7 @@ def getBDFM():
 #G
 def getG():
     trains = getSubways()
-    trainG=trains[5]
+    trainG=getLine(trains,"G")
     status = str(trainG.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -169,7 +188,7 @@ def getG():
 #JZ
 def getJZ():
     trains = getSubways()
-    trainJZ=trains[6]
+    trainJZ=getLine(trains,"JZ")
     status = str(trainJZ.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -183,7 +202,7 @@ def getJZ():
 #L
 def getL():
     trains = getSubways()
-    trainL=trains[7]
+    trainL=getLine(trains,"L")
     status = str(trainL.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -197,7 +216,7 @@ def getL():
 #NQR
 def getNQR():
     trains = getSubways()
-    trainNQR=trains[8]
+    trainNQR=getLine(trains,"NQR")
     status = str(trainNQR.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -211,7 +230,7 @@ def getNQR():
 #S
 def getS():
     trains = getSubways()
-    trainS=trains[9]
+    trainS=getLine(trains,"S")
     status = str(trainS.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -224,7 +243,7 @@ def getS():
 #SIR
 def getSIR():
     trains = getSubways()
-    trainSIR=trains[10]
+    trainSIR=getLine(trains,"SIR")
     status = str(trainSIR.status.get_text(strip=True))
     if(status=="GOOD SERVICE"):
         return "Good Service"
@@ -580,13 +599,26 @@ def getWHemp():
 #print getRonkonkoma()
 #print getWHemp()
 #print getDelays(getBuses())
+<<<<<<< HEAD
+print getDelays(getSubways())
+=======
 #print getDelays(getSubways())
+>>>>>>> 1297dced3cb58d06ede7f47422bc61bee5b93977
 #print getDelays(getLIRR())
 #print getService(getBuses())
 #print getService(getSubways())
 #print getService(getLIRR())
+<<<<<<< HEAD
+print getServiceChangeAndDelays(getLine(getSubways(),"123"))
+#x= getLine(getSubways(),"123")
+#print x.find("text")
+#print getPlannedWork(getLine(getSubways(),"123"))
+#print getCompletePlannedWork(getLine(getSubways(),"123"))
+print getComplete(getLine(getSubways(),"123"))
+=======
 
 
 
+>>>>>>> 1297dced3cb58d06ede7f47422bc61bee5b93977
     
     
