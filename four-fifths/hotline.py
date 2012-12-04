@@ -115,7 +115,7 @@ def schedule():
         for each in delays :
             for char in xrange(len(each)) :
                 audio.append("%s.mp3"%(str(each[char])))
-            audio.append("line.mp3")
+        audio.append("line.mp3")
 
 #---pressed 4: credits---
     elif int(digit) == 4 :
