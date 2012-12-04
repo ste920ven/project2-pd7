@@ -2,7 +2,7 @@ GROUP 2
 =========
 The Albumonator
 <h3>What it does:</h3>
-Using the Flickr, Wikipedia, and iHeartQuotes API, the AlbumArtinator generates random album art.
+Using the Flickr, Wikipedia, and iHeartQuotes API, the Albumonator generates random album art.
  
 <h3>How it works:<h3>:
 <br/>
@@ -17,12 +17,12 @@ Using the Flickr, Wikipedia, and iHeartQuotes API, the AlbumArtinator generates 
  
 The Albumonator can be found at http://ml7.stuycs.org:9019.
 <br />
-<a href="http://ml7.stuycs.org:7202">Click here to go to The Albumanotoro </a>
+<a href="http://ml7.stuycs.org:9019">Click here to go to The Albumonator</a>
 <br />
  
 <h3>How to use it:</h3>
  
-Go to <a href="http://ml7.stuycs.org:9019">The AlbumArtinator </a> , and click generate! Don't like what you see, or want another album art? Click generate again! The Albumonator guarantees a different album art each time.
+Go to <a href="http://ml7.stuycs.org:9019">The Albumonator </a> , and click generate! Don't like what you see, or want another album art? Click generate again! The Albumonator guarantees a different album art each time.
  
 <br />
 <h3>Group Members:</h3>
