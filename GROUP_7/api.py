@@ -116,8 +116,3 @@ destination = "97 Warren Street"
 m = "TRANSIT" 
 original = "345 Chambers Street"
 """
-destination = "97 Warren Street"
-original = "345 Chambers Street"
-
-print "test 1: %s\n", durationTo(original, destination, "WALKING")
-print "test 1: %s\n", durationTo(original, destination, "DRIVING")
