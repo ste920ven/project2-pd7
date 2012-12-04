@@ -41,61 +41,66 @@ function tables() {
 
 <style type="text/css">
 .image {
-   position:fixed;
-top:150px;
-right:425px;
+    position:relative;
+    float:left; /* optional */
 }
 .image .text {
     position:absolute;
     top:10px; /* in conjunction with left property, decides the text position */
-    left:20px;
-    font-size:40px;
-    text-transform:uppercase;
-    width:300px; /* optional, though better have one */
-}
+    left:10px;
 
-h1 {
-text-align:center;
-font-size:80px;
+    width:180px; /* optional, though better have one */
 }
-
-.button {
-position:fixed;
-top:575px;
-right:570px;
-}
-
 </style>
 
 </head>
 
 <form action="" method= "POST">
 
-<h1> Albumonator </h1>
-
 
 <div class="image">
-  <img src="{{source}}" alt="" name="Pic" class="generated-art" width="400" height="400"></img>
+  <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
           <div class="text">
               <p> {{band}} </p>
               <p> {{name}} </p>
            </div>
         </div>
 	
-
-	
-<div class="button">	
 <input type=submit name="button" value="Generate" class="generate" style="width:100px;height:50px"></input>
-</div>
-	
 
-	<br><br><br>
+
+<div class="slide-out-div">
+	<a class="handle" href="http://link-for-non-js-users.html"></a>
+	<h3>Albumartinator</h3>
+	<p>
+        {{rating}}
+        <br>
+        <br>
+        <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
+        <script type="text/javascript" src="../static/pixlr.js"></script>
+        
+	<br />
 	
+        <div class="image">
+          <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
+          <div class="text">
+              <p> {{band}} </p>
+              <p> {{name}} </p>
+           </div>
+        </div>
+        
+        <br />	
+        <input type=submit name="button" value="Save" class="save" style="width:45px;height:50px"></input>
+    	<input type=submit name="button" value="Edit" class="edit" style="width:45px;height:50px"></input>
+	</p>
+	
+	
+</div>
+
 
 </body>
 
 </form>
 
 </html>
-
 
