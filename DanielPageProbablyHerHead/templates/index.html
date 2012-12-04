@@ -11,7 +11,7 @@ function tables() {
 	var tbl     = document.createElement("table");
 	var tblBody = document.createElement("tbody");
 	var images = [
-	{% for album in allAlbums%}
+	{% for album in allAlbums %}
 	"{{album}}",
 	{% endfor %}
 	"http://www.google.com/images/srpr/logo3w.png"
