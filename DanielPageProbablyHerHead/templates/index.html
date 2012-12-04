@@ -23,6 +23,9 @@ function tables() {
 			img.src = images[i+j];
 			img.width = 150;
 			img.height = 150;
+			var div = document.createElement("div");
+			div.class = "star-rating";
+			div.innerHTML = "<s><s><s><s><s></s></s></s></s></s>";
 			cell.appendChild(img);
 			row.appendChild(cell);
 		}
