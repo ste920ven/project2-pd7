@@ -12,12 +12,6 @@ body{
 	background:#0F0F0F;
 	color:#FAFAFA;
 }
-.bandname{
-	font-family:"Georgia",serif;
-}
-.albumname{
-	font-family:"Arial", Helvetica, sans-serif;
-}
 .star-rating s:hover {
     color: #FFFFFF;
 }

@@ -5,6 +5,14 @@
 <html>
 <script src="../static/jquery.js" type="text/javascript"></script>
 <script src="../static/jovoscropt.js"> type="text/javascript"</script>
+<style>
+	.bandname{
+		font-family:"Georgia",serif;
+	}
+	.albumname{
+		font-family:"Arial", Helvetica, sans-serif;
+	}
+</style>
 <script type="text/javascript">
 function tables() {
 	var body = document.getElementsByTagName("body")[0];
@@ -83,9 +91,9 @@ function tables() {
         <div class="image">
           <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
           <div class="text">
-			  <div class="albumname"> {{name}} </div>
+			  <div class="bandname"> {{band}} </div>
 			  <br>
-              <div class="bandname"> {{band}} </div>
+			  <div class="albumname"> {{name}} </div>
            </div>
         </div>
         
@@ -96,7 +104,7 @@ function tables() {
 	
 </div>
 
-<h1>Albuminator</h1>
+<h1>Gallery</h1>
 
 </body>
 
