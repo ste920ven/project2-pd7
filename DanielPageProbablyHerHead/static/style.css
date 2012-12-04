@@ -16,11 +16,11 @@ body{
     color: #FFFFFF;
 }
 .star-rating s{
-    color: black;
-    font-size: 20px;
+    color: white;
+    font-size: 25px;
     cursor: default;
     text-decoration: none;
-    line-height: 20px;
+    line-height: 25px;
 }
 .star-rating {
     padding: 2px;
