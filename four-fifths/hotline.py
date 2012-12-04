@@ -111,10 +111,11 @@ def schedule():
     elif int(digit) == 3 :
         print "3 case: MTA"
         delays = MTAService.getDelays(MTAService.getSubways())
-        print delays;
+        audio.append("delays.mp3")
         for each in delays :
             for char in xrange(len(each)) :
                 audio.append("%s.mp3"%(str(each[char])))
+            audio.append("line.mp3")
 
 #---pressed 4: credits---
     elif int(digit) == 4 :
