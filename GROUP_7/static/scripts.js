@@ -37,8 +37,9 @@ $(document).ready(function(){
 	return false;
     });
     $('#start, #end').keydown(function(){
-	if(event.keyCode == 13)
+	if(event.keyCode == 13){
 	    calcRoute();
+	}
 	else
 	    $('#directionsgmap').css('display','none');
     });   
