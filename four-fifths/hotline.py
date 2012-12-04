@@ -113,7 +113,7 @@ def schedule():
         delays = MTAService.getDelays(MTAService.getSubways())
         print delays;
         for each in delays :
-            for char in xrange(each.len()) :
+            for char in xrange(len(each)) :
                 audio.append("%s.mp3"%(str(each[char])))
 
 #---pressed 4: credits---
