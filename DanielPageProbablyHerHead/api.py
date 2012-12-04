@@ -70,9 +70,7 @@ def newAlbumName():
 
 """
 def newAlbumPicture():
-    """
     #Returns the URL of a random flickr image.
-    """
 
     #API Call
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
