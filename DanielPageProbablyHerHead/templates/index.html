@@ -71,7 +71,8 @@ function tables() {
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
 	<h3>Albumartinator</h3>
 	<p>
-        This Website Generates Album Art.
+        Press Generate! to get a random album art! Click Save to save it into the gallery on the right, and if you like something in the gallery, be sure to rate it up!
+    </p>
         <br>
         <br>
         <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
@@ -82,15 +83,14 @@ function tables() {
         <div class="image">
           <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
           <div class="text">
-              <p> {{band}} </p>
-              <p> {{name}} </p>
+              <div class="bandname"> {{band}} </div>
+              <div class="albumname"> {{name}} </div>
            </div>
         </div>
         
         <br />	
         <input type=submit name="button" value="Save" class="save" style="width:45px;height:50px"></input>
     	<input type=submit name="button" value="Edit" class="edit" style="width:45px;height:50px"></input>
-	</p>
 	
 	
 </div>
