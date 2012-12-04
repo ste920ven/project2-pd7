@@ -10,14 +10,12 @@ function tables() {
 	var body = document.getElementsByTagName("body")[0];
 	var tbl     = document.createElement("table");
 	var tblBody = document.createElement("tbody");
-	var images = [{% for album in allAlbums%}
+	var images = [
+	{% for album in allAlbums%}
 	"{{album}}",
 	{% endfor %}
 	"http://www.google.com/images/srpr/logo3w.png"
 	];
-	for (img in images){
-		img = "\""+img +"\"";
-	}
 	for (var j = 0; j < 5; j++) {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
@@ -30,6 +28,7 @@ function tables() {
 			rate.class = "star-rating";
 			rate.innerHTML = "<s><s><s><s><s></s></s></s></s></s>";
 			cell.appendChild(img);
+			cell.appendChild(rate);
 			row.appendChild(cell);
 		}
 		tblBody.appendChild(row);
