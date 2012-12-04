@@ -17,8 +17,11 @@ function tables() {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
 			var cell = document.createElement("td");
-			var cellText = document.createTextNode(images[i+j]);
-			cell.appendChild(cellText);
+			var img = document.createElement("img");
+			img.src = images[i+j];
+			img.width = 150;
+			img.height = 150;
+			cell.appendChild(img);
 			row.appendChild(cell);
 		}
 		tblBody.appendChild(row);
