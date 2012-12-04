@@ -56,28 +56,29 @@ function tables() {
 </head>
 
 <form action="" method= "POST">
-{{rating}}
-<body onload="tables()">
-    <!-- Every time someone rates an image:
-    <script>
-        $.getJSON("http://jsonip.appspot.com?callback=?",
-            function(data){
-                alert( "Your ip: " + data.ip);
-                });
-    Use the above function to access the user's IP, then pass it into the database.
-    -->
+
+
+<div class="image">
+  <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
+          <div class="text">
+              <p> {{band}} </p>
+              <p> {{name}} </p>
+           </div>
+        </div>
+	
+<input type=submit name="button" value="Generate" class="generate" style="width:100px;height:50px"></input>
 
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html"></a>
-	<h3>Albumartinato</h3>
+	<h3>Albumartinator</h3>
 	<p>
-        This Website Generates Album Art.
+        {{rating}}
         <br>
         <br>
         <!-- We can't actually save images/setup pixlr properly until we're deployed on a website.-->
         <script type="text/javascript" src="../static/pixlr.js"></script>
-        <input type=submit name="button" value="Generate" class="generate" style="width:100px;height:50px"></input>
+        
 	<br />
 	
         <div class="image">

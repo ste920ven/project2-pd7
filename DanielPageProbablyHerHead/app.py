@@ -17,18 +17,10 @@ def index():
             source = api.newAlbumPicture()
             band = api.newArtistName()
             name = api.newAlbumName()
-            return render_template("index.html", allAlbums = allAlbums, source = source, band = band, name = name)
-        if button == 'Save':
-            db.addImage(source)
-            return render_template("index.html", allAlbums = allAlbums, source = source)
-        if button == 'Edit':
-            return render_template("index.html", allAlbums = allAlbums)
+            return render_template("index1.html", allAlbums = allAlbums, source = source, band = band, name = name)
     else:
-        return render_template("index.html", allAlbums = allAlbums)
+        return render_template("index1.html", allAlbums = allAlbums)
 
-@app.route("/<rating>")
-def applyrating(rating):
-    return render_template('index.html', rating = rating)
             
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=7202, debug=True)

@@ -3,8 +3,8 @@ $(function() {
     $("div.star-rating > s, div.star-rating-rtl > s").on("click", function(e) {
         var numStars = $(e.target).parentsUntil("div").length+1;
         alert(numStars + (numStars == 1 ? " star" : " stars!"));
-	var url = "http://ml7.stuycs.org:7202/?image="+img+"&rating="+numStars
-	window.open (url,'_self',false);
+	var url = "http://ml7.stuycs.org:7202/?image=1&rating="+numStars;
+	window.location = url;
     });
 });
 
@@ -17,7 +17,7 @@ $(function(){
 			imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
 			imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
 			tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
-			speed: 100,                               //speed of animation
+			speed: 300,                               //speed of animation
 			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
 			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
 			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
