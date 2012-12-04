@@ -20,9 +20,9 @@ def index():
             source = randomize()
             band = api.newArtistName()
             name = api.newAlbumName()
-            return render_template("index1.html", allAlbums = allAlbums, source = source, band = band, name = name)
+            return render_template("index.html", allAlbums = allAlbums, source = source, band = band, name = name)
     else:
-        return render_template("index1.html", allAlbums = allAlbums)
+        return render_template("index.html", allAlbums = allAlbums)
 
             
 if __name__ == "__main__":
