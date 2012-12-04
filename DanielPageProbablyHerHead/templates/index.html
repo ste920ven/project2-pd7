@@ -26,6 +26,9 @@ function tables() {
 			img.src = images[i+j];
 			img.width = 150;
 			img.height = 150;
+			var rate = document.createElement("div");
+			rate.class = "star-rating";
+			rate.innerHTML = "<s><s><s><s><s></s></s></s></s></s>";
 			cell.appendChild(img);
 			row.appendChild(cell);
 		}
@@ -66,10 +69,6 @@ function tables() {
     -->
 
 <h2><center>ALBUMARTINATOR</center><h2>
-{% for album in allAlbums %}
-<img src="{{album}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
-{% endfor %}
-
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
