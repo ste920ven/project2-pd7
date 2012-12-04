@@ -5,6 +5,7 @@ $(function() {
         alert(numStars + (numStars == 1 ? " star" : " stars!"));
     });
 });
+
 //this sets up the slideything
 $(function(){
     $.fn.tabSlideOut = function(callerSettings) {
@@ -18,8 +19,8 @@ $(function(){
 			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
 			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
 			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
-			fixedPosition: false                      
-                        onLoadSlideOut:false 
+			fixedPosition: false,                      
+                        onLoadSlideOut:true
         }, callerSettings||{});
 
         settings.tabHandle = $(settings.tabHandle);
