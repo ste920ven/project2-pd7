@@ -1,16 +1,16 @@
 .slide-out-div {
-	padding: 20px;
-	width: 250px;
-	background: #000000;
-	border: 1px solid #FFFFFF;
-	color: #FFFFFF;
+padding: 20px;
+width: 250px;
+background: #000000;
+border: 1px solid #FFFFFF;
+color: #FFFFFF;
 }
 body{
-	margin-left:auto;
-	margin-right:auto;
-	width:70%;
-	background:#0F0F0F;
-	color:#FAFAFA;
+margin-left:auto;
+margin-right:auto;
+width:70%;
+background:#0F0F0F;
+color:#FAFAFA;
 }
 .star-rating s:hover {
     color: #FFFFFF;
