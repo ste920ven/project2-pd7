@@ -10,7 +10,6 @@ app = Flask(__name__)
 @app.route("/",methods=['GET','POST'])
 def index():
     allAlbums = db.getImages()
-    wipeDatabase()
     def randomize():
         randNum = randint(0, 999)
         return allAlbums[randNum]
