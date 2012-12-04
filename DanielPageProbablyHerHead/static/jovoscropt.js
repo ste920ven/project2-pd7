@@ -1,3 +1,13 @@
+//star ratings
+$(function() {
+    $("div.star-rating > s, div.star-rating-rtl > s").on("click", function(e) {
+        var numStars = $(e.target).parentsUntil("div").length+1;
+        alert(numStars + (numStars == 1 ? " star" : " stars!"));
+	var url = "http://ml7.stuycs.org:7202/?image="+img+"&rating="+numStars
+	window.open (url,'_self',false);
+    });
+});
+
 //this sets up the slideything
 $(function(){
     $.fn.tabSlideOut = function(callerSettings) {
