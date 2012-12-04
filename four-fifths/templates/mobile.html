@@ -8,9 +8,12 @@
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <style type="text/css"> @import "{{ url_for('static', filename='mobile.css') }}"; </style>
 
-    <script>var bellDay='{{bellDay}}';</script>
-    <script src="{{ url_for('static', filename='jquery.js')   }}"></script>
-    <script src="{{ url_for('static', filename='script.js')   }}"></script>
+    <script>
+      var bellDay="{{bellDay}}";
+    </script>
+
+    <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
   </head>
   
@@ -39,8 +42,10 @@
 	  <p id="time">00:00:00</p>
 	  <p id="day">{{date}}</p>
 	</div>
-
-	<div id="weather">&nbsp;{{temp}}&deg;</div>	   
+	
+	  <div id="weather"
+	       title="{{forecastString}}"
+	       style="background-image: url({{forecastURL}});">&nbsp;{{temp}}&deg;</div>	   
 
       </div>
 

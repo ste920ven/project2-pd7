@@ -1,7 +1,8 @@
 from random import randint
 import urllib2
 import simplejson
-import flickrapi
+import db
+#import flickrapi
 #This app requires the flickr api to run.
 #install with 'sudo apt-get install python-flickrapi'
 api_key = "c190109eeac99e777f3246f6da0f263a"
@@ -9,6 +10,8 @@ api_key = "c190109eeac99e777f3246f6da0f263a"
 """
 api.py houses all of our code that deals with web APIs.
 """
+    
+
 def newArtistName():
     """
     Returns a new artist name (the title of a random wikipedia article).
@@ -65,11 +68,9 @@ def newAlbumName():
     quote = quote.split()[-4] + " " + quote.split()[-3] + " " + quote.split()[-2] + " " + quote.split()[-1]
     return quote
 
-
+"""
 def newAlbumPicture():
-    """
-    Returns the URL of a random flickr image.
-    """
+    #Returns the URL of a random flickr image.
 
     #API Call
     flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
@@ -104,16 +105,33 @@ def newAlbumPicture():
     #Checks if the attributes have valid values
     if (farm.isdigit() and server.isdigit() and id.isdigit()): 
         #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
-        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"    
-        return URL
+        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"   
+
+    #Checks if the URL is already in the database. If not, then generates a new URL.
+	if (db.isInDb(URL) == False): 
+            return URL
+	else:
+	    return newAlbumPicure()
     #If the values are not valid, then generates a new URL
     else:
         return newAlbumPicture()
 
-
+def generateAndAddURLS():
+    q=[]
+    count = 0
+    for i in range(1000):
+        q.append(newAlbumPicture())
+        print i
+    for url in q:
+        count += 1
+        print count
+        db.addImage(url)
+"""
 if __name__ == '__main__':
+    #generateAndAddURLS()
+    """
     print "Title:" + newArtistName()
     print "Quote:" + newAlbumName()
     print "Image URL:" + newAlbumPicture()
-
+    """
 

@@ -46,6 +46,15 @@ def getImages():
 		images.append(line['image'])
 	return images
 
+#Returns true if the _url is in the db, false otherwise
+def isInDb(_url):
+	results = collection.find()
+	for line in results:
+		if (line['image'] == _url):
+			return True
+		else:
+			return False
+
 #Returns the image and ratings with the _url (for unittesting purposes)
 def returnImage(_url):
 	return collection.find_one({'image' : _url})

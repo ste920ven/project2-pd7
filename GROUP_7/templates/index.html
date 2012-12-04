@@ -10,11 +10,13 @@
     <script type="text/javascript" src="/static/js/prettify.js"></script>      
     <script type="text/javascript" src="/static/js/kickstart.js"></script> 
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
-
+    <script> var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    
     <link rel="stylesheet" type="text/css" href="/static/css/kickstart.css" media="all"/>
     <link rel="stylesheet" type="text/css" href="/static/style.css" media="all"/>  
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu:bold"/>  
     <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <link rel="shortcut icon"  href="/static/img/favicon.ico">
   </head>
 
   <body onload="initialize(),changeBGC('fire')">
@@ -45,7 +47,7 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="accordion-group">
+	<div style="display:none" class="accordion-group">
 	  <div class="accordion-heading">
 	    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#facilities"><i class="icon-chevron-right"></i>
               Find Facilities
@@ -55,14 +57,14 @@
 	    <div class="accordion-inner">
 	      <!--DROPDOWN MENU IS HERE!!!!!!!!!!!!!!-->
 	      <select id="facilitychoose">
-		<option value="0">-- Choose --</option>
-		<option value="1">Hospitals</option>
-		<option value="2">Schools</option>
-		<option value="3">Parks</option>
-		<option value="4">Beaches</option>
-		<option value="5">Food Providers</option>
-		<option value="6">Precincts</option>
-		<option value="7">Landmarks</option>		
+		<option class="fc_option" value="0">-- Choose --</option>
+		<option class="fc_option" value="Hospitals">Hospitals</option>
+		<option class="fc_option" value="Schools">Schools</option>
+		<option class="fc_option" value="Parks">Parks</option>
+		<option class="fc_option" value="Beaches">Beaches</option>
+		<option class="fc_option" value="Food Providers">Food Providers</option>
+		<option class="fc_option" value="Precincts">Precincts</option>
+		<option class="fc_option" value="Landmarks">Landmarks</option>		
 	      </select>
 	      <!--END DROPDOWN MENU!!!!!-->
 	    </div>
@@ -104,9 +106,34 @@
     </ul>
     
     <div id="Home" class="tab-content">
+      <div id="timedate">
+	<h2><b>Today's date is
+	<script type ="text/javascript">
+	var currentTime = new Date()
+	var month = currentTime.getMonth() + 1
+	var day = currentTime.getDate()
+	var year = currentTime.getFullYear()
+	document.write(month + "." + day + "." + year)
+	</script></b></h2>
+	<h2><b>Current time is 
+	<script type ="text/javascript">
+	var currentTime = new Date()
+	var hours = currentTime.getHours()
+	var minutes = currentTime.getMinutes()
+	if (minutes < 10){
+	minutes = "0" + minutes
+	}
+	document.write(hours + ":" + minutes + " ")
+	if(hours > 11){
+	document.write("P.M.")
+	}
+	else{
+	document.write("A.M.")
+	}
+	</script></b></h2>
+      </div>
       <div id="nhc" style="display:none">
 	<h2>National Hurricane Center</h2>
-	<h3>There are no tropical cyclones at this time.</h3>
 	<img src="http://www.nhc.noaa.gov/overview_atl/atl_overview.gif" style="width:565; height:353">
       </div>
       <div id="radiomessage" style="display:none">
@@ -149,22 +176,33 @@
       </div>
     </div>
     <div id="Location" class="tab-content">
+      <label for="address"><span class="left">Please be as specific as possible</span></label>
       <input id="address" type="text" placeholder="Enter Your Location"/>
+      <p id="user_location"></p>
     </div>
     <div id="Directions" class="tab-content">
+      <a href="#" id="mylocurl">My Location</a>
+      <br></br>
       <form class="form-inline">
 	<input id="start" type="text" placeholder="Start"/>
 	<input id="end" type="text" placeholder="End"/>
-	<select id="select2" onchange="calcRoute()">
-	  <option value="DRIVING">Driving</option>
-	  <option value="WALKING">Walking</option>
-	  <option value="BICYCLING">Cycling</option>
-	  <option value="TRANSIT">Public Transit</option>
+	<select id="mode">
+	  <option value="driving">Driving</option>
+	  <option value="walking">Walking</option>
+	  <option value="bicycling">Bicycling</option>
+	  <option value="transit">Public Transit</option>
 	</select>
 	<input type="button" value="Get Directions" onclick="calcRoute()">
+	<a href="" style="display:none" target="_blank" id="directionsgmap">Detailed Results</a>
       </form>
+      	<div class="col_3">
+	  <p id="distFrom" style="display:none"></p>
+	</div>
+	<div class="col_3">
+	  <p id="durTo" style="display:none"></p>
+	</div>
     </div>
-
+    
     <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
@@ -173,7 +211,7 @@
       <div class="modal-body">
 	<em>It's December 21 2012, and the world is ending.</em><br></br>
         <p> So, naturally of course, you've come here to figure out how to survive the apocalypse. That's a good start, but you still are not sure exactly what we can do for you. It's simple. No matter what sort of world-ending destruction is threatening your existence, we've figured out just how feasible it is for you to wait out the hurricane/alien attack/zombie plague no matter where you are. Simply enter your location and we'll tell you some nearby places that you should either stay near or avoid at all costs!</p>         
-        <p> For example, lets say you and your buddies are holed up in the Statue of Liberty during an alien invasion. Wait, seriously? COME ON, haven't you seen "Independence Day"??? Why would you even be there in the first place??? Well, as it turns out large landmarks are a bad place to be during an alien invasion (something to do with symbolically destroying humanity).</p>
+        <p> For example, lets say you and your buddies are holed up in the Statue of Liberty during an alien invasion. Wait, seriously? COME ON, haven't you seen "Independence Day"?! Why would you even be there in the first place?! Well, as it turns out large landmarks are a bad place to be during an alien invasion (something to do with symbolically destroying humanity).</p>
 	<p>In any case, we wish you well and hope that you survive the cataclysmic destruction of the rest of your race!</p>
       </div>
       <div class="modal-footer">
