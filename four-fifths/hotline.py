@@ -66,7 +66,7 @@ def schedule():
             #depends on mp3s with same names as bellDay, gymDay  options
             audio.append("%s.mp3"%(bellDay))
             audio.append("cycle.mp3")
-            audio.append("%s.mp3"%(gymDay))   
+            audio.append("cycle-%s.mp3"%(gymDay))   
          
 #---pressed 2: weather---
     elif int(digit) == 2 :
@@ -110,10 +110,12 @@ def schedule():
 #---pressed 3: MTA---
     elif int(digit) == 3 :
         print "3 case: MTA"
-        delays = MTAService.getDelays()
-        audio.append["delays.mp3"]
+        delays = MTAService.getDelays(MTAService.getSubways())
+        audio.append("delays.mp3")
         for each in delays :
-            
+            for char in xrange(len(each)) :
+                audio.append("%s.mp3"%(str(each[char])))
+        audio.append("line.mp3")
 
 #---pressed 4: credits---
     elif int(digit) == 4 :

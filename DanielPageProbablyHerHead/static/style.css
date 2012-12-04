@@ -1,0 +1,34 @@
+.slide-out-div {
+	padding: 20px;
+	width: 250px;
+	background: #000000;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
+}
+body{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	background:#0F0F0F;
+	color:#FAFAFA;
+}
+.star-rating s:hover {
+    color: #FFFFFF;
+}
+.star-rating s{
+    color: #F0F0F0;
+    font-size: 30px;
+    cursor: default;
+    text-decoration: none;
+    line-height: 30px;
+}
+.star-rating {
+    padding: 2px;
+}
+
+.star-rating s:hover:before{
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}

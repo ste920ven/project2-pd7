@@ -2,16 +2,45 @@
 {% extends "head.html" %}
 {% block head %}
 <h1>{{album}}</h1>
+<style type="text/css">
+  #menu {
+  position:relative;
+  width:200px;
+  left:20px;
+  float:left;
+  }
+  #content {
+  position:relative;
+  width: 250px;
+  padding:50px;
+  float:left;
+  }
+  #ratepage {
+  position:relative;
+  top:45px;
+  width: 200px;
+  left:250px;
+  float:left;
+  }
+</style>
 {% endblock %}
 
 {% block body %}
-<div style="width:500px;position:relative;bottom:20px;left:20px">
+<div id="menu">
+<ul class="menu vertical">
+{% for album in albums %}
+<li><a href="http://ml7.stuycs.org:6969/hello/album/{{album}}">{{album}}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div id="content" style="left:20px">
 <img src="{{image}}" alt="{{album}}'s image"/>
 <p>
 <font size="3">
 Artist: <a href="{{url}}">{{artist}}</a><br>
 Rank: {{rank}} <br>
-Rank: {{rank}}<br>
+Average Rating:{{average}}<br>
 Listen to the album <a href="{{link}}">here!</a><br></br>
 </font>
 
@@ -28,14 +57,19 @@ Listen to the album <a href="{{link}}">here!</a><br></br>
   Comments<br>
   <textarea name="comment" cols="50" rows="5"></textarea><br></br>
   <input type="submit" name="button" value="rate">
+  <input type="submit" name="button" value="back">  
   <input type="hidden" name="albumname" value="{{album}}">
 </p>
 </div>
-<div style="width:500px;position:absolute;bottom:20px;left:520px">
-{% for rating in ratings %}
-{{rating}}
+<div id="ratepage">
+<ul class="alt">Comments
+{% if ratings %}
+{% for item in ratings["comment"] %}
+<li>{{item}}<br></li>
 {% endfor %}
-Stuff here!
+{% endif %}
+
+</ul>
 </div>
 {% endblock %}
 

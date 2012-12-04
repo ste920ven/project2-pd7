@@ -1,14 +1,17 @@
 from random import randint
+import urllib2
+import simplejson
+import db
 import flickrapi
 #This app requires the flickr api to run.
 #install with 'sudo apt-get install python-flickrapi'
-import urllib2
-import simplejson
+api_key = "c190109eeac99e777f3246f6da0f263a"
 
 """
 api.py houses all of our code that deals with web APIs.
-The Flickr API will be added soon.
 """
+    
+
 def newArtistName():
     """
     Returns a new artist name (the title of a random wikipedia article).
@@ -65,29 +68,55 @@ def newAlbumName():
     quote = quote.split()[-4] + " " + quote.split()[-3] + " " + quote.split()[-2] + " " + quote.split()[-1]
     return quote
 
+
 def newAlbumPicture():
     """
     Returns the URL of a random flickr image.
     """
 
     #API Call
-    flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json", nojsoncallback = 1)
+    flickr = flickrapi.FlickrAPI(api_key = "c190109eeac99e777f3246f6da0f263a", format = "json")
 
-    #Getting the list of the most recently added public photos on flickr
-    recentPhotos = flickr.photos_getRecent()
-    
-    #Parsing the json output
-    photoList = json.loads(recentPhotos)
+    #To make the photo-picking more random, the "pickedPhotos" list is chosen from the most recent "interesting" photos on flickr 60% of the time, and the most recent public photos 40% of the time
+    randNum = randint(0, 9)
+    pickedPhotos = []
+    if (randNum <= 5):
+        pickedPhotos = flickr.interestingness_getList()
+    else: 
+        pickedPhotos = flickr.photos_getRecent()
 
-    #Generating the URLs for the most recently added public photos on flickr
-    photoURLs = []
-    for image in photoList['photos']['photo']:
-	URL = "http://farm" + str(image['farm']) + ".staticflickr.com/" + str(image['server']) + "/" + str(image['id']) + "_" + str(image['secret']) + ".jpg"
-        photoURLs.append(URL)
+    #Gets the list of the indices of the "id"s of the first 500 photos from pickedPhotos
+    idIndices = []
+    k = 0
+    i = str(pickedPhotos).find('id')
+    while k <= 1000:
+	idIndices.append(i)
+	i = str(pickedPhotos).find('id', i + 200)
+	k = k + 1
 
-    #Choosing a random URL from the recent photos URL list
-    randNum = randint(0, len(photoURLs) - 1)
-    return photoURLs[randNum]
+    #Randomly chooses a photo id out of the list of 500
+    randNum = randint(0, len(idIndices) - 1)
+    start = idIndices[randNum]
+
+    #Gets the attributes of the photo whose id was selected
+    id = str(pickedPhotos)[start + 5: start + 15]
+    secret = str(pickedPhotos)[start + 52: start + 62]
+    server = str(pickedPhotos)[start + 75: start + 79]
+    farm = str(pickedPhotos)[start + 89: start + 90]
+
+    #Checks if the attributes have valid values
+    if (farm.isdigit() and server.isdigit() and id.isdigit()): 
+        #Generates the URL based off of the attributes (the "_z" is a letter suffix for "medium image" )
+        URL = "http://farm" + str(farm) + ".staticflickr.com/" + str(server) + "/" + str(id) + "_" + str(secret) + "_z" + ".jpg"   
+
+    #Checks if the URL is already in the database. If not, then generates a new URL.
+	if (db.isInDb(URL) == False): 
+            return URL
+	else:
+	    return newAlbumPicure()
+    #If the values are not valid, then generates a new URL
+    else:
+        return newAlbumPicture()
 
 
 if __name__ == '__main__':

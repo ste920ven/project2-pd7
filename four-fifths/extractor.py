@@ -70,12 +70,19 @@ def getNews(home):
     return news
 
 def getDate():
-    return datetime.datetime.today().strftime("%A, %B %e")    
+    return datetime.datetime.now(EST()).strftime("%A, %B %e") 
+
+class EST(datetime.tzinfo):
+    def utcoffset(self, dt):
+      return datetime.timedelta(hours=-5)
+
+    def dst(self, dt):
+        return datetime.timedelta(0)   
 
 #returns a string with one of the following: regular, homeroom, special, conference, closed or unknown.
 def getBellDay(schedule):
-    month = datetime.datetime.today().strftime("%b")
-    day   = datetime.date.today().day
+    month = datetime.datetime.now(EST()).strftime("%b")
+    day   = datetime.datetime.now(EST()).day
     found = False
     for line in schedule.split('<br/>'):
         if found==True:
@@ -87,12 +94,12 @@ def getBellDay(schedule):
             else:                            return "Unknown"
         if (month.upper() in line.upper()) and (str(day) in line): found = True
     if found==False:
-        if datetime.datetime.today().weekday()>4: return "Weekend"
+        if datetime.datetime.now(EST()).weekday()>4: return "Weekend"
         return "Unknown"
 
 def getGymDay(schedule):
-    month = datetime.datetime.today().strftime("%b")
-    day   = datetime.date.today().day
+    month = datetime.datetime.now(EST()).strftime("%b")
+    day   = datetime.datetime.now(EST()).day
     lines = schedule.split('<br/>')
     for i in range(len(lines)):
         if (month.upper() in lines[i].upper()) and (str(day) in lines[i]):
@@ -106,7 +113,3 @@ def getGymDay(schedule):
                     if 'B2' in lines[i+2] : return 'B2'
                     else : return 'B'
     return "Unknown"
-
-if (__name__=="__main__"):
-    data = loadStuySite()
-    print getSchedule(data[1],data[2])

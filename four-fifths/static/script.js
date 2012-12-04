@@ -1,10 +1,4 @@
-var today = new Date();
-today.setHours(0);
-today.setMinutes(0);
-today.setSeconds(0);
-today.setMilliseconds(0);
-today = today.getTime();
-
+var today = getToday();
 var now = new Date();
 
 var bellSchedule;
@@ -61,6 +55,17 @@ var special = [
     { "start": new Date(today+51600000), "end": new Date(today+53880000) }
 ];
 
+function getToday()
+{
+    var today = new Date(); 
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
+    today = today.getTime();
+    return today;
+}
+
 function loadBellSchedule(bellDay)
 {
     if (bellDay=="Regular")
@@ -107,7 +112,7 @@ function loadBellSchedule(bellDay)
 function getTime()
 {
     now = new Date();
-    return (now.getHours()==12 ? 12 : now.getHours()%12) + ":" +
+    return (now.getHours()%12==0 ? 12 : now.getHours()%12) + ":" +
 	(now.getMinutes()<10 ? '0' : '') + now.getMinutes() + ":" +
 	(now.getSeconds()<10 ? '0' : '') + now.getSeconds();
 }
@@ -115,10 +120,18 @@ function getTime()
 function tick()
 {
     now = new Date();
+
+    if (now-today>86400000)
+    {
+	today = getToday();
+	window.location.reload();
+    }
+
     $('p#time').text(getTime());
 
     //reset period
     $('table.bell tr').removeClass('active');
+    $('p#time').removeClass('warning');
 
     if (now<bellSchedule[0].start)
 	$('p#period').text("Before School");
@@ -136,6 +149,10 @@ function tick()
 	    pdnum = i+1;
 	    $('p#period').text("Period "+pdnum);
 	    $('table.bell tr#period'+pdnum).addClass('active');
+	    
+	    //if less than 5 minutes left
+	    if (pd.end-now<300000)
+		$('p#time').addClass('warning');
 	}
     }
 
@@ -159,8 +176,15 @@ function tick()
 }
 
 $(document).ready(function(){
+    
+    $('a').attr('target','_blank');
+
     if (bellDay=="Unknown") 
+    {
 	$('div#unknown').removeClass('hide');
+	$('p#period').text('Unknown');
+	$('span#schedule').text('Schedule Select');
+    }
     else
 	loadBellSchedule(bellDay);
 
@@ -168,20 +192,7 @@ $(document).ready(function(){
 
     $('div#unknown button').click(function(){
 	loadBellSchedule($(this).text());
-	$(this).parent().parent().parent().parent().addClass('hide');
-    });
-
-    $('div#sidebar div#toggle').toggle(function(){
-	$('div#sidebar').animate({right:"-30%"},1200,function(){
-	    $('div#sidebar div#toggle').html("&laquo;").animate({left:"-70px"},500).addClass('hidden');
-       	});
-	$('div.main').animate({padding:"4% 12.5%",width:"75%"},1200);
-    },function(){
-	$('div#sidebar div#toggle').animate({left:"0px"},500,function(){
-	    $(this).html("&raquo;");
- 	    $('div#sidebar').animate({right:"0%"},1200);
-	    $('div.main').animate({padding:"4%",width:"62%"},1200);
-	}).removeClass('hidden');
+	$(this).parent().addClass('hide');
     });
 
 });

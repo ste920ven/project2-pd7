@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<form action="" method ="post" style="background-color:#E0FFFF">
+
+<h1> Hurricane Sandy's Destruction </h1>
+<h2> Help sort out the cyber effects of the storm ! </h2>
+
+
+{% if url_list == []%}
+<b>
+  NO IMAGES?!?! 
+</b>
+
+{%else%}
+
+{% for url in url_list%}
+<img src={{url}}>
+{%endfor%}
+
+{%endif%}

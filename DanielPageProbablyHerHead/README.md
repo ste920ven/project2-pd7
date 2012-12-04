@@ -1,48 +1,39 @@
 GROUP 2
 =========
-Better name to be determined.
+The AlbumArtinator
+<h3>What it does:</h3>
+Using the Flickr, Wikipedia, and iHeartQuotes API, the AlbumArtinator generates random album art that can be edited, saved and rated. 
 
-<h3>What we want to do:</h3>
-Use the flickr, wikipedia, and iheartquotes API to:
+<h3>How it works:<h3>:
 <br/>
-    1. Take a random image from flickr (and crop to a square). This is now the album cover.
+    1. It takes a random image from Flickr. This image becomes the album cover.
 <br />
-    2. Take the title of a random article from wikipedia. This is now  the name of a band.
+    2. It takes the title of a random article from Wikipedia. This title becomes the name of the artist.
 <br />
-    3. Take the last four words of a random quote. This is now the name of the album.
+    3. It takes the last three words of a random quote from iHeartQuotes. This quote becomes the name of the album.
 <br />
-    4. Throws everything together in a way that is aesthetically pleasing; ideally, we can come up with something that creates a unique design for each input. If we can't, all the albums will look kind of lame, but Daryl has a feeling he can at least come up with a design generator based on some reasonably large database of templates.
+    4. Once the album art is generated, the user can edit it and save it to the webpage if they'd like. The user can also rate other album arts that are already on the webpage, and the average rating for each album art is shown under it.
 <br />
 
-<a href="http://chanarchive.org/content/50_b/48698140/1198178931476.png">Example 1</a>
+<h3>Where it's hosted:</h3>
+
+The AlbumArtinator can be found at http://ml7.stuycs.org:7202.
 <br />
-<a href="http://3.bp.blogspot.com/-i7Vst3UyVTo/UAoW9OIaVyI/AAAAAAAADbM/KFlCMXQ7rT4/s1600/fordney.jpg">Example 2</a>
+<a href="http://ml7.stuycs.org:7202">Click here to go to The AlbumArtinator </a>
 <br />
-<a href="http://chanarchive.org/content/50_b/48698140/1198177113787.jpg">Example 3</a>
-<br />
-Shan suggested the idea; it was inspired by a 4chan game.
-<br />
-<h3>What we're currently doing:</h3>
-<li>
-    <ul>Getting together the UI and pixastic for step 4</ul>
-</li>
+
+<h3>How to use it:</h3>
+
+Go to <a href="http://ml7.stuycs.org:7202">The AlbumArtinator </a> , slide open the generate tab, click generate, edit the album art, and save! Also check out the album art already on the page and rate the ones you love (or don't love).
 
 <br />
-<h3>Roles</h3>
+<h3>Group Members:</h3>
 <br />
-<b>Daryl</b>
+Daryl Sew
 <br />
-Step 4 + Team Lead
+John Haggerty
 <br />
-<b>John</b>
+Shreya Kalva
 <br />
-app/db
-<br />
-<b>Shan</b>
-<br />
-HTML/CSS/PHP/Javascript
-<br />
-<b>Shreya</b>
-<br />
-app/db
+Shan Shi
 <br />

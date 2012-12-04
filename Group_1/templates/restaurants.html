@@ -16,19 +16,40 @@
 
 
 <style>
-h1{font-size:50px;
-color:green;
+
+body{
+background-image:url('http://thumbs.dreamstime.com/thumblarge_417/124724845207dh0k.jpg');
+}
+
+h1{font-size:75px;
+margin-left:auto;
+margin-right:auto;
+width:40%;
+color:red;
+margin-top:0;
+background-color:#33FF99;
 }
 
 h3{
 font-size:25px;
-color:blue;
+margin-left:auto;
+margin-right:auto;
+width:40%;
+color:red;
+margin-top:0;
+background-color:#33FF99;
 }
 
+
+
 .tablaue{
+margin-left:auto;
+margin-right:auto;
+width:10%;
 border-style:groove;
 border-width:5px;
 border-color:red;
+background-color:white;
 }
 
 
@@ -48,13 +69,15 @@ border-color:red;
 #frameless .tclose {left:6px}
 </style>
 
-<title>Restaurant ratings</title>
+<title>RestRate</title>
 </head>
 
 <body>
-<h1 id="heading">Restaurant ratings</h1>
+<div id="title">
+<h1 id="heading">RestRate</h1>
 <h3>displaying ratings for: {{numb}}</h3>
-
+</div>
+  
 <div id="ratings">
   <table class = "tablaue">
   <th>Restaurant</th>

@@ -599,16 +599,26 @@ def getWHemp():
 #print getRonkonkoma()
 #print getWHemp()
 #print getDelays(getBuses())
+<<<<<<< HEAD
 print getDelays(getSubways())
+=======
+#print getDelays(getSubways())
+>>>>>>> 1297dced3cb58d06ede7f47422bc61bee5b93977
 #print getDelays(getLIRR())
 #print getService(getBuses())
 #print getService(getSubways())
 #print getService(getLIRR())
+<<<<<<< HEAD
 print getServiceChangeAndDelays(getLine(getSubways(),"123"))
 #x= getLine(getSubways(),"123")
 #print x.find("text")
 #print getPlannedWork(getLine(getSubways(),"123"))
 #print getCompletePlannedWork(getLine(getSubways(),"123"))
 print getComplete(getLine(getSubways(),"123"))
+=======
+
+
+
+>>>>>>> 1297dced3cb58d06ede7f47422bc61bee5b93977
     
     
