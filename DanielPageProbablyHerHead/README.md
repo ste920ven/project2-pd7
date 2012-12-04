@@ -22,7 +22,7 @@ The Albumonator can be found at http://ml7.stuycs.org:7202.
  
 <h3>How to use it:</h3>
  
-Go to <a href="http://ml7.stuycs.org:7202">The AlbumArtinator </a> , and click generate! Don't like what you see, or want another album art? Click generate again! The Albumonator guarantees a different album art each time.
+Go to <a href="http://ml7.stuycs.org:9019">The AlbumArtinator </a> , and click generate! Don't like what you see, or want another album art? Click generate again! The Albumonator guarantees a different album art each time.
  
 <br />
 <h3>Group Members:</h3>
