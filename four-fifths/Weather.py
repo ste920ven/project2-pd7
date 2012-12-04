@@ -93,11 +93,11 @@ def getForecastString(code):
 
 
 def getForecastURL(code):
-    d1 = ["tornado", #???
+    d2 = ["tornado", #???
           "tropical storm", #??? 
           "hurricane", #???
           "thunderstorms.png", #severe ooh
-          "thunderstorms.png"
+          "thunderstorms.png",
           "mixed rain and snow.png",
           "mixed rain and sleet.png", #make
           "mixed snow and sleet.png", #make
@@ -142,4 +142,5 @@ def getForecastURL(code):
           "snow.png",
           "thunderstorms.png" #scattered thundershowers with sun as above
           ]
-    return d1[code]
+    if code==3200: return "unavailable.png"
+    return d2[code]
