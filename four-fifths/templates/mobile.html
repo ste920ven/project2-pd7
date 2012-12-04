@@ -10,7 +10,6 @@
 
     <script>
       var bellDay="{{bellDay}}";
-      var forecastURL="{{ url_for('static', filename='images/fair.png') }}";
     </script>
 
     <script src="{{ url_for('static', filename='jquery.js') }}"></script>
@@ -43,8 +42,10 @@
 	  <p id="time">00:00:00</p>
 	  <p id="day">{{date}}</p>
 	</div>
-
-	<div id="weather">&nbsp;{{temp}}&deg;</div>	   
+	
+	  <div id="weather"
+	       title="{{forecastString}}"
+	       style="background-image: url({{forecastURL}});">&nbsp;{{temp}}&deg;</div>	   
 
       </div>
 

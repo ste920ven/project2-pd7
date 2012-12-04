@@ -97,22 +97,22 @@ def getFacilityList(origin, category, mode, key, sensor):
   
  #Tests:        
 k
-destination = "97 Warren Street"
+
 poi = "Empire State Building"
 #somehow we have to restrict the modes they can choose from. cause certain inputs like "walking" "driving" and "car" (i believe) work, but "foot" doesn't. so maybe do a dropdown menu somewhere in utils/app.py. i'll change the variable values once we have a more solid thing to work off of
 
 #getAddress(original)
 getAddress("Stuyvesant High School")
 getLatLong(original)
-distanceFrom(original, destination, m)
+
 durationTo(original, destination, m)
 print "\n Is %s a POI? : %s" %(original, isPOI(original))
 print "\n Is %s a POI? : %s \n" %(poi, isPOI(poi))
 
 getNearby("50", "food")
-"""
-key = "AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"
 
-m = "driving" 
+key = "AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"
+destination = "97 Warren Street"
+m = "TRANSIT" 
 original = "345 Chambers Street"
-print getFacilityList(original, "Hospital", m, key, "false" )
+"""

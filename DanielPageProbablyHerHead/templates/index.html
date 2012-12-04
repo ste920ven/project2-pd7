@@ -2,7 +2,6 @@
 <head>
     <title>DanielPageProbablyHerHead</title>
     <link rel="stylesheet" type = "text/css" href="../static/style.css">
-</head>
 <html>
 <script src="../static/jquery.js" type="text/javascript"></script>
 <script src="../static/jovoscropt.js"> type="text/javascript"</script>
@@ -12,13 +11,16 @@ function tables() {
 	var body = document.getElementsByTagName("body")[0];
 	var tbl     = document.createElement("table");
 	var tblBody = document.createElement("tbody");
-	var images = [ {{ ','.join(allAlbums) }} ];
+	var images = [" {{ '\",\"'.join(allAlbums) }} "];
 	for (var j = 0; j < 5; j++) {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
 			var cell = document.createElement("td");
-			var cellText = document.createTextNode(images[i+j]);
-			cell.appendChild(cellText);
+			var img = document.createElement("img");
+			img.src = images[i+j];
+			img.width = 150;
+			img.height = 150;
+			cell.appendChild(img);
 			row.appendChild(cell);
 		}
 		tblBody.appendChild(row);
@@ -28,6 +30,7 @@ function tables() {
 	tbl.setAttribute("border", "0");
 }
 </script>
+<<<<<<< HEAD
 
 <style type="text/css">
 .image {
@@ -42,6 +45,9 @@ function tables() {
     width:180px; /* optional, though better have one */
 }
 </style>
+=======
+</head>
+>>>>>>> a88cd7041175d879574273db9842e3691f49933c
 
 <form action="" method= "POST">
 
