@@ -1,11 +1,3 @@
-//star ratings
-$(function() {
-    $("div.star-rating > s, div.star-rating-rtl > s").on("click", function(e) {
-        var numStars = $(e.target).parentsUntil("div").length+1;
-        alert(numStars + (numStars == 1 ? " star" : " stars!"));
-    });
-});
-
 //this sets up the slideything
 $(function(){
     $.fn.tabSlideOut = function(callerSettings) {
@@ -15,7 +7,7 @@ $(function(){
 			imageHeight: '122px',                     //height of tab image           //Optionally can be set using css
 			imageWidth: '40px',                       //width of tab image            //Optionally can be set using css
 			tabLocation: 'left',                      //side of screen where tab lives, top, right, bottom, or left
-			speed: 300,                               //speed of animation
+			speed: 100,                               //speed of animation
 			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
 			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
 			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
