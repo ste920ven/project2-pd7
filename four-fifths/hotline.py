@@ -110,7 +110,7 @@ def schedule():
 #---pressed 3: MTA---
     elif int(digit) == 3 :
         print "3 case: MTA"
-        delays = MTAService.getDelays()
+        delays = MTAService.getDelays(MTAService.getSubways())
         print delays;
         for each in delays :
             for char in xrange(each.len()) :
