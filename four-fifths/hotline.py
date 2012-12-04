@@ -108,12 +108,13 @@ def schedule():
         audio.append("fahrenheit.mp3")
 
 #---pressed 3: MTA---
-  #  elif int(digit) == 3 :
-   #     print "3 case: MTA"
-    #    delays = MTAService.getDelays()
-     #   audio.append["delays.mp3"]
-      #  for each in delays :
-            
+    elif int(digit) == 3 :
+        print "3 case: MTA"
+        delays = MTAService.getDelays()
+        print delays;
+        for each in delays :
+            for char in xrange(each.len()) :
+                audio.append("%s.mp3"%(str(each[char])))
 
 #---pressed 4: credits---
     elif int(digit) == 4 :
