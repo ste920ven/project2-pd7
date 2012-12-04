@@ -8,11 +8,20 @@ app = Flask(__name__)
 def index():
     allAlbums = db.getImages()
     if request.method == 'POST':
+
+      #  def avgRatings():
+       #     ratings = []
+        #    for album in allAlbums:
+         #       ratings.append(db.getRating(album))
+          #  return ratings
+                
         global source
         button = request.form['button']
         if button == 'Generate':
             source = api.newAlbumPicture()
-            return render_template("index.html", allAlbums = allAlbums, source = source)
+            band = api.newArtistName()
+            name = api.newAlbumName()
+            return render_template("index.html", allAlbums = allAlbums, source = source, band = band, name = name)
         if button == 'Save':
             db.addImage(source)
             return render_template("index.html", allAlbums = allAlbums, source = source)

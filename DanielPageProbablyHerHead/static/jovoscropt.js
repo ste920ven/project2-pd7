@@ -11,7 +11,8 @@ $(function(){
 			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
 			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
 			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
-			fixedPosition: false                      //options: true makes it stick(fixed position) on scroll                     
+			fixedPosition: false                      
+                        onLoadSlideOut:false 
         }, callerSettings||{});
 
         settings.tabHandle = $(settings.tabHandle);
