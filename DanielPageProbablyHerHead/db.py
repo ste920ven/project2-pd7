@@ -43,7 +43,7 @@ def getImages():
 	images = []
 	results = collection.find()
 	for line in results:
-		images.append("\"" + line['image'] + "\"")
+		images.append(line['image'])
 	return images
 
 #Returns true if the _url is in the db, false otherwise
