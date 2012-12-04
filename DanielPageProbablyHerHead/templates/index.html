@@ -10,13 +10,13 @@ function tables() {
 	var body = document.getElementsByTagName("body")[0];
 	var tbl     = document.createElement("table");
 	var tblBody = document.createElement("tbody");
-	var images = [' {{ "\',\'".join(allAlbums) }} '];
+	var images = [{{ ",".join(allAlbums) }}];
 	for (var j = 0; j < 5; j++) {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
 			var cell = document.createElement("td");
 			var img = document.createElement("img");
-			img.src = images[i+j];
+			img.src = "\"" + images[i+j] + "\"";
 			img.width = 150;
 			img.height = 150;
 			cell.appendChild(img);
