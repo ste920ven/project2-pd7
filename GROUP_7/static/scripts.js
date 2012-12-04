@@ -201,7 +201,7 @@ function codeAddress(str) {
 function calcRoute() {
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
-    var selectedMode = document.getElementById('mode').value;
+    var selectedMode = document.getElementById('mode').value.toUpperCase();
     var request = {
         origin:start,
         destination:end,
