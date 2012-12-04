@@ -2,23 +2,34 @@
 <head>
     <title>DanielPageProbablyHerHead</title>
     <link rel="stylesheet" type = "text/css" href="../static/style.css">
-</head>
 <html>
 <script src="../static/jquery.js" type="text/javascript"></script>
 <script src="../static/jovoscropt.js"> type="text/javascript"</script>
 <script type="text/javascript">
-//this sets up the tables
 function tables() {
 	var body = document.getElementsByTagName("body")[0];
 	var tbl     = document.createElement("table");
 	var tblBody = document.createElement("tbody");
-	var images = [ {{ ','.join(allAlbums) }} ];
+	var images = [{% for album in allAlbums%}
+	"{{album}}",
+	{% endfor %}
+	"http://www.google.com/images/srpr/logo3w.png"
+	];
+	for (img in images){
+		img = "\""+img +"\"";
+	}
 	for (var j = 0; j < 5; j++) {
 		var row = document.createElement("tr");
 		for (var i = 0; i < 5; i++) {
 			var cell = document.createElement("td");
-			var cellText = document.createTextNode(images[i+j]);
-			cell.appendChild(cellText);
+			var img = document.createElement("img");
+			img.src = images[i+j];
+			img.width = 150;
+			img.height = 150;
+			var rate = document.createElement("div");
+			rate.class = "star-rating";
+			rate.innerHTML = "<s><s><s><s><s></s></s></s></s></s>";
+			cell.appendChild(img);
 			row.appendChild(cell);
 		}
 		tblBody.appendChild(row);
@@ -29,6 +40,21 @@ function tables() {
 }
 </script>
 
+<style type="text/css">
+.image {
+    position:relative;
+    float:left; /* optional */
+}
+.image .text {
+    position:absolute;
+    top:10px; /* in conjunction with left property, decides the text position */
+    left:10px;
+
+    width:180px; /* optional, though better have one */
+}
+</style>
+
+</head>
 
 <form action="" method= "POST">
 
@@ -43,10 +69,6 @@ function tables() {
     -->
 
 <h2><center>ALBUMARTINATOR</center><h2>
-{% for album in allAlbums %}
-<img src="{{album}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
-{% endfor %}
-
 
 <div class="slide-out-div">
 	<a class="handle" href="http://link-for-non-js-users.html">Content</a>
@@ -59,7 +81,15 @@ function tables() {
         <script type="text/javascript" src="../static/pixlr.js"></script>
         <input type=submit name="button" value="Generate" class="generate" style="width:100px;height:50px"></input>
 	<br />
-	<img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
+	
+        <div class="image">
+          <img src="{{source}}" alt="" name="Pic" class="generated-art" width="200" height="200"></img>
+          <div class="text">
+              <p> {{band}} </p>
+              <p> {{name}} </p>
+           </div>
+        </div>
+        
         <br />	
         <input type=submit name="button" value="Save" class="save" style="width:45px;height:50px"></input>
     	<input type=submit name="button" value="Edit" class="edit" style="width:45px;height:50px"></input>

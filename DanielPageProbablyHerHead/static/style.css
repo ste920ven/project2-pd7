@@ -12,3 +12,18 @@ body{
 	background:#0F0F0F;
 	color:#FAFAFA;
 }
+.star-rating s:hover {
+    color: #0F0F0F;
+}
+.star-rating s,
+
+.star-rating {
+    padding: 2px;
+}
+
+.star-rating s:hover:before{
+    content: "\2605";
+}
+.star-rating s:before {
+    content: "\2606";
+}

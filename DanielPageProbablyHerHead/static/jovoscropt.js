@@ -1,3 +1,11 @@
+//star ratings
+$(function() {
+    $("div.star-rating > s, div.star-rating-rtl > s").on("click", function(e) {
+        var numStars = $(e.target).parentsUntil("div").length+1;
+        alert(numStars + (numStars == 1 ? " star" : " stars!"));
+    });
+});
+
 //this sets up the slideything
 $(function(){
     $.fn.tabSlideOut = function(callerSettings) {
@@ -11,7 +19,8 @@ $(function(){
 			action: 'hover',                          //options: 'click' or 'hover', action to trigger animation
 			topPos: '0px',                          //position from the top/ use if tabLocation is left or right
 			leftPos: '20px',                          //position from left/ use if tabLocation is bottom or top
-			fixedPosition: false                      //options: true makes it stick(fixed position) on scroll                     
+			fixedPosition: false,                      
+                        onLoadSlideOut:true
         }, callerSettings||{});
 
         settings.tabHandle = $(settings.tabHandle);
@@ -193,11 +202,12 @@ $(function(){
 });
 
 //this gets a generated image and displays it in generated-art
-
+//except it's kind of just a useless alart
+/*
 function gen(){
 	alert("gen");
 }
-
+*/
 function edit(){
 	pixlr.edit({
 		image:$('.generatedart')
@@ -210,16 +220,17 @@ function edit(){
 	});
 }
 
-
+//useless alert
+/*
 function save(){
 	alert("save");
 }
-
+*/
 $(document).ready(
 	function() {
 		$('.slide-out-div').tabSlideOut({});
 		//$('.generate').click(gen);
-		//$('.edit').click(edit);
+		$('.edit').click(edit);
 		//$('.save').click(save);
 	}
 );
