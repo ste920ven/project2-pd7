@@ -15,7 +15,7 @@ Using the Flickr, Wikipedia, and iHeartQuotes API, the AlbumArtinator generates 
  
 <h3>Where it's hosted:</h3>
  
-The Albumonator can be found at http://ml7.stuycs.org:7202.
+The Albumonator can be found at http://ml7.stuycs.org:9019.
 <br />
 <a href="http://ml7.stuycs.org:7202">Click here to go to The Albumanotoro </a>
 <br />
