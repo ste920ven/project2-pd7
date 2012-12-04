@@ -1,48 +1,37 @@
 GROUP 2
 =========
-Better name to be determined.
-
-<h3>What we want to do:</h3>
-Use the flickr, wikipedia, and iheartquotes API to:
+The Albumonator
+<h3>What it does:</h3>
+Using the Flickr, Wikipedia, and iHeartQuotes API, the Albumonator generates random album art.
+ 
+<h3>How it works:<h3>:
 <br/>
-    1. Take a random image from flickr (and crop to a square). This is now the album cover.
+    1. It takes a random image from Flickr. This image becomes the album cover.
 <br />
-    2. Take the title of a random article from wikipedia. This is now  the name of a band.
+    2. It takes the title of a random article from Wikipedia. This title becomes the name of the artist.
 <br />
-    3. Take the last four words of a random quote. This is now the name of the album.
+    3. It takes the last three words of a random quote from iHeartQuotes. This quote becomes the name of the album.
 <br />
-    4. Throws everything together in a way that is aesthetically pleasing; ideally, we can come up with something that creates a unique design for each input. If we can't, all the albums will look kind of lame, but Daryl has a feeling he can at least come up with a design generator based on some reasonably large database of templates.
+ 
+<h3>Where it's hosted:</h3>
+ 
+The Albumonator can be found at http://ml7.stuycs.org:9019.
 <br />
-
-<a href="http://chanarchive.org/content/50_b/48698140/1198178931476.png">Example 1</a>
+<a href="http://ml7.stuycs.org:9019">Click here to go to The Albumonator</a>
 <br />
-<a href="http://3.bp.blogspot.com/-i7Vst3UyVTo/UAoW9OIaVyI/AAAAAAAADbM/KFlCMXQ7rT4/s1600/fordney.jpg">Example 2</a>
+ 
+<h3>How to use it:</h3>
+ 
+Go to <a href="http://ml7.stuycs.org:9019">The Albumonator </a> , and click generate! Don't like what you see, or want another album art? Click generate again! The Albumonator guarantees a different album art each time.
+ 
 <br />
-<a href="http://chanarchive.org/content/50_b/48698140/1198177113787.jpg">Example 3</a>
+<h3>Group Members:</h3>
 <br />
-Shan suggested the idea; it was inspired by a 4chan game.
+Daryl Sew
 <br />
-<h3>What we're currently doing:</h3>
-<li>
-    <ul>Getting together the UI and pixastic for step 4</ul>
-</li>
-
+John Haggerty
 <br />
-<h3>Roles</h3>
+Shreya Kalva
 <br />
-<b>Daryl</b>
-<br />
-Step 4 + Team Lead
-<br />
-<b>John</b>
-<br />
-app/db
-<br />
-<b>Shan</b>
-<br />
-HTML/CSS/PHP/Javascript
-<br />
-<b>Shreya</b>
-<br />
-app/db
+Shan Shi
 <br />

@@ -37,8 +37,9 @@ $(document).ready(function(){
 	return false;
     });
     $('#start, #end').keydown(function(){
-	if(event.keyCode == 13)
+	if(event.keyCode == 13){
 	    calcRoute();
+	}
 	else
 	    $('#directionsgmap').css('display','none');
     });   
@@ -200,7 +201,7 @@ function codeAddress(str) {
 function calcRoute() {
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
-    var selectedMode = document.getElementById('mode').value;
+    var selectedMode = document.getElementById('mode').value.toUpperCase();
     var request = {
         origin:start,
         destination:end,
@@ -300,7 +301,6 @@ function changeBGC(str){
 	$('#wheel').css('display','none');
 	$('#disaster').text('Zombie Apocalypse');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%)');
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%)');
 	changeMS('zombies');
     }
 }
