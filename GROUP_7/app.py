@@ -29,6 +29,13 @@ def duration_To():
     m = request.args.get('m',"")
     return jsonify(result=durationTo(o,d,m))
 
+@app.route("/get_Nearby")
+def get_Nearby():
+    r = request.args.get('r',5000)
+    t = request.args.get('t',"")
+    o = request.args.get('o',"345 Chambers Street, New York, NY, United States")
+    return jsonify(result=getNearby(r,t,o))
+
 if __name__ == "__main__":
     app.run(debug=True,host='0.0.0.0',port=7207)
 

@@ -29,7 +29,7 @@
       <a id="trigger" href="#info">Tools</a>
     </div>
     
-    <div id="panel">
+    <div id="panel" style="overflow:scroll">
       <h5 id="disaster">Please select your disaster</h5>
 
       <hr class="alt1"/>
@@ -47,7 +47,7 @@
 	    </div>
 	  </div>
 	</div>
-	<div style="display:none" class="accordion-group">
+	<div class="accordion-group">
 	  <div class="accordion-heading">
 	    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#facilities"><i class="icon-chevron-right"></i>
               Find Facilities
@@ -58,15 +58,24 @@
 	      <!--DROPDOWN MENU IS HERE!!!!!!!!!!!!!!-->
 	      <select id="facilitychoose">
 		<option class="fc_option" value="0">-- Choose --</option>
-		<option class="fc_option" value="Hospitals">Hospitals</option>
-		<option class="fc_option" value="Schools">Schools</option>
-		<option class="fc_option" value="Parks">Parks</option>
-		<option class="fc_option" value="Beaches">Beaches</option>
-		<option class="fc_option" value="Food Providers">Food Providers</option>
-		<option class="fc_option" value="Precincts">Precincts</option>
-		<option class="fc_option" value="Landmarks">Landmarks</option>		
+		<option class="fc_option" value="hospital">Hospitals</option>
+		<option class="fc_option" value="school">Schools</option>
+		<option class="fc_option" value="food">Food Providers</option>
+		<option class="fc_option" value="police">Police Precincts</option>
 	      </select>
 	      <!--END DROPDOWN MENU!!!!!-->
+	      <ul class="alt" id="faclist" style="display:none">
+		<li id="1"></li>
+		<li id="2"></li>
+		<li id="3"></li>
+		<li id="4"></li>
+		<li id="5"></li>
+		<li id="6"></li>
+		<li id="7"></li>
+		<li id="8"></li>
+		<li id="9"></li>
+		<li id="10"></li>
+	      </ul>
 	    </div>
 	  </div>
 	</div>
