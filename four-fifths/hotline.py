@@ -11,7 +11,7 @@ def text():
     schedule = extractor.getSchedule(data[1], data[2])
     bellDay = extractor.getBellDay(schedule)
     delays = MTAService.getDelays(MTAService.getSubways())
-    forecast = Weather.getForecastString()
+    forecast = Weather.getForecastString(Weather.getForecast())
     high = Weather.getHigh()
     low = Weather.getLow()
     now = Weather.getTemp()
