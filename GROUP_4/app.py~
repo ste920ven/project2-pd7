@@ -131,9 +131,9 @@ def home():
         
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
-        print movie
+        poster = movies.getPoster(movie)
         synopsis = movies.getSynopsis(movie)
-        print synopsis
+
         #teamId = espn.getTeamID(r2)
         description1 = " "
         description2 = "ESPN API is down"
@@ -150,7 +150,8 @@ def home():
 
         except:
             pass
-        return render_template("results.html", 
+        return render_template("results.html",
+                               poster = poster,
                                username = username,
                                name=uname1,
                                description = udescription1,

@@ -68,7 +68,7 @@ def home():
         x = random.choice(s3.keys())
         print upcoming.getEventIDInfo(x,"start_date")
         try:
-            uname1 =  upcoming.getEventIDInfo(x,"start_date")    
+            uname1 =  upcoming.getEventIDInfo(x,"name")    
         except:
             uname1 = ""
             
