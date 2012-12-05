@@ -1,6 +1,6 @@
 from flask  import Flask, request, url_for
 from twilio import twiml
-import extractor, Weather#, MTAService
+import extractor, Weather, MTAService
 import random
 
 app = Flask(__name__)
@@ -10,20 +10,31 @@ def text():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
     bellDay = extractor.getBellDay(schedule)
+    delays = MTAService.getDelays(MTAService.getSubways())
     resp = twiml.Response()
+    message = ""
     if bellDay == "Closed" :
-        message = "School is closed today."
+        message += "School is closed today."
     elif bellDay == "Weekend" :
-        message = "It's a weekend. There is no school today."
+        message += "It's a weekend. There is no school today."
     elif bellDay == "Unknown" :
-        message = "We don't have today's schedule. How embarrassing."
+        message += "We don't have today's schedule. How embarrassing."
     else :
         #'a' or 'an' depending on the next word:
         #B1/B2 ('a') or A1/A2/Unknown ('an')
         gymDay = extractor.getGymDay(schedule)
         if gymDay[0] == "B" : article = "a"
         else : article = "an"
-        message = "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+        message += "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+    #MTA delays!
+    if delays :
+        message += " There are delays on the" + delays[0]
+        #account for more than one line with delays
+        if len(delays) > 1 :
+            for i in xrange (len(delays)-1):
+                message += ", %s"%(delays[i+1])
+    else :
+        message += " There are no delays!"
     resp.sms(message)
     return str(resp)
 
@@ -66,7 +77,7 @@ def schedule():
             #depends on mp3s with same names as bellDay, gymDay  options
             audio.append("%s.mp3"%(bellDay))
             audio.append("cycle.mp3")
-            audio.append("%s.mp3"%(gymDay))   
+            audio.append("cycle-%s.mp3"%(gymDay))   
          
 #---pressed 2: weather---
     elif int(digit) == 2 :
@@ -108,12 +119,15 @@ def schedule():
         audio.append("fahrenheit.mp3")
 
 #---pressed 3: MTA---
-  #  elif int(digit) == 3 :
-   #     print "3 case: MTA"
-    #    delays = MTAService.getDelays()
-     #   audio.append["delays.mp3"]
-      #  for each in delays :
-            
+    elif int(digit) == 3 :
+        print "3 case: MTA"
+        delays = MTAService.getDelays(MTAService.getSubways())
+        if delays :
+            audio.append("delays.mp3")
+            for each in delays :
+                for char in xrange(len(each)) :
+                    audio.append("%s.mp3"%(str(each[char])))
+                audio.append("line.mp3")
 
 #---pressed 4: credits---
     elif int(digit) == 4 :

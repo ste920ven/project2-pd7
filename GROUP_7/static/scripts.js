@@ -29,6 +29,21 @@ $(document).ready(function(){
 	    return false;
 	}
     });
+    $('#facilitychoose').change(function(){
+	var str = $('#facilitychoose').val();
+	$.getJSON($SCRIPT_ROOT + "/get_Nearby", {
+	    r: 5000,
+	    t: str,
+	    o: user_loc
+	}, function(data){
+	    displayF(data.result);
+	});
+	return false;		
+    });
+    $('#faclist li').click(function(){
+	var str = "#"+this.id+"em";
+	codeAddress($(str).html());
+    });
     $('#mylocurl').click(function(){
 	$('#start').val(user_loc);
     });
@@ -37,8 +52,9 @@ $(document).ready(function(){
 	return false;
     });
     $('#start, #end').keydown(function(){
-	if(event.keyCode == 13)
+	if(event.keyCode == 13){
 	    calcRoute();
+	}
 	else
 	    $('#directionsgmap').css('display','none');
     });   
@@ -51,12 +67,6 @@ $(document).ready(function(){
     $('#bmessage').click(function(){
 	type();
 	$('#bmessage').html('<span class="icon medium darkgray" data-icon="9" style="display: inline-block"><span aria-hidden="true">9</span></span></span> (0) Incoming Message');
-    });
-    $('#facilitychoose').change(function(){
-	var str = $('#facilitychoose').val();
-	console.log(str);
-	$('#target').val(str);
-	$('#target').focus().trigger(jQuery.Event('keydown', {which: 13}));
     });
     showModal();
 });
@@ -200,7 +210,7 @@ function codeAddress(str) {
 function calcRoute() {
     var start = document.getElementById('start').value;
     var end = document.getElementById('end').value;
-    var selectedMode = document.getElementById('mode').value;
+    var selectedMode = document.getElementById('mode').value.toUpperCase();
     var request = {
         origin:start,
         destination:end,
@@ -238,7 +248,20 @@ function displayAPIvalues(){
     });
     return false;
 }
-
+function displayF(data){
+    var len = data.length;
+    if(len > 10)
+	len = 10;
+    for(i = 1; i <= len; i++){
+	name = data[i-1]['name'];
+	address = data[i-1]['address'];
+	distance = data[i-1]['distance'];
+	var str = "#" + i;
+	var str1 = '<address><p>'+name+'<br /><em id="'+i+'em">'+address+'</em><br />'+distance+'</p></address>';
+	$(str).html(str1);
+    }
+    $('#faclist').css('display','inline');
+}
 function showModal(){
     $('#myModal').modal('show');
 }
@@ -300,7 +323,6 @@ function changeBGC(str){
 	$('#wheel').css('display','none');
 	$('#disaster').text('Zombie Apocalypse');
 	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(-45deg, #bfd255 0%,#8eb92a 50%,#72aa00 51%,#9ecb2d 100%)');
-	$('body,html,#map_canvas').css('background','-webkit-linear-gradient(45deg, rgba(191,210,85,1) 0%,rgba(142,185,42,1) 85%,rgba(158,203,45,1) 100%)');
 	changeMS('zombies');
     }
 }

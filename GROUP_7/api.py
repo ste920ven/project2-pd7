@@ -1,5 +1,6 @@
 import json
 import urllib
+from operator import itemgetter
 from bs4 import BeautifulSoup
 
 #place/nearbysearch location=-33.8670522,151.1957362&radius=500
@@ -12,34 +13,14 @@ def getAddress(query):
     textsearch_results = json.loads(textsearch_request.read())
     return textsearch_results['results'][0]['formatted_address']
 
-
-#max radius = 50000
-def getNearby(radius, types):
-    searchNearby_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.714623,-74.006605&radius=%s&types=%s&sensor=false&key=AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"%(radius,types)
-    searchNearby_request = urllib.urlopen(searchNearby_url)
-    searchNearby_results = json.loads(searchNearby_request.read())
-    counter = 0
-    for item in searchNearby_results['results']:
-        return searchNearby_results['results'][counter]['name']
-        return searchNearby_results['results'][counter]['vicinity']
-        counter+=1
-
-"""
-def getAddress(address):
-    geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"%(address)
-    maps_request = urllib.urlopen(geocode_url)
-    geo_results = json.loads(maps_request.read())
-    print ("\n")
-    print geo_results['results'][0]['formatted_address']
-"""
 def getLatLong(address):
     geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false"%(address)
     maps_request = urllib.urlopen(geocode_url)
     geo_results = json.loads(maps_request.read())
-#    print ("\n latitude: ")
- #   print geo_results['results'][0]['geometry']['location']['lat']
-  #  print ("\n longtitude: ")
-   # print geo_results['results'][0]['geometry']['location']['lng']
+    ans = {'lat':geo_results['results'][0]['geometry']['location']['lat'],
+           'long':geo_results['results'][0]['geometry']['location']['lng']
+           }
+    return ans
 
 def distanceFrom(origins, destinations, mode): 
     distance_url = "http://maps.googleapis.com/maps/api/distancematrix/json?origins=%s&destinations=%s&sensor=false&mode=%s&units=imperial"%(origins, destinations, mode)
@@ -94,25 +75,33 @@ def getFacilityList(origin, category, mode, key, sensor):
         dist_in_order.sort()
         print fac_in_order
         print dist_in_order
-  
- #Tests:        
-k
-
-poi = "Empire State Building"
-#somehow we have to restrict the modes they can choose from. cause certain inputs like "walking" "driving" and "car" (i believe) work, but "foot" doesn't. so maybe do a dropdown menu somewhere in utils/app.py. i'll change the variable values once we have a more solid thing to work off of
-
-#getAddress(original)
-getAddress("Stuyvesant High School")
-getLatLong(original)
-
-durationTo(original, destination, m)
-print "\n Is %s a POI? : %s" %(original, isPOI(original))
-print "\n Is %s a POI? : %s \n" %(poi, isPOI(poi))
-
-getNearby("50", "food")
+"""
+#max radius = 50000
+#returns dict of nearby results sorted by dist
+# keys: 'name', 'address', 'distance'
+def getNearby(radius, types, orig):
+    latlong = getLatLong(orig)
+    lat = latlong['lat']
+    lng = latlong['long']
+    searchNearby_url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+str(lat)+","+str(lng)+"&radius=%s&types=%s&sensor=false&key=AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"%(radius,types)
+    searchNearby_request = urllib.urlopen(searchNearby_url)
+    searchNearby_results = json.loads(searchNearby_request.read())
+    ans = []
+    counter = 0;
+    for item in searchNearby_results['results']:
+        name = searchNearby_results['results'][counter]['name']
+        address = searchNearby_results['results'][counter]['vicinity']
+        dist = distanceFrom(orig,address,'driving')
+        temp = {'name':name,
+                        'address':address,
+                        'distance':dist
+                        }
+        ans.append(temp)
+        counter+=1
+    ans = sorted(ans, key=lambda k: k['distance']) 
+    return ans
 
 key = "AIzaSyAi-0KQ7UfzdbVefQ-v5CVbfyCif25Pq-U"
 destination = "97 Warren Street"
 m = "TRANSIT" 
-original = "345 Chambers Street"
-"""
+original = "345 Chambers Street, New York, NY, United States"
