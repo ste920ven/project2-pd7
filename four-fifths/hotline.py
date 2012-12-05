@@ -19,27 +19,31 @@ def text():
     message = ""
     #---schedule---
     if bellDay == "Closed" :
-        message += "School is closed today."
+        message += "School is closed."
     elif bellDay == "Weekend" :
         message += "It's a weekend."
     elif bellDay == "Unknown" :
-        message += "Schedule unavailable. How embarrassing."
+        message += "Schedule unavailable."
     else :
         #'a' or 'an' depending on the next word:
         #B1/B2 ('a') or A1/A2/Unknown ('an')
         gymDay = extractor.getGymDay(schedule)
-        if gymDay[0] == "B" : article = "a"
-        else : article = "an"
-        message += "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+        #if gymDay[0] == "B" : article = "a"
+        #else : article = "an"
+        #"Today is %s %s day."%(article, gymDay) shortened for text
+        message += "Schedule: %s. Phys. ed.: %s."%(bellDay, article, gymDay)
     #---weather---
-        message += " Today will be %s. High: %d. Low: %d. It is now %d degrees."%(forecast, high, low, now)
+        message += " Today will be %s. High: %d. Low: %d. Currently %d degrees."%(forecast, high, low, now)
     #---MTA---
     if delays :
-        message += " There are delays on the" + delays[0]
+        message += " Delays on the " + delays[0]
         #account for more than one line with delays
         if len(delays) > 1 :
             for i in xrange (len(delays)-1):
                 message += ", %s"%(delays[i+1])
+            message += " lines."
+        else :
+            message += " line".
     else :
         message += " There are no train delays!"
     resp.sms(message)
