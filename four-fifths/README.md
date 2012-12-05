@@ -16,7 +16,7 @@
   </li>
   <br/>
   <li>Full Weekly Schedule with link to the post on the Stuy site</li>
-  <li>Displays current Stuy news entries with links to their posts</li>
+  <li>Displays current Stuy news entries with links to the full posts</li>
   <li>Quick links to:
     <ul>
       <li><a href="http://stuy.enschool.org">Stuy Homepage</a></li>
@@ -49,7 +49,7 @@
   <li>"git clone https://github.com/tobie/ua-parser.git"</li>
   <li>"cd ua-parser"</li>
   <li>"python setup.py"</li>
-  <li>You can then remove the dir ua-parser from your hard drive.</li>
+  <li>The ua-parser directory can then be deleted.</li>
 </ul>
 
 <h6>Note: app.py runs on <a href="http://ml7.stuycs.org:7205">ml7.stuycs.org:7205</a>...</h6>
