@@ -17,7 +17,7 @@ def home():
 		return render_template("gallery.html",url_list = url_list)
 	else:	
 		url = request.form['hidSrc']
-		picurl=url
+		db.addPicture(self, url)
 		return redirect(url_for("/" ))
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
@@ -25,8 +25,8 @@ def slide():
 	global tag
 	global picurl
 	if request.method=="GET":
-		taglist = db.getTaglist()
-		piclist = db.getPics(tag)
+		taglist = db.getTaglist(self)
+		piclist = db.getPics(self,tag)
 		return render_template("slide.html", taglist = taglist, piclist =piclist)
 	else:	
 		url = request.form['hidSrc']
@@ -36,23 +36,23 @@ def slide():
 @app.route('/image', methods=['GET', 'POST'])
 def image():
 	if request.method=="GET":
-		taglist = db.getTaglist()
-		tags = db.getTags(picurl)
-		commentlist = db.getComments(picurl)
+		taglist = db.getTaglist(self)
+		tags = db.getTags(self, picurl)
+		commentlist = db.getComments(self, picurl)
 		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = picurl)
 	else:	
 		button = request.form['button']
 				
 		if button=="submit":
 			aComment = request.form['comment']
-			db.addComment(picurl,aComment)
+			db.addComment(self, picurl,aComment)
 		elif button == "submitnewtag":
 			if request.form['Addnewtag']:
 				aTag = request.form['Addnewtag']
-				db.addTag(picurl,aTag)
+				db.addTag(self, picurl,aTag)
 			else:
 				aTag =  request.form['select1']
-				db.addTag(picurl,aTag)
+				db.addTag(self, picurl,aTag)
 		
 		 	 	
 if __name__=="__main__":
