@@ -11,8 +11,13 @@ def text():
     schedule = extractor.getSchedule(data[1], data[2])
     bellDay = extractor.getBellDay(schedule)
     delays = MTAService.getDelays(MTAService.getSubways())
+    forecast = Weather.getForecast()
+    high = Weather.getHigh()
+    low = Weather.getLow()
+    now = Weather.getTemp()
     resp = twiml.Response()
     message = ""
+    #---schedule---
     if bellDay == "Closed" :
         message += "School is closed today."
     elif bellDay == "Weekend" :
@@ -26,7 +31,9 @@ def text():
         if gymDay[0] == "B" : article = "a"
         else : article = "an"
         message += "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
-    #MTA delays!
+    #---weather---
+        message += " Today will be %s. The high will be %d, and the low will be %d. It is now %d degrees."%(forecast, high, low, now)
+    #---MTA---
     if delays :
         message += " There are delays on the" + delays[0]
         #account for more than one line with delays
