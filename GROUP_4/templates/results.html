@@ -55,24 +55,42 @@
     </div>
 
     <div class="container">
-
 <center><h1>Here's the Latest Things to Do in Your Area</h1></center>
       <br>
 <b>Name: </b> {{name}} <br>                                                  
-<b>Description</b> {{description}}<br>                                        
+<b>Description: </b> {{description}}<br>                                        
+<b>Venue Name: </b> {{venuename1}}<br>                                        
+<b>Venue Address: </b> {{venueaddress1}}<br>                                  <b>Venue City: </b> {{venuecity1}}<br>                                        
+<b>Buy Tickets: </b><a href="{{buytickets1}}">Buy Tickets!</a><br>                                       
+<b>Date:  </b> {{date1}}<br>
+<b>Time: </b> {{time1}}<br>
+<b>Event Website: </b> <a href="{{url1}}">{{url1}}</a>
+
+
 <br>                                                                          
 <br>
 <b>Name: </b> {{name2}} <br>
 <b>Description</b> {{udescription2}}<br>
+<b>Venue Name: </b> {{venuename2}}<br>
+<b>Venue Address:: </b> {{venueaddress2}}<br>                                  
+
+<b>Venue City: </b> {{venuecity2}}<br>
+<b>Buy Tickets: </b> <a href="{{buytickets2}}">Buy Tickets!</a><br>
+<b>Date:  </b> {{date2}}<br>
+<b>Time: </b> {{time2}}<br>
+<b>Event Website: </b> <a href="{{url2}}">{{url2}}</a>
 <br>
 <br>
  
-<div id = "movies">                                                                         
-<b>Movie Title: </b>{{movie}}<br>                                             
+<div id = "movies"> 
+<center><h1>Upcoming Movies<h1></center>
+<br>                                                                        
+<center><b>{{movie}}</b></center><br>               
+<center><<img src={{poster}} width = "40%" height ="40%"<></center>                         
 <b>Movie Synopsis: </b> {{synopsis}}<br>
 </div>
 <br></br>
-<b>Your team's most recent headlines:</b>
+<h1>Your team's most recent headlines:</h1>
 <br></br> 
 <b>{{headline1}}</b><br></br>
 {{description1}}
