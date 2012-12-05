@@ -43,7 +43,7 @@ def text():
                 message += ", %s"%(delays[i+1])
             message += " lines."
         else :
-            message += " line".
+            message += " line."
     else :
         message += " There are no train delays!"
     resp.sms(message)
