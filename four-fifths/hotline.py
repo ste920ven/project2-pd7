@@ -31,7 +31,7 @@ def text():
         #if gymDay[0] == "B" : article = "a"
         #else : article = "an"
         #"Today is %s %s day."%(article, gymDay) shortened for text
-        message += "Schedule: %s. Phys. ed.: %s."%(bellDay, article, gymDay)
+        message += "Schedule: %s. Phys. ed.: %s."%(bellDay, gymDay)
     #---weather---
         message += " Today will be %s. High: %d. Low: %d. Currently %d degrees."%(forecast, high, low, now)
     #---MTA---
