@@ -11,7 +11,7 @@ def text():
     schedule = extractor.getSchedule(data[1], data[2])
     bellDay = extractor.getBellDay(schedule)
     delays = MTAService.getDelays(MTAService.getSubways())
-    forecast = Weather.getForecast()
+    forecast = Weather.getForecastString()
     high = Weather.getHigh()
     low = Weather.getLow()
     now = Weather.getTemp()
@@ -21,9 +21,9 @@ def text():
     if bellDay == "Closed" :
         message += "School is closed today."
     elif bellDay == "Weekend" :
-        message += "It's a weekend. There is no school today."
+        message += "It's a weekend."
     elif bellDay == "Unknown" :
-        message += "We don't have today's schedule. How embarrassing."
+        message += "Schedule unavailable. How embarrassing."
     else :
         #'a' or 'an' depending on the next word:
         #B1/B2 ('a') or A1/A2/Unknown ('an')
@@ -32,7 +32,7 @@ def text():
         else : article = "an"
         message += "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
     #---weather---
-        message += " Today will be %s. The high will be %d, and the low will be %d. It is now %d degrees."%(forecast, high, low, now)
+        message += " Today will be %s. High: %d. Low: %d. It is now %d degrees."%(forecast, high, low, now)
     #---MTA---
     if delays :
         message += " There are delays on the" + delays[0]
@@ -41,7 +41,7 @@ def text():
             for i in xrange (len(delays)-1):
                 message += ", %s"%(delays[i+1])
     else :
-        message += " There are no delays!"
+        message += " There are no train delays!"
     resp.sms(message)
     return str(resp)
 
