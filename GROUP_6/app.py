@@ -15,6 +15,10 @@ def home():
 		url_list = util.send_image_links(20)
 		print url_list
 		return render_template("gallery.html",url_list = url_list)
+	else:	
+		url = request.form['hidSrc']
+		picurl=url
+		return redirect(url_for("/" ))
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():
@@ -30,7 +34,7 @@ def slide():
 		return redirect(url_for("/image" ))
 		
 @app.route('/image', methods=['GET', 'POST'])
-def _image():
+def image():
 	if request.method=="GET":
 		taglist = db.getTaglist()
 		tags = db.getTags(picurl)

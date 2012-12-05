@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 
-<form action="" method ="post" style="background-color:#E0FFFF">
+<form action="/image" method ="GET" name="myform" style="background-color:#E0FFFF">
 
 <h1> Hurricane Sandy's Destruction </h1>
 <h2> Help sort out the cyber effects of the storm ! </h2>
-
+<input type="hidden" value="" id="hidSrc"></input>
+<div style="float: right;">
+<a href="/slideshow/Sandy">View Images</a> 
+</div>
 
 {% if url_list == []%}
 <b>
@@ -14,7 +17,9 @@
 {%else%}
 
 {% for url in url_list%}
-<img src={{url}}>
+<img src={{url}} width="25%" onclick="document.getElementById('hidSrc').value = this.src; document.myform.submit();">
 {%endfor%}
 
 {%endif%}
+
+</form>
