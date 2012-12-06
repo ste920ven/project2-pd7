@@ -11,7 +11,6 @@ as well as some other stuff in case of "special" disasters (ex: in case aliens/i
 one should steer clear of public libraries and monuments/sight-seeing places). </p>
 
 <h3>Resources</h3>
-<p>Uses:</p>
 <ul>
   <li>Google Places/Map API</li>
   <li>NYC Gov API</li>
