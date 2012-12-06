@@ -13,3 +13,5 @@ Sarah Duncan
 Tiffany Phan
 Raymond Zeng
 Ian Outhwaite
+
+******* Please view with Google Chrome; cannot guarantee weird things will not happen with other browsers. ********
