@@ -61,6 +61,7 @@
 	<li>The favicon's rounded corners show a white background, not a transparent one.</li>
 	<li>Possible bugs in mobile site's stylesheets.</li>
 	<li>No MTA implementation on site (but implemented in hotline).</li>
+	<li>Degrees show up on top of weather icon.</li>
 </ul>
 
 <h4>GROUP four-fifths:</h4>
