@@ -601,18 +601,3 @@ def getWHemp():
 #print getService(getBuses())
 #print getService(getSubways())
 #print getService(getLIRR())
-<<<<<<< HEAD
-print getServiceChangeAndDelays(getLine(getSubways(),"123"))
-print getLine(getSubways(),"123")
-#print x.find("text")
-#print getPlannedWork(getLine(getSubways(),"123"))
-#print getCompletePlannedWork(getLine(getSubways(),"123"))
-#print getComplete(getLine(getSubways(),"123"))
-    
-    
-=======
-#x= getLine(getSubways(),"123")
-#print x.find("text")
-#print getPlannedWork(getLine(getSubways(),"123"))
-#print getCompletePlannedWork(getLine(getSubways(),"123"))    
->>>>>>> be93e552e71268689ac0846c33477adeb4325a8b
