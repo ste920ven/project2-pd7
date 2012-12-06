@@ -3,8 +3,8 @@ $(function() {
     $("div.star-rating > s, div.star-rating-rtl > s").on("click", function(e) {
         var numStars = $(e.target).parentsUntil("div").length+1;
         alert(numStars + (numStars == 1 ? " star" : " stars!"));
-	var url = "http://ml7.stuycs.org:7202/?image="+img+"&rating="+numStars
-	window.open (url,'_self',false);
+	var url = "http://ml7.stuycs.org:7202/?image=1&rating="+numStars;
+	window.location = url;
     });
 });
 

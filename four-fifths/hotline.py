@@ -10,20 +10,42 @@ def text():
     data = extractor.loadStuySite()
     schedule = extractor.getSchedule(data[1], data[2])
     bellDay = extractor.getBellDay(schedule)
+    delays = MTAService.getDelays(MTAService.getSubways())
+    forecast = Weather.getForecastString(Weather.getForecast())
+    high = Weather.getHigh()
+    low = Weather.getLow()
+    now = Weather.getTemp()
     resp = twiml.Response()
+    message = ""
+    #---schedule---
     if bellDay == "Closed" :
-        message = "School is closed today."
+        message += "School is closed."
     elif bellDay == "Weekend" :
-        message = "It's a weekend. There is no school today."
+        message += "It's a weekend."
     elif bellDay == "Unknown" :
-        message = "We don't have today's schedule. How embarrassing."
+        message += "Schedule unavailable."
     else :
         #'a' or 'an' depending on the next word:
         #B1/B2 ('a') or A1/A2/Unknown ('an')
         gymDay = extractor.getGymDay(schedule)
-        if gymDay[0] == "B" : article = "a"
-        else : article = "an"
-        message = "Today is a %s schedule. Today is %s %s day."%(bellDay, article, gymDay)
+        #if gymDay[0] == "B" : article = "a"
+        #else : article = "an"
+        #"Today is %s %s day."%(article, gymDay) shortened for text
+        message += "Schedule: %s. Phys. ed.: %s."%(bellDay, gymDay)
+    #---weather---
+        message += " Today will be %s. High: %d. Low: %d. Currently %d degrees."%(forecast, high, low, now)
+    #---MTA---
+    if delays :
+        message += " Delays on the " + delays[0]
+        #account for more than one line with delays
+        if len(delays) > 1 :
+            for i in xrange (len(delays)-1):
+                message += ", %s"%(delays[i+1])
+            message += " lines."
+        else :
+            message += " line."
+    else :
+        message += " There are no train delays!"
     resp.sms(message)
     return str(resp)
 
@@ -111,11 +133,12 @@ def schedule():
     elif int(digit) == 3 :
         print "3 case: MTA"
         delays = MTAService.getDelays(MTAService.getSubways())
-        audio.append("delays.mp3")
-        for each in delays :
-            for char in xrange(len(each)) :
-                audio.append("%s.mp3"%(str(each[char])))
-        audio.append("line.mp3")
+        if delays :
+            audio.append("delays.mp3")
+            for each in delays :
+                for char in xrange(len(each)) :
+                    audio.append("%s.mp3"%(str(each[char])))
+                audio.append("line.mp3")
 
 #---pressed 4: credits---
     elif int(digit) == 4 :

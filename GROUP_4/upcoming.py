@@ -42,9 +42,17 @@ def getEventIDInfo(id,detail):
     for item in x['rsp']['event']:
         info[item['id']] = item[detail]
         retval = info[id].replace("&#39;s","s")
-        retval.replace("&#39;","\'")
-        retval.replace("&amp;","&")
-        retval.replace("&quot;","\"")
+        retval = retval.replace("&#39;","\'")
+        retval = retval.replace("&amp;","&")
+        retval = retval.replace("&quot;","\"")
+        retval = retval.replace("<br>", " ")
+        retval = retval.replace("<a>", " ")
+        retval = retval.replace("<\a>", " ")
+        retval = retval.replace("<h1>", " ")
+        retval = retval.replace("<h4>", " ")
+        retval = retval.replace("<a href=", " ")
+        retval = retval.replace("/>", " ")
+        retval = retval.replace("</h4>", " ")
         return retval
 
 

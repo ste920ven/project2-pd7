@@ -13,10 +13,10 @@ class db:
 
 
 
-    def getTaglist(self):
+    def getTaglist():
         """ Returns a list of all of the tags used
         """
-        collection = self.db.tags
+        collection = db.tags
         list = collection.find({"tag" : "tag"})[0]['tags']
         print list
         return list

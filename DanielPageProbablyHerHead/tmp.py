@@ -5,8 +5,7 @@ import db
 Adds working URLs to database for testing purposes.
 """
 
-db.addImage("http://farm9.staticflickr.com/8070/8234964776_708125d9a6_z.jpg")
-db.addImage("http://farm9.staticflickr.com/8487/8234333891_0ecfd84764_z.jpg")
-db.addImage("http://farm9.staticflickr.com/8346/8235444218_5dab7d27d0_z.jpg")
-db.addImage("http://farm9.staticflickr.com/8065/8234329451_a1b64691dc_z.jpg")
-db.addImage("http://farm9.staticflickr.com/8200/8234625752_2fb9fcafbf_z.jpg")
+db.addImage("http://2.bp.blogspot.com/-UzpmL72vils/UAoW5vkzO1I/AAAAAAAADa8/ryoRDADf1Qg/s640/CliveRush.jpg")
+db.addImage("http://2.bp.blogspot.com/-3gYblyKkz-g/UAoW67w7Q7I/AAAAAAAADbE/XAVDS__dAUI/s640/arambag.jpg")
+db.addImage("http://3.bp.blogspot.com/-i7Vst3UyVTo/UAoW9OIaVyI/AAAAAAAADbM/KFlCMXQ7rT4/s640/fordney.jpg")
+db.addImage("http://4.bp.blogspot.com/-FQatfLKIyeU/UAobPeaAJvI/AAAAAAAADbo/ho-dJIFoApM/s640/SWAMPRAT.jpg")

@@ -63,30 +63,77 @@ def home():
         login.test(username)
 
         ## API Interactions HERE ##
+    
+        s3 = upcoming.getEventInfo(r3,r1,"id")
+        x = random.choice(s3.keys())
+        print upcoming.getEventIDInfo(x,"start_date")
         try:
-            s3 = upcoming.getEventInfo(r3,r1,"id")
-            x = random.choice(s3.keys())
-            uname1 =  upcoming.getEventIDInfo(x,"name")
+            uname1 =  upcoming.getEventIDInfo(x,"name")    
+        except:
+            uname1 = ""
+            
+        try:
             udescription1 =  upcoming.getEventIDInfo(x,"description")
         except:
-            uname1 = " "
-            udescription1 = " "
-
+            udescription1 = ""
+        try:
+            date1 = upcoming.getEventIDInfo(x,"start_date")
+        except:
+            date1 = ""
+        try:
+            time1 = upcoming.getEventIDInfo(x,"start_time")
+        except:
+            time1 = ""
+        try:
+            url1 = upcoming.getEventIDInfo(x,"url")
+        except:
+            url1 = ""
+        try:
+            venuename1 = upcoming.getEventIDInfo(x,"venue_name")
+        except:
+            venuename1 = ""
+        try:
+            venueaddress1 = upcoming.getEventIDInfo(x,"venue_address")
+        except:
+            venueaddress1  = ""
+        try:
+            venuecity1 = upcoming.getEventIDInfo(x,"venue_city")
+        except:
+            venuecity1 = ""
+        try:
+            buytickets1 = upcoming.getEventIDInfo(x,"ticket_url")
+        except:
+            buytickets1 = ""
+        
         try:
             s4 = upcoming.getEventInfo(r4,r1,"id")
             y = random.choice(s4.keys())
             uname2 =  upcoming.getEventIDInfo(y,"name")
             udescription2 =  upcoming.getEventIDInfo(y,"description")
+            date2 = upcoming.getEventIDInfo(y,"start_date")
+            time2 = upcoming.getEventIDInfo(y,"start_time")
+            url2 = upcoming.getEventIDInfo(y,"url")
+            venuename2 = upcoming.getEventIDInfo(y,"venue_name")
+            venueaddress2 = upcoming.getEventIDInfo(y,"venue_address")
+            venuecity2 = upcoming.getEventIDInfo(y,"venue_city")
+            buytickets2 = upcoming.getEventIDInfo(y,"ticket_url")
         except:
-            uname2 = " "
-            udescription2 = " "
-        
+            uname2 = ""
+            udescription2 = ""
+            date2 = ""
+            time2 = ""
+            url2 = ""
+            venuename2 =""
+            venueaddress2 = ""
+            venuecity2 =""
+            buytickets2= ""
+
         
         movies_available = movies.getMovieNames()
         movie = choice(movies_available)
-        print movie
+        poster = movies.getPoster(movie)
         synopsis = movies.getSynopsis(movie)
-        print synopsis
+
         #teamId = espn.getTeamID(r2)
         description1 = " "
         description2 = "ESPN API is down"
@@ -103,7 +150,8 @@ def home():
 
         except:
             pass
-        return render_template("results.html", 
+        return render_template("results.html",
+                               poster = poster,
                                username = username,
                                name=uname1,
                                description = udescription1,
@@ -117,7 +165,22 @@ def home():
                                description2 = description2,
                                description3 = description3,
                                name2 = uname2,
-                               udescription2 = udescription2)
+                               udescription2 = udescription2,
+                               url1 = url1,
+                               venuename1 = venuename1,
+                               venueaddress1 = venueaddress1,
+                               venuecity1 = venuecity1,
+                               buytickets1 = buytickets1,
+                               date1 = date1,
+                               time1 = time1,
+                               url2 = url2,
+                               venuename2 = venuename2,
+                               venueaddress2 = venueaddress2,
+                               venuecity2 = venuecity2,
+                               buytickets2 = buytickets2,
+                               date2 = date2,
+                               time2 = time2)
+
 
 if __name__ == "__main__":
     app.run(debug = True)

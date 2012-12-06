@@ -29,6 +29,21 @@ $(document).ready(function(){
 	    return false;
 	}
     });
+    $('#facilitychoose').change(function(){
+	var str = $('#facilitychoose').val();
+	$.getJSON($SCRIPT_ROOT + "/get_Nearby", {
+	    r: 5000,
+	    t: str,
+	    o: user_loc
+	}, function(data){
+	    displayF(data.result);
+	});
+	return false;		
+    });
+    $('#faclist li').click(function(){
+	var str = "#"+this.id+"em";
+	codeAddress($(str).html());
+    });
     $('#mylocurl').click(function(){
 	$('#start').val(user_loc);
     });
@@ -52,12 +67,6 @@ $(document).ready(function(){
     $('#bmessage').click(function(){
 	type();
 	$('#bmessage').html('<span class="icon medium darkgray" data-icon="9" style="display: inline-block"><span aria-hidden="true">9</span></span></span> (0) Incoming Message');
-    });
-    $('#facilitychoose').change(function(){
-	var str = $('#facilitychoose').val();
-	console.log(str);
-	$('#target').val(str);
-	$('#target').focus().trigger(jQuery.Event('keydown', {which: 13}));
     });
     showModal();
 });
@@ -239,7 +248,20 @@ function displayAPIvalues(){
     });
     return false;
 }
-
+function displayF(data){
+    var len = data.length;
+    if(len > 10)
+	len = 10;
+    for(i = 1; i <= len; i++){
+	name = data[i-1]['name'];
+	address = data[i-1]['address'];
+	distance = data[i-1]['distance'];
+	var str = "#" + i;
+	var str1 = '<address><p>'+name+'<br /><em id="'+i+'em">'+address+'</em><br />'+distance+'</p></address>';
+	$(str).html(str1);
+    }
+    $('#faclist').css('display','inline');
+}
 function showModal(){
     $('#myModal').modal('show');
 }
