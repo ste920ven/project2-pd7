@@ -2,7 +2,8 @@
 
 from pymongo import Connection
 
-class db:
+
+
     def __init__(self):
         """ Handles connecting to mongo.stuycs.org, authentication, and connecting to our (Group_6) database. Returns our database.    
         """
