@@ -19,7 +19,7 @@ def home():
 	else:	
 		url = request.form['hidSrc']
 		db.addPicture(url)
-		piclist = db.getPics(tag)
+		piclist = db.getPics(Sandy)
 		return redirect("/", piclist=piclist)
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
