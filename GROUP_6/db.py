@@ -4,7 +4,7 @@ from pymongo import Connection
 
 
 
-    def __init__(self):
+def __init__(self):
         """ Handles connecting to mongo.stuycs.org, authentication, and connecting to our (Group_6) database. Returns our database.    
         """
         self.connection = Connection('mongo.stuycs.org')
@@ -14,7 +14,7 @@ from pymongo import Connection
 
 
 
-    def getTaglist(self):
+def getTaglist(self):
         """ Returns a list of all of the tags used
         """
         collection = self.db.tags
@@ -24,7 +24,7 @@ from pymongo import Connection
         
         
 
-    def getTags(self,picture):
+def getTags(self,picture):
         """ Returns a list of tags associated with a picture
         """
         collection = self.db.pictures
@@ -32,13 +32,13 @@ from pymongo import Connection
         print tags
         return tags
         
-    def addTag(self,picture,tag):
+def addTag(self,picture,tag):
         """ Adds a tag to the picture
         """
         self.db.pictures.update({"picture" : picture}, {"$push": {"tags":tag}})
         self.db.tags.update({"tag":"tag"},{"$push":{"tags":tag}})
 
-    def getComments(self,picture):
+def getComments(self,picture):
         """ Returns a list of all the comments associated with the picture
         """
         collection = self.db.pictures
@@ -46,12 +46,12 @@ from pymongo import Connection
         print comments
         return comments
 
-    def addComment(self,picture,comment):
+def addComment(self,picture,comment):
         """ Adds a comment to the picture
         """
         self.db.pictures.update({"picture" : picture},{"$push":{"comments":comment}})
 
-    def getPictures(self,tag):
+def getPictures(self,tag):
         """ Returns a list of pictures with the tag
         """
         ans = []
@@ -64,7 +64,7 @@ from pymongo import Connection
         print ans
         return ans
 
-    def addPicture(self,picture):
+def addPicture(self,picture):
         """ Adds a picture to the database
         """
         collection = self.db.pictures
