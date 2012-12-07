@@ -5,6 +5,7 @@ import util
 app = Flask(__name__)
 #app.secret_key = "secret"
 
+picurl = ""
 
 @app.route('/', methods = ['GET', 'POST'])
 def home():
@@ -35,11 +36,13 @@ def slide():
 		
 @app.route('/image', methods=['GET', 'POST'])
 def image():
+	import db
 	if request.method=="GET":
 		taglist = db.getTaglist(self)
 		tags = db.getTags(self, picurl)
+		url = request.form['hidSrc']
 		commentlist = db.getComments(self, picurl)
-		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = picurl)
+		return render_template("image.html", taglist = taglist, tags =tags, commentlist = commentlist, pic = url)
 	else:	
 		button = request.form['button']
 				
