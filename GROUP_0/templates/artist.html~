@@ -8,7 +8,7 @@
 <div style="width:200px;position:relative;bottom:20px;left:20px">
 <ul class="menu vertical">
 {% for artist in artists %}
-<li><a href="http://127.0.0.1:5000/hello/artist/{{artist}}">{{artist}}</a></li>
+<li><a href="http://127.0.0.1:6969/hello/artist/{{artist}}">{{artist}}</a></li>
 {% endfor %}
 </ul>
 </div>
