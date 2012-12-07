@@ -21,7 +21,12 @@
       <a href="http://stuy.enschool.org/">Stuy Homepage</a>
       <a href="https://students-stuyhs.theschoolsystem.net/login.rb">Student Tools</a>
       <a href="http://schools.nyc.gov/Calendar/default.htm">NYC School Calendar</a>
-      <a href="http://mta.info/">MTA</a>
+      <a href="http://mta.info/">
+	{% if delays %}
+	<span id="MTAbadge">{{ delays|length }}</span>
+	{% endif %}
+	MTA
+      </a>
     </header>
 
     <div id="main">
