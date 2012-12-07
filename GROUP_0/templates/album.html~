@@ -15,7 +15,7 @@
 <div id="menu">
 <ul class="menu vertical">
 {% for album in albums %}
-<li><a href="http://127.0.0.1:5000/hello/album/{{album}}">{{album}}</a></li>
+<li><a href="http://ml7.stuycs.org:6969/hello/album/{{album}}">{{album}}</a></li>
 {% endfor %}
 </ul>
 </div>
@@ -24,25 +24,4 @@
 <img src=""/>
 </div>
 
-<script type="text/javascript">
-var count=0;
-function next(){
-if (count-1===images_album.length){
-count=0
-}
-image={{images_album}};
-image=image[count+1]
-$("src").attr("src",image);
-}
-
-var myevent;
-function startit(){
-myevent=setInterval(next,1000);
-}
-
-$(document).ready(function(){
-startit();
-}
-
-</script>
 {% endblock %}
