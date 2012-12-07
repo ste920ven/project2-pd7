@@ -74,7 +74,7 @@ def getService(thelines):
             name = line.find("name")
             name.name = "linenames"
             nname = str(name.get_text(strip=True))
-            msg = str(getServiceChangeAndDelays(line))
+            msg = (getServiceChangeAndDelays(line))
             service[nname] = msg
     return service
 
@@ -601,3 +601,13 @@ def getWHemp():
 #print getService(getBuses())
 #print getService(getSubways())
 #print getService(getLIRR())
+#print getServiceChangeAndDelays(getLine(getSubways(),"123"))
+#print getLine(getSubways(),"123")
+#print x.find("text")
+#print getPlannedWork(getLine(getSubways(),"123"))
+#print getCompletePlannedWork(getLine(getSubways(),"123"))
+#print getComplete(getLine(getSubways(),"123"))
+#x= getLine(getSubways(),"123")
+#print x.find("text")
+#print getPlannedWork(getLine(getSubways(),"123"))
+#print getCompletePlannedWork(getLine(getSubways(),"123"))    

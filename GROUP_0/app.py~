@@ -56,16 +56,16 @@ def album(album=""):
         except Exception:
             ratings=False
             average="No ratings yet, rate this album now!"
-        return render_template("rate_album.html",albums=data_album.keys(),albuma=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
+        return render_template("rate_album.html",albums=data_album.keys(),album=album,image=tmp["image"],artist=tmp["artist"],rank=tmp["rank"],link=tmp["url"],url=tmp['artist url'],ratings=ratings,average=average)
     if(request.method=="POST"):
         button=request.form['button']
         if button == 'rate':
-            rating_value=request.form["rating"]
-            comment=request.form["comment"]
-            name=request.form["albumname"]
+            rating_value=request.form['rating']
+            comment=request.form['comment']
+            name=request.form['albumname']
             database.addAlbumrating(username,name,data_album[name]["artist"],rating_value,comment)
-            return render_template('album.html', albums=data_album.keys())
-        elif button == "back":
+            return render_template("album.html", albums=data_album.keys())
+        elif button == 'back':
             return redirect(url_for('hello'))
 
 @app.route("/hello/song/<song>",methods=['GET','POST'])

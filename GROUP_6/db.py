@@ -1,73 +1,75 @@
 #!usr/bin/python                                                                                                                               
 
 from pymongo import Connection
+Connection = Connection('mongo.stuycs.org')
 
-class db:
-    def __init__(self):
+def connect():
         """ Handles connecting to mongo.stuycs.org, authentication, and connecting to our (Group_6) database. Returns our database.    
         """
-        self.connection = Connection('mongo.stuycs.org')
-        self.db = self.connection.admin
-        self.db.authenticate('ml7','ml7')
-        self.db = self.connection['Group_6']
+        DB = Connection.admin
+        res = DB.authenticate('ml7','ml7')
+        DB = Connection['Group_6']
+        return DB       
+        
 
 
-
-    def getTaglist(self):
+def getTaglist():
         """ Returns a list of all of the tags used
         """
-        collection = self.db.tags
-        list = collection.find({"tag" : "tag"})[0]['tags']
+        DB = connect()
+        list = DB.tags.find({"tag" : "tag"})[0]['tags']
         print list
         return list
         
         
 
-    def getTags(self,picture):
+def getTags(picture):
         """ Returns a list of tags associated with a picture
         """
-        collection = self.db.pictures
-        tags = collection.find({"picture" : picture})[0]['tags']
+        DB = connect()
+        tags = DB.pictures.find({"picture" : picture})[0]['tags']
         print tags
         return tags
         
-    def addTag(self,picture,tag):
+def addTag(picture,tag):
         """ Adds a tag to the picture
         """
-        self.db.pictures.update({"picture" : picture}, {"$push": {"tags":tag}})
-        self.db.tags.update({"tag":"tag"},{"$push":{"tags":tag}})
+        DB = connect()
+        DB.pictures.update({"picture" : picture}, {"$push": {"tags":tag}})
+        DB.tags.update({"tag":"tag"},{"$push":{"tags":tag}})
 
-    def getComments(self,picture):
+def getComments(picture):
         """ Returns a list of all the comments associated with the picture
         """
-        collection = self.db.pictures
-        comments = collection.find({"picture" : picture})[0]['comments']
+        DB = connect()
+        comments = DB.pictures.find({"picture" : picture})[0]['comments']
         print comments
         return comments
 
-    def addComment(self,picture,comment):
+def addComment(picture,comment):
         """ Adds a comment to the picture
         """
-        self.db.pictures.update({"picture" : picture},{"$push":{"comments":comment}})
+        DB = connect()
+        DB.pictures.update({"picture" : picture},{"$push":{"comments":comment}})
 
-    def getPictures(self,tag):
+def getPictures(tag):
         """ Returns a list of pictures with the tag
         """
         ans = []
-        collection = self.db.pictures
+        DB = connect()
         # ans=[x["picture"] for x in collection.find({"tags":tag})]
-        for x in collection.find():
+        for x in DB.pictures.find():
             picture = x["tags"]
             if tag in picture:
                 ans.append(x["picture"])
         print ans
         return ans
 
-    def addPicture(self,picture):
+def addPicture(picture):
         """ Adds a picture to the database
         """
-        collection = self.db.pictures
-        collection.insert({"picture":picture,"comments":[],"tags":["Sandy"]})
+        DB = connect()
+        DB.pictures.insert({"picture":picture,"comments":[],"tags":["Sandy"]})
 
         
 if __name__=="__main__":
