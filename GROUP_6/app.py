@@ -19,7 +19,7 @@ def home():
 	else:	
 		url = request.form['hidSrc']
 		db.addPicture(url)
-		return redirect(url_for("/" ))
+		return redirect("/" )
 
 @app.route('/slideshow/<tag>', methods=['GET', 'POST'])
 def slide():
