@@ -1,4 +1,3 @@
-<!doctype html>
 <h2>Reflections on the Dashboard</h2>
 <strong>Issues</strong>
 <ul>
