@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from ua_parser import user_agent_parser
-import extractor, Weather
+import extractor#, Weather
 
 app = Flask(__name__)
 
