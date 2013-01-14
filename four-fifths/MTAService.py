@@ -30,12 +30,9 @@ def getPlannedWorkDetail(soup):
 #Service Changes and Delays
 def getServiceChangeAndDelays(soup):
     texts = soup.find("text")
-    i = len(texts.find_all("span"))
+    i = len(texts.find_all(["span","a","div"]))
     for x in xrange(0,i):
-        texts.find("span").clear()
-    texts.a.clear()
-    texts.div.clear()
-    #return text
+        texts.find(["span","a","div"]).decompose()
     return texts.get_text(strip=True)
     #msgs = soup.find_all("p")
     #allmsgs = ""
@@ -53,7 +50,7 @@ def getCompletePlannedWork(soup):
 def getComplete(soup):
     soup1 = soup
     soup2 = soup
-    mesg = "Planned Detours:"+" "+getCompletePlannedWork(soup2)+"\n"+" "+"Delays&ServiceChanges:"+" "+getServiceChangeAndDelays(soup1)
+    mesg = "Planned Detours:"+" "+getCompletePlannedWork(soup2)+"\n"+"Delays&ServiceChanges:"+" "+getServiceChangeAndDelays(soup1)
     return mesg
 
 #Gets all lines with delays 
@@ -77,7 +74,7 @@ def getService(thelines):
             name = line.find("name")
             name.name = "linenames"
             nname = str(name.get_text(strip=True))
-            msg = str(getServiceChangeAndDelays(line))
+            msg = (getServiceChangeAndDelays(line))
             service[nname] = msg
     return service
 
@@ -599,11 +596,17 @@ def getWHemp():
 #print getRonkonkoma()
 #print getWHemp()
 #print getDelays(getBuses())
-#print getDelays(getSubways())
+  #print getDelays(getSubways())
 #print getDelays(getLIRR())
 #print getService(getBuses())
-#print getService(getSubways())
+print getService(getSubways())
 #print getService(getLIRR())
+#print getServiceChangeAndDelays(getLine(getSubways(),"123"))
+#print getLine(getSubways(),"123")
+#print x.find("text")
+#print getPlannedWork(getLine(getSubways(),"123"))
+#print getCompletePlannedWork(getLine(getSubways(),"123"))
+#print getComplete(getLine(getSubways(),"123"))
 #x= getLine(getSubways(),"123")
 #print x.find("text")
 #print getPlannedWork(getLine(getSubways(),"123"))

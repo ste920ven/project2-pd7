@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from ua_parser import user_agent_parser
-import extractor#, Weather
+import extractor, Weather#, MTAService
 
 app = Flask(__name__)
 
@@ -18,6 +18,9 @@ def main():
     forecastURL    = url_for('static',filename="images/"+Weather.getForecastURL(forecastCode))
     forecastString = Weather.getForecastString(forecastCode)
 
+    delays = [] #MTAService.getDelays(MTAService.getSubways())
+
+    #detecting a mobile device
     user_agent_string = request.user_agent.string
     mobile_user_agent_families = ['Firefox Mobile','Opera Mobile','Opera Mini','Mobile Safari','webOS','IE Mobile','Playstation Portable','Nokia','Blackberry','Palm','Silk','Android','Maemo','Obigo','Netfront','AvantGo','Teleca','SEMC-Browser','Bolt','Iris','UP.Browser','Symphony','Minimo','Bunjaloo','Jasmine','Dolfin','Polaris','BREW','Chrome Mobile','UC Browser','Tizen Browser']
     mobile_os_families = ['Windows Phone 6.5','Windows CE','Symbian OS','iOS']
@@ -33,7 +36,8 @@ def main():
                                date=date,
                                temp=temp,
                                forecastURL=forecastURL,
-                               forecastString=forecastString)
+                               forecastString=forecastString,
+                               delays=delays)
 
     else:
         return render_template('home.html',
@@ -44,8 +48,9 @@ def main():
                                date=date,
                                temp=temp,
                                forecastURL=forecastURL,
-                               forecastString=forecastString)
+                               forecastString=forecastString,
+                               delays=delays)
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(host="0.0.0.0", port=7205, debug=True)
+    app.run(host="0.0.0.0", port=7305, debug=True)

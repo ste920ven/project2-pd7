@@ -19,6 +19,9 @@
       header a:focus,
       header a:active        { background: rgba(0,0,0,0.3); }
 
+      span#MTAbadge          { border-radius: 12px; background: #FF9500; color: black;
+			       font-size: 15px; font-weight: bold; padding: 2px 6px; }
+
       div#main               { display: block; width: 62%; padding: 4%;
                                margin-top: 50px; float: left; }
 

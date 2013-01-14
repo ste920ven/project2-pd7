@@ -16,7 +16,7 @@
   </li>
   <br/>
   <li>Full Weekly Schedule with link to the post on the Stuy site</li>
-  <li>Displays current Stuy news entries with links to their posts</li>
+  <li>Displays current Stuy news entries with links to the full posts</li>
   <li>Quick links to:
     <ul>
       <li><a href="http://stuy.enschool.org">Stuy Homepage</a></li>
@@ -27,11 +27,10 @@
   </li>
 </ul>
 
-<h4>Features:</h4>
+<h4>Special Features:</h4>
 <ul>
-  <li>Convenient text interface</li>
+  <li>Phone Hotline (voice and SMS) with MTA delay information: 347-894-5356</li>
   <li>Mobile Site</li>
-  <li>Phone Hotline</li>
 </ul>
 
 <h4>Setup:</h4>
@@ -42,7 +41,7 @@
   <li>beautifulsoup4</li>
   <li>html5lib</li>
   <li>twilio</li>
-  <li>ua_parser (download source from <a href="https://github.com/tobie/ua-parser">GitHub</a>)</li>
+  <li>ua_parser (<a href="https://github.com/tobie/ua-parser">download source from GitHub</a>)</li>
 </ul>
 
 <h6>ua_parser setup</h6>
@@ -50,7 +49,7 @@
   <li>"git clone https://github.com/tobie/ua-parser.git"</li>
   <li>"cd ua-parser"</li>
   <li>"python setup.py"</li>
-  <li>You can then remove the dir ua-parser from your hard drive.</li>
+  <li>The ua-parser directory can then be deleted.</li>
 </ul>
 
 <h6>Note: app.py runs on <a href="http://ml7.stuycs.org:7205">ml7.stuycs.org:7205</a>...</h6>
@@ -60,9 +59,9 @@
 <ul>
 	<li>If the Stuy site is unreachable, StuyDash crashes.</li>
 	<li>The favicon's rounded corners show a white background, not a transparent one.</li>
-	<li>The site may crash if the weather returns an unknown condition</li>
 	<li>Possible bugs in mobile site's stylesheets.</li>
-	<li>No MTA implementation.</li>
+	<li>No MTA implementation on site (but implemented in hotline).</li>
+	<li>Degrees show up on top of weather icon.</li>
 </ul>
 
 <h4>GROUP four-fifths:</h4>
@@ -77,7 +76,7 @@
   
   <li>Jack
     <ul>
-	<li>Twilio API - Phone Information Hotline (hotline.py)</li>
+	<li>Twilio API - Phone information hotline (hotline.py)</li>
 	<li>Weather icons</li>
     </ul>
   </li>
