@@ -110,8 +110,12 @@ def getPrice(k,name):
     name = name + "+food"
     name=urllib2.quote(name)
     url2 = 'https://www.googleapis.com/shopping/search/v1/public/products?key=%s&country=US&tbs=cat:422&q=%s'%(k,name)
-    request = urllib2.urlopen(url2)
-    result2 = json.loads(request.read())
+    try:
+        request = urllib2.urlopen(url2)
+        result2 = json.loads(request.read())
+    except:
+        print "failed to open"
+        return None
     try:
         price = result2['items'][0]['product']['inventories'][0]['price']
         name = result2['items'][0]['product']['title']
