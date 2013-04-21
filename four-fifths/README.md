@@ -1,4 +1,5 @@
 <h1>StuyDash</h1>
+<h2>Check out the project at http://ml7.stuycs.org:7205/!</h2>
 <h2>By group <a href="#group-four-fifths">four-fifths</a></h2>
 
 <h3>Project: Stuy Student Dashboard - Everything a Stuy student needs.</h3>
