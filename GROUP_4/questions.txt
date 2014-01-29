@@ -1,4 +1,0 @@
-What's your Zip Code? (textbox)
-Do you like movies? (yes/no)
-What's your favorite movie genre? (radio buttons)
-What's your favorite type of food? (radio buttons)
